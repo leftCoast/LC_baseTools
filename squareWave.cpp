@@ -7,6 +7,7 @@ squareWave::squareWave(float periodMs,float pulseMs, bool blocking) {
 	setPulse(pulseMs);
 	mBlocking	= blocking;
 	mState		= sittinIdle;
+	mSignal 		= false;
 }
 
 	
@@ -19,6 +20,7 @@ squareWave::squareWave(void) {
 	mPulseChange	= false;
 	mBlocking		= false;
 	mState			= sittinIdle;
+	mSignal 			= false;
 }
 
 
@@ -33,20 +35,22 @@ bool squareWave::running(void) { return mState != sittinIdle; }
 // Set a new period duration. This takes effect on the next pulse's startup.
 void squareWave::setPeriod(float ms) {
 
-	mNextPeriod = ms;			// Save it off.
-	mPeriodChange = true;	// Flag the change.
+	if (ms<0) ms = 0;				// Sanity, no negatives!
+	if (ms!=mNextPeriod) {		// Only bother them if its different.
+		mNextPeriod = ms;			// Save it off.
+		mPeriodChange = true;	// Flag the change.
+	}
 }
 
 
 // Set a new pulse duration. This also takes effect on the next pulse's startup.
 void squareWave::setPulse(float ms) {
 
-	if (ms<=mNextPeriod) {				// If the new pulse is less that or equal to the period..
-		mNextPulse = ms;					// Save it off.
-	} else {									// Else its longer than the period..
-		mNextPulse = mNextPeriod;		// Then just use the period.
+	if (ms<0) ms = 0;				// Sanity, no negatives!
+	if (ms!=mNextPulse) {		// Only bother them if its different.
+		mNextPulse = ms;			// Save it off.
+		mPulseChange = true;		// In any case, flag the change.
 	}
-	mPulseChange = true;					// In any case, flag the change.
 }
 
 
@@ -59,8 +63,7 @@ void squareWave::setPercent(float perc) {
 	if (perc<0) perc = 0;					// Negitive? Set to zero.
 	if (perc>100) perc = 100;				// Bigger than 100%, set to 100.
 	ms = mNextPeriod * (perc/100.0);		// Calculate the new millisecond value.
-	mNextPulse = ms;							// Save it off.
-	mPulseChange = true;						// Flag the change.
+	setPulse(ms);								// Set it.
 }
 
 
@@ -77,16 +80,37 @@ void squareWave::setOnOff(bool onOff) {
 		startWave();				// Call to startWave() to get all the timers running.
 	} else {							// Else, we are turning the machine off..
 		mState = sittinIdle;		// We're idle now.
-		pulseOff();					// I'm betting they would like to know its been shut down.
+		ourPulseOff();					// I'm betting they would like to know its been shut down.
+	}
+}
+
+
+// We're going to track if the signal is on or off. Only broadcast changes.	
+void squareWave::ourPulseOn(void) {
+
+	if (!mSignal) {
+		pulseOn();
+		mSignal = true;
 	}
 }
 	
-
+				
 // This is called when the pulse begins. The user filles this out for whatever action they
 // want.	
 void squareWave::pulseOn(void) {  }
 
 
+// Just like the one above. We're going to track if the signal is on or off. Only
+// broadcast changes.	
+void squareWave::ourPulseOff(void) {
+
+	if (mSignal) {
+		pulseOff();
+		mSignal = false;
+	}
+}
+	
+				
 // This is called when the pulse ends. Again, the user filles this out for whatever action
 // they want. NOTE : If you set the pulse smaller or equal to the period, this will never
 // be called.
@@ -96,9 +120,11 @@ void squareWave::pulseOff(void) {  }
 // This sits in a loop watching the timer then calls pluseOff() when the timer dings.
 void squareWave::block(void) {
 
-	while (!mPulse.ding());	// Loop while the timer is running.
-	mState = ridingLow;		// Set the state.
-	pulseOff();					// Announce that the pulse is off!
+	while (!mPulse.ding() && !mPeriod.ding());	// Loop while the timer is running.
+	mState = ridingLow;									// Set the state.
+	if (mPulse.ding()) {									// If it was the pilse timer that fired..
+		ourPulseOff();										// Shut down the pulse. ( 100% pulse is waste of blocking. But, whatever. )
+	}
 }
 
 
@@ -118,19 +144,23 @@ void squareWave::startWave(void) {
 		mPulse.setTime(mNextPulse,false);				// Set the new pulse width into the timer.
 		mPulseChange = false;								// Clear the change flag.
 	}
-	if (newWave) {												// If we need to start this..										
+	if (newWave) {												// If we need to start a fresh wave..										
 		mPeriod.start();										// Fire off the timer.
-	} else {														// Else we are just continuing to run..
+	} else {														// Else, we are just continuing to run..
 		mPeriod.stepTime();									// We just step the timer to the next value. (Calculated from last value.)
 	}
 	mPulse.start();											// Start up the pulse timer.
-	mState = ridingHi;										// After all this we are riding hi.
-	pulseOn();													// Announce that the pulse is on!
-	if (mBlocking) {											// If we are blocking..
-		block();													// Go block.
+	if (mNextPulse) {											// If the pulse width is >0..
+		mState = ridingHi;									// After all this we are riding hi.
+		ourPulseOn();											// Fire up the pulse.
+		if (mBlocking) {										// If we are blocking..
+			block();												// Go block.
+		}
+	} else {														// Else no pulse?
+		mState = ridingLow;									// Then we're just waiting to ride out the period timer.
 	}
 }
-
+				
 
 // Our idel routine where everything runs in the background.
 void squareWave::idle(void) {
@@ -140,7 +170,7 @@ void squareWave::idle(void) {
 		case ridingHi		:				// Riding high? Pulse is set to high.
 			if (mPulse.ding()) {			// If the pulse timer has expired..
 				mState = ridingLow;		// Swap the state to riding low.
-				pulseOff();					// Announce it.
+				ourPulseOff();					// Announce it.
 			}
 		break;								// Jump out.
 		case ridingLow :					// Riding low? Waiting to spin out the clock.
