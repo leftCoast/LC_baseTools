@@ -3,7 +3,7 @@ Tools to make programming Arduinos easier.
 
 **blinker** - Blinks an LED without using delay(). Or any output pin for that matter. Does NOT use interrupts or hardware PWM.
 
-**colorObj** - Used for everything dealing with colors. Storing, translating, passing from computer to hardware and back. Blending, Liner and non-liner color mapping.
+**colorObj** - Used for everything dealing with colors. Storing, translating, passing from computer to hardware and back. Blending, linear and non-linear color mapping.
 
 **debug** - Grab bag of debugging tools. Includes ST (Stack trace). Put ST at the start of a function. Then, that function's name prints on the serial monitor when executed.
 
@@ -11,11 +11,11 @@ Tools to make programming Arduinos easier.
 
 **lists** - Base classes of dynamic linked lists that everything in the LC libraries are based on. linkList, double linkList, stack and queue.
 
-**mapper** - Liner mapper function. Unlike the Arduino version, this uses doubles as input and output and saves as much of the calculation as possible between mapping calls.
+**mapper** - linear mapper function. Unlike the Arduino version, this uses doubles as input and output and saves as much of the calculation as possible between mapping calls.
 
 **mechButton** - Class that creates a debounced button. It works, its in need of a rewrite.
 
-**multiMap** - Non-liner mapping function. Starts out blank and the user adds x,y points to it before use.
+**multiMap** - Non-linear mapping function. Starts out blank and the user adds x,y points to it before use.
 
 **resizeBuff** - Simplified memory management. Initialize your pointers to NULL then resizeBuff() can allocate and deallocate your dynamic buffer space for you. Passes back true for successful allocations, false for unsuccessful. Saves a lot of code typing.
 
