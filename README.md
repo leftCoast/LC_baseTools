@@ -11,7 +11,7 @@ Tools to make programming Arduinos easier.
 
 **lists** - Base classes of dynamic linked lists that everything in the LC libraries are based on. Linked Lists, double linked lists, stack and queue.
 
-**mapper** - linear mapper function. Unlike the Arduino version, this uses doubles as input and output and saves as much of the calculation as possible between mapping calls.
+**mapper** - Linear mapper function. Unlike the Arduino version, this uses doubles as input and output. It also saves as much of the calculation as possible between mapping calls.
 
 **mechButton** - Class that creates a debounced button. It works, its in need of a rewrite.
 
@@ -21,8 +21,8 @@ Tools to make programming Arduinos easier.
 
 **runningAvg** - Running average data smoother. Pop in a number, and out popes the average of the last n numbers inputted.
 
-**squareWave** - Base class for creating objects that are based on square waves. IE blinking lights, flashing text, RC servo signals. Does NOT use interrupts or hardware PWM. Runs in background.
+**squareWave** - Base class for creating objects that are based on square waves. IE. blinking lights, flashing text, RC servo signals. Does NOT use interrupts or hardware PWM. Runs in background.
 
-**textBuff** - Ring buffer for text. Handy for hardware that can pass in a lot of text at random times that you need to process.
+**textBuff** - Ring buffer for text. Handy for hardware that can pass in a lot of text at random times that you need to process. 
 
-**timeObj** - A timer that takes a float Ms input and can tell the user when it has expired. Takes care of roll over issues as well. Very handy for getting away from delay(). Set a timer and let loop() run. When it expires, do your thing.
+**timeObj** - A timer that takes a Ms input as a float. Then it can be queried to tell when this timespan has expired. Takes care of roll over issues as well. Very handy for getting away from delay(). Set a timer, and let loop() run. When it expires, do your thing.
