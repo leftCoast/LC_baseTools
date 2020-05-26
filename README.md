@@ -1,9 +1,9 @@
-# LC_baseTools
+## LC_baseTools
 Tools to make programming Arduinos easier.
 
-blinker - blinks an LED without using delay(). Or any output pin for that matter. Does NOT use interrupts or harware PWM.
+#blinker - blinks an LED without using delay(). Or any output pin for that matter. Does NOT use interrupts or harware PWM.
 
-colorObj - Used for everything dealing with colors. Storing, translating, passing from computer to hardware and back. Blending, Liner and non-liner color mapping.
+#colorObj - Used for everything dealing with colors. Storing, translating, passing from computer to hardware and back. Blending, Liner and non-liner color mapping.
 
 debug - Grab bag of debugging tools. Includes ST (Stack trace). Put ST at the start of a function. Then, that function's name prints on the serial monitor when exicuted.
 
