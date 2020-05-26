@@ -68,15 +68,25 @@ void colorObj::setColor(word color16) {
 		green = 0;
 		blue = 0;
 	break;
-	case 0x9CD3 : // DARK_GREY
-		red = 154;
-		green = 154;
-		blue = 154;
+	case 0x3186 : // LC_CHARCOAL
+		red = 50;
+		green = 50;
+		blue = 50;
 	break;
-	case 0xF7BE : // LIGHT_GREY
-		red = 244;
-		green = 244;
-		blue = 244;
+	case 0x8C71 : // DARK_GREY
+		red = 140;
+		green = 140;
+		blue = 140;
+	break;
+	case 0xBDD7 : // LC_GREY
+		red = 185;
+		green = 185;
+		blue = 185;
+	break;
+	case 0xFFDF : // LIGHT_GREY
+		red = 250;
+		green = 250;
+		blue = 250;
 	break;
 	case 0xFFFF : // WHITE
 		red = 255;
@@ -166,8 +176,6 @@ void colorObj::setColor(word color16) {
     blue = lowByte(color16);
     blue = blue << 3;
   }
-  //Serial.print("color16 : ");Serial.println(color16,BIN);
-  //printRGB();
 }
 
 

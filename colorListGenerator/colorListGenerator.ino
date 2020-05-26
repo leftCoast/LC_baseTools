@@ -15,7 +15,9 @@ void setup() {
   Serial.println();
   
   doColor(LC_BLACK,"BLACK");
+  doColor(LC_CHARCOAL,"LC_CHARCOAL");
   doColor(LC_DARK_GREY,"DARK_GREY");
+  doColor(LC_GREY,"LC_GREY");
   doColor(LC_LIGHT_GREY,"LIGHT_GREY");
   doColor(LC_WHITE ,"WHITE");
 
