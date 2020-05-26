@@ -9,7 +9,7 @@ Tools to make programming Arduinos easier.
 
 **idlers** - Contains the idler class used to make objects that function in the background. Also includes the support code to make this happen automatically.
 
-**lists** - Base classes of dynamic linked lists that everything in the LC libraries is based on. linkList, double linkList, stack and queue.
+**lists** - Base classes of dynamic linked lists that everything in the LC libraries are based on. linkList, double linkList, stack and queue.
 
 **mapper** - Liner mapper function. Unlike the Arduino version, this uses doubles as input and output and saves as much of the calculation as possible between mapping calls.
 
