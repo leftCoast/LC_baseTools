@@ -1,8 +1,7 @@
 # LC_baseTools
 Tools to make programming Arduinos easier.
 
-## blinker
-blinks an LED without using delay(). Or any output pin for that matter. Does NOT use interrupts or harware PWM.
+**blinker** - blinks an LED without using delay(). Or any output pin for that matter. Does NOT use interrupts or harware PWM.
 
 # colorObj
 Used for everything dealing with colors. Storing, translating, passing from computer to hardware and back. Blending, Liner and non-liner color mapping.
