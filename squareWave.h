@@ -9,18 +9,26 @@
 //
 // This class begins dormant. You need to explicitly call setOnOff() with a value of true
 // to start it running.
+//
+// NOTE : If you never call setOnOff() you will never be hooked up into the idler queue.
+// This in itself is not really an issue. BUT, if you inherit this and you need the idle
+// loop no matter what, just call hookup() in something like a begin() method or something.
+// Then everything will be fine.
 
 
 #include	"timeObj.h"
 #include	"idlers.h"
 
-class squareWave : private idler {
+class squareWave : public idler {
+	
+	enum waveState { sittinIdle, ridingHi, ridingLow };
 	
 	public:
 				squareWave(void);
 				squareWave(float periodMs,float pulseMs, bool blocking=false);
 	virtual	~squareWave(void);
 				
+				bool	running(void);
 	virtual	void	setPeriod(float ms);
 	virtual	void	setPulse(float ms);
 	virtual	void	setPercent(float perc);
@@ -35,14 +43,14 @@ class squareWave : private idler {
 	virtual	void	block(void);
 	virtual	void	startWave(void);
 				
-				timeObj	mPeriod;
-				bool		mPeriodChange;
-				float		mNextPeriod;
-				timeObj	mPulse;
-				bool		mPulseChange;
-				float		mNextPulse;
-				bool		mBlocking;
-				bool		mRunning;
+				waveState	mState;
+				timeObj		mPeriod;
+				bool			mPeriodChange;
+				float			mNextPeriod;
+				timeObj		mPulse;
+				bool			mPulseChange;
+				float			mNextPulse;
+				bool			mBlocking;
 };
 
 #endif

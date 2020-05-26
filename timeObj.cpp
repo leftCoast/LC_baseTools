@@ -73,7 +73,7 @@ bool timeObj::ding(void) {
                 return true;
         break;
     }
-    return true;    // To shut up compiler and shut down an broken timer.
+    return true;    // To shut up compiler and shut down a broken timer.
 }
 
 
