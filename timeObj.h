@@ -6,6 +6,9 @@
 // Great for blinking LEDs, updating readings, etc.
 // Not fast & accurate enough for RC Servos.
 // *** Takes care of roll over issues ***
+//
+// NOTE: Once the timer expires, every call to ding() will return true until its been
+// restarted.
 
 enum timeType { zero, crossing, normal };
 
@@ -26,7 +29,6 @@ protected:
   				unsigned long	waitTime;
   				unsigned long	startTime;
   				unsigned long	endTime;
-  				timeType			config;
 };
 
 #endif
