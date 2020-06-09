@@ -15,12 +15,10 @@ if (buff) {
 	buff = NULL;
 }
 buff = malloc(newSize);
-
-Then..
-
 if (buff) {
 	do stuff..
 }
+
 Over and over. Then one day I wrote my first version
 of a "stretchy buffer" and that got me thinking.. Is
 there a way to generalize this idea? 
@@ -33,13 +31,14 @@ much as you like. And, it returns a boolean true   or
 false as to if it was able to do it or not. Keeps you
 from writing into unallocated RAM as it were.
 
+NOTE: Resizing means you loose whatever data was originally in it.
+
 Now its just..
 
 if (resizeBuff(newSize,&buffPtr)) {		// Notice?
 	do stuff..									// Address of the pointer there..
 }													// Eww! So tricky!
 
-And it always works.
 
 NOTE : Why a pointer to uint8_t?
 Originally this was setup at char* because it started with c strings. Then
@@ -54,4 +53,5 @@ bool resizeBuff(int numBytes,uint8_t** buff);
 bool resizeBuff(int numBytes,char** buff);
 bool resizeBuff(int numBytes,void** buff);
 bool resizeBuff(int numBytes,byte** buff);
+
 #endif
