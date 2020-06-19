@@ -26,8 +26,9 @@ class linkListObj {
     virtual void				deleteTail(void);								// Call delete on everyone hooked to us.
     virtual bool				isGreaterThan(linkListObj* compObj);	// Are we greater than the obj being passed in? Primary sorting function.
     virtual bool				isLessThan(linkListObj* compObj);		// Are we less than the obj being passed in? Primary sorting function.
-  //protected : 		// Protected seems broken. 
-    linkListObj* next;
+  
+  protected :
+    			linkListObj* next;
 };
 
 
@@ -54,7 +55,7 @@ class linkList {
     		linkListObj* 		getByIndex(int index);										
  
  protected :           
-    linkListObj* theList;
+    		linkListObj* theList;
 };
 
 

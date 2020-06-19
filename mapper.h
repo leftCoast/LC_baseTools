@@ -11,6 +11,9 @@
 // so no one notices these calculations. Or at least not often. And its really
 // nice to know you're not just chopping off all the decimal places early on
 // in the game.
+//
+// 6/15/2020 : Added integration. Needed it for doing trapezoidal moves.
+// 6/19/2020 : Backed out the multiMap changes. So for now? We'll see.
 
 class mapper {
 	
@@ -19,14 +22,20 @@ class mapper {
   				mapper(double x1,double x2,double y1,double y2);
 	virtual	~mapper(void);
 
+  				double	map(double inNum);
   				double	Map(double inNum);
 
   				// This stuff is for using the mapper as a liner calculator.
   				void		setValues(double x1,double x2,double y1,double y2);
+  				
   				double	getSlope(void);
   				double	getMinX(void);
   				double	getMaxX(void);
   				double	getIntercept(void);
+  				
+  				double	integrate(double x1,double x2,double c);
+				double	integrate(double c);
+				
   				//void   printMap(void);      // For debugging.
 	private:
   				double minX;

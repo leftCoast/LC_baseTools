@@ -235,11 +235,13 @@ linkListObj*	linkList::findMin(linkListObj* present) {
 	return minNode;
 }
 
-
+/*
 // If the virtual isGreaterThan() and isLessThan() methods have been filled out this will
 // sort your list for you.
 void linkList::sort(bool ascending) {
-
+	Serial.println("sort()");Serial.flush();
+	Serial.print("ascending = ");Serial.println(ascending);Serial.flush();
+	
 	linkListObj*	trace;
 	linkListObj*	maxMin;
 	int				i;
@@ -247,9 +249,12 @@ void linkList::sort(bool ascending) {
 	i = 0;
 	trace = getByIndex(i);
 	while(trace) {
+		Serial.println(i);Serial.flush();
 		if (ascending) {
+			Serial.println("Calling findMax()");Serial.flush();
 			maxMin = findMax(trace);
 		} else {
+			Serial.println("Calling findMin()");Serial.flush();
 			maxMin = findMin(trace);
 		}
 		if (maxMin) {
@@ -260,7 +265,31 @@ void linkList::sort(bool ascending) {
 		trace = getByIndex(i);
 	}
 }
+*/
 
+// If the virtual isGreaterThan() and isLessThan() methods have been filled out this will
+// sort your list for you.
+void linkList::sort(bool ascending) {
+	
+	linkListObj* sorted;
+	linkListObj*	maxMin;
+	
+	sorted = NULL;
+	while(!isEmpty()) {
+		if (ascending) {
+			maxMin = findMax(theList);
+		} else {
+			maxMin = findMin(theList);
+		}
+		if (maxMin) {
+			unlinkObj(maxMin);
+			maxMin->setNext(sorted);
+			sorted = maxMin;
+		}
+	}
+	theList = sorted;
+}
+			
 
 // ********** stack ****************
 // Your basic stack. Mostly pass throughs with the usual names.

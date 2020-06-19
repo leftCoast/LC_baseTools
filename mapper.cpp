@@ -1,15 +1,13 @@
 #include "mapper.h"
 
+
 mapper::mapper(void) { setValues(0,1,0,1); }
 
 
-mapper::mapper(double x1,double x2,double y1,double y2) {
-
-  setValues(x1,x2,y1,y2);
-}
+mapper::mapper(double x1,double x2,double y1,double y2) { setValues(x1,x2,y1,y2); }
 
 
-mapper::~mapper(void) {  }
+mapper::~mapper(void) { }
 
 
 void mapper::setValues(double x1,double x2,double y1,double y2) {
@@ -20,24 +18,45 @@ void mapper::setValues(double x1,double x2,double y1,double y2) {
 }
 
 
-double mapper::getSlope(void) { 
-  return slope; 
+double mapper::getSlope(void) { return slope; }
+
+
+double mapper::getMinX(void) { return minX; }
+
+
+double mapper::getMaxX(void) { return maxX; }
+
+
+double mapper::getIntercept(void) { return intercept; }
+
+
+// Legacy call.
+double mapper::Map(double inNum) { return map(inNum); }
+
+
+double mapper::map(double inNum) {
+
+
+  if (inNum < minX)
+    inNum = minX;
+  else if (inNum > maxX)
+    inNum = maxX;
+  return(slope*inNum+intercept);
 }
 
 
-double mapper::getMinX(void) { 
-  return minX; 
+// Integrate over a section of the mapper's range.	X1->X2
+double mapper::integrate(double x1,double x2,double c) {
+
+	if (x1<minX) x1 = minX;
+	if (x2>maxX) x2 = maxX;
+	return (((Map(x1)+Map(x2))/2) * (x2-x1)) + c;
 }
 
 
-double mapper::getMaxX(void) { 
-  return maxX; 
-}
+// Integrate over the entire mapper's range.
+double mapper::integrate(double c) { return(minX,maxX,c); }
 
-
-double mapper::getIntercept(void) { 
-  return intercept; 
-}
 
 /*
 void mapper::printMap(void) {
@@ -52,12 +71,3 @@ void mapper::printMap(void) {
   Serial.println(intercept);
 }
 */
-
-double mapper::Map(double inNum) {
-
-  if (inNum < minX)
-    inNum = minX;
-  else if (inNum > maxX)
-    inNum = maxX;
-  return(slope*inNum+intercept);
-}
