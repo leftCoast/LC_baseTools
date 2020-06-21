@@ -40,7 +40,7 @@ bool textBuff::addChar(char inChar) {
 // Don't change anything.
 char textBuff::peekHead(void) {
 
-  if (empty()) return '/0';
+  if (empty()) return '\0';
   return buff[head];
 }
     

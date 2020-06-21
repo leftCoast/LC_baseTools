@@ -45,17 +45,17 @@ double mapper::map(double inNum) {
 }
 
 
-// Integrate over a section of the mapper's range.	X1->X2
-double mapper::integrate(double x1,double x2,double c) {
+// Integrate over a section of the mapper's range.	x1->x2
+double mapper::integrate(double x1,double x2) {
 
-	if (x1<minX) x1 = minX;
-	if (x2>maxX) x2 = maxX;
-	return (((Map(x1)+Map(x2))/2) * (x2-x1)) + c;
+	if (x1<minX) x1 = minX;                      // If x1 is less then our minimum, make it our minimum.
+	if (x2>maxX) x2 = maxX;                      // If x2 is greater then our maximum, make it our maximum.
+	return (((map(x1)+map(x2))/2) * (x2-x1));    // Return the area under our line segment. Avarage height * Dx. 
 }
 
 
 // Integrate over the entire mapper's range.
-double mapper::integrate(double c) { return(minX,maxX,c); }
+double mapper::integrate(void) { return integrate(minX,maxX); }
 
 
 /*

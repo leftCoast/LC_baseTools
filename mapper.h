@@ -12,7 +12,7 @@
 // nice to know you're not just chopping off all the decimal places early on
 // in the game.
 //
-// 6/15/2020 : Added integration. Needed it for doing trapezoidal moves.
+// 6/15/2020 : Added integration. Wanted it for doing trapezoidal moves.
 // 6/19/2020 : Backed out the multiMap changes. So for now? We'll see.
 
 class mapper {
@@ -33,8 +33,8 @@ class mapper {
   				double	getMaxX(void);
   				double	getIntercept(void);
   				
-  				double	integrate(double x1,double x2,double c);
-				double	integrate(double c);
+  				double	integrate(double x1,double x2);
+				double	integrate(void);
 				
   				//void   printMap(void);      // For debugging.
 	private:
@@ -45,4 +45,3 @@ class mapper {
 };
 
 #endif
-
