@@ -2,42 +2,48 @@
 #define multiMap_h
 
 
-class mapItem {
+#include "lists.h"
+#include "mapper.h"
 
-	public :
-  				mapItem(double inX, double inY);
-	virtual	~mapItem(void);
 
-  				void		setValues(void);
-  				bool		linkIn(mapItem* itemPtr);
-  				double	Map(double inVal);
-  				double	doMap(double inVal);
-  				//void	outputItem(void);
+class mapPoint :   public linkListObj {
 
-  				double	x;
-  				double	y;
-  				double	slope;
-  				double	intercept;
-  				mapItem*	lessItem;
-  				mapItem*	greaterItem;
+   public :
+            mapPoint(double inX, double inY);
+   virtual  ~mapPoint(void);
+   
+            mapPoint*   getNext(void);
+            void        createUpMappers(void);
+   virtual  bool        isGreaterThan(linkListObj* compPoint); // Are we greater than the obj being passed in? Primary sorting function.
+   virtual  bool        isLessThan(linkListObj* compPoint);    // Are we less than the obj being passed in? Primary sorting function.
+            double      map(double inX);
+            double      integrate(double x1,double x2);
+   private:       
+            double   mX;
+            double   mY;
+            mapper*  mUpMapper;
 };
 
 
-class multiMap {
+class multiMap :  public linkList {
 
-	public:
-				multiMap(void);
-	virtual	~multiMap(void);
+   public:
+   
+            multiMap(void);
+   virtual  ~multiMap(void);
 
-  				void		addPoint(double x, double y);
-  				void		clearMap(void);
-  				double	Map(double inVal);
-  				//void outputList(void);
-  				
-	private :
-  				mapItem*	itemList;
+            void        addPoint(double x, double y);
+            void        clearMap(void);
+            double      map(double inVal);
+            double      Map(double inVal);
+            double      integrate(double x1,double x2);
+   
+   private:
+            mapPoint*   getFirst();
+            bool        setUp(void);
+            
+            bool  mReady;
 };
+
 
 #endif
-
-

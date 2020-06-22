@@ -98,8 +98,7 @@ void linkList::addToEnd(linkListObj* newObj) {
 
   if (theList==NULL) {          // No list huh?
     theList = newObj;
-  } 
-  else {
+  }  else {
     newObj->linkToEnd(theList);  // Run along little object, go find your friends and link yourself in.
   }
 }
@@ -239,28 +238,26 @@ linkListObj*	linkList::findMin(linkListObj* present) {
 // If the virtual isGreaterThan() and isLessThan() methods have been filled out this will
 // sort your list for you.
 void linkList::sort(bool ascending) {
-
-	linkListObj*	trace;
-	linkListObj*	maxMin;
-	int				i;
 	
-	i = 0;
-	trace = getByIndex(i);
-	while(trace) {
+	linkListObj* sorted;
+	linkListObj*	maxMin;
+	
+	sorted = NULL;
+	while(!isEmpty()) {
 		if (ascending) {
-			maxMin = findMax(trace);
+			maxMin = findMax(theList);
 		} else {
-			maxMin = findMin(trace);
+			maxMin = findMin(theList);
 		}
 		if (maxMin) {
 			unlinkObj(maxMin);
-			addToTop(maxMin);
+			maxMin->setNext(sorted);
+			sorted = maxMin;
 		}
-		i++;
-		trace = getByIndex(i);
 	}
+	theList = sorted;
 }
-
+			
 
 // ********** stack ****************
 // Your basic stack. Mostly pass throughs with the usual names.
