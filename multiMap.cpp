@@ -193,5 +193,5 @@ double  multiMap::integrate(double x1,double x2) {
          }
       }
    }
-   return 0;                                             // Mrs user is all screwed up. Return a zero.
+   return 0;                                             			// Mrs user is all screwed up. Return a zero.
 }
