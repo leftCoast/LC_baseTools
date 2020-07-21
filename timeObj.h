@@ -4,7 +4,7 @@
 // Insainly handy for doing things in the background.
 // Set the timer and wait 'till it goes "ding". 
 // Great for blinking LEDs, updating readings, etc.
-// Not fast & accurate enough for RC Servos.
+// May not fast & accurate enough for RC Servos.
 // *** Takes care of roll over issues ***
 //
 // NOTE: Once the timer expires, every call to ding() will return true until its been
@@ -15,7 +15,7 @@ enum timeType { zero, crossing, normal };
 class timeObj {
 
 	public:
-  				timeObj(float inMs=10);
+  				timeObj(float inMs=10,bool startNow=false);					// DON'T use startNow as true for globals!
 	virtual	~timeObj(void);
 	
   				void 				setTime(float inMs,bool startNow=true);	// Change the time duration for next start..
@@ -24,8 +24,12 @@ class timeObj {
   				bool				ding(void);											// Timer has expired.
   				unsigned long	getTime(void);										// How long does this go for?
   				float				getFraction(void);								// Fuel gauge. What fraction of time is left.
-    
-protected:
+  				//void				printState(void);									// Debugging.
+  				
+	private:
+				enum	timeObjStates	{ preStart, running, expired };
+				
+				timeObjStates	ourState;
   				unsigned long	waitTime;
   				unsigned long	startTime;
   				unsigned long	endTime;
