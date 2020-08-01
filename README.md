@@ -1,7 +1,7 @@
 # LC_baseTools
 Tools to make programming Arduinos easier.
 
-**blinker** - Blinks an LED without using delay(). Or any output pin for that matter. Does NOT use interrupts or hardware PWM.
+**blinker** - Blinks an LED without using delay(). On any output pin. Does NOT use interrupts or hardware PWM.
 
 **colorObj** - Used for everything dealing with colors. Storing, translating, passing from computer to hardware and back. Blending, linear and non-linear color mapping.
 
