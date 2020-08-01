@@ -201,6 +201,25 @@ linkListObj* linkList::getByIndex(int index) {
 }
 
 
+int linkList::findIndex(linkListObj* present) {
+
+	linkListObj*	trace;
+	int				index;
+	
+	trace = theList;
+	index = 0;
+	while(trace && trace!=present) {
+		trace = trace->getNext();
+		index++;
+	}
+	if (trace) {
+		return index;
+	} else {
+		return -1;
+	}
+}
+
+
 linkListObj*	linkList::findMax(linkListObj* present) {
 
 	linkListObj*	trace;

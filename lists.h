@@ -52,7 +52,8 @@ class linkList {
     virtual	void				sort(bool decending);
     
     		int			 		getCount(void);
-    		linkListObj* 		getByIndex(int index);										
+    		linkListObj* 		getByIndex(int index);
+    		int					findIndex(linkListObj* present);	// returns -1 if NOT found.
  
  protected :           
     		linkListObj* theList;
