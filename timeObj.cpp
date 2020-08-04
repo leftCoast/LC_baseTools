@@ -73,7 +73,8 @@ bool timeObj::ding(void) {
 				return false;									// Return false;
 			}
 		case expired : return true;						// If we are expired, return true. (Forever more. Until restarted.)
-	}									
+	}
+	return false;												// Just to shut up compiler.								
 }
 
 
