@@ -4,10 +4,10 @@
 // Our lovely constructor.
 timeObj::timeObj(float inMs,bool startNow) {
 
-  startTime	= 0;						// Just some default.
-  endTime	= 0;						// And another default.
-  ourState = preStart;					// We are sitting on pre Start state.
-  setTime(inMs,startNow);        // This sets startTime and endTime. Maybe starts things up?
+  startTime	= 0;				// Just some default.
+  endTime	= 0;				// And another default.
+  ourState = preStart;		// We are sitting on pre Start state.
+  setTime(inMs,startNow);	// This sets startTime and endTime. Maybe starts things up?
 }
 
 
@@ -23,7 +23,7 @@ void timeObj::setTime(float inMs,bool startNow) {
   else										// Else, negitive time?
     waitTime = 0;							// Whatever. Set it to zero.
   ourState = preStart;					// At this point we are in preStart mode..
-  if (startNow) start();				// If they passed in true for start now.. Start now.
+  if (startNow) start();				// If they passed in true for startNow.. Start now!
 }
 
 
@@ -37,7 +37,7 @@ void timeObj::start(void) {
 
 
 // If you have just expired your timer, this will restart your timer with the timer error
-// between the two start back calculated out. Good for doing things like PWM base frequency
+// between the two starts back calculated out. Good for doing things like PWM base frequency
 // stuff.
 void timeObj::stepTime(void) {
 
@@ -100,13 +100,14 @@ float timeObj::getFraction(void) {
 	
 	unsigned long remaining;
 	
-	switch (ourState) {
-		case preStart : return 1;
-		case running : 
-			remaining = endTime - micros();
-			return((remaining/1000.0)/(waitTime/1000.0));
-		case expired : return 0;
+	switch (ourState) {												// What are we doing now?
+		case preStart : return 1;									// It has not yet meen started? Tank is full, 1.
+		case running : 												// We're running right now?
+			remaining = endTime - micros();						// Calculate the remaining micros.
+			return((remaining/1000.0)/(waitTime/1000.0));	// Return the normalized result. 0..1
+		case expired : return 0;									// Timer has expired? Tank is empty, 0.
 	}
+	return  0;															// Never able to get here. Shut up compiler!
 }								
 
 

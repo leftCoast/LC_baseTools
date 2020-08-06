@@ -10,7 +10,6 @@
 // NOTE: Once the timer expires, every call to ding() will return true until its been
 // restarted.
 
-enum timeType { zero, crossing, normal };
 
 class timeObj {
 
