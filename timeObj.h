@@ -15,7 +15,7 @@ enum timeType { zero, crossing, normal };
 class timeObj {
 
 	public:
-  				timeObj(float inMs=10,bool startNow=false);					// DON'T use startNow as true for globals!
+  				timeObj(float inMs=10,bool startNow=true);
 	virtual	~timeObj(void);
 	
   				void 				setTime(float inMs,bool startNow=true);	// Change the time duration for next start..
