@@ -15,6 +15,7 @@ timeObj::timeObj(float inMs,bool startNow) {
 timeObj::~timeObj(void) { }
 
 
+//*****
 // Used for setting the times and optionally starting the timer.
 void timeObj::setTime(float inMs,bool startNow) {
 
@@ -27,6 +28,7 @@ void timeObj::setTime(float inMs,bool startNow) {
 }
 
 
+//*****
 // This starts the timer, no questions about it.
 void timeObj::start(void) {
 
@@ -56,7 +58,7 @@ void timeObj::stepTime(void) {
 	}
 }
 
-
+// *****
 // Has the timer expired?
 // Well, if it hasn't been started then no.
 // If its running then lets calculate if its finished. And return that.
@@ -78,7 +80,7 @@ bool timeObj::ding(void) {
 }
 
 
-/*
+
 void timeObj::printState(void) {
 
 	switch (ourState) {
@@ -87,14 +89,18 @@ void timeObj::printState(void) {
 		case expired	: Serial.println("expired");	break;
 		default			: Serial.println("No idea!");	break;
 	}
+	Serial.print("waitTime  :");Serial.print((float)waitTime/1000.0);Serial.println(" ms");
+  	Serial.print("startTime :");Serial.println(startTime);
+  	Serial.print("endTime   :");Serial.println(endTime);
 }
-*/
+
 
 
 // You wanted to see what the waitTime was?
 unsigned long timeObj::getTime(void) { return waitTime; }
 
 
+//*****
 // Fuel gauge. What fraction of time is left. Give float value from one to zero.
 float timeObj::getFraction(void) {
 	

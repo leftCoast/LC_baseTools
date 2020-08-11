@@ -180,3 +180,21 @@ void squareWave::idle(void) {
 		break;								// Done, jump out.
 	}
 }
+
+/*
+void squareWave::printState(void) {
+
+	Serial.print("squareWave, we are : ");
+	switch(mState) {
+		case sittinIdle	: Serial.println("Sitting idle"); break;
+		case ridingHi		: Serial.println("Riding high!"); break;
+		case ridingLow		: Serial.println("Riding Low."); break;
+	}
+	Serial.println("mPeriod timeObj");
+	mPeriod.printState();
+	Serial.println();
+	Serial.println("mPulse timeObj");
+	mPulse.printState();
+	Serial.println();
+}
+*/
