@@ -29,6 +29,7 @@ class squareWave : public idler {
 	virtual	~squareWave(void);
 				
 				bool	running(void);
+				bool	pulseHiLow(void);
 	virtual	void	setPeriod(float ms);
 	virtual	void	setPulse(float ms);
 	virtual	void	setPercent(float perc);

@@ -32,6 +32,10 @@ squareWave::~squareWave(void) {  }
 bool squareWave::running(void) { return mState != sittinIdle; }
 
 
+// People want to know if the state is high or low at the moment. Here it is.
+bool squareWave::pulseHiLow(void) { return mSignal; }
+
+
 // Set a new period duration. This takes effect on the next pulse's startup.
 void squareWave::setPeriod(float ms) {
 
