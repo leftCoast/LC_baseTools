@@ -15,6 +15,6 @@ void setup() {
 
 void loop() {
 
-   // blinker is an idler. Calling idlle() once in loop lets ALL idlers run.
+   // blinker is an idler. Calling idle() once in loop lets ALL idlers run.
    idle();                    
 }
