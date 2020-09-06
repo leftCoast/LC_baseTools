@@ -36,6 +36,26 @@ bool textBuff::addChar(char inChar) {
 }
 
 
+// Add a c string till we got it all, or the poor thing is full.
+// If its full, your going to loose your '\0'. Just sayin'..
+bool textBuff::addStr(char* inCStr,bool andNULL) {
+
+	int	i;						
+	bool	success;
+	
+	success = false;
+	i = 0;										// Start up our counter..
+	while(inCStr[i]!='\0') {						// While we are not potinting at the NULL char..
+		success = addChar(inCStr[i]);		// Blindly stuff the char into the buffer.
+		i++;										// Increment counter.
+	}
+	if (andNULL) {								// If the want the null char..
+		success =  addChar('\0');			// We add it in. Its the little things we do for you.
+	}
+	return success;
+}
+
+
 // Pass back the next char on the list, unless we got nothin' then pass back a /0.
 // Don't change anything.
 char textBuff::peekHead(void) {
