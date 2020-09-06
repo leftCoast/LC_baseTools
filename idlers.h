@@ -27,6 +27,7 @@ class idlers : public linkList {
 
 extern	idlers	theIdlers;
 extern	void		idle(void);
+extern	void		sleep(float ms);
 extern	bool		idling;
 
 #endif

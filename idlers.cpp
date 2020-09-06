@@ -1,16 +1,27 @@
 #include "idlers.h"
+#include "timeObj.h"
 
 // The global idler object  list and call for "loop();"
-idlers	theIdlers;
+idlers theIdlers;
 
 // The flag that says we are in the idle loop. So we don't get all reentrant on things.
-bool		idling = false;
+bool idling = false;
 
 // Our call that goes into loop() to run the idlers.
-void		idle(void) { 
+void idle(void) { 
   idling = true;
   theIdlers.idle(); 
   idling = false;
+}
+
+// In your main loop, call this for an effective delay. Keeps the idler's idling while you
+// wait. Just drops out if called in idle time.
+void sleep(float ms) {
+
+	timeObj sleepTimer(ms);
+	if (!idling) {
+		while(!sleepTimer.ding()) idle();
+	}
 }
 
 
