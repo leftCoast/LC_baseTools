@@ -1,5 +1,5 @@
 
-#include <arduino.h>
+#include <Arduino.h>
 #include "blinker.h"
 
 blinker::blinker(int inPin,float inOnMs, float inPeriodMs,boolean inInverse)

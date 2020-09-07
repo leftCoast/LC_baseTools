@@ -1,5 +1,5 @@
 #include "timeObj.h"
-#include <arduino.h>
+#include <Arduino.h>
 
 // Our lovely constructor.
 timeObj::timeObj(float inMs,bool startNow) {
