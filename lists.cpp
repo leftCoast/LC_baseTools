@@ -5,38 +5,36 @@
 // *************** linkListObj ********************
 // A none too bright node with a tail.
 
-linkListObj::linkListObj(void) {  
-  next = NULL; 
-}
+linkListObj::linkListObj(void) { next = NULL; }
 
 
-linkListObj::~linkListObj(void) {
-
-  // Bit of trouble here. We are single linked, so we
-  // have no idea who's pointing to us. Therefore we must
-  // Trust whomever is killing us off to take care of
-  // unlinking us from our list.
-}
+// Bit of trouble here. We are single linked, so we
+// have no idea who's pointing to us. Therefore we must
+// Trust whomever is killing us off to take care of
+// unlinking us from our list.
+linkListObj::~linkListObj(void) { }
 
 
 // We're given a pointer to one of our instances and told to link in after this guy.
 // We can do that.
 void linkListObj::linkAfter(linkListObj* present) {
 
-  if (present) {              // Little sanity, don't link to NULL pointer.
-    next = present->next;
-    present->next = this;
-  }
+	if (present) {					// Little sanity, don't link to NULL pointer.
+		next = present->next;	// We point at what they are pointing at.
+		present->next = this;	// They now point to us.
+	}
 }
 
 
+// We're given a pointer to one of our instances and told to link up at the end of his
+// tail. We can do that too.
 void linkListObj::linkToEnd(linkListObj* present) {
 
-  if (present) {                      // If they're handing us NULL pointers, this is not our problem.
-    while(present->next!=NULL) {      // There's more?!
-      present = present->next;        // jump over to the next one!
-    }                                 // We should be sitting on the last one now..
-    present->next = this;             // link in!
+	if (present) {                      // If they're handing us NULL pointers, this is not our problem.
+		while(present->next!=NULL) {		// There's more?!
+			present = present->next;		// jump over to the next one!
+		}											// We should be sitting on the last one now..
+		present->next = this;				// link in!
   }
 }
 
@@ -76,12 +74,14 @@ bool linkListObj::isLessThan(linkListObj* compObj) { return false; }
 
 
 //********************* linkList *************************
-// your basic linked list. Good base for linked list things, you know.
-
-// When we recieve an object to link up. Do we own it? Or are
-// we just tracking other people's laundry? Here is what we do.
-// They can pull out the ones they want whenever. We dump the rest.
-
+// your basic linked list. Good base for linked list
+// things, you know.
+//
+// When we recieve an object to link up. Do we own it? Or
+// are we just tracking other people's laundry? Here is
+// what we do. They can pull out the ones they want
+// whenever. When we destruct, we'll recycle the rest.
+//********************************************************
 
 // Create a linkList object.
 linkList::linkList(void) { theList = NULL; }
@@ -91,9 +91,10 @@ linkList::linkList(void) { theList = NULL; }
 linkList::~linkList(void) { dumpList(); }
 
 
-// Add a node to the top of our linkList object's list.
+// Add a SINGLE node to the top of our list.
 void linkList::addToTop(linkListObj* newObj) {
 
+	newObj->setNext(NULL);			// Just in case its not NULL, we'll re-stamp it.
 	if (newObj) {						// Sanity. Don't try to access a NULL pointer!
 		newObj->setNext(theList);  // Empty or not, it does the right thing.
 		theList = newObj;				// And we set our pointer to the newObj. (Its at the top)
@@ -114,24 +115,29 @@ void linkList::addToEnd(linkListObj* newObj) {
 }
 
 
-// This one trusts you to keep track of the old top we are unlinking.
+// Unlink the SINGLE node pointed to by theList. This one trusts you to keep track of the
+// old top we are unlinking. Don't loose it!
 void linkList::unlinkTop(void) {
 	
+	linkListObj* temp;
+	
 	if (theList) {								// if we have something there.
+		temp = theList;						// Save off the top, just in case.
 		theList = theList->getNext();		// unlink.
+		temp->setNext(NULL);					// They may want to reuse this. So reset next to NULL.
 	}
 }
 
 
-// This does NOT delete the object, just finds and unlinks it for you.
-// Better not loose it!
+// Unlink the SINGLE node pointed to by oldObj. This does NOT delete the object, just
+// finds and unlinks it for you. Better not loose it!
 void linkList::unlinkObj(linkListObj* oldObj) {
 
   linkListObj* temp;
   
   if (oldObj) {																	// If they didn't hand us a NULL pointer. (The'll try that just to keep us on your toes.)
     if(theList==oldObj) {														// If we're already pointing at it.
-      unlinkTop();																// Unlink.
+      unlinkTop();																// Unlink. (Takes care of resetting next to NULL.)
     }  else {																		// Else, we ain't pointing at it..
       temp = theList;															// We're going to have to go look for it.
       while(temp->getNext()!=oldObj && temp->getNext()!=NULL) {	// While the next node is not what we are looking for and we ain't run out..
@@ -139,6 +145,7 @@ void linkList::unlinkObj(linkListObj* oldObj) {
       }
       if (temp->getNext()==oldObj) {										// If the next node IS what we were looking for..
         temp->setNext(oldObj->getNext());									// Unlink it.
+        oldObj->setNext(NULL);												// Cap it off for possible reuse.
       }
     }
   }     
@@ -354,7 +361,6 @@ linkListObj* queue::peek(void) { return getFirst(); }
 linkListObj* queue::pop(void) {
 	
 	linkListObj*	topObj;
-	
 	topObj = getFirst();
 	if (topObj) {
 		unlinkTop();
