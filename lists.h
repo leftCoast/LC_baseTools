@@ -54,6 +54,7 @@ class linkList {
     		int			 		getCount(void);
     		linkListObj* 		getByIndex(int index);
     		int					findIndex(linkListObj* present);	// returns -1 if NOT found.
+    		void					looseList(void);						// Someone has taken control of our list, let it go.
  
  protected :           
     		linkListObj* theList;

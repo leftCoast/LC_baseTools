@@ -303,6 +303,11 @@ void linkList::sort(bool ascending) {
 }
 			
 
+// Someone has taken control of our list. Just let it go.
+void linkList::looseList(void) { theList = NULL; }
+
+
+					
 // ********** stack ****************
 // Your basic stack. Mostly pass throughs with the usual names.
 
