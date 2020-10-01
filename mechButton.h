@@ -1,33 +1,44 @@
 #ifndef mechButton_h
 #define mechButton_h
 
-#include <Arduino.h>
+#include <idlers.h>
+#include <timeObj.h>
 
-#define NUM_CHECKS  20
+#define NUM_CHECKS  4	// Number of conflicting checks in a row that tells us we need a change.
 
-// Hook your mechanical push button between a digital pin
-// and ground. Pass the pin number into one of these.
-// In your loop(), you can call clicked(); (over & over)
-// If the button's been clicked and it sees a good solid click, 
-// it gives back "true".
+// Mechanical button de-bouncer.
+// This can be used in one of three ways.
 //
-// This takes care of initialization, filtering & debounce
-// for you.
+// Beginner : Just call truFalse() in your loop() function and it'll return true or false
+// to match what the button is currently set to. Easy Peasy!
+//
+// Intermediate : Set a callback function and let this run in the background. When the
+// button changes state, true or false, your callback function is called. Again, pretty
+// simple.
+//
+// Pro : Inherit this as a base class and let it become the callback you always dreamed
+// of. Remember that in this case, you will probably need to put in a call to hookup().
+// But then, you're a pro. So I shouldn't have to tell you that.
 
 
-class mechButton {
+class mechButton :	public idler {
   
   public:
 				mechButton(byte inPinNum);
 	virtual	~mechButton(void);
 	
-    			bool	clicked(void);
-
+    			bool	trueFalse(void);						// Read current state.
+    			void	setCallback(void(*funct)(void));	// Or use a callback for changed state.
+   virtual	void	takeAction(void);						// Something for the Pro's to inherit.
+	virtual	void	idle();
+	
 	protected:
-    			bool  beenInitialized;
-    			byte  pinNum;
-    			byte  checkNum;
-    			byte  setAs;
+    			timeObj	mTimer;
+    			bool  	beenInitialized;
+    			void		(*callback)(void);
+    			byte  	pinNum;
+    			byte  	checkNum;
+    			byte  	setAs;
 };
 
 #endif
