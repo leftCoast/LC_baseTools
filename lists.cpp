@@ -17,24 +17,24 @@ linkListObj::~linkListObj(void) { }
 
 // We're given a pointer to one of our instances and told to link in after this guy.
 // We can do that.
-void linkListObj::linkAfter(linkListObj* present) {
+void linkListObj::linkAfter(linkListObj* anObj) {
 
-	if (present) {					// Little sanity, don't link to NULL pointer.
-		next = present->next;	// We point at what they are pointing at.
-		present->next = this;	// They now point to us.
+	if (anObj) {					// Little sanity, don't link to NULL pointer.
+		next = anObj->next;	// We point at what they are pointing at.
+		anObj->next = this;	// They now point to us.
 	}
 }
 
 
 // We're given a pointer to one of our instances and told to link up at the end of his
 // tail. We can do that too.
-void linkListObj::linkToEnd(linkListObj* present) {
+void linkListObj::linkToEnd(linkListObj* anObj) {
 
-	if (present) {                      // If they're handing us NULL pointers, this is not our problem.
-		while(present->next!=NULL) {		// There's more?!
-			present = present->next;		// jump over to the next one!
+	if (anObj) {                      // If they're handing us NULL pointers, this is not our problem.
+		while(anObj->next!=NULL) {		// There's more?!
+			anObj = anObj->next;		// jump over to the next one!
 		}											// We should be sitting on the last one now..
-		present->next = this;				// link in!
+		anObj->next = this;				// link in!
   }
 }
 
@@ -223,15 +223,15 @@ linkListObj* linkList::getByIndex(int index) {
 
 
 // Can this node be found? If so, what is its current index in the list? (-1 means not found)
-int linkList::findIndex(linkListObj* present) {
+int linkList::findIndex(linkListObj* anObj) {
 
 	linkListObj*	trace;
 	int				index;
 	
-	if (present) {									// Sanity, did they give us a valid pointer?
+	if (anObj) {									// Sanity, did they give us a valid pointer?
 		trace = theList;							// Point at the top.
 		index = 0;									// Initialize the counter.	 
-		while(trace && trace!=present) {		// While we're not pointing at NULL. And not pointing at the node we're looking for..
+		while(trace && trace!=anObj) {		// While we're not pointing at NULL. And not pointing at the node we're looking for..
 			trace = trace->getNext();			// We jump to the next node.
 			index++;									// And we bump up the counter.
 		}
@@ -244,13 +244,13 @@ int linkList::findIndex(linkListObj* present) {
 
 
 // Using the superclass's isGreaterThan() method, find the largest node on our list.
-linkListObj*	linkList::findMax(linkListObj* present) {
+linkListObj*	linkList::findMax(linkListObj* anObj) {
 
 	linkListObj*	trace;
 	linkListObj*	maxNode;
 	
-	maxNode = present;								// We start here as the largest.
-	trace = present;									// We start here in our search.
+	maxNode = anObj;								// We start here as the largest.
+	trace = anObj;									// We start here in our search.
 	while(trace) {										// While we're not pointing at NULL..
 		if (trace->isGreaterThan(maxNode)) {	// If what we are pointing at is larger than the largest..
 			maxNode = trace;							// Select what we are pointing at as largest.
@@ -262,13 +262,13 @@ linkListObj*	linkList::findMax(linkListObj* present) {
 
 
 // Using the superclass's isLessThan() method, find the smallest node on our list.
-linkListObj*	linkList::findMin(linkListObj* present) {
+linkListObj*	linkList::findMin(linkListObj* anObj) {
 
 	linkListObj*	trace;
 	linkListObj*	minNode;
 	
-	minNode = present;								// We start here as the smallest.
-	trace = present;									// We start here in our search.
+	minNode = anObj;								// We start here as the smallest.
+	trace = anObj;									// We start here in our search.
 	while(trace) {										// While we're not pointing at NULL..
 		if (trace->isLessThan(minNode)) {		// If what we are pointing at is smaller than the smallest..
 			minNode = trace;							// Select what we are pointing at as smallest.
@@ -301,7 +301,7 @@ void linkList::sort(bool ascending) {
 	}
 	theList = sorted;							// Point to the sorted list as ours.
 }
-			
+
 
 // Someone has taken control of our list. Just let it go.
 void linkList::looseList(void) { theList = NULL; }
@@ -390,24 +390,24 @@ dblLinkListObj::~dblLinkListObj(void) { unhook(); }
     
 
 // Given a pointer to a node, link yourself after it.
-void dblLinkListObj::linkAfter(dblLinkListObj* present) {
+void dblLinkListObj::linkAfter(dblLinkListObj* anObj) {
     
-    if (present) {										// Sanity, If they didn't give us a NULL..
-        dllNext = present->dllNext;					// Our next pointer gets their next pointer.
-        dllPrev = present; 							// Our previous pointer now points back to their node.
-        present->dllNext = this;						// Their next pointer now points to us.
+    if (anObj) {										// Sanity, If they didn't give us a NULL..
+        dllNext = anObj->dllNext;					// Our next pointer gets their next pointer.
+        dllPrev = anObj; 							// Our previous pointer now points back to their node.
+        anObj->dllNext = this;						// Their next pointer now points to us.
         if (dllNext) dllNext->dllPrev = this;	// If our next pointer is NOT NULL. Point what its pointing to's next pointer, at us. (whew, hard to say)
     }    
 }
 
 
 // Given a pointer to a node, link yourself before it.
-void dblLinkListObj::linkBefore(dblLinkListObj* present) {
+void dblLinkListObj::linkBefore(dblLinkListObj* anObj) {
     
-    if (present) {										// Sanity, If they didn't give us a NULL..
-        dllPrev = present->dllPrev;					// Our previous pointer now points to what their previous pointer points to.
-        dllNext = present;								// Our next pointer now points at them, err, their node.
-        present->dllPrev = this;						// Their previous pointer now points to us.
+    if (anObj) {										// Sanity, If they didn't give us a NULL..
+        dllPrev = anObj->dllPrev;					// Our previous pointer now points to what their previous pointer points to.
+        dllNext = anObj;								// Our next pointer now points at them, err, their node.
+        anObj->dllPrev = this;						// Their previous pointer now points to us.
         if (dllPrev) dllPrev->dllNext = this;	// If our next previous is NOT NULL. Point what its pointing to's previous pointer, at us.
     }
 }
@@ -440,11 +440,11 @@ dblLinkListObj* dblLinkListObj::getLast(void) {
 
 
 // Given a pointer to a node, link yourself after the last in the chain.
-void dblLinkListObj::linkToEnd(dblLinkListObj* present) { if (present) linkAfter(present->getLast()); }
+void dblLinkListObj::linkToEnd(dblLinkListObj* anObj) { if (anObj) linkAfter(anObj->getLast()); }
 
 
 // Given a pointer to a node, link yourself before the first in the chain.
-void dblLinkListObj::linkToStart(dblLinkListObj* present) { if (present) linkBefore(present->getFirst()); }
+void dblLinkListObj::linkToStart(dblLinkListObj* anObj) { if (anObj) linkBefore(anObj->getFirst()); }
 
 
 // Unlink us and, if in list, patch the hole.
