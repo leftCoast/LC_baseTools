@@ -166,7 +166,7 @@ void squareWave::startWave(void) {
 }
 				
 
-// Our idel routine where everything runs in the background.
+// Our idle routine where everything runs in the background.
 void squareWave::idle(void) {
 
 	switch (mState) {						// Have a look at our state..

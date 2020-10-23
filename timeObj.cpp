@@ -1,12 +1,15 @@
 #include "timeObj.h"
 #include <Arduino.h>
 
+#define	MAX_MICROS	4000000	// Could be a little more, but this is fine. (This * 1,000 = micros)
+
 // Our lovely constructor.
 timeObj::timeObj(float inMs,bool startNow) {
 
   startTime	= 0;				// Just some default.
   endTime	= 0;				// And another default.
-  ourState = preStart;		// We are sitting on pre Start state.
+  useMilli	= false;			// Look! A third default.
+  ourState	= preStart;		// We are sitting on pre Start state.
   setTime(inMs,startNow);	// This sets startTime and endTime. Maybe starts things up?
 }
 
@@ -19,10 +22,16 @@ timeObj::~timeObj(void) { }
 // Used for setting the times and optionally starting the timer.
 void timeObj::setTime(float inMs,bool startNow) {
 
-  if (inMs>0)								// If we have a positive time..
-    waitTime = round(1000*inMs);		// Convert it to unsigned integer of microseconds
-  else										// Else, negitive time?
-    waitTime = 0;							// Whatever. Set it to zero.
+	if (inMs>MAX_MICROS) {
+		waitTime = round(inMs);			// Convert it to unsigned integer of milliseconds.
+		useMilli = true;					// We're using milliseconds this time round.
+	} else if (inMs>0) {					// If we have a positive time, less than MAX_MICROS..
+		waitTime = round(1000*inMs);	// Convert it to unsigned integer of microseconds.
+		useMilli = false;					// We're using microseconds this time round.
+	} else {									// Else, negitive time?
+		waitTime = 0;						// Whatever. Set it to zero.
+		useMilli = false;					// We're using microseconds this time round.
+	}
   ourState = preStart;					// At this point we are in preStart mode..
   if (startNow) start();				// If they passed in true for startNow.. Start now!
 }
@@ -32,7 +41,11 @@ void timeObj::setTime(float inMs,bool startNow) {
 // This starts the timer, no questions about it.
 void timeObj::start(void) {
 
-	startTime = micros();				// Save off the micros.
+	if (useMilli) {						// If we are using milliseconds..
+		startTime = millis();			// Save iff the current milliseconds.
+	} else {									// Else, we're using microseconds..
+		startTime = micros();			// Save off the current micros.
+	}
 	endTime = startTime + waitTime;	// Calculate the end time.
 	ourState = running;					// And we are running!
 }
@@ -65,18 +78,27 @@ void timeObj::stepTime(void) {
 // If it has expired, then yes.
 bool timeObj::ding(void) {
 
-	switch (ourState) {										// If the state is...
-		case preStart : return false;						// preStarted, not expired, return false.
-		case running : 										// Started and running our timer, return when we expire.
-			if (micros() - startTime > waitTime) {		// If our time has expired..
-				ourState = expired;							// We are now expired.
-				return true;									// Return true! 
-			} else {												// Else, we are running but our time has NOT expired..
-				return false;									// Return false;
+	switch (ourState) {												// If the state is...
+		case preStart : return false;								// preStarted, not expired, return false.
+		case running : 												// Started and running our timer, return true when we expire.
+			if (useMilli) {											// If we are using milliseconds..
+				if (millis() - startTime > waitTime) {			// If our time has expired..
+					ourState = expired;								// We are now expired.
+					return true;										// Return true! 
+				} else {
+					Serial.println(useMilli);
+					return false;										// Return false! 
+				}
+			} else if (micros() - startTime > waitTime) {	// Else, If we are using micros and our time has expired..
+				ourState = expired;									// We are now expired.
+				return true;											// Return true! 
+			} else {														// Else, we are running but our time has NOT expired..
+				Serial.println(useMilli);
+				return false;											// Return false;
 			}
-		case expired : return true;						// If we are expired, return true. (Forever more. Until restarted.)
+		case expired : return true;								// If we are expired, return true. (Forever more. Until restarted.)
 	}
-	return false;												// Just to shut up compiler.								
+	return false;														// Just to shut up compiler.								
 }
 
 
@@ -96,7 +118,8 @@ void timeObj::printState(void) {
 
 
 
-// You wanted to see what the waitTime was?
+// You wanted to see what the waitTime was? But there is an issue here. Wait time can be
+// either in milliseconds or microseconds. Depending how long we are waiting.
 unsigned long timeObj::getTime(void) { return waitTime; }
 
 
@@ -109,7 +132,11 @@ float timeObj::getFraction(void) {
 	switch (ourState) {												// What are we doing now?
 		case preStart : return 1;									// It has not yet meen started? Tank is full, 1.
 		case running : 												// We're running right now?
-			remaining = endTime - micros();						// Calculate the remaining micros.
+			if (useMilli) {											// If we're using milliseconds..
+				remaining = endTime - millis();					// Calculate the remaining milliseconds.
+			} else {														// Else, we are  using microseconds..
+				remaining = endTime - micros();					// Calculate the remaining micros.
+			}
 			return((remaining/1000.0)/(waitTime/1000.0));	// Return the normalized result. 0..1
 		case expired : return 0;									// Timer has expired? Tank is empty, 0.
 	}
