@@ -85,15 +85,13 @@ bool timeObj::ding(void) {
 				if (millis() - startTime > waitTime) {			// If our time has expired..
 					ourState = expired;								// We are now expired.
 					return true;										// Return true! 
-				} else {
-					Serial.println(useMilli);
+				} else {													// Else, we are running but our time has NOT expired..
 					return false;										// Return false! 
 				}
 			} else if (micros() - startTime > waitTime) {	// Else, If we are using micros and our time has expired..
 				ourState = expired;									// We are now expired.
 				return true;											// Return true! 
 			} else {														// Else, we are running but our time has NOT expired..
-				Serial.println(useMilli);
 				return false;											// Return false;
 			}
 		case expired : return true;								// If we are expired, return true. (Forever more. Until restarted.)
