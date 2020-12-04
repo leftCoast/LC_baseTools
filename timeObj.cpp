@@ -18,7 +18,6 @@ timeObj::timeObj(float inMs,bool startNow) {
 timeObj::~timeObj(void) { }
 
 
-//*****
 // Used for setting the times and optionally starting the timer.
 void timeObj::setTime(float inMs,bool startNow) {
 
@@ -37,12 +36,11 @@ void timeObj::setTime(float inMs,bool startNow) {
 }
 
 
-//*****
 // This starts the timer, no questions about it.
 void timeObj::start(void) {
 
 	if (useMilli) {						// If we are using milliseconds..
-		startTime = millis();			// Save iff the current milliseconds.
+		startTime = millis();			// Save off the current milliseconds.
 	} else {									// Else, we're using microseconds..
 		startTime = micros();			// Save off the current micros.
 	}
@@ -71,7 +69,7 @@ void timeObj::stepTime(void) {
 	}
 }
 
-// *****
+
 // Has the timer expired?
 // Well, if it hasn't been started then no.
 // If its running then lets calculate if its finished. And return that.
@@ -100,6 +98,12 @@ bool timeObj::ding(void) {
 }
 
 
+// This brings your timer back to the preStart state. Ready for a start() call. Does not
+// change the delay time already set in the object. Therefore its ready to start again
+// when you need it. You don't need to use this call. ITs only used if you want to shut
+// off the timer to be restarted at a later time.
+void timeObj::reset(void) { ourState = preStart; }
+
 
 void timeObj::printState(void) {
 
@@ -109,11 +113,16 @@ void timeObj::printState(void) {
 		case expired	: Serial.println("expired");	break;
 		default			: Serial.println("No idea!");	break;
 	}
-	Serial.print("waitTime  :");Serial.print((float)waitTime/1000.0);Serial.println(" ms");
+	Serial.print("waitTime  :");
+  	if (useMilli) {																	// If we are using milliseconds..
+  		Serial.print(waitTime * 1.0);
+  	} else {
+  		Serial.print(waitTime/1000);
+  	}
+  	Serial.println(" ms");
   	Serial.print("startTime :");Serial.println(startTime);
   	Serial.print("endTime   :");Serial.println(endTime);
 }
-
 
 
 // You wanted to see what the waitTime was? But there is an issue here. Wait time can be
@@ -121,7 +130,6 @@ void timeObj::printState(void) {
 unsigned long timeObj::getTime(void) { return waitTime; }
 
 
-//*****
 // Fuel gauge. What fraction of time is left. Give float value from one to zero.
 float timeObj::getFraction(void) {
 	
