@@ -18,7 +18,7 @@
 class textBuff {
 
   public:
-            textBuff(int inNumBytes);
+            textBuff(int inNumBytes,bool inOverwrite=false);
             ~textBuff(void);
 
             
@@ -39,7 +39,8 @@ class textBuff {
             int   numBytes;
             int   head;
             int   tail;
-            bool  isFull;           
+            bool  isFull;
+            bool	overwrite;           
 };
 
 #endif

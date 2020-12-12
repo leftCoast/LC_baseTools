@@ -7,12 +7,13 @@
 // *****************************************************
 
 
-textBuff::textBuff(int inNumBytes) {
+textBuff::textBuff(int inNumBytes,bool inOverwrite) {
 
-  head    = 0;
-  tail    = 0;
-  isFull  = false;
-  buff    = NULL;
+  head		= 0;
+  tail		= 0;
+  isFull		= false;
+  overwrite	= inOverwrite;
+  buff		= NULL;
   while(inNumBytes && !resizeBuff(inNumBytes,&buff)) {  // While inNumBytes>0 and resizing the bufer fails..
     inNumBytes = inNumBytes/2;                          // Try for 1/2 the number of bytes?
   }
@@ -26,18 +27,24 @@ textBuff::~textBuff(void) { resizeBuff(0,&buff); }
 // If  not full, add a charactor and update the state.
 bool textBuff::addChar(char inChar) {
 
-  if (!full()) {
-    buff[tail] = inChar;
-    inc(&tail);
-    isFull = tail==head;
-    return true;
-  }
-  return false;
+	char	oldestChar;
+	
+	if (full() && overwrite) {		// If we're full and overwrite is true..
+		oldestChar = readChar();	// Make room by dumping the oldest char.
+	}
+	if (!full()) {						// If not full..
+		buff[tail] = inChar;			// Save off the incoming char.
+		inc(&tail);						// Increment the tail pointer.
+		isFull = tail==head;			// Check and note if we are full.
+		return true;					// Return a success.
+	}
+	return false;						// Couldn't save the new char, return a failure.
 }
 
 
 // Add a c string till we got it all, or the poor thing is full.
-// If its full, your going to loose your '\0'. Just sayin'..
+// If its full and not overwriting, your going to loose your '\0'.
+// Just sayin'..
 bool textBuff::addStr(char* inCStr,bool andNULL) {
 
 	int	i;						
@@ -45,14 +52,14 @@ bool textBuff::addStr(char* inCStr,bool andNULL) {
 	
 	success = false;
 	i = 0;										// Start up our counter..
-	while(inCStr[i]!='\0') {						// While we are not potinting at the NULL char..
+	while(inCStr[i]!='\0') {				// While we are not potinting at the NULL char..
 		success = addChar(inCStr[i]);		// Blindly stuff the char into the buffer.
 		i++;										// Increment counter.
 	}
 	if (andNULL) {								// If the want the null char..
 		success =  addChar('\0');			// We add it in. Its the little things we do for you.
 	}
-	return success;
+	return success;							// Return if they all went in.
 }
 
 
@@ -60,8 +67,8 @@ bool textBuff::addStr(char* inCStr,bool andNULL) {
 // Don't change anything.
 char textBuff::peekHead(void) {
 
-  if (empty()) return '\0';
-  return buff[head];
+  if (empty()) return '\0';	// If empty, return a \0.
+  return buff[head];				// Otherwise, return the char that's next to read.
 }
     
 
@@ -73,13 +80,13 @@ char textBuff::readChar(void) {
 
   char  theChar;
 
-  if (!empty()) {
-    theChar = buff[head];
-    inc(&head);
-    isFull = false;
-    return theChar;
-  } else {
-    return '\0';
+  if (!empty()) {					// If we have some chars..
+    theChar = buff[head];		// Save off the oldest char.
+    inc(&head);					// Do the indexing update.
+    isFull = false;				// In any case we are no longer full.
+    return theChar;				// Return the oldest char.
+  } else {							// Else, we were empty..
+    return '\0';					// Pass back a \0.
   }
 }
 
@@ -119,11 +126,11 @@ void  textBuff::clear(void) {
 }
 
 
-// Inctment on index. Hop over to zero if we go past the end.
+// Inctment an index. Hop over to zero if we go past the end.
 void textBuff::inc(int* index) {
 
-  *index = *index + 1;
-  if (*index>=numBytes) {
-    *index = 0;
+  *index = *index + 1;			// Bump up this index.
+  if (*index>=numBytes) {		// If this index went off the end..
+    *index = 0;					// Set it to zero.
   }
 }
