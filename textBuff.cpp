@@ -24,13 +24,15 @@ textBuff::textBuff(int inNumBytes,bool inOverwrite) {
 textBuff::~textBuff(void) { resizeBuff(0,&buff); }
 
 
-// If  not full, add a charactor and update the state.
+// Add a charactor and update the state. If its full it can take two different actions. 
+// If overwrite is true the oldest char will be bumped off and the new char will be saved.
+// If overwrite is false the no action is taken an false is returned. In all other cases
+// true is returned.
 bool textBuff::addChar(char inChar) {
 
-	char	oldestChar;
 	
-	if (full() && overwrite) {		// If we're full and overwrite is true..
-		oldestChar = readChar();	// Make room by dumping the oldest char.
+	if (overwrite && full()) {		// If we're full and overwrite is true..
+		(void)readChar();				// Make room by dumping the oldest char.
 	}
 	if (!full()) {						// If not full..
 		buff[tail] = inChar;			// Save off the incoming char.
@@ -42,22 +44,22 @@ bool textBuff::addChar(char inChar) {
 }
 
 
-// Add a c string till we got it all, or the poor thing is full.
-// If its full and not overwriting, your going to loose your '\0'.
-// Just sayin'..
+// Add a c string till we got it all, or the poor thing is full. If its full and not
+// overwriting, your going to loose your '\0'. Just sayin'.. Otherwise if its full and
+// overwriting you will loose some of your oldest data.
 bool textBuff::addStr(char* inCStr,bool andNULL) {
 
 	int	i;						
 	bool	success;
 	
-	success = false;
+	success = false;							// Well, we ain't a success yet.
 	i = 0;										// Start up our counter..
 	while(inCStr[i]!='\0') {				// While we are not potinting at the NULL char..
 		success = addChar(inCStr[i]);		// Blindly stuff the char into the buffer.
 		i++;										// Increment counter.
 	}
-	if (andNULL) {								// If the want the null char..
-		success =  addChar('\0');			// We add it in. Its the little things we do for you.
+	if (andNULL) {								// If they want the null char saved..
+		success =  addChar('\0');			// We add one in. Its the little things we do for you.
 	}
 	return success;							// Return if they all went in.
 }
