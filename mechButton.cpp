@@ -22,7 +22,7 @@ mechButton::~mechButton(void) {  }
 bool mechButton::trueFalse(void) {
 
 	if (!beenInitialized) {							// If not ready to run..
-		pinMode(pinNum, INPUT_PULLUP);			// Set up our pin.
+		pinMode(pinNum,INPUT_PULLUP);				// Set up our pin.
 		setAs = digitalRead(pinNum);				// The first thing we see is our initial state.
 		beenInitialized = true;						// Note we are open for business.
 		mTimer.start();								// And don't bug us again for this much time.

@@ -8,7 +8,7 @@
 // *** Takes care of roll over issues ***
 //
 // NOTE: Once the timer expires, every call to ding() will return true until its been
-// restarted.
+// reset or restarted.
 
 
 class timeObj {
