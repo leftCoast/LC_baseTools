@@ -43,6 +43,7 @@ class squareWave : public idler {
 				//void	printState(void);		// For debugging.
 	protected:
 	
+				void	init(void);
 	virtual	void	block(void);
 	virtual	void	startWave(void);
 				void	ourPulseOn(void);

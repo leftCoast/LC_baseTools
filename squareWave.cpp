@@ -3,16 +3,20 @@
 
 squareWave::squareWave(float periodMs,float pulseMs, bool blocking) {
 
+	
+	init();
 	setPeriod(periodMs);
 	setPulse(pulseMs);
 	mBlocking	= blocking;
-	mState		= sittinIdle;
-	mSignal 		= false;
 }
 
 	
 // Default constructor.
-squareWave::squareWave(void) {
+squareWave::squareWave(void) { init(); }
+
+
+// Setup all the defaults for the constructors.
+void squareWave::init(void) {
 
 	mNextPeriod		= 0;
 	mPeriodChange	= false;
@@ -79,8 +83,8 @@ void squareWave::setBlocking(bool onOff) {  mBlocking = onOff; }
 // This is your on/off switch. Default is off. Pass in a true value to fire it up.
 void squareWave::setOnOff(bool onOff) {
 
+	hookup();						// Call to hookup() to ensure we're in the idle queue.
 	if (onOff) {					// If we're turning this machine on..
-		hookup();					// Call to hookup() to ensure we're in the idle queue.
 		startWave();				// Call to startWave() to get all the timers running.
 	} else {							// Else, we are turning the machine off..
 		mState = sittinIdle;		// We're idle now.
