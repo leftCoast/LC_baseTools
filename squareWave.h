@@ -14,7 +14,13 @@
 // This in itself is not really an issue. BUT, if you inherit this and you need the idle
 // loop no matter what, just call hookup() in something like a begin() method or something.
 // Then everything will be fine.
-
+//
+// Using an Arduino UNO the pulse width dithers about 20 microseconds. 
+// Meaning for a RC servo you get about 2% error.
+//
+// Using a Teensy 3.2 You get a freq dither of 8 micros & granularity of 5 micros.
+// Pulse width, within the granularity is around 5 micros.
+// Meaning for an RC servo? Rock solid not measurable error.
 
 #include	"timeObj.h"
 #include	"idlers.h"
