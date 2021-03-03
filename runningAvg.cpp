@@ -47,7 +47,7 @@ float runningAvg::getMax(void) {
   
   float result = theValues[0];
   
-  for (int i=1;i<maxData;i++) {
+  for (int i=1;i<numValues;i++) {
     if (theValues[i]>result) {
       result = theValues[i];
     }
@@ -60,7 +60,7 @@ float runningAvg::getMin(void) {
   
   float result = theValues[0];
   
-  for (int i=1;i<maxData;i++) {
+  for (int i=1;i<numValues;i++) {
     if (theValues[i]<result) {
       result = theValues[i];
     }

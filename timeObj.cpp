@@ -1,7 +1,9 @@
 #include "timeObj.h"
 #include <Arduino.h>
 
-#define	MAX_MICROS	4000000	// Could be a little more, but this is fine. (This * 1,000 = micros)
+// Could be a little more, but this is fine. Ms times above this are NOT converted to
+// micros. These longer times are run in Ms.
+#define	MAX_MICROS	4000000
 
 // Our lovely constructor.
 timeObj::timeObj(float inMs,bool startNow) {
