@@ -59,6 +59,7 @@ public:
   virtual	void		setColor(word color16);
   virtual	void		setColor(colorObj* inColor);						// Why doesn't this one get confused? Who knows?
   				word		getColor16(void);
+  				byte		getGreyscale(void);
     
   				byte		getRed(void);
   				byte		getGreen(void);
