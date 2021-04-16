@@ -27,11 +27,11 @@ Hence : resizeBuff()
 
 As long as your buffer starts life alocated or with
 a NULL. You can use this quick call to resize it as
-much as you like. And, it returns a boolean true   or
+much as you like. And, it returns a boolean true or
 false as to if it was able to do it or not. Keeps you
 from writing into unallocated RAM as it were.
 
-NOTE: Resizing means you loose whatever data was originally in it.
+NOTE: Resizing still means you loose whatever data was originally in it.
 
 Now its just..
 
