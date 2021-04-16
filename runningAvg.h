@@ -12,6 +12,9 @@ class runningAvg {
     			float getMax(void);
     			float getMin(void);
     			float getDelta(void);
+    			float getStdDev(void);
+    			int	getNumValues(void);
+    			float getDataItem(int index);
   
   protected:
   
@@ -19,7 +22,7 @@ class runningAvg {
     			int	numValues;   // The amount we have.
     			int	index;       // Write the next value, here.
     			float	*theValues;  // The array of values.
-    			float	result;      // Just in case they ask, we'll keep a copy.
+    			float	mResult;     // Just in case they ask, we'll keep a copy.
 };
 
 #endif

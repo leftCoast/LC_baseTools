@@ -1,42 +1,86 @@
 #include <runningAvg.h>
 
-// A quick example of the runningAvg class. 
+/*
+  Running average.
 
-#define NUM_BYTES 20             // We'll have typed in numbers. We'll need a place to store what's being typed in.
+  This class was originally developed as a super simple to use data smoother. You decide, when creating
+  it, how many data points you would like to smooth your data over. Then each time you add a data point
+  it returns the running average of the last n points that were added. Simple to use, easy to understand.
 
-runningAvg  theSmoother(10);     // Create a runningAvg object. In this case a 10 item data smoother.
-char        inBuff[NUM_BYTES];   // A c string to hold the typed in numbers.
-int         index = 0;           // Where in that c string we'll store the next incoming char.
-   
-void setup(void) { Serial.begin(9600); }
+  Then, of course, this opened up new horizons for things like; What was the max and min data points we
+  saw in this set? So that was added.
+
+  Then it was.. Well, what about sound? Sound is all about the delta between max and min. Delta was added.
+
+  Then.. Yes, I also added standard deviation. What the heck? Everything else is in the pot. Might as
+  well go for it all.
+
+  Still, true to its roots, it only calculates the average when a datapoint is entered. All the rest
+  are only calculated if/when the user actually asks for them. But they are there, ready to leap into
+  action, if desired.
+
+  So this example lets you add data points using the serial monitor and it'll print out all the stuff
+  it can calculate with this data.
+
+  Enjoy!
+
+  -jim lee
+
+*/
 
 
+runningAvg  smoother(5);   // Our smoother. You can change the number of datapoints it will act on.
+char        inBuff[80];    // A char buffer (c string) to hold your typings.
+int         index;         // An index to be used in storing charactors into our char buffer.
+
+
+// Standard setup stuff..
+void setup(void) {
+
+   Serial.begin(9600);						// Fire up the serial stuff.
+   inBuff[0] = '\0';                   // Clear the c string.
+   index = 0;                          // The next char we read in goes here.
+   Serial.println(F("Enter numbers"));	// Tell Mrs user to start inputting numbers.
+}
+
+
+// Standard loop stuff..
 void loop(void) {
 
-   char  aChar;
-   float aNumber;
-   float ave;
+   char  aChar;   // A char to catch your typings in.
+   float aValue;  // The float version of the number yuo typed.
+   float ave;     // The Average that the smoother will return to us.
    
-   if (Serial.available()) {                       // If we have an incoming char to read..
-      aChar = Serial.read();                       // Grab it.
-      if (aChar=='\n') {                           // If its a newline char. (Make sure the serial monitor is set to newline.)
-         aNumber = atof(inBuff);                   // We decode what you typed in as a float. (Decimal number)
-         index = 0;                                // Reset the index for the next number to be typed.
-         ave = theSmoother.addData(aNumber);       // Pop this number into our smoother. (Running average object.) Out pops the average.
-         Serial.println("----------------");       // From here on down we do our output stuff.
-         Serial.print("Adding : ");                // Bla bla
-         Serial.println(aNumber);                  // bla
-         Serial.print("Ave = ");                   // bla..
-         Serial.println(ave);                      //
-         Serial.print("min = ");                   // You get the picture.
-         Serial.println(theSmoother.getMin());     //
-         Serial.print("max = ");                   // 
-         Serial.println(theSmoother.getMax());
-         Serial.print("delta = ");
-         Serial.println(theSmoother.getDelta());
-      } else if (index<NUM_BYTES-1) {              // Else, we just have a typed in char. And, we're not at the end of our string buffer.
-         inBuff[index++] = aChar;                  // Add in the char we got & bump up the index for the next char.      
-         inBuff[index] = '\0';                     // Pop in a trailing NULL to terminate the string here.
+   if (Serial.available()) {                    // If there is a char in the waiting to be read..
+      aChar = Serial.read();                    // Grab and save the char.
+      if (aChar=='\n') {                        // If its a newline char.. (Make sure the serial monitor is set to newline.)
+         aValue = atof(inBuff);                 // Decode what we have read in so far as a float value. (Decimal number)
+         ave = smoother.addData(aValue);        // Pop this number into our smoother. (Running average object.) Out pops the average.
+         Serial.println();                      // From here down its just grabing info from the
+         Serial.print(F("Entered    : "));      // SMoother and displaying it on the serial monitor.
+         Serial.println(inBuff);
+         Serial.print(F("Data       : "));
+         for(int i=0;i<smoother.getNumValues();i++) {
+            Serial.print(smoother.getDataItem(i));
+            Serial.print(" ");
+         }
+         Serial.println();
+         Serial.print(F("Average   : "));
+         Serial.println(ave,4);
+         Serial.print(F("Min       : "));
+         Serial.println(smoother.getMin(),4);
+         Serial.print(F("Max       : "));
+         Serial.println(smoother.getMax(),4);
+         Serial.print(F("Delta     : "));
+         Serial.println(smoother.getDelta());
+         Serial.print(F("Deviation : "));
+         Serial.println(smoother.getStdDev());
+         Serial.println(F("--------------"));
+         inBuff[0] = '\0';								// Clear the inBuff string.
+         index = 0;										// Reset the index to start a new number string.
+      } else {                                  // Else, it wasn't a newline char..
+         inBuff[index++] = aChar;               // So we save the char we got into the c string.
+         inBuff[index] = '\0';                  // And pop an end of string after it.
       }
    }
 }
