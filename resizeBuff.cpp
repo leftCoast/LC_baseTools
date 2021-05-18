@@ -21,4 +21,6 @@ bool resizeBuff(int numBytes,char** buff) { return resizeBuff(numBytes,(uint8_t*
 
 bool resizeBuff(int numBytes,void** buff) { return resizeBuff(numBytes,(uint8_t**)buff); }
 
+bool resizeBuff(int numBytes,float** buff) { return resizeBuff(numBytes,(uint8_t**)buff); }
+
 //bool resizeBuff(int numBytes,byte** buff) { return resizeBuff(numBytes,(uint8_t**)buff); }

@@ -48,7 +48,7 @@ void setup(void) {
 void loop(void) {
 
    char  aChar;   // A char to catch your typings in.
-   float aValue;  // The float version of the number yuo typed.
+   float aValue;  // The float version of the number you typed.
    float ave;     // The Average that the smoother will return to us.
    
    if (Serial.available()) {                    // If there is a char in the waiting to be read..
