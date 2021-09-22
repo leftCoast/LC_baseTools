@@ -15,7 +15,7 @@ timeObj::timeObj(float inMs,bool startNow) {
   setTime(inMs,startNow);	// This sets startTime and endTime. Maybe starts things up?
 }
 
-
+ 
 // And wonderful destructor..
 timeObj::~timeObj(void) { }
 
