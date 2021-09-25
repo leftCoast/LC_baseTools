@@ -4,7 +4,7 @@
 #include "mapper.h"
 #include "multiMap.h"
 // uncomment for debug stuff.
-//#define PRINT_COLOR
+#define PRINT_COLOR
 
 //								Red,Grn,blu
 #define	LC_BLACK			  0,  0,  0
@@ -101,6 +101,7 @@ class colorMapper {
   
   				void		setColors(colorObj* inStart, colorObj* inEnd);
   				colorObj Map(float percent);
+  				colorObj map(float percent);
 
 #ifdef PRINT_COLOR
   				void     printColors(void);

@@ -318,17 +318,20 @@ void colorMapper::setColors(colorObj* inStart, colorObj* inEnd) {
     greenMapper->setValues(START_COLOR,END_COLOR,inStart->getGreen(),inEnd->getGreen());
     blueMapper->setValues(START_COLOR,END_COLOR,inStart->getBlue(),inEnd->getBlue());
 }
-                                                   
-                                                   
-colorObj colorMapper::Map(float percent) {
+                                                
+                                                  
+colorObj colorMapper::map(float percent) {
 
-   colorObj theColor(
-  (byte)round(redMapper->Map(percent)),
-  (byte)round(greenMapper->Map(percent)),
-  (byte)round(blueMapper->Map(percent))
+	colorObj theColor(
+		(byte)round(redMapper->Map(percent)),
+		(byte)round(greenMapper->Map(percent)),
+		(byte)round(blueMapper->Map(percent))
     );
   return theColor;
 }
+
+
+colorObj colorMapper::Map(float percent) { return map(percent); }
   
 
 #ifdef PRINT_COLOR
