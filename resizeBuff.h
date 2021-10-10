@@ -54,4 +54,35 @@ bool resizeBuff(int numBytes,char** buff);
 bool resizeBuff(int numBytes,void** buff);
 bool resizeBuff(int numBytes,byte** buff);
 
+
+// Lets say you need to write to something with, possibly, more data than you can allocate
+// at one time? What to do? This class will start at your maximum desired buffer size and
+// try allocating it. If that fails, it tries for half that size. Then 1/3 the size, 1/4..
+// Until either it succeeds in allocating a buffer, or, hits the buffer minimum size and
+// gives up.
+//
+// On success : 
+// theBuff is the pointer to your allocated buffer.
+// numBuffBytes is the size in bytes of that buffer.
+// numPasses is the number of passes it will take to write/read your desired data.
+//
+// On failure :
+// theBuff will equal NULL.
+//
+// NOTE : This should be allocated as a local variable. Then on exit, it will recycle the
+// buffer. Pretty slick huh?
+
+#define BYTE_LIMIT 20
+
+class maxBuff {
+
+	public:
+				maxBuff(unsigned long numBytes,unsigned long  minBytes=BYTE_LIMIT);
+	virtual	~maxBuff(void);
+	
+				void*				theBuff;
+				unsigned long	numBuffBytes;
+				int				numPasses;
+	};
+
 #endif
