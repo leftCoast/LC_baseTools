@@ -4,7 +4,6 @@
 // Insainly handy for doing things in the background.
 // Set the timer and wait 'till it goes "ding". 
 // Great for blinking LEDs, updating readings, etc.
-// May not fast & accurate enough for RC Servos.
 // *** Takes care of roll over issues ***
 //
 // NOTE: Once the timer expires, every call to ding() will return true until its been
@@ -26,7 +25,7 @@ class timeObj {
   				void				reset(void);										// Reset to the preStart state. 
   				void				printState(void);									// Debugging.
   				
-	private:
+	private	:
 				enum	timeObjStates	{ preStart, running, expired };
 				
 				bool				useMilli;
