@@ -49,12 +49,13 @@ forced buffer sizes to match up.
 */
 
 
-bool resizeBuff(int numBytes,uint8_t** buff);
-bool resizeBuff(int numBytes,char** buff);
-bool resizeBuff(int numBytes,void** buff);
-bool resizeBuff(int numBytes,byte** buff);
+extern bool resizeBuff(int numBytes,uint8_t** buff);
+extern bool resizeBuff(int numBytes,char** buff);
+extern bool resizeBuff(int numBytes,void** buff);
+//extern bool resizeBuff(int numBytes,byte** buff);
 
 
+// class maxBuff:
 // Lets say you need to write to something with, possibly, more data than you can allocate
 // at one time? What to do? This class will start at your maximum desired buffer size and
 // try allocating it. If that fails, it tries for half that size. Then 1/3 the size, 1/4..
@@ -72,12 +73,12 @@ bool resizeBuff(int numBytes,byte** buff);
 // NOTE : This should be allocated as a local variable. Then on exit, it will recycle the
 // buffer. Pretty slick huh?
 
-#define BYTE_LIMIT 20
+#define BYTE_CUTOFF 20
 
 class maxBuff {
 
 	public:
-				maxBuff(unsigned long numBytes,unsigned long  minBytes=BYTE_LIMIT);
+				maxBuff(unsigned long numBytes,unsigned long  minBytes=BYTE_CUTOFF);
 	virtual	~maxBuff(void);
 	
 				void*				theBuff;

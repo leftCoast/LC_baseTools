@@ -19,7 +19,11 @@ Tools to make programming Arduinos easier.
 
 **resizeBuff** - Simplified memory management. Initialize your pointers to NULL then resizeBuff() can allocate and deallocate your dynamic buffer space for you. Passes back true for successful allocations, false for unsuccessful. Saves a lot of code typing.
 
+**maxBuff** - Allocates a buffer as big as it can and returns how many "loads" it will take to haul your data. If allocated as a local variable, it will auto recycle the memory used at end of your function.
+
 **runningAvg** - Running average data smoother. Pop in a number, and out popes the average of the last n numbers inputted.
+
+**serialStr** - Create a serialStr object and give it a callback function. Now complete c strings will magically show up from the serial port at your callback for you to process.
 
 **squareWave** - Base class for creating objects that are based on square waves. IE. blinking lights, flashing text, RC servo signals. Does NOT use interrupts or hardware PWM. Runs in background.
 

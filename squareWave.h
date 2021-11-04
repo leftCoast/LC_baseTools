@@ -20,7 +20,7 @@
 //
 // Using a Teensy 3.2 You get a freq dither of 8 micros & granularity of 5 micros.
 // Pulse width, within the granularity is around 5 micros.
-// Meaning for an RC servo? Rock solid not measurable error.
+// Meaning for an RC servo? Rock solid no measurable error.
 
 #include	"timeObj.h"
 #include	"idlers.h"

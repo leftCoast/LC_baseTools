@@ -18,11 +18,11 @@ class runningAvg {
   
   protected:
   
-    			int	maxData;     // Total amount allowed.
-    			int	numValues;   // The amount we have.
-    			int	index;       // Write the next value, here.
-    			float	*theValues;  // The array of values.
-    			float	mResult;     // Just in case they ask, we'll keep a copy.
+    			int		maxData;		// Total amount allowed.
+    			int		numValues;	// The amount we have.
+    			int		index;		// Write the next value, here.
+    			float*	theValues;	// The array of values.
+    			float		mResult;		// Just in case they ask, we'll keep a copy.
 };
 
 #endif

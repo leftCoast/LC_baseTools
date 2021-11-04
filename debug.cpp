@@ -1,9 +1,6 @@
 #include "debug.h"
 #include <resizeBuff.h>
 
-//For doing speed traces __func__
-
-//#ifdef DEBUGGGING
 
 debug::debug(void) { }
 debug::~debug(void) { }
@@ -46,5 +43,3 @@ void debug::trace(char* message,int inNum,bool hold) {
 
 
 debug db;
-
-//#endif //DEBUGGGING

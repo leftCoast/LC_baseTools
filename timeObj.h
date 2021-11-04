@@ -23,7 +23,7 @@ class timeObj {
   				unsigned long	getTime(void);										// How long does this go for?
   				float				getFraction(void);								// Fuel gauge. What fraction of time is left.
   				void				reset(void);										// Reset to the preStart state. 
-  				void				printState(void);									// Debugging.
+  				//void				printState(void);									// Debugging.
   				
 	private	:
 				enum	timeObjStates	{ preStart, running, expired };

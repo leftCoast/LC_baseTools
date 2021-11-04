@@ -5,7 +5,7 @@
 
 
 // The mapper supplied by the Arduino library is only for integers.
-// Well, sometimes you want to do your math in real numbers. So hang the cost
+// Well, sometimes you want to do your math in real numbers. So, hang the cost
 // we're doing this on in the biggest real numbers the platform can hand out.
 // As it turns out, most of our time is spent talking out different com ports
 // so no one notices these calculations. Or at least not often. And its really
@@ -14,6 +14,8 @@
 //
 // 6/15/2020 : Added integration. Wanted it for doing trapezoidal moves.
 // 6/19/2020 : Backed out the multiMap changes. So for now? We'll see.
+// 11/4/2021 : Looks to me like they are back in. It's run for a year. Maybe it's ok.
+
 
 class mapper {
 	

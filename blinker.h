@@ -1,7 +1,7 @@
 #ifndef blinker_h
 #define blinker_h
 
-#include "squareWave.h"
+#include <squareWave.h>
 
 // Some defaults in case the user just doesn't care..
 #define defPin 13

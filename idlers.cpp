@@ -38,7 +38,7 @@ idler::idler(void) {
 idler::~idler(void) { theIdlers.unlinkObj(this); }
 
 
-// You can't call this in the contstructor. Love to but can't.
+// You can't call this in the contstructor. Love to, but can't.
 // So call this the first time you add data or turn your idler on.
 void idler::hookup(void) {
   if (!hookedIn) {

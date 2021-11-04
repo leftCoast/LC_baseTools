@@ -106,7 +106,7 @@ bool timeObj::ding(void) {
 // off the timer to be restarted at a later time.
 void timeObj::reset(void) { ourState = preStart; }
 
-
+/*
 void timeObj::printState(void) {
 
 	switch (ourState) {
@@ -125,6 +125,7 @@ void timeObj::printState(void) {
   	Serial.print("startTime :");Serial.println(startTime);
   	Serial.print("endTime   :");Serial.println(endTime);
 }
+*/
 
 
 // You wanted to see what the waitTime was? But there is an issue here. Wait time can be
