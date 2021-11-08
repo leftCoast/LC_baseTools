@@ -125,7 +125,7 @@ class colorMultiMap {
     
     			void	addColor(double inX, colorObj* color);  // At some numeric value we resolve to this color.
     			void	clearMap(void);
-    			colorObj	Map(double inVal);
+    			colorObj	map(double inVal);
     
     protected:
     			multiMap  redMap;

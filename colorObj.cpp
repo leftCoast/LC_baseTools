@@ -241,7 +241,7 @@ colorObj colorObj::mixColors(colorObj* mixinColor,byte mixPercent) {
     else if (mixPercent<=0) return *this;
     else {
         mixMapper.setColors(this,mixinColor);
-        return mixMapper.Map(mixPercent);
+        return mixMapper.map(mixPercent);
     }
 }
 
@@ -253,7 +253,7 @@ void colorObj::blend(colorObj* mixinColor,byte mixPercent) {
         setColor(mixinColor);
     } else if (mixPercent>0) {      // So its NOT >= 100 but it is > 0.. Blend it.
         mixMapper.setColors(this,mixinColor);
-        colorObj temp = mixMapper.Map(mixPercent);
+        colorObj temp = mixMapper.map(mixPercent);
         setColor(&temp);
     }                               // Otherwise, there is no change.
 }
@@ -323,9 +323,9 @@ void colorMapper::setColors(colorObj* inStart, colorObj* inEnd) {
 colorObj colorMapper::map(float percent) {
 
 	colorObj theColor(
-		(byte)round(redMapper->Map(percent)),
-		(byte)round(greenMapper->Map(percent)),
-		(byte)round(blueMapper->Map(percent))
+		(byte)round(redMapper->map(percent)),
+		(byte)round(greenMapper->map(percent)),
+		(byte)round(blueMapper->map(percent))
     );
   return theColor;
 }
@@ -338,14 +338,14 @@ colorObj colorMapper::Map(float percent) { return map(percent); }
 void colorMapper::printColors(void) {
 
   colorObj startColor(
-  (byte)round(redMapper->Map(START_COLOR)),
-  (byte)round(greenMapper->Map(START_COLOR)),
-  (byte)round(blueMapper->Map(START_COLOR))
+  (byte)round(redMapper->map(START_COLOR)),
+  (byte)round(greenMapper->map(START_COLOR)),
+  (byte)round(blueMapper->map(START_COLOR))
     );
   colorObj endColor(
-  (byte)round(redMapper->Map(END_COLOR)),
-  (byte)round(greenMapper->Map(END_COLOR)),
-  (byte)round(blueMapper->Map(END_COLOR))
+  (byte)round(redMapper->map(END_COLOR)),
+  (byte)round(greenMapper->map(END_COLOR)),
+  (byte)round(blueMapper->map(END_COLOR))
     );
   Serial.println("Mapper start / end");
   startColor.printRGB();
@@ -380,16 +380,16 @@ void colorMultiMap::clearMap(void) {
 }
 
 
-colorObj colorMultiMap::Map(double inVal) {
+colorObj colorMultiMap::map(double inVal) {
     
     colorObj  result;
     byte      red;
     byte      green;
     byte      blue;
     
-    red = round(redMap.Map(inVal));
-    green = round(greenMap.Map(inVal));
-    blue = round(blueMap.Map(inVal));
+    red = round(redMap.map(inVal));
+    green = round(greenMap.map(inVal));
+    blue = round(blueMap.map(inVal));
     result.setColor(red,green,blue);
     return result;
 }
