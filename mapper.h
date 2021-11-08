@@ -25,6 +25,7 @@ class mapper {
 	virtual	~mapper(void);
 
   				double	map(double inNum);
+  				[[deprecated ("MAY BE REMOVED FROM LATER RELEASE. Use map(double) instead.")]]
   				double	Map(double inNum);
 
   				// This stuff is for using the mapper as a liner calculator.
