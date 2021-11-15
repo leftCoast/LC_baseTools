@@ -43,3 +43,71 @@ void debug::trace(char* message,int inNum,bool hold) {
 
 
 debug db;
+
+#ifdef RAM_MONITOR
+
+// ******************************************
+// *************** RAMMonitor ***************
+// ******************************************
+
+
+RAMMonitor::RAMMonitor(float reportMs)
+	: idler(),
+	timeObj(reportMs) {  }
+
+
+RAMMonitor::~RAMMonitor(void) {  }
+
+  
+void RAMMonitor::begin(void) {
+
+	ram.initialize();
+	hookup();
+}
+
+
+void  RAMMonitor::reportRamStat(const char* aname, uint32_t avalue) {
+
+  Serial.print(aname);
+  Serial.print(": ");
+  Serial.print((avalue + 512) / 1024);
+  Serial.print(" Kb (");
+  Serial.print((((float) avalue) / ram.total()) * 100, 1);
+  Serial.println("%)");
+}
+
+
+void  RAMMonitor::reportRam(void) {
+  
+	bool lowmem;
+	bool crash;
+
+	Serial.println("==== memory report ====");
+
+	reportRamStat("free", ram.adj_free());
+	reportRamStat("stack", ram.stack_total());
+	reportRamStat("heap", ram.heap_total());
+
+	lowmem = ram.warning_lowmem();
+	crash = ram.warning_crash();
+	if(lowmem || crash) {
+		Serial.println();
+		if(crash)
+			Serial.println("**warning: stack and heap crash possible");
+		else if(lowmem)
+			Serial.println("**warning: unallocated memory running low");
+	}
+	Serial.println();
+}
+
+
+void RAMMonitor::idle(void) {
+
+	if(ding()) {
+		start();
+		reportRam();
+	}  
+	ram.run();
+}
+
+#endif //RAM_MONITOR
