@@ -31,15 +31,15 @@
 
 runningAvg  smoother(5);   // Our smoother. You can change the number of datapoints it will act on.
 char        inBuff[80];    // A char buffer (c string) to hold your typings.
-int         index;         // An index to be used in storing charactors into our char buffer.
+int         charIndex;     // An index to be used in storing charactors into our char buffer.
 
 
 // Standard setup stuff..
 void setup(void) {
 
-   Serial.begin(9600);						// Fire up the serial stuff.
+	Serial.begin(9600);						// Fire up the serial stuff.
    inBuff[0] = '\0';                   // Clear the c string.
-   index = 0;                          // The next char we read in goes here.
+   charIndex = 0;                      // The next char we read in goes here.
    Serial.println(F("Enter numbers"));	// Tell Mrs user to start inputting numbers.
 }
 
@@ -77,10 +77,10 @@ void loop(void) {
          Serial.println(smoother.getStdDev());
          Serial.println(F("--------------"));
          inBuff[0] = '\0';								// Clear the inBuff string.
-         index = 0;										// Reset the index to start a new number string.
+         charIndex = 0;									// Reset the charIndex to start a new number string.
       } else {                                  // Else, it wasn't a newline char..
-         inBuff[index++] = aChar;               // So we save the char we got into the c string.
-         inBuff[index] = '\0';                  // And pop an end of string after it.
+         inBuff[charIndex++] = aChar;           // So we save the char we got into the c string.
+         inBuff[charIndex] = '\0';              // And pop an end of string after it.
       }
    }
 }
