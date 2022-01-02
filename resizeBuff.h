@@ -85,5 +85,9 @@ class maxBuff {
 				unsigned long	numBuffBytes;
 				int				numPasses;
 	};
+	
+	
+extern bool heapStr(char** resultStr,const char* inStr);
+extern void freeStr(char** resultStr);
 
 #endif
