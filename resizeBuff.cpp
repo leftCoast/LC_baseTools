@@ -1,4 +1,4 @@
-#include "resizeBuff.h"
+#include <resizeBuff.h>
 
 // DON'T USE UNINITIALIZED POINTERS!! EVEN JUST SETTING TO NULL WILL BE FINE.
 // Once your pointer is either set to NULL or allocated, then it can be used
@@ -26,6 +26,10 @@ bool resizeBuff(int numBytes,float** buff) { return resizeBuff(numBytes,(uint8_t
 //bool resizeBuff(int numBytes,byte** buff) { return resizeBuff(numBytes,(uint8_t**)buff); } // Causes compiler issues..
 
 
+// maxBuff:
+// Class for slicing up huge datat streams into sizable buffers.
+
+
 maxBuff::maxBuff(unsigned long numBytes,unsigned long  minBytes) {
 
 	theBuff			= NULL;								// Pointers start at NULL.
@@ -41,7 +45,9 @@ maxBuff::maxBuff(unsigned long numBytes,unsigned long  minBytes) {
 
 maxBuff::~maxBuff(void) { resizeBuff(0,&theBuff); }
 	
-				
+	
+// heapStr():
+// For reallocating strings.				
 				
 bool heapStr(char** resultStr,const char* inStr) {
 

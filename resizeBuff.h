@@ -3,50 +3,44 @@
 
 #include "Arduino.h"
 
+//      ******* 	TOOLS FOR THOSE THAT DON'T FEAR DYNAMIC MEMORY 	*******
 
-/*
-
-Ok, what is this resizeBuff thing?
-
-Forever I found myself writing..
-
-if (buff) {
-	free(buff);
-	buff = NULL;
-}
-buff = malloc(newSize);
-if (buff) {
-	do stuff..
-}
-
-Over and over. Then one day I wrote my first version
-of a "stretchy buffer" and that got me thinking.. Is
-there a way to generalize this idea? 
-
-Hence : resizeBuff()
-
-As long as your buffer starts life alocated or with
-a NULL. You can use this quick call to resize it as
-much as you like. And, it returns a boolean true or
-false as to if it was able to do it or not. Keeps you
-from writing into unallocated RAM as it were.
-
-NOTE: Resizing still means you loose whatever data was originally in it.
-
-Now its just..
-
-if (resizeBuff(newSize,&buffPtr)) {		// Notice?
-	do stuff..									// Address of the pointer there..
-}													// Eww! So tricky!
-
-
-NOTE : Why a pointer to uint8_t?
-Originally this was setup at char* because it started with c strings. Then
-It started being used for binary data blocks. Then binary data blocks crossing
-over serial to other processors.. Word size stuff bit me in the.. Foot. uint8_t 
-forced buffer sizes to match up.
-
-*/
+// Ok, what is this resizeBuff thing?
+// 
+// Forever I found myself writing..
+// 
+// if (buff) {
+// 	free(buff);
+// 	buff = NULL;
+// }
+// buff = malloc(newSize);
+// if (buff) {
+// 	do stuff..
+// }
+// 
+// Over and over. Then one day I wrote my first version of a "stretchy buffer" and that
+// got me thinking.. Is there a way to generalize this idea? 
+// 
+// Hence : resizeBuff()
+// 
+// As long as your buffer starts life alocated or with a NULL. You can use this quick call
+// to resize it as much as you like. And, it returns a boolean true or false as to if it
+// was able to do it or not. Keeps you from writing into unallocated RAM as it were.
+// 
+// NOTE: Resizing still means you loose whatever data was originally in it.
+// 
+// Now its just..
+// 
+// if (resizeBuff(newSize,&buffPtr)) {		// Notice?
+// 	do stuff..									// Address of the pointer there..
+// }													// Eww! So tricky!
+// 
+// 
+// NOTE : Why a pointer to uint8_t?
+// Originally this was setup at char* because it started with c strings. Then It started
+// being used for binary data blocks. Then binary data blocks crossing over serial to
+// other processors.. Word size stuff bit me in the.. Foot. uint8_t  forced buffer sizes
+// to match up.
 
 
 extern bool resizeBuff(int numBytes,uint8_t** buff);
@@ -66,6 +60,7 @@ extern bool resizeBuff(int numBytes,void** buff);
 // theBuff is the pointer to your allocated buffer.
 // numBuffBytes is the size in bytes of that buffer.
 // numPasses is the number of passes it will take to write/read your desired data.
+// Meaning? This is how many time to call it in a for loop.
 //
 // On failure :
 // theBuff will equal NULL.
@@ -86,7 +81,24 @@ class maxBuff {
 				int				numPasses;
 	};
 	
-	
+
+
+// heapStr():
+// In the good old days people used to do..
+//
+// char* aStr = "Look data!";
+//
+// And that would allocate room for the text to put there. Sadly it would only do it once.
+// Now, wouldn't that be nice if you could do it repeatedly? Now you can!
+//
+// char* aStr = NULL;											// ALLWAYS initialize at NULL for this.
+//
+// heapStr(&aStr,"Look data!");								// Allocates and stuffs it in.
+// heapStr(&aStr,"Look even longer data!");				// Recycles, re-allocates and stuffs in the bigger string!
+// heapStr(&aStr,"Can be called as much as needed.");	// Get the picture?
+// freeStr(&aStr);												// Just recycles and sets back to NULL.
+
+
 extern bool heapStr(char** resultStr,const char* inStr);
 extern void freeStr(char** resultStr);
 
