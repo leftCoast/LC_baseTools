@@ -5,6 +5,13 @@
 
 //      ******* 	TOOLS FOR THOSE THAT DON'T FEAR DYNAMIC MEMORY 	*******
 
+
+
+// **************************************************************
+// ************************ resizeBuff **************************
+// **************************************************************
+
+
 // Ok, what is this resizeBuff thing?
 // 
 // Forever I found myself writing..
@@ -49,6 +56,12 @@ extern bool resizeBuff(int numBytes,void** buff);
 //extern bool resizeBuff(int numBytes,byte** buff);
 
 
+
+// **************************************************************
+// ************************** maxBuff ***************************
+// **************************************************************
+
+
 // class maxBuff:
 // Lets say you need to write to something with, possibly, more data than you can allocate
 // at one time? What to do? This class will start at your maximum desired buffer size and
@@ -83,6 +96,11 @@ class maxBuff {
 	
 
 
+// **************************************************************
+// ************************** heapStr ***************************
+// **************************************************************
+
+
 // heapStr():
 // In the good old days people used to do..
 //
@@ -102,4 +120,40 @@ class maxBuff {
 extern bool heapStr(char** resultStr,const char* inStr);
 extern void freeStr(char** resultStr);
 
+
+
+// **************************************************************
+// ************************** tempStr ***************************
+// **************************************************************
+
+// Ok, take all these bits to their limit and make the easiest thing to use for a quick
+// string buffer. The tempStr class is a stack based class. Meaning? It will store your
+// string only until it goes out of scope, and then it automatically recycles the memory
+// for you.
+//
+// tampStr myData(readThing(pinNum));   // Something that returns a char* as its output.
+// 
+// -or-
+//
+// tampStr myData;							// Or an empty one. Ready to save a string.
+//
+// myData.setStr(readThing(pinNum));	// You can save a string later. Or reuse for different strings.
+// formatAndDisplay(myData.getStr());	// We don't worry about what the readThing() does.
+//													// We now have a local copy.
+//
+// return;										// When the tempStr object goes out of scope, It deletes it self.
+
+
+class tempStr {
+
+	public:
+				tempStr(char* inStr=NULL);
+	virtual	~tempStr(void);
+	
+				void	setStr(char* inStr);
+				char* getStr(void);
+				
+				char*	theStr;
+};
+		
 #endif
