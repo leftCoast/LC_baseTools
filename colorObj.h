@@ -1,8 +1,8 @@
 #ifndef colorObj_h
 #define colorObj_h
 
-#include "mapper.h"
-#include "multiMap.h"
+#include <mapper.h>
+#include <multiMap.h>
 // uncomment for debug stuff.
 //#define PRINT_COLOR
 

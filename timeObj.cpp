@@ -119,7 +119,7 @@ void timeObj::printState(void) {
   	if (useMilli) {																	// If we are using milliseconds..
   		Serial.print(waitTime * 1.0);
   	} else {
-  		Serial.print(waitTime/1000);
+  		Serial.print(waitTime/1000.0);
   	}
   	Serial.println(" ms");
   	Serial.print("startTime :");Serial.println(startTime);
@@ -128,9 +128,12 @@ void timeObj::printState(void) {
 */
 
 
-// You wanted to see what the waitTime was? But there is an issue here. Wait time can be
-// either in milliseconds or microseconds. Depending how long we are waiting.
-unsigned long timeObj::getTime(void) { return waitTime; }
+// You wanted to see what the waitTime was?This returns it as a float Ms.
+float timeObj::getTime(void) {
+
+	if (useMilli) return waitTime;
+	else return waitTime/1000.0;
+}
 
 
 // Fuel gauge. What fraction of time is left. Give float value from one to zero.
