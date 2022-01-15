@@ -1,8 +1,11 @@
 
-#include "multiMap.h"
+#include <multiMap.h>
 
 
-// ******************** mapPoint ********************
+
+//****************************************************************************************
+// mapPoint :
+//****************************************************************************************
 
 
 mapPoint::mapPoint(double inX, double inY)
@@ -38,12 +41,6 @@ void mapPoint::createUpMappers(void) {
    upPoint = getNext();                                        // Make a grab for the upstream guy.
    if (upPoint) {                                              // If there is an upstream mapPoint.
       mUpMapper = new mapper(mX,upPoint->mX,mY,upPoint->mY);   // Using ours and the upstream's info. Create a spaning mapper.
-      /*
-      Serial.print("Mapper x1 ");Serial.print(mX);
-      Serial.print(", x2 ");Serial.print(upPoint->mX);
-      Serial.print(", y1 ");Serial.print(upPoint->mY);
-      Serial.print(", y2 ");Serial.println(upPoint->mY);
-      */
       upPoint->createUpMappers();                              // We tell the upstream guy to do it to.
    }
 }
@@ -69,7 +66,8 @@ bool mapPoint::isLessThan(linkListObj* compPoint) {
 }
 
 
-// This is to be called **after** the link list has been sorted and mappers have been created.
+// This is to be called **after** the link list has been sorted and mappers have been
+// created.
 double  mapPoint::map(double inX) {
 
    mapPoint* next;
@@ -118,16 +116,22 @@ double  mapPoint::integrate(double x1,double x2) {
 }
 
 
-// ******************** multiMap ********************
+
+//****************************************************************************************
+// multiMap :
+//****************************************************************************************
 
 
+// Create a new empty multi map.
 multiMap::multiMap(void)
    : linkList() { mReady = false; }
    
-   
+ 
+// recycle everything.  
 multiMap::~multiMap(void) { }
 
 
+// Add a new datapoint to a curve.
 void multiMap::addPoint(double x, double y) {
 
    mapPoint*   newPoint;
@@ -140,6 +144,7 @@ void multiMap::addPoint(double x, double y) {
 }
 
 
+// Dump and recycle everything in this map.
 void multiMap::clearMap(void) {
 
    dumpList();
@@ -147,9 +152,12 @@ void multiMap::clearMap(void) {
 }
 
 
+// Want the first point? This'll hand it to you.
 mapPoint* multiMap::getFirst() { return (mapPoint*) linkList::getFirst(); }
 
 
+// Clean up any previous setups, sort out all the current points and get things ready for
+// mapping. (Or integrations)
 bool multiMap::setUp(void) {
 
    mReady = false;                     // Well, they called us, assume its not ready.
@@ -158,10 +166,11 @@ bool multiMap::setUp(void) {
       getFirst()->createUpMappers();   // Create new set of mappers.
       mReady = true;                   // Note we open for business!
    }
-   return mReady;
+   return mReady;								// Return our result.
 }
 
 
+// Meat and potatoes, what we live for. Give us a value and we'll map it to the curve.
 double multiMap::map(double inX) {
       
    if (!isEmpty()) {                      // If we have points..
@@ -177,13 +186,9 @@ double multiMap::map(double inX) {
 }
 
 
-// Legacy..
-double  multiMap::Map(double inX) { return map(inX); }
-
-
+// Well, since you asked nice. We CAN actually do integration over your inputted curve.
 double  multiMap::integrate(double x1,double x2) {
 
-   
    if (!isEmpty()) {                                              // If we have points..
       if (mReady) {                                               // If we are ready (Sorted with mappers)
          return getFirst()->integrate(min(x1,x2),max(x1,x2));     // Return the integration result;

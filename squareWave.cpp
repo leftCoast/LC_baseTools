@@ -1,9 +1,8 @@
 #include "squareWave.h"
 
-
+// Constructor with all the goodies.
 squareWave::squareWave(float periodMs,float pulseMs, bool blocking) {
 
-	
 	init();
 	setPeriod(periodMs);
 	setPulse(pulseMs);
@@ -88,7 +87,7 @@ void squareWave::setOnOff(bool onOff) {
 		startWave();				// Call to startWave() to get all the timers running.
 	} else {							// Else, we are turning the machine off..
 		mState = sittinIdle;		// We're idle now.
-		ourPulseOff();					// I'm betting they would like to know its been shut down.
+		ourPulseOff();				// I'm betting they would like to know its been shut down.
 	}
 }
 

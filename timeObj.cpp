@@ -1,5 +1,6 @@
-#include "timeObj.h"
+#include <timeObj.h>
 #include <Arduino.h>
+
 
 // Could be a little more, but this is fine. Ms times above this are NOT converted to
 // micros. These longer times are run in Ms.
@@ -154,6 +155,4 @@ float timeObj::getFraction(void) {
 	}
 	return  0;															// Never able to get here. Shut up compiler!
 }								
-
-
 

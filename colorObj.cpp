@@ -1,4 +1,4 @@
-#include "colorObj.h"
+#include <colorObj.h>
 
 // Having the basics handy is very handy!
 colorObj red(LC_RED);

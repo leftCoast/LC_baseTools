@@ -1,13 +1,16 @@
 #ifndef timeObj_h
 #define timeObj_h
 
-// Insainly handy for doing things in the background.
-// Set the timer and wait 'till it goes "ding". 
-// Great for blinking LEDs, updating readings, etc.
-// *** Takes care of roll over issues ***
+
+
+//****************************************************************************************
+// Insainly handy for doing things in the background. Set the timer and wait 'till it goes
+// "ding". Great for blinking LEDs, updating readings, etc.
+//                     *** Takes care of roll over issues ***
 //
 // NOTE: Once the timer expires, every call to ding() will return true until its been
 // reset or restarted.
+//****************************************************************************************
 
 
 class timeObj {

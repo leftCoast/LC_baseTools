@@ -34,7 +34,7 @@
 #define	LC_YELLOW  		255,255,  0
 
 
-// If you want a LOT of colorObj saved, like a bitmap?
+// If you want a LOT of colorObj(s) saved. Like a bitmap?
 // The RGBpack is 3 bytes per pixel as opposed to 8 for
 // the color object itself. Same color information.
 struct RGBpack {

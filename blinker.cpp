@@ -1,6 +1,6 @@
 
 #include <Arduino.h>
-#include "blinker.h"
+#include <blinker.h>
 
 blinker::blinker(int inPin,float inOnMs, float inPeriodMs,boolean inInverse)
 	: squareWave(inPeriodMs,inOnMs) {
@@ -22,7 +22,7 @@ void  blinker::pulseOn(void) {
 }
 	
 
-// what to do when the pulse is over..	
+// What to do when the pulse is over..	
 void  blinker::pulseOff(void) {
 	
 	if (inverse) digitalWrite(pin,HIGH);

@@ -1,11 +1,17 @@
 #ifndef squareWave_h
 #define squareWave_h
 
+#include	"timeObj.h"
+#include	"idlers.h"
 
-// squareWave: Square waves are very common in the digital world. Things that blink, blink
-// square waves. Motor controllers and lamp dimmers run on square waves. So many things
-// use this model that it seemed like a good idea to have a base, theoretical square wave
-// class to use as a foundation of all these things we'd like to use them for.
+
+
+//****************************************************************************************
+// squareWave:
+// Square waves are very common in the digital world. Things that blink, blink square
+// waves. Motor controllers and lamp dimmers run on square waves. So many things use this
+// model that it seemed like a good idea to have a base, theoretical square wave class to
+// use as a foundation of all these things we'd like to use them for.
 //
 // This class begins dormant. You need to explicitly call setOnOff() with a value of true
 // to start it running.
@@ -16,14 +22,13 @@
 // Then everything will be fine.
 //
 // Using an Arduino UNO the pulse width dithers about 20 microseconds. 
-// Meaning for a RC servo you get about 2% error.
+// Meaning : For a RC servo you get about 2% error.
 //
-// Using a Teensy 3.2 You get a freq dither of 8 micros & granularity of 5 micros.
-// Pulse width, within the granularity is around 5 micros.
-// Meaning for an RC servo? Rock solid no measurable error.
+// Using a Teensy 3.2 You get a freq dither of 8 micros & granularity of 5 micros. pulse
+// width, within the granularity is around 5 micros.
+// Meaning : For an RC servo? Rock solid no measurable error.
+//****************************************************************************************
 
-#include	"timeObj.h"
-#include	"idlers.h"
 
 class squareWave : public idler {
 	

@@ -1,7 +1,7 @@
 #ifndef idlers_h
 #define idlers_h
 
-#include "lists.h"
+#include <lists.h>
 
 class idler : public linkListObj {
 

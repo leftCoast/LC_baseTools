@@ -4,8 +4,7 @@
 #include <idlers.h>
 #include <timeObj.h>
 
-#define NUM_CHECKS  4	// Number of conflicting checks in a row that tells us we need a change.
-
+//****************************************************************************************
 // Mechanical button de-bouncer.
 // This can be used in one of three ways.
 //
@@ -19,7 +18,7 @@
 // Pro : Inherit this as a base class and let it become the callback you always dreamed
 // of. Remember that in this case, you will probably need to put in a call to hookup().
 // But then, you're a pro. So I shouldn't have to tell you that.
-
+//****************************************************************************************
 
 class mechButton :	public idler {
   

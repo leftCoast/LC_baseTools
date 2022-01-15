@@ -1,9 +1,11 @@
-#include "lists.h"
+#include <lists.h>
 
 
 
-// *************** linkListObj ********************
-// A none too bright node with a tail.
+//****************************************************************************************
+// linkListObj : A none too bright node with a tail.
+//****************************************************************************************
+
 
 linkListObj::linkListObj(void) { next = NULL; }
 
@@ -73,15 +75,14 @@ bool linkListObj::isLessThan(linkListObj* compObj) { return false; }
 
 
 
-//********************* linkList *************************
-// your basic linked list. Good base for linked list
-// things, you know.
+//****************************************************************************************
+// linkList : your basic linked list. Good base for linked list things, you know.
 //
-// When we recieve an object to link up. Do we own it? Or
-// are we just tracking other people's laundry? Here is
-// what we do. They can pull out the ones they want
-// whenever. When we destruct, we'll recycle the rest.
-//********************************************************
+// When we recieve an object to link up. Do we own it? Or are we just tracking other
+// people's laundry? Here is what we do. They can pull out the ones they want whenever.
+// When we destruct, we'll recycle the rest.
+//****************************************************************************************
+
 
 // Create a linkList object.
 linkList::linkList(void) { theList = NULL; }
@@ -204,8 +205,8 @@ int linkList::getCount(void) {
 	}
 	
 	
-// And there are times it would be nice to grab one by index.
-// Like an array. Returns NULL if not found.
+// And there are times it would be nice to grab one by index. Like an array. Returns NULL
+// if not found.
 linkListObj* linkList::getByIndex(int index) {
 
 	linkListObj*	trace;
@@ -239,7 +240,7 @@ int linkList::findIndex(linkListObj* anObj) {
 			return index;							// Return its index.
 		}
 	}
-	return -1;										// IN all other cases, return -1 as "Not found".
+	return -1;										// In all other cases, return -1 as "Not found".
 }
 
 
@@ -249,8 +250,8 @@ linkListObj*	linkList::findMax(linkListObj* anObj) {
 	linkListObj*	trace;
 	linkListObj*	maxNode;
 	
-	maxNode = anObj;								// We start here as the largest.
-	trace = anObj;									// We start here in our search.
+	maxNode = anObj;									// We start here as the largest.
+	trace = anObj;										// We start here in our search.
 	while(trace) {										// While we're not pointing at NULL..
 		if (trace->isGreaterThan(maxNode)) {	// If what we are pointing at is larger than the largest..
 			maxNode = trace;							// Select what we are pointing at as largest.
@@ -267,8 +268,8 @@ linkListObj*	linkList::findMin(linkListObj* anObj) {
 	linkListObj*	trace;
 	linkListObj*	minNode;
 	
-	minNode = anObj;								// We start here as the smallest.
-	trace = anObj;									// We start here in our search.
+	minNode = anObj;									// We start here as the smallest.
+	trace = anObj;										// We start here in our search.
 	while(trace) {										// While we're not pointing at NULL..
 		if (trace->isLessThan(minNode)) {		// If what we are pointing at is smaller than the smallest..
 			minNode = trace;							// Select what we are pointing at as smallest.
@@ -279,8 +280,8 @@ linkListObj*	linkList::findMin(linkListObj* anObj) {
 }
 
 
-// If the superclass has filled out the isGreaterThan() and isLessThan() methods. This will
-// sort your list for you.
+// If the superclass has filled out the isGreaterThan() and isLessThan() methods. This
+// will sort your list for you.
 void linkList::sort(bool ascending) {
 	
 	linkListObj* sorted;
@@ -307,9 +308,10 @@ void linkList::sort(bool ascending) {
 void linkList::looseList(void) { theList = NULL; }
 
 
-					
-// ********** stack ****************
-// Your basic stack. Mostly pass throughs with the usual names.
+
+//****************************************************************************************
+// stack : Your basic stack. Mostly pass throughs with the usual names.
+//****************************************************************************************
 
 
 // Create a stack.
@@ -342,8 +344,9 @@ linkListObj* stack::peek(void) { return getFirst(); }
 
 
 
-// ********** queue ****************
-// Your basic queue. Again, mostly pass throughs with the usual names.
+//****************************************************************************************
+// queue : Your basic queue. Again, mostly pass throughs with the usual names.
+//****************************************************************************************
 
 
 // Create a queue.
@@ -374,7 +377,11 @@ linkListObj* queue::pop(void) {
 }
 
 
-// ********** double linked list ****************
+
+//****************************************************************************************
+// dblLinkListObj : This is the base object that "knows" how to link into chains with
+// others like itself.
+//****************************************************************************************
 
 
 // Create a double link list node.

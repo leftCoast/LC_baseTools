@@ -1,14 +1,22 @@
 #include <resizeBuff.h>
 
-// DON'T USE UNINITIALIZED POINTERS!! EVEN JUST SETTING TO NULL WILL BE FINE.
-// Once your pointer is either set to NULL or allocated, then it can be used
-// in here all you want.
+
+
+//****************************************************************************************
+//****************************************************************************************
+//
+//       DON'T USE UNINITIALIZED POINTERS!! EVEN JUST SETTING TO NULL WILL BE FINE.
+//
+// Once your pointer is either set to NULL or allocated, then it can be used in here all
+// you want.
+//****************************************************************************************
+//****************************************************************************************
 
 
 
-// **************************************************************
-// ************************ resizeBuff **************************
-// **************************************************************
+//****************************************************************************************
+// resizeBuff:
+//****************************************************************************************
 
 
 bool resizeBuff(int numBytes,uint8_t** buff) {
@@ -30,17 +38,15 @@ bool resizeBuff(int numBytes,void** buff) { return resizeBuff(numBytes,(uint8_t*
 
 bool resizeBuff(int numBytes,float** buff) { return resizeBuff(numBytes,(uint8_t**)buff); }
 
-//bool resizeBuff(int numBytes,byte** buff) { return resizeBuff(numBytes,(uint8_t**)buff); } // Causes compiler issues..
 
 
-
-// **************************************************************
-// ************************** maxBuff ***************************
-// **************************************************************
-//
+//****************************************************************************************
 // maxBuff:
-// Class for slicing up huge data streams into bite sized buffers.
-// Good for things like copying one file to another.
+//
+// Class for slicing up huge data streams into bite sized buffers. Good for things like
+// copying one file to another.
+//****************************************************************************************
+
 
 maxBuff::maxBuff(unsigned long numBytes,unsigned long  minBytes) {
 
@@ -59,16 +65,16 @@ maxBuff::~maxBuff(void) { resizeBuff(0,&theBuff); }
 
 	
 
-// **************************************************************
-// ************************** heapStr ***************************
-// **************************************************************
+//****************************************************************************************
+// heapStr:
 //	
-// heapStr():
 // For reallocating strings.				
 // Good for passing string data from one function to another. Lets you have an easy way to
 // "land" the data. Typically this is used for setting the size of a global buffer to fit
 // the current data. No more max sized buffers clogging up the heap.	each time you write a
 // string to it it auto resizes to just fit that string.
+//****************************************************************************************
+
 		
 // Load in this string. Allocate, or re-allocate your char* to save it.		
 bool heapStr(char** resultStr,const char* inStr) {
@@ -96,10 +102,7 @@ void freeStr(char** resultStr) { resizeBuff(0,resultStr); }
 
 
 	
-// **************************************************************
-// ************************** tempStr ***************************
-// **************************************************************
-//
+//****************************************************************************************
 //	tempStr
 // Very good for grabbing data that may change and holding a copy it so you can do your
 // stuff without worry. Auto deallocated when it goes out of scope.
@@ -107,6 +110,8 @@ void freeStr(char** resultStr) { resizeBuff(0,resultStr); }
 // DO NOT CREATE THESE INSIDE A SWITCH STATEMENT! Creating variables and classes in switch
 // statements totally breaks them. You can USE them in switch statements as long as they
 // are created outside of the switch statements.
+//****************************************************************************************
+
 	
 tempStr::tempStr(char* inStr) {
 	

@@ -3,15 +3,18 @@
 
 #include "Arduino.h"
 
-//      ******* 	TOOLS FOR THOSE THAT DON'T FEAR DYNAMIC MEMORY 	*******
+
+
+//****************************************************************************************
+//                   TOOLS FOR THOSE THAT DON'T FEAR DYNAMIC MEMORY 	
+//                IF YOU CAN'T STAND THE HEAT, GET OUT OF THE KITCHEN!
+//****************************************************************************************
 
 
 
-// **************************************************************
-// ************************ resizeBuff **************************
-// **************************************************************
-
-
+//****************************************************************************************
+// resizeBuff : 
+//
 // Ok, what is this resizeBuff thing?
 // 
 // Forever I found myself writing..
@@ -30,9 +33,9 @@
 // 
 // Hence : resizeBuff()
 // 
-// As long as your buffer starts life alocated or with a NULL. You can use this quick call
-// to resize it as much as you like. And, it returns a boolean true or false as to if it
-// was able to do it or not. Keeps you from writing into unallocated RAM as it were.
+// As long as your buffer starts life allocated, or with a NULL. You can use this quick
+// call to resize it as much as you like. And, it returns a boolean true or false as to if
+// it was able to do it or not. Keeps you from writing into unallocated RAM as it were.
 // 
 // NOTE: Resizing still means you loose whatever data was originally in it.
 // 
@@ -48,26 +51,26 @@
 // being used for binary data blocks. Then binary data blocks crossing over serial to
 // other processors.. Word size stuff bit me in the.. Foot. uint8_t  forced buffer sizes
 // to match up.
-
+//****************************************************************************************
 
 extern bool resizeBuff(int numBytes,uint8_t** buff);
 extern bool resizeBuff(int numBytes,char** buff);
 extern bool resizeBuff(int numBytes,void** buff);
-//extern bool resizeBuff(int numBytes,byte** buff);
 
 
 
-// **************************************************************
-// ************************** maxBuff ***************************
-// **************************************************************
-
-
-// class maxBuff:
+//****************************************************************************************
+// maxBuff :
+//
 // Lets say you need to write to something with, possibly, more data than you can allocate
-// at one time? What to do? This class will start at your maximum desired buffer size and
-// try allocating it. If that fails, it tries for half that size. Then 1/3 the size, 1/4..
-// Until either it succeeds in allocating a buffer, or, hits the buffer minimum size and
-// gives up.
+// at one time? What to do? I ran into this issue when I found myself needing to transfer
+// data from one file to another. The data could be WAY larger than the available RAM. 
+// And, as always, I was in a terrific hurry. So doing it byte by byte was not going to
+// cut it. Hence, maxBuff.
+//
+// This class will start at your maximum desired buffer size and try allocating it. If
+// that fails, it tries for half that size. Then 1/3 the size, 1/4.. Until either it
+// succeeds in allocating a buffer, or, hits the buffer minimum size and gives up.
 //
 // On success : 
 // theBuff is the pointer to your allocated buffer.
@@ -80,6 +83,8 @@ extern bool resizeBuff(int numBytes,void** buff);
 //
 // NOTE : This should be allocated as a local variable. Then on exit, it will recycle the
 // buffer. Pretty slick huh?
+//****************************************************************************************
+
 
 #define BYTE_CUTOFF 20
 
@@ -96,25 +101,23 @@ class maxBuff {
 	
 
 
-// **************************************************************
-// ************************** heapStr ***************************
-// **************************************************************
-
-
+//****************************************************************************************
 // heapStr():
+//
 // In the good old days people used to do..
 //
 // char* aStr = "Look data!";
 //
-// And that would allocate room for the text to put there. Sadly it would only do it once.
-// Now, wouldn't that be nice if you could do it repeatedly? Now you can!
+// And that would allocate room for the text and put there. Sadly it would only do it
+// once. Now, wouldn't that be nice if you could do it repeatedly? Now you can!
 //
-// char* aStr = NULL;											// ALLWAYS initialize at NULL for this.
+// char* aStr = NULL;									// ALLWAYS initialize at NULL for this.
 //
-// heapStr(&aStr,"Look data!");								// Allocates and stuffs it in.
-// heapStr(&aStr,"Look even longer data!");				// Recycles, re-allocates and stuffs in the bigger string!
-// heapStr(&aStr,"Can be called as much as needed.");	// Get the picture?
-// freeStr(&aStr);												// Just recycles and sets back to NULL.
+// heapStr(&aStr,"Look data!");						// Allocates and stuffs it in.
+// heapStr(&aStr,"Look longer data!");				// Recycles, re-allocates and writes.
+// heapStr(&aStr,"Can be called as needed.");	// Get the picture?
+// freeStr(&aStr);										// Just recycles and sets back to NULL.
+//****************************************************************************************
 
 
 extern bool heapStr(char** resultStr,const char* inStr);
@@ -122,26 +125,26 @@ extern void freeStr(char** resultStr);
 
 
 
-// **************************************************************
-// ************************** tempStr ***************************
-// **************************************************************
-
+//****************************************************************************************
+// tempStr :
+//
 // Ok, take all these bits to their limit and make the easiest thing to use for a quick
 // string buffer. The tempStr class is a stack based class. Meaning? It will store your
 // string only until it goes out of scope, and then it automatically recycles the memory
 // for you.
 //
-// tampStr myData(readThing(pinNum));   // Something that returns a char* as its output.
+// tempStr myStr(readThing(pinNum));   // Copy the output of a string function.
 // 
 // -or-
 //
-// tampStr myData;							// Or an empty one. Ready to save a string.
+// tempStr myStr;								// Or an empty one. Ready to save a string.
 //
-// myData.setStr(readThing(pinNum));	// You can save a string later. Or reuse for different strings.
-// formatAndDisplay(myData.getStr());	// We don't worry about what the readThing() does.
+// myStr.setStr(readThing(pinNum));		// You can save a string later. Or reuse.
+// formatAndDisplay(myStr.getStr());	// We don't worry about what the readThing() does.
 //													// We now have a local copy.
 //
-// return;										// When the tempStr object goes out of scope, It deletes it self.
+// return;										// When tempStr goes out of scope, It recycles.
+//****************************************************************************************
 
 
 class tempStr {

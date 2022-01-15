@@ -1,10 +1,6 @@
-#include "textBuff.h"
-#include "resizeBuff.h"
+#include <textBuff.h>
+#include <resizeBuff.h>
 
-
-// *****************************************************
-//                      textBuff
-// *****************************************************
 
 
 textBuff::textBuff(int inNumBytes,bool inOverwrite) {

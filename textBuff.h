@@ -1,18 +1,18 @@
 #ifndef textBuff_h
 #define textBuff_h
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 
+
+//****************************************************************************************
+// textBuff:
 // Lets say you have something that streams out text and you need a place to store the
 // stream before you can process it. This happens when hardware dumps data and you have no
 // control over when and how much. This gives a place to stream all that text. Then you
 // can read it back and deal with it at your leisure. You can even read it out as its
 // being streamed in. That's pretty handy!
-
-// *****************************************************
-//                      textBuff
-// *****************************************************
+//****************************************************************************************
 
 
 class textBuff {
