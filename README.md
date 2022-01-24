@@ -1,6 +1,5 @@
 # LC_baseTools
-Tools to make programming Arduinos easier. 
-*WARNING : DO NOT USE THIS VERSION. USE THE VERSION YOU CAN FIND ON THE ARDUINO IDE LIBRARY MANAGER! THIS VERSION IS.. In flux.*
+Tools to make programming Arduinos easier.
 
 **blinker** - Blinks an LED without using delay(). On any output pin. Does NOT use interrupts or hardware PWM.
 
@@ -16,13 +15,15 @@ Tools to make programming Arduinos easier.
 
 **multiMap** - Non-linear mapping function. Starts out blank and the user adds x,y points to it before use.
 
-**resizeBuff** - Simplified memory management. Initialize your pointers to NULL then resizeBuff() can allocate and deallocate your dynamic buffer space for you. Passes back true for successful allocations, false for unsuccessful. Saves a lot of code typing. Now includes maxBuff, heapStr and tempStr. You'll have to look in the code to see what those little goodies can do.
+**resizeBuff** - Simplified memory management. Initialize your pointers to NULL then resizeBuff() can allocate and deallocate your dynamic buffer space for you. Passes back true for successful allocations, false for unsuccessful. Saves a lot of code typing. Now includes maxBuff. This is a stack based class that allocates the largest buffer it can for passing large chunks of data. Like copying one file to another. Also returns the number of data hauls that wil be necessary for the data to be transffered. Makes this kind of operation very simple.
 
 **runningAvg** - Running average data smoother. Pop in a number, and out popes the average of the last n numbers inputted. Does statistical stuff as well.
 
 **serialStr** - Create a serialStr object and give it a callback function. Now complete c strings will magically show up from the serial port at your callback for you to process.
 
 **squareWave** - Base class for creating objects that are based on square waves. IE. blinking lights, flashing text, RC servo signals. Does NOT use interrupts or hardware PWM. Runs in background.
+
+**strTools** - A grab bag of c string tools. upCase(), lwrCase(). Pass in a c string and they will make all the letters either uppercase or lower case. heapStr(), freeStr(). Pass in the address of a char* and a source c string. This will store a copy of the source to the char*. freeStr() will recycle the char*'s RAM. tempStr is a stack based class designed to hold local copies of passed in c strings. Automatically recycles its RAM when going out of scope.
 
 **textBuff** - Ring buffer for text. Handy for hardware that can pass in a lot of text at random times that you need to process. 
 
