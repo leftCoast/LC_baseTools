@@ -1,6 +1,6 @@
 # LC_baseTools
 Tools to make programming Arduinos easier. 
-WARNING : DO NOT USE THIS VERSION. USE THE VERSION YOU CAN FIND ON THE ARDUINO IDE LIBRARY MANAGER! THIS VERSION IS.. In flux.
+**WARNING : DO NOT USE THIS VERSION. USE THE VERSION YOU CAN FIND ON THE ARDUINO IDE LIBRARY MANAGER! THIS VERSION IS.. In flux.**
 
 **blinker** - Blinks an LED without using delay(). On any output pin. Does NOT use interrupts or hardware PWM.
 
