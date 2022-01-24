@@ -1,11 +1,10 @@
 # LC_baseTools
-Tools to make programming Arduinos easier.
+Tools to make programming Arduinos easier. 
+*WARNING : DO NOT USE THIS VERSION. USE THE VERSION YOU CAN FIND ON THE ARDUINO IDE LIBRARY MANAGER! THIS VERSION IS.. In flux.*
 
 **blinker** - Blinks an LED without using delay(). On any output pin. Does NOT use interrupts or hardware PWM.
 
 **colorObj** - Used for everything dealing with colors. Storing, translating, passing from computer to hardware and back. Blending, linear and non-linear color mapping.
-
-**debug** - Grab bag of debugging tools. Includes ST (Stack trace). Put ST at the start of a function. Then, that function's name prints on the serial monitor when executed.
 
 **idlers** - Contains the idler class used to make objects that function in the background. Also includes the support code to make this happen automatically.
 
@@ -17,11 +16,9 @@ Tools to make programming Arduinos easier.
 
 **multiMap** - Non-linear mapping function. Starts out blank and the user adds x,y points to it before use.
 
-**resizeBuff** - Simplified memory management. Initialize your pointers to NULL then resizeBuff() can allocate and deallocate your dynamic buffer space for you. Passes back true for successful allocations, false for unsuccessful. Saves a lot of code typing.
+**resizeBuff** - Simplified memory management. Initialize your pointers to NULL then resizeBuff() can allocate and deallocate your dynamic buffer space for you. Passes back true for successful allocations, false for unsuccessful. Saves a lot of code typing. Now includes maxBuff, heapStr and tempStr. You'll have to look in the code to see what those little goodies can do.
 
-**maxBuff** - Allocates a buffer as big as it can and returns how many "loads" it will take to haul your data. If allocated as a local variable, it will auto recycle the memory used at end of your function.
-
-**runningAvg** - Running average data smoother. Pop in a number, and out popes the average of the last n numbers inputted.
+**runningAvg** - Running average data smoother. Pop in a number, and out popes the average of the last n numbers inputted. Does statistical stuff as well.
 
 **serialStr** - Create a serialStr object and give it a callback function. Now complete c strings will magically show up from the serial port at your callback for you to process.
 
