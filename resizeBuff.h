@@ -7,7 +7,7 @@
 
 //****************************************************************************************
 //                   TOOLS FOR THOSE THAT DON'T FEAR DYNAMIC MEMORY 	
-//                IF YOU CAN'T STAND THE HEAT, GET OUT OF THE KITCHEN!
+//               SO, IF YOU CAN'T STAND THE HEAT, GET OUT OF THE KITCHEN!
 //****************************************************************************************
 
 
@@ -49,8 +49,8 @@
 // NOTE : Why a pointer to uint8_t?
 // Originally this was setup at char* because it started with c strings. Then It started
 // being used for binary data blocks. Then binary data blocks crossing over serial to
-// other processors.. Word size stuff bit me in the.. Foot. uint8_t  forced buffer sizes
-// to match up.
+// other processors.. Word size stuff bit me in the.. Foot. uint8_t forced buffer sizes to
+// match up.
 //****************************************************************************************
 
 extern bool resizeBuff(int numBytes,uint8_t** buff);
@@ -83,6 +83,34 @@ extern bool resizeBuff(int numBytes,void** buff);
 //
 // NOTE : This should be allocated as a local variable. Then on exit, it will recycle the
 // buffer. Pretty slick huh?
+//
+//
+// Here is an example from my code library of this in use, so you can see how it works.
+// This is my file version of strcat(). Copies one file to the end of another.
+//
+// fcat() : The file version of strcat(). The dest file must be open for writing. The src
+// file must be, at least, open for reading. (Writing is ok too) The dest file index is
+// left pointing to the end of the file. The src file index is not changed.
+// void fcat(File dest,File src) {
+// 	
+// 	unsigned long	filePos;
+// 	maxBuff	cpyBuff(src.size());
+// 	unsigned long	numBytes;
+// 	unsigned long	remaingBytes;
+// 	
+// 	dest.seek(dest.size());												// Point at end of the dest file.
+// 	filePos = src.position();											// Lets save the file pos for miss user.
+// 	src.seek(0);															// Point at first byte of the src file.
+// 	remaingBytes = src.size();											// Get the remaining bytes to copy.
+// 	for (int i=0;i<cpyBuff.numPasses;i++) {						// For every pass through..
+// 		numBytes = min(cpyBuff.numBuffBytes,remaingBytes);		// Use buffer size or remaining bytes.
+// 		src.read(cpyBuff.theBuff,numBytes);							// Fill the buffer.
+// 		dest.write((char*)(cpyBuff.theBuff),numBytes);			// Write out the buffer.
+// 		remaingBytes = remaingBytes - numBytes;					// Recalculate the remaining bytes.
+// 	}																			// 
+// 	src.seek(filePos);													// Put it back like we found it.					
+// }
+//
 //****************************************************************************************
 
 

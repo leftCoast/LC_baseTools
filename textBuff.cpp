@@ -93,7 +93,7 @@ char textBuff::readChar(void) {
 int textBuff::buffSize(void) {return numBytes; }
 
 
-// Return the numnber of charactors stored in the buffer.
+// Return the numnber of charactors THAT ARE stored in the buffer.
 int textBuff::numChars(void) {
 
   if (empty()) {                      // If its empty..
@@ -121,10 +121,11 @@ void  textBuff::clear(void) {
 
   head = 0;
   tail = 0;
+  isFull = false;	// In any case we are no longer full. (Missed that in the original)
 }
 
 
-// Inctment an index. Hop over to zero if we go past the end.
+// Increment an index. Hop over to zero if we go past the end.
 void textBuff::inc(int* index) {
 
   *index = *index + 1;			// Bump up this index.
@@ -132,3 +133,4 @@ void textBuff::inc(int* index) {
     *index = 0;					// Set it to zero.
   }
 }
+
