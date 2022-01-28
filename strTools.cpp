@@ -83,7 +83,7 @@ void freeStr(char** resultStr) { resizeBuff(0,resultStr); }
 //****************************************************************************************
 
 	
-tempStr::tempStr(char* inStr) {
+tempStr::tempStr(const char* inStr) {
 	
 	theStr = NULL;
 	if (inStr) {
@@ -94,10 +94,10 @@ tempStr::tempStr(char* inStr) {
 	
 tempStr::~tempStr(void) { freeStr(&theStr); }
 	
-void tempStr::setStr(char* inStr) { heapStr(&theStr,inStr); }
+void tempStr::setStr(const char* inStr) { heapStr(&theStr,inStr); }
 
 int tempStr::numChars(void) { return strlen(theStr); }
 
-char* tempStr::getStr(void) { return theStr; }
+const char* tempStr::getStr(void) { return theStr; }
 				
 		

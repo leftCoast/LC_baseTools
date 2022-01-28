@@ -70,12 +70,12 @@ extern void freeStr(char** resultStr);
 class tempStr {
 
 	public:
-				tempStr(char* inStr=NULL);
+				tempStr(const char* inStr=NULL);
 	virtual	~tempStr(void);
 	
-				void	setStr(char* inStr);
+				void	setStr(const char* inStr);
 				int	numChars(void);
-				char* getStr(void);
+				const char* getStr(void);
 				
 				char*	theStr;
 };
