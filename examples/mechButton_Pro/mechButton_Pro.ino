@@ -95,7 +95,7 @@ void proButton::takeAction(void) {
 // ***********************************************************
 
 
-proButton button1(2);  // Set button1 to pin 2.
+proButton button1(BUTTON_PIN1);  // Set button1 to pin 2.
 
 
 // Your standard sketch setup()
