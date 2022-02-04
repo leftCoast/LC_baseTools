@@ -1,7 +1,7 @@
 #include <mechButton.h>
 #include <idlers.h>
 
-#define BUTTON_PIN1  2     // Pin we'll hook the button to. The other side hooks to ground.
+#define BUTTON_PIN  2     // Pin we'll hook the button to. The other side hooks to ground.
 #define LED_PIN      13    // Usual pin number for built in LED.
 
 
@@ -95,7 +95,7 @@ void proButton::takeAction(void) {
 // ***********************************************************
 
 
-proButton button1(BUTTON_PIN1);  // Set button1 to pin 2.
+proButton button1(BUTTON_PIN);  // Set button1 to pin 2.
 
 
 // Your standard sketch setup()

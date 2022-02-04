@@ -95,7 +95,7 @@ class tempStr {
 //****************************************************************************************
 
 
-char*	returnStr;
+extern char*	returnStr;
 
 
 #endif
