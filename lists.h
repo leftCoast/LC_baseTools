@@ -47,7 +47,7 @@ class linkList {
     virtual linkListObj*	getLast(void);
     virtual linkListObj*	findMax(linkListObj* anObj);
     virtual linkListObj*	findMin(linkListObj* anObj);
-    virtual	void				sort(bool decending);
+    virtual	void				sort(bool ascending);
     
     		int			 		getCount(void);
     		linkListObj* 		getByIndex(int index);
