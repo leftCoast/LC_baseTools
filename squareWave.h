@@ -1,8 +1,8 @@
 #ifndef squareWave_h
 #define squareWave_h
 
-#include	"timeObj.h"
-#include	"idlers.h"
+#include    "timeObj.h"
+#include    "idlers.h"
 
 
 
@@ -21,7 +21,7 @@
 // loop no matter what, just call hookup() in something like a begin() method or something.
 // Then everything will be fine.
 //
-// Using an Arduino UNO the pulse width dithers about 20 microseconds. 
+// Using an Arduino UNO the pulse width dithers about 20 microseconds.
 // Meaning : For a RC servo you get about 2% error.
 //
 // Using a Teensy 3.2 You get a freq dither of 8 micros & granularity of 5 micros. pulse
@@ -31,45 +31,44 @@
 
 
 class squareWave : public idler {
-	
-	enum waveState { sittinIdle, ridingHi, ridingLow };
-	
-	public:
-				squareWave(void);
-				squareWave(float periodMs,float pulseMs, bool blocking=false);
-	virtual	~squareWave(void);
-				
-				bool	running(void);
-				bool	pulseHiLow(void);
-	virtual	void	setPeriod(float ms);
-	virtual	void	setPulse(float ms);
-	virtual	void	setPercent(float perc);
-	virtual	void	setBlocking(bool onOff);
-	virtual	void	setOnOff(bool onOff);
-	
-	virtual	void	pulseOn(void);
-	virtual	void	pulseOff(void);
-	virtual	void	idle(void);
-				
-				//void	printState(void);		// For debugging.
-	protected:
-	
-				void	init(void);
-	virtual	void	block(void);
-	virtual	void	startWave(void);
-				void	ourPulseOn(void);
-				void	ourPulseOff(void);
-				
-				waveState	mState;
-				bool			mSignal;
-				timeObj		mPeriod;
-				bool			mPeriodChange;
-				float			mNextPeriod;
-				timeObj		mPulse;
-				bool			mPulseChange;
-				float			mNextPulse;
-				bool			mBlocking;
+
+    enum waveState { sittinIdle, ridingHi, ridingLow };
+
+    public:
+                squareWave(void);
+                squareWave(float periodMs,float pulseMs, bool blocking=false);
+    virtual ~squareWave(void);
+
+            bool    running(void);
+            bool    pulseHiLow(void);
+    virtual void    setPeriod(float ms);
+    virtual void    setPulse(float ms);
+    virtual void    setPercent(float perc);
+    virtual void    setBlocking(bool onOff);
+    virtual void    setOnOff(bool onOff);
+
+    virtual void    pulseOn(void);
+    virtual void    pulseOff(void);
+    virtual void    idle(void);
+
+                //void  printState(void);                  // For debugging.
+    protected:
+
+            void    init(void);
+    virtual void    block(void);
+    virtual void    startWave(void);
+            void    ourPulseOn(void);
+            void    ourPulseOff(void);
+
+                waveState   mState;
+                bool            mSignal;
+                timeObj     mPeriod;
+                bool            mPeriodChange;
+                float           mNextPeriod;
+                timeObj     mPulse;
+                bool            mPulseChange;
+                float           mNextPulse;
+                bool            mBlocking;
 };
 
 #endif
-				

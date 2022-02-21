@@ -10,9 +10,9 @@ bool idling = false;
 
 
 // Our call that goes into loop() to run the idlers.
-void idle(void) { 
+void idle(void) {
   idling = true;
-  theIdlers.idle(); 
+  theIdlers.idle();
   idling = false;
 }
 
@@ -21,10 +21,10 @@ void idle(void) {
 // wait. Just drops out if called in idle time.
 void sleep(float ms) {
 
-	timeObj sleepTimer(ms);
-	if (!idling) {
-		while(!sleepTimer.ding()) idle();
-	}
+    timeObj sleepTimer(ms);
+    if (!idling) {
+        while(!sleepTimer.ding()) idle();
+    }
 }
 
 
@@ -32,8 +32,8 @@ void sleep(float ms) {
 // idler, base object to give things the ability to run behind the scenes.
 // *******************************
 
-idler::idler(void) { 
-  hookedIn = false; 
+idler::idler(void) {
+  hookedIn = false;
 }
 
 
@@ -65,7 +65,7 @@ void idler::idle(void) { }
 
 
 // *******************************
-// idlers, management for the list of idlers. 
+// idlers, management for the list of idlers.
 // Is delared as a global and runs in th background.
 // *******************************
 

@@ -25,7 +25,7 @@
 
 class oneShot :   timeObj,
                   public idler {
-                     
+
    public:
                   oneShot(int inPin,float shotTime,int outPin=13,bool outHiLow=true);
    virtual        ~oneShot(void);
@@ -35,7 +35,7 @@ class oneShot :   timeObj,
 
    protected:
             enum   oneShotStates  { preStart, running, waitForRelease };
-            
+
             oneShotStates  mOurState;
             mechButton*    mButton;
             int            mOutPin;
