@@ -16,11 +16,13 @@
 // don't use delay(). That will stop everything.
 //****************************************************************************************
 
+#define DEF_BUFF_BYTES	64
+
 
 class serialStr :  public idler {
 
    public:
-               serialStr(Stream* inPort=&Serial,char endChar='\n',int numBytes=64);
+               serialStr(Stream* inPort=&Serial,char endChar='\n',int numBytes=DEF_BUFF_BYTES);
    virtual     ~serialStr(void);
 
                void  setCallback(void(*funct)(const char*)); // Use a callback for a complete string.

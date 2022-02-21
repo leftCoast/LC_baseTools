@@ -1,0 +1,521 @@
+#######################################
+#
+# Syntax Coloring Map For blinker
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+blinker	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~blinker	KEYWORD2		
+setOnOff	KEYWORD2
+blinking	KEYWORD2		
+pulseOn	KEYWORD2
+pulseOff	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+defPin	LITERAL1
+defOnMs	LITERAL1
+defPeriodMs	LITERAL1
+
+
+
+#######################################
+#
+# Syntax Coloring Map For colorObj
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+colorObj	KEYWORD1
+RGBpack	KEYWORD1
+colorMapper	KEYWORD1
+colorMultiMap	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~colorObj 	KEYWORD2
+setColor	KEYWORD2
+getColor16	KEYWORD2
+getGreyscale	KEYWORD2
+getRed	KEYWORD2
+getGreen	KEYWORD2
+getBlue	KEYWORD2
+packColor	KEYWORD2
+mixColors	KEYWORD2				
+blend	KEYWORD2
+
+~colorMapper	KEYWORD2
+setColors	KEYWORD2
+map	KEYWORD2
+
+~colorMultiMap	KEYWORD2
+addColor	KEYWORD2
+clearMap	KEYWORD2
+map	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+LC_BLACK	LITERAL1
+LC_CHARCOAL	LITERAL1
+LC_DARK_GREY	LITERAL1
+LC_GREY	LITERAL1
+LC_LIGHT_GREY	LITERAL1
+LC_WHITE	LITERAL1
+
+LC_RED	LITERAL1
+LC_PINK	LITERAL1
+
+LC_GREEN	LITERAL1
+LC_DARK_GREEN	LITERAL1
+LC_OLIVE	LITERAL1
+
+LC_BLUE	LITERAL1
+LC_LIGHT_BLUE	LITERAL1
+LC_NAVY	LITERAL1
+
+LC_PURPLE	LITERAL1
+LC_LAVENDER	LITERAL1
+LC_ORANGE	LITERAL1
+
+LC_CYAN	LITERAL1
+LC_MAGENTA	LITERAL1
+LC_YELLOW	LITERAL1
+
+red	LITERAL1
+blue	LITERAL1
+white	LITERAL1
+black	LITERAL1
+green	LITERAL1
+cyan	LITERAL1
+magenta	LITERAL1
+yellow	LITERAL1
+
+
+
+#######################################
+#
+# Syntax Coloring Map For idler
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+idler	KEYWORD1
+idlers	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~idler	KEYWORD2
+hookup	KEYWORD2
+idle	KEYWORD2
+hookedIn	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+#######################################
+#
+# Syntax Coloring Map For lists
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+linkListObj	KEYWORD1
+linkList	KEYWORD1
+stack		KEYWORD1
+queue		KEYWORD1
+dblLinkListObj	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~linkListObj	KEYWORD2
+linkAfter	KEYWORD2
+linkToEnd	KEYWORD2
+getNext	KEYWORD2
+setNext	KEYWORD2
+deleteTail	KEYWORD2
+isGreaterThan	KEYWORD2
+isLessThan	KEYWORD2
+
+~linkList	KEYWORD2
+addToTop	KEYWORD2
+addToEnd	KEYWORD2
+unlinkTop	KEYWORD2
+unlinkObj	KEYWORD2
+dumpList	KEYWORD2
+isEmpty	KEYWORD2
+getFirst	KEYWORD2
+getLast	KEYWORD2
+findMax	KEYWORD2
+findMin	KEYWORD2
+sort	KEYWORD2
+getCount	KEYWORD2
+getByIndex	KEYWORD2
+findIndex	KEYWORD2
+looseList	KEYWORD2
+
+~stack	KEYWORD2
+push	KEYWORD2
+pop	KEYWORD2
+peek	KEYWORD2
+
+~queue	KEYWORD2
+push	KEYWORD2
+pop	KEYWORD2
+peek	KEYWORD2
+
+~dblLinkListObj	KEYWORD2
+linkAfter	KEYWORD2
+linkBefore	KEYWORD2
+getFirst	KEYWORD2
+getLast	KEYWORD2
+linkToEnd	KEYWORD2
+linkToStart	KEYWORD2
+getTailObj	KEYWORD2
+unhook	KEYWORD2
+dumpTail	KEYWORD2
+dumpHead	KEYWORD2.
+dumpList	KEYWORD2
+countTail	KEYWORD2
+countHead	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+
+#######################################
+#
+# Syntax Coloring Map For mapper
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+mapper	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~mapper	KEYWORD2
+map	KEYWORD2
+setValues	KEYWORD2
+getSlope	KEYWORD2
+getMinX	KEYWORD2
+getMaxX	KEYWORD2
+getIntercept	KEYWORD2
+integrate	KEYWORD2
+integrate	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+
+#######################################
+#
+# Syntax Coloring Map For mechButton
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+mechButton	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~mechButton	KEYWORD2
+trueFalse	KEYWORD2
+setCallback	KEYWORD2
+takeAction	KEYWORD2
+idle()	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+
+#######################################
+#
+# Syntax Coloring Map For multiMap
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+multiMap	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~multiMap	KEYWORD2
+addPoint	KEYWORD2
+clearMap	KEYWORD2
+map	KEYWORD2
+integrate	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+
+#######################################
+#
+# Syntax Coloring Map For resizeBuff
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+resizeBuff	KEYWORD1
+maxBuff	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~resizeBuff	KEYWORD2
+~maxBuff	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+	BYTE_CUTOFF	LITERAL1
+	
+	
+	
+#######################################
+#
+# Syntax Coloring Map For runningAvg
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+runningAvg	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~runningAvg	KEYWORD2
+addData	KEYWORD2
+getAve	KEYWORD2
+getMax	KEYWORD2
+getMin	KEYWORD2
+getDelta	KEYWORD2
+getStdDev	KEYWORD2
+getNumValues	KEYWORD2
+getDataItem	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+
+#######################################
+#
+# Syntax Coloring Map For serialStr
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+serialStr	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~serialStr	KEYWORD2
+setCallback	KEYWORD2
+idle	KEYWORD2
+hadOverrun	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+DEF_BUFF_BYTES	LITERAL1
+
+
+
+#######################################
+#
+# Syntax Coloring Map For squareWave
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+squareWave	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~squareWave	KEYWORD2
+running	KEYWORD2
+pulseHiLow	KEYWORD2
+setPeriod	KEYWORD2
+setPulse	KEYWORD2
+setPercent	KEYWORD2
+setBlocking	KEYWORD2
+setOnOff	KEYWORD2
+pulseOn	KEYWORD2
+pulseOff	KEYWORD2
+idle	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+
+#######################################
+#
+# Syntax Coloring Map For strTools
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+tempStr	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+upCase	KEYWORD2
+lwrCase	KEYWORD2
+heapStr	KEYWORD2
+freeStr	KEYWORD2
+~tempStr	KEYWORD2
+setStr	KEYWORD2
+numChars	KEYWORD2
+getStr	KEYWORD2
+
+#######################################
+# Constants & globals (LITERAL1)
+#######################################
+
+returnStr	LITERAL1
+
+
+
+#######################################
+#
+# Syntax Coloring Map For textBuff
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+textBuff	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~textBuff	KEYWORD2
+addChar	KEYWORD2
+addStr	KEYWORD2
+peekHead	KEYWORD2
+readChar	KEYWORD2
+buffSize	KEYWORD2
+numChars	KEYWORD2
+empty	KEYWORD2
+full	KEYWORD2
+clear	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+
+#######################################
+#
+# Syntax Coloring Map For timeObj
+#
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+timeObj	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+~~timeObj	KEYWORD2
+setTime	KEYWORD2
+start	KEYWORD2
+stepTime	KEYWORD2
+ding	KEYWORD2
+getTime	KEYWORD2
+getFraction	KEYWORD2
+reset	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
