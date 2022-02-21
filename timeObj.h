@@ -20,13 +20,13 @@ class timeObj {
     virtual ~timeObj(void);
 
                 void    setTime(float inMs,bool startNow=true); // Change the time duration for next start..
-    virtual void    start(void);                                // Start the timer "now".
-    virtual void    stepTime(void);                             // Restart the timer from last end time.
-                bool    ding(void);                             // Timer has expired.
-                float   getTime(void);                          // How long does this go for?
-                float   getFraction(void);                      // Fuel gauge. What fraction of time is left.
-                void    reset(void);                            // Reset to the preStart state.
-            //void  printState(void);                           // Debugging.
+    virtual void    start(void);                           // Start the timer "now".
+    virtual void    stepTime(void);                        // Restart the timer from last end time.
+                bool    ding(void);                        // Timer has expired.
+                float   getTime(void);                     // How long does this go for?
+                float   getFraction(void);                 // Fuel gauge. What fraction of time is left.
+                void    reset(void);                       // Reset to the preStart state.
+            //void  printState(void);                      // Debugging.
 
     private :
                 enum    timeObjStates   { preStart, running, expired };
