@@ -10,7 +10,7 @@ runningAvg::runningAvg(int inNumData) {
 	resizeBuff(sizeof(float)*inNumData,(byte**)&theValues);
 	maxData		= inNumData;
 	numValues	= 0;
-	index			= 0;
+	index		= 0;
 	mResult		= 0;
 }
 
@@ -24,17 +24,17 @@ float runningAvg::addData(float inData) {
   
   float sum;
   
-	if (numValues<maxData) {          // Early stages while filling.
-		theValues[index++] = inData;	// Never been full so index must be ok.
+	if (numValues<maxData) {                // Early stages while filling.
+		theValues[index++] = inData;	    // Never been full so index must be ok.
 		numValues++;
 	} else {
-		if (index==maxData) {			// Meaning its pointing past the array.
+		if (index==maxData) {			    // Meaning its pointing past the array.
 			index = 0;						// Cycle around.
 		}
-		theValues[index++] = inData;	// And stuff the value in.
+		theValues[index++] = inData;	    // And stuff the value in.
 	}
 	sum = 0;
-	for (int i=0;i<numValues;i++) {	// We loop up to numValues but not including numValues.
+	for (int i=0;i<numValues;i++) {	        // We loop up to numValues but not including numValues.
 		sum = sum + theValues[i];
 	}
 	mResult = sum/numValues;

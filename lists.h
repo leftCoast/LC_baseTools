@@ -19,10 +19,10 @@ class linkListObj {
     
     virtual	void 				linkAfter(linkListObj* anObj);			// Given a pointer to a node, link yourself after it.
     virtual	void 				linkToEnd(linkListObj* anObj);			// Given a pointer to a node, link yourself after the last in the chain.
-    virtual linkListObj*	getNext(void);									// Pass back the next pointer.
+    virtual linkListObj*	getNext(void);									  // Pass back the next pointer.
     virtual	void				setNext(linkListObj* ptr);					// Point somewhere else.
-    virtual void				deleteTail(void);								// Call delete on everyone hooked to us.
-    virtual bool				isGreaterThan(linkListObj* compObj);	// Are we greater than the obj being passed in? Primary sorting function.
+    virtual void				deleteTail(void);								    // Call delete on everyone hooked to us.
+    virtual bool				isGreaterThan(linkListObj* compObj);// Are we greater than the obj being passed in? Primary sorting function.
     virtual bool				isLessThan(linkListObj* compObj);		// Are we less than the obj being passed in? Primary sorting function.
   
   protected :
@@ -39,9 +39,9 @@ class linkList {
     
     virtual void         	addToTop(linkListObj* newObj);
     virtual void         	addToEnd(linkListObj* newObj);
-    virtual void				unlinkTop(void);						// Push off the first one.
-    virtual void         	unlinkObj(linkListObj* oldObj);	// Find it and push this one off.
-    virtual	void		 		dumpList(void);						// Call delete on everyone.
+    virtual void				unlinkTop(void);						        // Push off the first one.
+    virtual void         	unlinkObj(linkListObj* oldObj);	  // Find it and push this one off.
+    virtual	void		 		dumpList(void);						          // Call delete on everyone.
     virtual bool				isEmpty(void);
     virtual linkListObj*	getFirst(void);
     virtual linkListObj*	getLast(void);
@@ -51,8 +51,8 @@ class linkList {
     
     		int			 		getCount(void);
     		linkListObj* 		getByIndex(int index);
-    		int					findIndex(linkListObj* anObj);	// returns -1 if NOT found.
-    		void					looseList(void);						// Someone has taken control of our list, let it go.
+    		int					findIndex(linkListObj* anObj);	        // returns -1 if NOT found.
+    		void					looseList(void);						          // Someone has taken control of our list, let it go.
  
  protected :           
     		linkListObj* theList;
@@ -111,19 +111,19 @@ public:
     			dblLinkListObj(void);
 	virtual	~dblLinkListObj(void);
     
-    			void					linkAfter(dblLinkListObj* anObj); 		// Given a pointer to a node, link yourself after it.
-    			void					linkBefore(dblLinkListObj* anObj); 		// Given a pointer to a node, link yourself before it.
+    			void					linkAfter(dblLinkListObj* anObj);   // Given a pointer to a node, link yourself after it.
+    			void					linkBefore(dblLinkListObj* anObj); 	// Given a pointer to a node, link yourself before it.
     			dblLinkListObj*	getFirst(void);
     			dblLinkListObj*	getLast(void);
     			void					linkToEnd(dblLinkListObj* anObj);		// Given a pointer to a node, link yourself after the last in the chain.
-    			void					linkToStart(dblLinkListObj* anObj);		// Given a pointer to a node, link yourself before the first in the chain.
+    			void					linkToStart(dblLinkListObj* anObj);	// Given a pointer to a node, link yourself before the first in the chain.
     			dblLinkListObj*	getTailObj(int index);						// Hand back the "nth" one of our tail. Starting at 0;
-    			void					unhook(void);									// Unhook myself.
-    			void					dumpTail(void);								// Delete entire tail.
-    			void					dumpHead(void);								// Delete entire head section..
-    			void					dumpList(void);								// Delete both head & tail.
-    			int					countTail(void);								// How many nodes long is our tail?
-    			int					countHead(void);								// How many nodes long is our head?
+    			void					unhook(void);									      // Unhook myself.
+    			void					dumpTail(void);								      // Delete entire tail.
+    			void					dumpHead(void);								      // Delete entire head section..
+    			void					dumpList(void);								      // Delete both head & tail.
+    			int					countTail(void);								      // How many nodes long is our tail?
+    			int					countHead(void);								      // How many nodes long is our head?
     			
     			dblLinkListObj*	dllPrev;
     			dblLinkListObj*	dllNext;

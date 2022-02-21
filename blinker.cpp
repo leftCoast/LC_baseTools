@@ -35,10 +35,10 @@ void  blinker::pulseOff(void) {
 void blinker::setOnOff(bool onOff) {
 
 	if (!init) {							// Not intialized?
-		pinMode(pin, OUTPUT);			// Now you are!
+		pinMode(pin, OUTPUT);			    // Now you are!
 		init = true;						// Note it.
 	}
-	if(onOff!=running()) {				// Ignore if no change.
+	if(onOff!=running()) {				    // Ignore if no change.
 		squareWave::setOnOff(onOff);
 	}
 }

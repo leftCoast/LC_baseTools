@@ -21,9 +21,9 @@ class runningAvg {
     			runningAvg(int inNumData);
 	virtual	~runningAvg(void);
     
-    			float addData(float inData);	// Drop in number, receive average.
-    			
-    			float getAve(void);				// ALl the other things no one will ever use.
+    			float addData(float inData);	     // Drop in number, receive average.
+    			     
+    			float getAve(void);				     // ALl the other things no one will ever use.
     			float getMax(void);
     			float getMin(void);
     			float getDelta(void);
@@ -33,11 +33,11 @@ class runningAvg {
   
   protected:
   
-    			int		maxData;			// Total amount allowed.
-    			int		numValues;		// The amount we have.
-    			int		index;			// Write the next value, here.
-    			float*	theValues;		// The array of values.
-    			float		mResult;			// Just in case they ask, we'll keep a copy.
+    			int		maxData;			         // Total amount allowed.
+    			int		numValues;		             // The amount we have.
+    			int		index;			             // Write the next value, here.
+    			float*	theValues;		             // The array of values.
+    			float		mResult;			     // Just in case they ask, we'll keep a copy.
 };
 
 #endif

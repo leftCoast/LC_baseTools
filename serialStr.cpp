@@ -37,12 +37,12 @@ void serialStr::idle(void) {
    if (buff) {									// If we have a buffer to put things in..
 		if (port->available()) {			// If there is a char in the waiting to be read..
 			aChar = port->read();			// Grab and save the char.
-			if (aChar==EOL) {             // If its a newline char..
-				callback(buff);            // Call our callback with the buffer.
-				overrun = false;           // If set, clear the overrun flag.
-				buff[0] = '\0';            // Clear the inBuff string.
-				index = 0;                 // Reset the index to start a new number string.
-			} else {                      // Else, it wasn't a newline char..
+			if (aChar==EOL) {               // If its a newline char..
+				callback(buff);             // Call our callback with the buffer.
+				overrun = false;            // If set, clear the overrun flag.
+				buff[0] = '\0';             // Clear the inBuff string.
+				index = 0;                  // Reset the index to start a new number string.
+			} else {                        // Else, it wasn't a newline char..
 				if (index<(bytes-1)) {		// If we have room in the buffer..
 					buff[index++] = aChar;  // So we save the char we got into the c string.
 					buff[index] = '\0';     // And pop an end of string after it.

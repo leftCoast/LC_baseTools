@@ -71,11 +71,11 @@ void clickLBtn(void) {
 // When the RIGHT button is clicked, this is called..
 void clickRBtn(void) {
 
-  if (!rButton.trueFalse()) {         // If the button has been grounded..
-    if (currentState == blinkRight) { // If we are already doing this mode..
-      setBlinkers(blinkOff);          // We just shut off everything.
-    } else {                          // Else, doing something else..
-      setBlinkers(blinkRight);        // We switch to our mode.
+  if (!rButton.trueFalse()) {             // If the button has been grounded..
+    if (currentState == blinkRight) {     // If we are already doing this mode..
+      setBlinkers(blinkOff);              // We just shut off everything.
+    } else {                              // Else, doing something else..
+      setBlinkers(blinkRight);            // We switch to our mode.
     }
   }
 }

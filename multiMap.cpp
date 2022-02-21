@@ -160,29 +160,29 @@ mapPoint* multiMap::getFirst() { return (mapPoint*) linkList::getFirst(); }
 // mapping. (Or integrations)
 bool multiMap::setUp(void) {
 
-   mReady = false;                     // Well, they called us, assume its not ready.
-   if (!isEmpty()) {                   // If we have a list of points.
-      sort(true);                      // Sort the list.
-      getFirst()->createUpMappers();   // Create new set of mappers.
-      mReady = true;                   // Note we open for business!
+   mReady = false;                                               // Well, they called us, assume its not ready.
+   if (!isEmpty()) {                                             // If we have a list of points.
+      sort(true);                                                // Sort the list.
+      getFirst()->createUpMappers();                             // Create new set of mappers.
+      mReady = true;                                             // Note we open for business!
    }
-   return mReady;								// Return our result.
+   return mReady;								                          // Return our result.
 }
 
 
 // Meat and potatoes, what we live for. Give us a value and we'll map it to the curve.
 double multiMap::map(double inX) {
       
-   if (!isEmpty()) {                      // If we have points..
-      if (mReady) {                       // If we are ready (Sorted with mappers)
-         return getFirst()->map(inX);     // Return the resulting mapped value;
-      } else {                            // Else, we are not ready..
-         if (setUp()) {                   // If we can get ready..                  
-            return getFirst()->map(inX);  // Return the mapped result.
+   if (!isEmpty()) {                                             // If we have points..
+      if (mReady) {                                              // If we are ready (Sorted with mappers)
+         return getFirst()->map(inX);                            // Return the resulting mapped value;
+      } else {                                                   // Else, we are not ready..
+         if (setUp()) {                                          // If we can get ready..                  
+            return getFirst()->map(inX);                         // Return the mapped result.
          }
       }
    }
-   return 0;                              // Mrs user is all screwed up. Return a zero.
+   return 0;                                                     // Mrs user is all screwed up. Return a zero.
 }
 
 

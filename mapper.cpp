@@ -16,10 +16,10 @@ mapper::~mapper(void) { }
 // Setup all the values and do what calculations we can beforhand.
 void mapper::setValues(double x1,double x2,double y1,double y2) {
   
-  maxX = max(x1,x2);				// I wonder where it's piking up max()?
-  minX = min(x1,x2);				// Or min() for that matter.
-  slope = (y1-y2)/(x1-x2);		// Do the slope calculation.
-  intercept = y1 - slope*x1;	// And work out our y intercept.
+  maxX = max(x1,x2);				                    // I wonder where it's piking up max()?
+  minX = min(x1,x2);				                    // Or min() for that matter.
+  slope = (y1-y2)/(x1-x2);		                  // Do the slope calculation.
+  intercept = y1 - slope*x1;	                  // And work out our y intercept.
 }
 
 // These next four are pretty much self evident. Return copies of the values we save.
@@ -39,10 +39,10 @@ double mapper::getIntercept(void) { return intercept; }
 // Return the result.
 double mapper::map(double inNum) {
 
-  if (inNum < minX)					// If inNum is less that our minimum..
-    inNum = minX;						// We, I? anyway.. We set inNum to the minimum.
-  else if (inNum > maxX)			// Else, if inNum is greater than maximum.. 
-    inNum = maxX;						// Set inNum to the maximum..
+  if (inNum < minX)					                    // If inNum is less that our minimum..
+    inNum = minX;						                    // We, I? anyway.. We set inNum to the minimum.
+  else if (inNum > maxX)			                  // Else, if inNum is greater than maximum.. 
+    inNum = maxX;						                    // Set inNum to the maximum..
   return(slope*inNum+intercept);	// return the filtered input's calculation.
 }
 

@@ -29,9 +29,9 @@
 */
 
 
-runningAvg  smoother(5);   // Our smoother. You can change the number of datapoints it will act on.
-char        inBuff[80];    // A char buffer (c string) to hold your typings.
-int         charIndex;     // An index to be used in storing charactors into our char buffer.
+runningAvg  smoother(5);              // Our smoother. You can change the number of datapoints it will act on.
+char        inBuff[80];               // A char buffer (c string) to hold your typings.
+int         charIndex;                // An index to be used in storing charactors into our char buffer.
 
 
 // Standard setup stuff..

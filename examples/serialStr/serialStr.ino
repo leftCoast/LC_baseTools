@@ -28,12 +28,12 @@ void haveStr(const char* inStr) {
    
    int i=0;
 
-   if (strReader.hadOverrun()) {                         // If we had an overrun..
-      Serial.println(F("Oh no! overrun! Lost data!"));   // Tell the user.
+   if (strReader.hadOverrun()) {                           // If we had an overrun..
+      Serial.println(F("Oh no! overrun! Lost data!"));     // Tell the user.
    }
-   Serial.print(F("Entered : "));                        // Show what we got..
+   Serial.print(F("Entered : "));                          // Show what we got..
    Serial.println(inStr);                             
-   Serial.print(F("Reply   : "));                        // Show our reply.
+   Serial.print(F("Reply   : "));                          // Show our reply.
    while(inStr[i]) {
       Serial.print((char)toupper(inStr[i++]));
    }

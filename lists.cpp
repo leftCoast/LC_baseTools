@@ -32,7 +32,7 @@ void linkListObj::linkAfter(linkListObj* anObj) {
 // tail. We can do that too.
 void linkListObj::linkToEnd(linkListObj* anObj) {
 
-	if (anObj) {                      // If they're handing us NULL pointers, this is not our problem.
+	if (anObj) {                        // If they're handing us NULL pointers, this is not our problem.
 		while(anObj->next!=NULL) {		// There's more?!
 			anObj = anObj->next;		// jump over to the next one!
 		}											// We should be sitting on the last one now..
@@ -95,9 +95,9 @@ linkList::~linkList(void) { dumpList(); }
 // Add a SINGLE node to the top of our list.
 void linkList::addToTop(linkListObj* newObj) {
 
-	newObj->setNext(NULL);			// Just in case its not NULL, we'll re-stamp it.
+	newObj->setNext(NULL);			    // Just in case its not NULL, we'll re-stamp it.
 	if (newObj) {						// Sanity. Don't try to access a NULL pointer!
-		newObj->setNext(theList);  // Empty or not, it does the right thing.
+		newObj->setNext(theList);       // Empty or not, it does the right thing.
 		theList = newObj;				// And we set our pointer to the newObj. (Its at the top)
 	}
 }
@@ -110,7 +110,7 @@ void linkList::addToEnd(linkListObj* newObj) {
 		if (theList==NULL) {					// No list huh?
 			theList = newObj;					// Set our pointer to the new object.
 		}  else {								// Else there is some nodes hooked to us..
-			newObj->linkToEnd(theList);	// Run along little object, go find your friends and link yourself in.
+			newObj->linkToEnd(theList);	        // Run along little object, go find your friends and link yourself in.
 		}
 	}
 }
@@ -123,8 +123,8 @@ void linkList::unlinkTop(void) {
 	linkListObj* temp;
 	
 	if (theList) {								// if we have something there.
-		temp = theList;						// Save off the top, just in case.
-		theList = theList->getNext();		// unlink.
+		temp = theList;						    // Save off the top, just in case.
+		theList = theList->getNext();		    // unlink.
 		temp->setNext(NULL);					// They may want to reuse this. So reset next to NULL.
 	}
 }
@@ -136,17 +136,17 @@ void linkList::unlinkObj(linkListObj* oldObj) {
 
   linkListObj* temp;
   
-  if (oldObj) {																	// If they didn't hand us a NULL pointer. (The'll try that just to keep us on your toes.)
-    if(theList==oldObj) {														// If we're already pointing at it.
-      unlinkTop();																// Unlink. (Takes care of resetting next to NULL.)
-    }  else {																		// Else, we ain't pointing at it..
-      temp = theList;															// We're going to have to go look for it.
+  if (oldObj) {													// If they didn't hand us a NULL pointer. (The'll try that just to keep us on your toes.)
+    if(theList==oldObj) {										// If we're already pointing at it.
+      unlinkTop();												// Unlink. (Takes care of resetting next to NULL.)
+    }  else {													// Else, we ain't pointing at it..
+      temp = theList;											// We're going to have to go look for it.
       while(temp->getNext()!=oldObj && temp->getNext()!=NULL) {	// While the next node is not what we are looking for and we ain't run out..
-        temp = temp->getNext();												// Jump to the next node.
+        temp = temp->getNext();									// Jump to the next node.
       }
-      if (temp->getNext()==oldObj) {										// If the next node IS what we were looking for..
-        temp->setNext(oldObj->getNext());									// Unlink it.
-        oldObj->setNext(NULL);												// Cap it off for possible reuse.
+      if (temp->getNext()==oldObj) {							// If the next node IS what we were looking for..
+        temp->setNext(oldObj->getNext());						// Unlink it.
+        oldObj->setNext(NULL);									// Cap it off for possible reuse.
       }
     }
   }     
@@ -156,12 +156,12 @@ void linkList::unlinkObj(linkListObj* oldObj) {
 // Calls delete on all the object of the list.
 void linkList::dumpList(void) {
 
-	linkListObj*	trace;	// Temp pointer.
+	linkListObj*	trace;	                                   // Temp pointer.
 	
-	while(theList) {			// While we still have something in the list.
-		trace = getFirst();	// Point at the top of the list.
-		unlinkTop();			// Unlink the top.
-		delete(trace);			// Delete the old top.
+	while(theList) {			                               // While we still have something in the list.
+		trace = getFirst();	                                   // Point at the top of the list.
+		unlinkTop();			                               // Unlink the top.
+		delete(trace);			                               // Delete the old top.
 	}	
 }
 
@@ -179,13 +179,13 @@ linkListObj*  linkList::getLast(void) {
 
 	linkListObj*	trace;
 
-	trace = theList;							// Point at the top of the list.
-	if(trace) {									// If we don't have a NULL.. (Not empty)
-		while(trace->getNext()) {			// While there are still nodes in our tail.
-			trace = trace->getNext();		// Jump to the next node.
+	trace = theList;							               // Point at the top of the list.
+	if(trace) {									               // If we don't have a NULL.. (Not empty)
+		while(trace->getNext()) {			                   // While there are still nodes in our tail.
+			trace = trace->getNext();		                   // Jump to the next node.
 		}
 	}
-	return trace;								// In all cases, this ends up as what they were looking for.
+	return trace;								               // In all cases, this ends up as what they were looking for.
 }
 	
 
@@ -195,13 +195,13 @@ int linkList::getCount(void) {
 		linkListObj*	trace;
 		int				count;
 	
-		count = 0;							// Initialize the counter.				
-		trace = theList;					// Point at the top of the list. Or NULL of no list..
-		while(trace) {						// While we are not pointing to NULL..
-			count++;							// Bump up the counter
-			trace = trace->getNext();	// Jump to the next node.
+		count = 0;							                   // Initialize the counter.				
+		trace = theList;					                   // Point at the top of the list. Or NULL of no list..
+		while(trace) {						                   // While we are not pointing to NULL..
+			count++;						                   // Bump up the counter
+			trace = trace->getNext();	                       // Jump to the next node.
 		}
-		return count;						// return the resul. Easy peasy.
+		return count;						                   // return the resul. Easy peasy.
 	}
 	
 	
@@ -211,15 +211,15 @@ linkListObj* linkList::getByIndex(int index) {
 
 	linkListObj*	trace;
 	
-	if (index>=0) {							// Sanity, may be a Bozo calling.
-		trace = theList;						// Point at the top of the list. Or NULL of no list..
-		while(trace && index) {				// While we're not pointing at NULL and index is > zero..
-			trace = trace->getNext();		// We jump to the next node.
+	if (index>=0) {							        // Sanity, may be a Bozo calling.
+		trace = theList;						    // Point at the top of the list. Or NULL of no list..
+		while(trace && index) {				        // While we're not pointing at NULL and index is > zero..
+			trace = trace->getNext();		        // We jump to the next node.
 			index--;								// And count backwards.
 		}
-		return trace;							// Either we ran out of nodes or the index when to zero. Any way trace is the correct result.
+		return trace;							    // Either we ran out of nodes or the index when to zero. Any way trace is the correct result.
 	}
-	return NULL;								// Negatives get returned a NILL. (Was a Bozo calling)
+	return NULL;								    // Negatives get returned a NILL. (Was a Bozo calling)
 }
 
 
@@ -232,9 +232,9 @@ int linkList::findIndex(linkListObj* anObj) {
 	if (anObj) {									// Sanity, did they give us a valid pointer?
 		trace = theList;							// Point at the top.
 		index = 0;									// Initialize the counter.	 
-		while(trace && trace!=anObj) {		// While we're not pointing at NULL. And not pointing at the node we're looking for..
-			trace = trace->getNext();			// We jump to the next node.
-			index++;									// And we bump up the counter.
+		while(trace && trace!=anObj) {		        // While we're not pointing at NULL. And not pointing at the node we're looking for..
+			trace = trace->getNext();			    // We jump to the next node.
+			index++;								// And we bump up the counter.
 		}
 		if (trace) {								// Loop has exited. If we are not pointing to NULL, we found it.
 			return index;							// Return its index.
@@ -253,12 +253,12 @@ linkListObj*	linkList::findMax(linkListObj* anObj) {
 	maxNode = anObj;									// We start here as the largest.
 	trace = anObj;										// We start here in our search.
 	while(trace) {										// While we're not pointing at NULL..
-		if (trace->isGreaterThan(maxNode)) {	// If what we are pointing at is larger than the largest..
+		if (trace->isGreaterThan(maxNode)) {	        // If what we are pointing at is larger than the largest..
 			maxNode = trace;							// Select what we are pointing at as largest.
 		}
-		trace = trace->getNext();					// Jump to the next node.
+		trace = trace->getNext();					    // Jump to the next node.
 	}
-	return maxNode;									// Return the resulting largest node.
+	return maxNode;									    // Return the resulting largest node.
 }
 
 
@@ -271,12 +271,12 @@ linkListObj*	linkList::findMin(linkListObj* anObj) {
 	minNode = anObj;									// We start here as the smallest.
 	trace = anObj;										// We start here in our search.
 	while(trace) {										// While we're not pointing at NULL..
-		if (trace->isLessThan(minNode)) {		// If what we are pointing at is smaller than the smallest..
+		if (trace->isLessThan(minNode)) {		        // If what we are pointing at is smaller than the smallest..
 			minNode = trace;							// Select what we are pointing at as smallest.
 		}
-		trace = trace->getNext();					// Jump to the next node.
+		trace = trace->getNext();					    // Jump to the next node.
 	}
-	return minNode;									// Return the resulting smallest node.
+	return minNode;									    // Return the resulting smallest node.
 }
 
 
@@ -287,20 +287,20 @@ void linkList::sort(bool ascending) {
 	linkListObj* sorted;
 	linkListObj*	maxMin;
 	
-	sorted = NULL;								// Initialize the new list pointer.
-	while(!isEmpty()) {						// While we have nodes in our list..
-		if (ascending) {						// If smallest to largest..
-			maxMin = findMax(theList);		// Find the largest node in our list.
+	sorted = NULL;								    // Initialize the new list pointer.
+	while(!isEmpty()) {						        // While we have nodes in our list..
+		if (ascending) {						    // If smallest to largest..
+			maxMin = findMax(theList);		        // Find the largest node in our list.
 		} else {									// Else, largest to smallest..
-			maxMin = findMin(theList);		// Find the smallest node in our list.
+			maxMin = findMin(theList);		        // Find the smallest node in our list.
 		}
-		if (maxMin) {							// If we have a found node..
-			unlinkObj(maxMin);				// Unlink it.
-			maxMin->setNext(sorted);		// Point this node to the top of the sorted list.
-			sorted = maxMin;					// Point the sorted list at this node. (We're hand linking a sorted list here)
+		if (maxMin) {							    // If we have a found node..
+			unlinkObj(maxMin);				        // Unlink it.
+			maxMin->setNext(sorted);		        // Point this node to the top of the sorted list.
+			sorted = maxMin;					    // Point the sorted list at this node. (We're hand linking a sorted list here)
 		}
 	}
-	theList = sorted;							// Point to the sorted list as ours.
+	theList = sorted;							    // Point to the sorted list as ours.
 }
 
 
@@ -400,10 +400,10 @@ dblLinkListObj::~dblLinkListObj(void) { unhook(); }
 void dblLinkListObj::linkAfter(dblLinkListObj* anObj) {
     
     if (anObj) {										// Sanity, If they didn't give us a NULL..
-        dllNext = anObj->dllNext;					// Our next pointer gets their next pointer.
-        dllPrev = anObj; 							// Our previous pointer now points back to their node.
-        anObj->dllNext = this;						// Their next pointer now points to us.
-        if (dllNext) dllNext->dllPrev = this;	// If our next pointer is NOT NULL. Point what its pointing to's next pointer, at us. (whew, hard to say)
+        dllNext = anObj->dllNext;					    // Our next pointer gets their next pointer.
+        dllPrev = anObj; 							    // Our previous pointer now points back to their node.
+        anObj->dllNext = this;						    // Their next pointer now points to us.
+        if (dllNext) dllNext->dllPrev = this;	        // If our next pointer is NOT NULL. Point what its pointing to's next pointer, at us. (whew, hard to say)
     }    
 }
 
@@ -412,10 +412,10 @@ void dblLinkListObj::linkAfter(dblLinkListObj* anObj) {
 void dblLinkListObj::linkBefore(dblLinkListObj* anObj) {
     
     if (anObj) {										// Sanity, If they didn't give us a NULL..
-        dllPrev = anObj->dllPrev;					// Our previous pointer now points to what their previous pointer points to.
+        dllPrev = anObj->dllPrev;					    // Our previous pointer now points to what their previous pointer points to.
         dllNext = anObj;								// Our next pointer now points at them, err, their node.
-        anObj->dllPrev = this;						// Their previous pointer now points to us.
-        if (dllPrev) dllPrev->dllNext = this;	// If our next previous is NOT NULL. Point what its pointing to's previous pointer, at us.
+        anObj->dllPrev = this;						    // Their previous pointer now points to us.
+        if (dllPrev) dllPrev->dllNext = this;	        // If our next previous is NOT NULL. Point what its pointing to's previous pointer, at us.
     }
 }
 
@@ -425,11 +425,11 @@ dblLinkListObj* dblLinkListObj::getFirst(void) {
     
     dblLinkListObj*	trace;
     
-    trace = this;						// Point a trace pointer at us.
-    while(trace->dllPrev) {		// While trace's previous pointer is not NULL..
-        trace = trace->dllPrev;	// Jump to the previous node on the list.
+    trace = this;						                // Point a trace pointer at us.
+    while(trace->dllPrev) {		                        // While trace's previous pointer is not NULL..
+        trace = trace->dllPrev;	                        // Jump to the previous node on the list.
     }
-    return trace;						// Return the result.
+    return trace;						                // Return the result.
 }
 
 
@@ -438,11 +438,11 @@ dblLinkListObj* dblLinkListObj::getLast(void) {
     
     dblLinkListObj* trace;
     
-    trace = this;						// Point a trace pointer at us.
-    while(trace->dllNext) {		// While trace's next pointer is not NULL..
-        trace = trace->dllNext;	// Jump to the next node on the list.
+    trace = this;						                // Point a trace pointer at us.
+    while(trace->dllNext) {		                        // While trace's next pointer is not NULL..
+        trace = trace->dllNext;	                        // Jump to the next node on the list.
     }
-    return trace;						// Return the result. 
+    return trace;						                // Return the result. 
 }
 
 
@@ -457,8 +457,8 @@ void dblLinkListObj::linkToStart(dblLinkListObj* anObj) { if (anObj) linkBefore(
 // Unlink us and, if in list, patch the hole.
 void dblLinkListObj::unhook(void) {
     
-    if (dllPrev) dllPrev->dllNext = dllNext;		// If our previous pointer is not NULL.. Point our previous nodes next pointer, to what our next pointer is point at.
-    if (dllNext) dllNext->dllPrev = dllPrev;		// If our next pointer is not NULL.. Point our next nodes previous pointer, to what our previous pointer is point at.
+    if (dllPrev) dllPrev->dllNext = dllNext;		    // If our previous pointer is not NULL.. Point our previous nodes next pointer, to what our next pointer is point at.
+    if (dllNext) dllNext->dllPrev = dllPrev;		    // If our next pointer is not NULL.. Point our next nodes previous pointer, to what our previous pointer is point at.
     dllNext = NULL;										// Ok, list is patched. Now we pull out. Our next gets NULL
     dllPrev = NULL;										// And our previous gets NULL.
 }
@@ -471,13 +471,13 @@ dblLinkListObj* dblLinkListObj::getTailObj(int index) {
 	dblLinkListObj*	trace;
 	int					count;
 	
-	trace = dllNext;					// Trace pointer gets our tail.
-	count = 0;							// Initialize counter.
-	while(trace&&count<index) {	// While trace is not NULL and the counter is less than the index we're looking for..
+	trace = dllNext;					    // Trace pointer gets our tail.
+	count = 0;							    // Initialize counter.
+	while(trace&&count<index) {	            // While trace is not NULL and the counter is less than the index we're looking for..
 		count++;							// Bump up the counter.
-		trace = trace->dllNext;		// Jump to the next node, or NULL if there isn't one.
+		trace = trace->dllNext;		        // Jump to the next node, or NULL if there isn't one.
 	}
-	return trace;						// Pass back the result.
+	return trace;						    // Pass back the result.
 }
 
 
@@ -506,8 +506,8 @@ int dblLinkListObj::countTail(void) {
 	trace = dllNext;					// Trace pointer gets our tail.
 	count = 0;							// Initialize counter.
 	while(trace) {						// While trace is not NULL..
-		count++;							// Bump up the counter.
-		trace = trace->dllNext;		// Jump to the next node, or NULL if there isn't one.
+		count++;						// Bump up the counter.
+		trace = trace->dllNext;		    // Jump to the next node, or NULL if there isn't one.
 	}
 	return count;						// Pass back the result.
 }
@@ -522,7 +522,7 @@ int dblLinkListObj::countHead(void) {
 	trace = dllPrev;					// Trace pointer gets our head.
 	count = 0;							// Initialize counter.
 	while(trace) {						// While trace is not NULL..
-		count++;							// Bump up the counter.
+		count++;						// Bump up the counter.
 		trace = dllPrev;				// Jump to the previous node, or NULL if there isn't one.
 	}
 	return count;						// Pass back the result.

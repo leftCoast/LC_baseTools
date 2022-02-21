@@ -59,9 +59,9 @@ extern void freeStr(char** resultStr);
 //
 // tempStr myStr;								// Or an empty one. Ready to save a string.
 //
-// myStr.setStr(readThing(pinNum));		// You can save a string later. Or reuse.
-// formatAndDisplay(myStr.getStr());	// We don't worry about what the readThing() does.
-//													// We now have a local copy.
+// myStr.setStr(readThing(pinNum));		        // You can save a string later. Or reuse.
+// formatAndDisplay(myStr.getStr());	        // We don't worry about what the readThing() does.
+//												// We now have a local copy.
 //
 // return;										// When tempStr goes out of scope, It recycles.
 //****************************************************************************************

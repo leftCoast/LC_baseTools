@@ -22,5 +22,5 @@ void setup(void) {
 // Standard Arduino loop()
 void loop(void) { 
    
-   idle();  // idle() allows time for all the background things to run.
+   idle();             // idle() allows time for all the background things to run.
 }

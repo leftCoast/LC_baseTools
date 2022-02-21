@@ -1,6 +1,6 @@
 #include <mechButton.h>
 
-#define NUM_CHECKS  4	// Number of conflicting checks in a row that tells us to change.
+#define NUM_CHECKS  4	                             // Number of conflicting checks in a row that tells us to change.
 
 
 // Contructor, we just need a pin number to make this go.
@@ -28,19 +28,19 @@ bool mechButton::trueFalse(void) {
 		setAs = digitalRead(pinNum);					// The first thing we see is our initial state.
 		beenInitialized = true;							// Note we are open for business.
 		mTimer.start();									// And don't bug us again for this much time.
-	} else {													// Else, we are already up and running..
-		if (mTimer.ding()) {								// If the timer has expired..
-			if (setAs == digitalRead(pinNum)) {		// If we get another reading like the saved state..
-				checkNum = 0;								// Reset to zero conflicting readings.
-			} else {											// Else, its a conflicting reading..			
-				checkNum++;									// Bump up checkNum.
-				if (checkNum>=NUM_CHECKS) {			// If we have enough conflicting readings..
+	} else {											// Else, we are already up and running..
+		if (mTimer.ding()) {							// If the timer has expired..
+			if (setAs == digitalRead(pinNum)) {		    // If we get another reading like the saved state..
+				checkNum = 0;							// Reset to zero conflicting readings.
+			} else {									// Else, its a conflicting reading..			
+				checkNum++;								// Bump up checkNum.
+				if (checkNum>=NUM_CHECKS) {			    // If we have enough conflicting readings..
 					setAs = !setAs;						// Flip our state.
-					checkNum = 0;							// Reset to zero conflicting readings.
+					checkNum = 0;						// Reset to zero conflicting readings.
 					if (callback) {						// If we have a callback..
-						callback();			 				// call it.
-					} else {									// Else, no callback..
-						takeAction();						// Do whatever action is required.
+						callback();			 			// call it.
+					} else {							// Else, no callback..
+						takeAction();					// Do whatever action is required.
 					}
 				}
 			}

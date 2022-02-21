@@ -41,8 +41,8 @@
 // 
 // Now its just..
 // 
-// if (resizeBuff(newSize,&buffPtr)) {		// Notice?
-// 	do stuff..									// Address of the pointer there..
+// if (resizeBuff(newSize,&buffPtr)) {		            // Notice?
+// 	do stuff..									        // Address of the pointer there..
 // }													// Eww! So tricky!
 // 
 // 
@@ -100,14 +100,14 @@ extern bool resizeBuff(int numBytes,void** buff);
 // 	
 // 	dest.seek(dest.size());												// Point at end of the dest file.
 // 	filePos = src.position();											// Lets save the file pos for miss user.
-// 	src.seek(0);															// Point at first byte of the src file.
+// 	src.seek(0);														// Point at first byte of the src file.
 // 	remaingBytes = src.size();											// Get the remaining bytes to copy.
-// 	for (int i=0;i<cpyBuff.numPasses;i++) {						// For every pass through..
-// 		numBytes = min(cpyBuff.numBuffBytes,remaingBytes);		// Use buffer size or remaining bytes.
-// 		src.read(cpyBuff.theBuff,numBytes);							// Fill the buffer.
-// 		dest.write((char*)(cpyBuff.theBuff),numBytes);			// Write out the buffer.
-// 		remaingBytes = remaingBytes - numBytes;					// Recalculate the remaining bytes.
-// 	}																			// 
+// 	for (int i=0;i<cpyBuff.numPasses;i++) {						        // For every pass through..
+// 		numBytes = min(cpyBuff.numBuffBytes,remaingBytes);		        // Use buffer size or remaining bytes.
+// 		src.read(cpyBuff.theBuff,numBytes);							    // Fill the buffer.
+// 		dest.write((char*)(cpyBuff.theBuff),numBytes);			        // Write out the buffer.
+// 		remaingBytes = remaingBytes - numBytes;					        // Recalculate the remaining bytes.
+// 	}																	// 
 // 	src.seek(filePos);													// Put it back like we found it.					
 // }
 //

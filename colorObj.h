@@ -7,7 +7,7 @@
 //#define PRINT_COLOR
 
 //								Red,Grn,blu
-#define	LC_BLACK			  0,  0,  0
+#define	LC_BLACK		 0,  0,  0
 #define	LC_CHARCOAL		 50, 50, 50
 #define	LC_DARK_GREY	140,140,140
 #define	LC_GREY			185,185,185		
@@ -18,7 +18,7 @@
 #define	LC_PINK   		255,130,208
 
 #define	LC_GREEN   		  0,255,  0
-#define	LC_DARK_GREEN    0, 30,  0
+#define	LC_DARK_GREEN     0, 30,  0
 #define	LC_OLIVE   		 30, 30,  1
 
 #define	LC_BLUE    		  0,  0,255
@@ -26,7 +26,7 @@
 #define	LC_NAVY   		  0,  0, 30
 
 #define	LC_PURPLE   	140,  0,255
-#define	LC_LAVENDER    218,151,255
+#define	LC_LAVENDER     218,151,255
 #define	LC_ORANGE   	255,128,  0
 
 #define	LC_CYAN    		  0,255,255

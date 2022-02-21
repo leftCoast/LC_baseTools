@@ -9,11 +9,11 @@
 // Our lovely constructor.
 timeObj::timeObj(float inMs,bool startNow) {
 
-  startTime	= 0;				// Just some default.
-  endTime	= 0;				// And another default.
-  useMilli	= false;			// Look! A third default.
-  ourState	= preStart;		// We are sitting on pre Start state.
-  setTime(inMs,startNow);	// This sets startTime and endTime. Maybe starts things up?
+  startTime	= 0;				            // Just some default.
+  endTime	= 0;				            // And another default.
+  useMilli	= false;			            // Look! A third default.
+  ourState	= preStart;		                // We are sitting on pre Start state.
+  setTime(inMs,startNow);	                // This sets startTime and endTime. Maybe starts things up?
 }
 
  
@@ -25,30 +25,30 @@ timeObj::~timeObj(void) { }
 void timeObj::setTime(float inMs,bool startNow) {
 
 	if (inMs>MAX_MICROS) {
-		waitTime = round(inMs);			// Convert it to unsigned integer of milliseconds.
+		waitTime = round(inMs);			    // Convert it to unsigned integer of milliseconds.
 		useMilli = true;					// We're using milliseconds this time round.
 	} else if (inMs>0) {					// If we have a positive time, less than MAX_MICROS..
-		waitTime = round(1000*inMs);	// Convert it to unsigned integer of microseconds.
+		waitTime = round(1000*inMs);	    // Convert it to unsigned integer of microseconds.
 		useMilli = false;					// We're using microseconds this time round.
-	} else {									// Else, negitive time?
+	} else {								// Else, negitive time?
 		waitTime = 0;						// Whatever. Set it to zero.
 		useMilli = false;					// We're using microseconds this time round.
 	}
-  ourState = preStart;					// At this point we are in preStart mode..
-  if (startNow) start();				// If they passed in true for startNow.. Start now!
+  ourState = preStart;					    // At this point we are in preStart mode..
+  if (startNow) start();				    // If they passed in true for startNow.. Start now!
 }
 
 
 // This starts the timer, no questions about it.
 void timeObj::start(void) {
 
-	if (useMilli) {						// If we are using milliseconds..
-		startTime = millis();			// Save off the current milliseconds.
-	} else {									// Else, we're using microseconds..
-		startTime = micros();			// Save off the current micros.
+	if (useMilli) {						    // If we are using milliseconds..
+		startTime = millis();			    // Save off the current milliseconds.
+	} else {								// Else, we're using microseconds..
+		startTime = micros();			    // Save off the current micros.
 	}
-	endTime = startTime + waitTime;	// Calculate the end time.
-	ourState = running;					// And we are running!
+	endTime = startTime + waitTime;	        // Calculate the end time.
+	ourState = running;					    // And we are running!
 }
 
 

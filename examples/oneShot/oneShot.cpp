@@ -3,13 +3,13 @@
 
 // Our constructor. All thie bits we can adjust at creation time.
 oneShot::oneShot(int inPin,float shotTime,int outPin,bool outHiLow)
-   : timeObj(shotTime,false),                // Set up our pulse timer.
-   idler() {                                 // Set up our idler class things.
-
-   mButton        = new mechButton(inPin);   // Setup our button debouncer.
-   mOutPin        = outPin;                  // Save our output pin number.
-   mOutHiLow      = outHiLow;                // Save our desired triggered state.
-   mOurState      = waitForRelease;          // Set our initial state.
+   : timeObj(shotTime,false),                     // Set up our pulse timer.
+   idler() {                                      // Set up our idler class things.
+   
+   mButton        = new mechButton(inPin);        // Setup our button debouncer.
+   mOutPin        = outPin;                       // Save our output pin number.
+   mOutHiLow      = outHiLow;                     // Save our desired triggered state.
+   mOurState      = waitForRelease;               // Set our initial state.
 }
 
 
@@ -21,9 +21,9 @@ oneShot::~oneShot(void) { if (mButton) delete(mButton); }
 // Those last little items we need to do before hitting the road..
 void oneShot::begin(void) {
 
-   pinMode(mOutPin,OUTPUT);            // Setup our output pin.
-   digitalWrite(mOutPin,!mOutHiLow);   // Make sure its not in the triggered state.
-   hookup();                           // Hook into the idler queue.
+   pinMode(mOutPin,OUTPUT);                        // Setup our output pin.
+   digitalWrite(mOutPin,!mOutHiLow);               // Make sure its not in the triggered state.
+   hookup();                                       // Hook into the idler queue.
 }
 
 

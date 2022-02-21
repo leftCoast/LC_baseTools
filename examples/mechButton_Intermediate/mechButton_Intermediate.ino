@@ -15,9 +15,9 @@ mechButton aButton(BTN_PIN);                   // Set button one to pin BTN_PIN.
 // Your standard sketch setup()
 void setup() {
 
-  Serial.begin(9600);                         // Fire up our serial monitor thing.
-  pinMode(LED_PIN, OUTPUT);                   // Set up the LED pin for output.
-  aButton.setCallback(myCallback);            // Set up our callback. (Also calls hookup() for idling.)
+  Serial.begin(9600);                          // Fire up our serial monitor thing.
+  pinMode(LED_PIN, OUTPUT);                    // Set up the LED pin for output.
+  aButton.setCallback(myCallback);             // Set up our callback. (Also calls hookup() for idling.)
 }
 
 // This is the guy that's called when the button changes state.

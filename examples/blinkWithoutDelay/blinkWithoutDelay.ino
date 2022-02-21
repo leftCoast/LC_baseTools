@@ -4,16 +4,16 @@
 // because delay() is bad. Well, here's a simple way to do it..
 
 
-timeObj  aTimer;        // Allocate a global timer.
-int      LEDPin = 13;   // The LED we want to blink.
-bool     LEDOn = false; // We'll save the state of the LED here.
+timeObj  aTimer;                       // Allocate a global timer.
+int      LEDPin = 13;                  // The LED we want to blink.
+bool     LEDOn = false;                // We'll save the state of the LED here.
 
 
 void setup() {
 
-    pinMode(LEDPin, OUTPUT);  // Initialize the digital pin as an output.
-    aTimer.setTime(500);      // Set the timer for 500 ms. (1/2 second)
-    aTimer.start();           // Fire up the timer.
+    pinMode(LEDPin, OUTPUT);           // Initialize the digital pin as an output.
+    aTimer.setTime(500);               // Set the timer for 500 ms. (1/2 second)
+    aTimer.start();                    // Fire up the timer.
 }
 
 
