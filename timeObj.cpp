@@ -142,17 +142,17 @@ float timeObj::getFraction(void) {
 
     unsigned long remaining;
 
-    switch (ourState) {                                         // What are we doing now?
-        case preStart : return 1;                               // It has not yet meen started? Tank is full, 1.
-        case running :                                          // We're running right now?
-            if (useMilli) {                                     // If we're using milliseconds..
-                remaining = endTime - millis();                 // Calculate the remaining milliseconds.
-            } else {                                            // Else, we are  using microseconds..
-                remaining = endTime - micros();                 // Calculate the remaining micros.
+    switch (ourState) {                                    // What are we doing now?
+        case preStart : return 1;                          // It has not yet meen started? Tank is full, 1.
+        case running :                                     // We're running right now?
+            if (useMilli) {                                // If we're using milliseconds..
+                remaining = endTime - millis();            // Calculate the remaining milliseconds.
+            } else {                                       // Else, we are  using microseconds..
+                remaining = endTime - micros();            // Calculate the remaining micros.
             }
-            return((remaining/1000.0)/(waitTime/1000.0));       // Return the normalized result. 0..1
-        case expired : return 0;                                // Timer has expired? Tank is empty, 0.
+            return((remaining/1000.0)/(waitTime/1000.0));  // Return the normalized result. 0..1
+        case expired : return 0;                           // Timer has expired? Tank is empty, 0.
     }
-    return  0;                                                  // Never able to get here. Shut up compiler!
+    return  0;                                             // Never able to get here. Shut up compiler!
 }
 
