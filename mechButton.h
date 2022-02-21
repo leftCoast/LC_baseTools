@@ -23,18 +23,18 @@
 class mechButton :	public idler {
   
   public:
-				mechButton(byte inPinNum);
+			mechButton(byte inPinNum);
 	virtual	~mechButton(void);
 	
-    			bool	trueFalse(void);						// Read current state.
-    			void	setCallback(void(*funct)(void));	    // Or use a callback for changed state.
-   virtual	void	takeAction(void);						    // Something for the Pro's to inherit.
+    	    bool	trueFalse(void);						    // Read current state.
+    		void	setCallback(void(*funct)(void));	        // Or use a callback for changed state.
+    virtual	void	takeAction(void);						    // Something for the Pro's to inherit.
 	virtual	void	idle();
 	
 	protected:
     			timeObj	mTimer;
     			bool  	beenInitialized;
-    			void		(*callback)(void);
+    			void	(*callback)(void);
     			byte  	pinNum;
     			byte  	checkNum;
     			byte  	setAs;

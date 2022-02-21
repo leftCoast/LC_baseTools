@@ -39,20 +39,20 @@ class linkList {
     
     virtual void         	addToTop(linkListObj* newObj);
     virtual void         	addToEnd(linkListObj* newObj);
-    virtual void				unlinkTop(void);						        // Push off the first one.
-    virtual void         	unlinkObj(linkListObj* oldObj);	  // Find it and push this one off.
-    virtual	void		 		dumpList(void);						          // Call delete on everyone.
-    virtual bool				isEmpty(void);
+    virtual void				  unlinkTop(void);						        // Push off the first one.
+    virtual void         	unlinkObj(linkListObj* oldObj);	    // Find it and push this one off.
+    virtual	void		 		  dumpList(void);						          // Call delete on everyone.
+    virtual bool				  isEmpty(void);
     virtual linkListObj*	getFirst(void);
     virtual linkListObj*	getLast(void);
     virtual linkListObj*	findMax(linkListObj* anObj);
     virtual linkListObj*	findMin(linkListObj* anObj);
-    virtual	void				sort(bool ascending);
+    virtual	void				  sort(bool ascending);
     
-    		int			 		getCount(void);
-    		linkListObj* 		getByIndex(int index);
-    		int					findIndex(linkListObj* anObj);	        // returns -1 if NOT found.
-    		void					looseList(void);						          // Someone has taken control of our list, let it go.
+    		int			 		      getCount(void);
+    		linkListObj* 		  getByIndex(int index);
+    		int					      findIndex(linkListObj* anObj);	      // returns -1 if NOT found.
+    		void					    looseList(void);						          // Someone has taken control of our list, let it go.
  
  protected :           
     		linkListObj* theList;
@@ -72,7 +72,7 @@ class stack : public linkList {
     			stack(void);
     virtual	~stack(void);
     
-    virtual void				push(linkListObj* newObj);
+    virtual void				  push(linkListObj* newObj);
     virtual linkListObj* 	pop(void);
     virtual linkListObj*	peek(void);	
   };
@@ -122,8 +122,8 @@ public:
     			void					dumpTail(void);								      // Delete entire tail.
     			void					dumpHead(void);								      // Delete entire head section..
     			void					dumpList(void);								      // Delete both head & tail.
-    			int					countTail(void);								      // How many nodes long is our tail?
-    			int					countHead(void);								      // How many nodes long is our head?
+    			int					  countTail(void);								    // How many nodes long is our tail?
+    			int					  countHead(void);								    // How many nodes long is our head?
     			
     			dblLinkListObj*	dllPrev;
     			dblLinkListObj*	dllNext;

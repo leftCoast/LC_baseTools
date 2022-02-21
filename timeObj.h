@@ -31,7 +31,7 @@ class timeObj {
 	private	:
 				enum	timeObjStates	{ preStart, running, expired };
 				
-				bool				useMilli;
+				bool			useMilli;
 				timeObjStates	ourState;
   				unsigned long	waitTime;
   				unsigned long	startTime;

@@ -49,7 +49,7 @@ class colorObj {
 public:
   				colorObj(RGBpack* buff); 
   				colorObj(byte inRed, byte inGreen, byte inBlue);
-  				//colorObj(colorObj* inColor);						// Wanted this one, but the compiler mixes it up with color16.
+  				//colorObj(colorObj* inColor);						       // Wanted this one, but the compiler mixes it up with color16.
   				colorObj(word color16);
   				colorObj(void);
   virtual	~colorObj(void);

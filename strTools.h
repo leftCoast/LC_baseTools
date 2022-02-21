@@ -33,9 +33,9 @@ void lwrCase(char* inStr);
 //
 // char* aStr = NULL;									// ALLWAYS initialize at NULL for this.
 //
-// heapStr(&aStr,"Look data!");						// Allocates and stuffs it in.
-// heapStr(&aStr,"Look longer data!");				// Recycles, re-allocates and writes.
-// heapStr(&aStr,"Can be called as needed.");	// Get the picture?
+// heapStr(&aStr,"Look data!");						    // Allocates and stuffs it in.
+// heapStr(&aStr,"Look longer data!");				    // Recycles, re-allocates and writes.
+// heapStr(&aStr,"Can be called as needed.");	        // Get the picture?
 // freeStr(&aStr);										// Just recycles and sets back to NULL.
 //****************************************************************************************
 
@@ -53,7 +53,7 @@ extern void freeStr(char** resultStr);
 // string only until it goes out of scope, and then it automatically recycles the memory
 // for you.
 //
-// tempStr myStr(readThing(pinNum));   // Copy the output of a string function.
+// tempStr myStr(readThing(pinNum));            // Copy the output of a string function.
 // 
 // -or-
 //
@@ -90,7 +90,7 @@ class tempStr {
 // moment immediately after it has been returned. So the calling function must copy or
 // use it immediately. But it makes returning strings a LOT easier.
 //
-// heapStr(&returnStr,yourStr);  // Allocates then copies your string to be returned.
+// heapStr(&returnStr,yourStr);     // Allocates then copies your string to be returned.
 // freeStr(&returnStr);				// Resets it to NULL. (Optional, to pass back a NULL)
 //****************************************************************************************
 

@@ -79,25 +79,25 @@ void timeObj::stepTime(void) {
 // If it has expired, then yes.
 bool timeObj::ding(void) {
 
-	switch (ourState) {												// If the state is...
-		case preStart : return false;								// preStarted, not expired, return false.
-		case running : 												// Started and running our timer, return true when we expire.
-			if (useMilli) {											// If we are using milliseconds..
-				if (millis() - startTime > waitTime) {			// If our time has expired..
-					ourState = expired;								// We are now expired.
+	switch (ourState) {												    // If the state is...
+		case preStart : return false;								    // preStarted, not expired, return false.
+		case running : 												    // Started and running our timer, return true when we expire.
+			if (useMilli) {											    // If we are using milliseconds..
+				if (millis() - startTime > waitTime) {			        // If our time has expired..
+					ourState = expired;								    // We are now expired.
 					return true;										// Return true! 
-				} else {													// Else, we are running but our time has NOT expired..
+				} else {											    // Else, we are running but our time has NOT expired..
 					return false;										// Return false! 
 				}
-			} else if (micros() - startTime > waitTime) {	// Else, If we are using micros and our time has expired..
-				ourState = expired;									// We are now expired.
+			} else if (micros() - startTime > waitTime) {	            // Else, If we are using micros and our time has expired..
+				ourState = expired;									    // We are now expired.
 				return true;											// Return true! 
-			} else {														// Else, we are running but our time has NOT expired..
+			} else {												    // Else, we are running but our time has NOT expired..
 				return false;											// Return false;
 			}
-		case expired : return true;								// If we are expired, return true. (Forever more. Until restarted.)
+		case expired : return true;								        // If we are expired, return true. (Forever more. Until restarted.)
 	}
-	return false;														// Just to shut up compiler.								
+	return false;													    // Just to shut up compiler.								
 }
 
 
@@ -146,13 +146,13 @@ float timeObj::getFraction(void) {
 		case preStart : return 1;									// It has not yet meen started? Tank is full, 1.
 		case running : 												// We're running right now?
 			if (useMilli) {											// If we're using milliseconds..
-				remaining = endTime - millis();					// Calculate the remaining milliseconds.
-			} else {														// Else, we are  using microseconds..
-				remaining = endTime - micros();					// Calculate the remaining micros.
+				remaining = endTime - millis();					    // Calculate the remaining milliseconds.
+			} else {											    // Else, we are  using microseconds..
+				remaining = endTime - micros();					    // Calculate the remaining micros.
 			}
-			return((remaining/1000.0)/(waitTime/1000.0));	// Return the normalized result. 0..1
+			return((remaining/1000.0)/(waitTime/1000.0));	        // Return the normalized result. 0..1
 		case expired : return 0;									// Timer has expired? Tank is empty, 0.
 	}
-	return  0;															// Never able to get here. Shut up compiler!
+	return  0;													    // Never able to get here. Shut up compiler!
 }								
 

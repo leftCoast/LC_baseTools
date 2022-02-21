@@ -15,7 +15,7 @@ public:
 	virtual	~blinker(void);
 				
 	virtual	void	setOnOff(bool onOff);	        // Start or stop the blinking..
-				bool	blinking();					// We blinking or what?
+			bool	blinking();					// We blinking or what?
 	virtual	void	pulseOn(void);
 	virtual	void	pulseOff(void);
 	

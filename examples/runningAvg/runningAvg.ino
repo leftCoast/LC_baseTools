@@ -29,27 +29,27 @@
 */
 
 
-runningAvg  smoother(5);              // Our smoother. You can change the number of datapoints it will act on.
-char        inBuff[80];               // A char buffer (c string) to hold your typings.
-int         charIndex;                // An index to be used in storing charactors into our char buffer.
+runningAvg  smoother(5);                        // Our smoother. You can change the number of datapoints it will act on.
+char        inBuff[80];                         // A char buffer (c string) to hold your typings.
+int         charIndex;                          // An index to be used in storing charactors into our char buffer.
 
 
 // Standard setup stuff..
 void setup(void) {
 
-	Serial.begin(9600);						// Fire up the serial stuff.
-   inBuff[0] = '\0';                   // Clear the c string.
-   charIndex = 0;                      // The next char we read in goes here.
-   Serial.println(F("Enter numbers"));	// Tell Mrs user to start inputting numbers.
+	Serial.begin(9600);						         // Fire up the serial stuff.
+   inBuff[0] = '\0';                            // Clear the c string.
+   charIndex = 0;                               // The next char we read in goes here.
+   Serial.println(F("Enter numbers"));	         // Tell Mrs user to start inputting numbers.
 }
 
 
 // Standard loop stuff..
 void loop(void) {
 
-   char  aChar;   // A char to catch your typings in.
-   float aValue;  // The float version of the number you typed.
-   float ave;     // The Average that the smoother will return to us.
+   char  aChar;                                 // A char to catch your typings in.
+   float aValue;                                // The float version of the number you typed.
+   float ave;                                   // The Average that the smoother will return to us.
    
    if (Serial.available()) {                    // If there is a char in the waiting to be read..
       aChar = Serial.read();                    // Grab and save the char.

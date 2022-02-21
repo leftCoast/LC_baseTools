@@ -110,7 +110,7 @@ const char* tempStr::getStr(void) { return theStr; }
 // moment immediately after it has been returned. So the calling function must copy or
 // use it immediately. But it makes returning strings a LOT easier.
 //
-// heapStr(&returnStr,yourStr);  // Allocates then copies your string to be returned.
+// heapStr(&returnStr,yourStr);     // Allocates then copies your string to be returned.
 // freeStr(&returnStr);				// Resets it to NULL. (Optional, to pass back a NULL)
 //****************************************************************************************
 

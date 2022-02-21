@@ -1,6 +1,6 @@
 #include <mechButton.h>
 
-#define NUM_CHECKS  4	                             // Number of conflicting checks in a row that tells us to change.
+#define NUM_CHECKS  4	                                // Number of conflicting checks in a row that tells us to change.
 
 
 // Contructor, we just need a pin number to make this go.
@@ -9,9 +9,9 @@ mechButton::mechButton(byte inPinNum)
 	
 	mTimer.setTime(1);
 	callback				= NULL;
-	pinNum				= inPinNum;
+	pinNum				    = inPinNum;
 	checkNum				= 0;
-	beenInitialized	= false;
+	beenInitialized	        = false;
 }
 
 

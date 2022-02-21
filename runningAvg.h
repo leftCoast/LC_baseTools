@@ -19,7 +19,7 @@ class runningAvg {
   
 	public:
     			runningAvg(int inNumData);
-	virtual	~runningAvg(void);
+	virtual	   ~runningAvg(void);
     
     			float addData(float inData);	     // Drop in number, receive average.
     			     
@@ -37,7 +37,7 @@ class runningAvg {
     			int		numValues;		             // The amount we have.
     			int		index;			             // Write the next value, here.
     			float*	theValues;		             // The array of values.
-    			float		mResult;			     // Just in case they ask, we'll keep a copy.
+    			float   mResult;			         // Just in case they ask, we'll keep a copy.
 };
 
 #endif

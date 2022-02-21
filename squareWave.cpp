@@ -23,7 +23,7 @@ void squareWave::init(void) {
 	mPulseChange	= false;
 	mBlocking		= false;
 	mState			= sittinIdle;
-	mSignal 			= false;
+	mSignal 		= false;
 }
 
 

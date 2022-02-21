@@ -8,9 +8,9 @@ serialStr::serialStr(Stream* inPort,char endChar,int numBytes) {
 
 	port		= inPort;
 	index		= 0;
-	EOL		= endChar;
+	EOL		    = endChar;
 	bytes		= numBytes;
-	overrun	= false;
+	overrun	    = false;
 	resizeBuff(numBytes,&buff);
 }
 

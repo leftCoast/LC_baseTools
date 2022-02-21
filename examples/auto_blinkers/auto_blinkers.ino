@@ -48,21 +48,21 @@ mechButton  hButton(BTN_H_PIN);                                   // And your ha
 // Standard setup.
 void setup() {
 
-  currentState = blinkOff;          // We start with the blinkers off. So note that.
-  lButton.setCallback(clickLBtn);   // Hook the button objects to their respective callbacks.
-  rButton.setCallback(clickRBtn);   // Hooking..
-  hButton.setCallback(clickHBtn);   // Hooking..
+  currentState = blinkOff;                // We start with the blinkers off. So note that.
+  lButton.setCallback(clickLBtn);         // Hook the button objects to their respective callbacks.
+  rButton.setCallback(clickRBtn);         // Hooking..
+  hButton.setCallback(clickHBtn);         // Hooking..
 }
 
 
 // When the LEFT button is clicked, this is called..
 void clickLBtn(void) {
 
-  if (!lButton.trueFalse()) {         // If the button has been grounded..
-    if (currentState == blinkLeft) {  // If we are already doing this mode..
-      setBlinkers(blinkOff);          // We just shut off everything.
-    } else {                          // Else, doing something else..
-      setBlinkers(blinkLeft);         // We switch to our mode.
+  if (!lButton.trueFalse()) {             // If the button has been grounded..
+    if (currentState == blinkLeft) {      // If we are already doing this mode..
+      setBlinkers(blinkOff);              // We just shut off everything.
+    } else {                              // Else, doing something else..
+      setBlinkers(blinkLeft);             // We switch to our mode.
     }
   }
 }

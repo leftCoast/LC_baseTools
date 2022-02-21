@@ -22,12 +22,12 @@ class mapper {
 	public:
   				mapper(void);
   				mapper(double x1,double x2,double y1,double y2);
-	virtual	~mapper(void);
+	virtual	   ~mapper(void);
 
   				double	map(double inNum);
 
   				// This stuff is for using the mapper as a liner calculator.
-  				void		setValues(double x1,double x2,double y1,double y2);
+  				void    setValues(double x1,double x2,double y1,double y2);
   				
   				double	getSlope(void);
   				double	getMinX(void);
