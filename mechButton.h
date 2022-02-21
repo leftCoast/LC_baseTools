@@ -20,24 +20,24 @@
 // But then, you're a pro. So I shouldn't have to tell you that.
 //****************************************************************************************
 
-class mechButton :	public idler {
-  
+class mechButton :  public idler {
+
   public:
-			mechButton(byte inPinNum);
-	virtual	~mechButton(void);
-	
-    	    bool	trueFalse(void);						    // Read current state.
-    		void	setCallback(void(*funct)(void));	        // Or use a callback for changed state.
-    virtual	void	takeAction(void);						    // Something for the Pro's to inherit.
-	virtual	void	idle();
-	
-	protected:
-    			timeObj	mTimer;
-    			bool  	beenInitialized;
-    			void	(*callback)(void);
-    			byte  	pinNum;
-    			byte  	checkNum;
-    			byte  	setAs;
+            mechButton(byte inPinNum);
+    virtual ~mechButton(void);
+
+            bool    trueFalse(void);                       // Read current state.
+            void    setCallback(void(*funct)(void));       // Or use a callback for changed state.
+    virtual void    takeAction(void);                      // Something for the Pro's to inherit.
+    virtual void    idle();
+
+    protected:
+                timeObj mTimer;
+                bool    beenInitialized;
+                void    (*callback)(void);
+                byte    pinNum;
+                byte    checkNum;
+                byte    setAs;
 };
 
 #endif

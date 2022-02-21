@@ -5,29 +5,29 @@
 
 class idler : public linkListObj {
 
-	public: 
-  				idler(void);
-  	virtual	   ~idler(void);
+    public:
+                idler(void);
+    virtual    ~idler(void);
 
-  				void	hookup(void);
-	virtual	    void	idle(void);
+                void    hookup(void);
+    virtual     void    idle(void);
 
-				bool	hookedIn;
+                bool    hookedIn;
 };
 
 
 class idlers : public linkList {
 
-	public:
-  				idlers(void);
-	virtual	   ~idlers(void);
+    public:
+                idlers(void);
+    virtual    ~idlers(void);
 
-  				void	idle(void);
+                void    idle(void);
 };
 
-extern	idlers	theIdlers;
-extern	void    idle(void);
-extern	void    sleep(float ms);
-extern	bool    idling;
+extern  idlers  theIdlers;
+extern  void    idle(void);
+extern  void    sleep(float ms);
+extern  bool    idling;
 
 #endif

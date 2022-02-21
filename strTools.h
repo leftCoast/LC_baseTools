@@ -31,12 +31,12 @@ void lwrCase(char* inStr);
 // And that would allocate room for the text and put there. Sadly it would only do it
 // once. Now, wouldn't that be nice if you could do it repeatedly? Now you can!
 //
-// char* aStr = NULL;									// ALLWAYS initialize at NULL for this.
+// char* aStr = NULL;                                      // ALLWAYS initialize at NULL for this.
 //
-// heapStr(&aStr,"Look data!");						    // Allocates and stuffs it in.
-// heapStr(&aStr,"Look longer data!");				    // Recycles, re-allocates and writes.
-// heapStr(&aStr,"Can be called as needed.");	        // Get the picture?
-// freeStr(&aStr);										// Just recycles and sets back to NULL.
+// heapStr(&aStr,"Look data!");                            // Allocates and stuffs it in.
+// heapStr(&aStr,"Look longer data!");                     // Recycles, re-allocates and writes.
+// heapStr(&aStr,"Can be called as needed.");              // Get the picture?
+// freeStr(&aStr);                                         // Just recycles and sets back to NULL.
 //****************************************************************************************
 
 
@@ -53,49 +53,49 @@ extern void freeStr(char** resultStr);
 // string only until it goes out of scope, and then it automatically recycles the memory
 // for you.
 //
-// tempStr myStr(readThing(pinNum));            // Copy the output of a string function.
-// 
+// tempStr myStr(readThing(pinNum));                       // Copy the output of a string function.
+//
 // -or-
 //
-// tempStr myStr;								// Or an empty one. Ready to save a string.
+// tempStr myStr;                                          // Or an empty one. Ready to save a string.
 //
-// myStr.setStr(readThing(pinNum));		        // You can save a string later. Or reuse.
-// formatAndDisplay(myStr.getStr());	        // We don't worry about what the readThing() does.
-//												// We now have a local copy.
+// myStr.setStr(readThing(pinNum));                        // You can save a string later. Or reuse.
+// formatAndDisplay(myStr.getStr());                       // We don't worry about what the readThing() does.
+//                                                         // We now have a local copy.
 //
-// return;										// When tempStr goes out of scope, It recycles.
+// return;                                                 // When tempStr goes out of scope, It recycles.
 //****************************************************************************************
 
 
 class tempStr {
 
-	public:
-				tempStr(const char* inStr=NULL);
-	virtual	~tempStr(void);
-	
-				void	setStr(const char* inStr);
-				int	numChars(void);
-				const char* getStr(void);
-				
-				char*	theStr;
+    public:
+                tempStr(const char* inStr=NULL);
+    virtual ~tempStr(void);
+
+                void    setStr(const char* inStr);
+                int numChars(void);
+                const char* getStr(void);
+
+                char*   theStr;
 };
 
 
 
 //****************************************************************************************
 // returnStr :
-// 
+//
 // returnStr is just a string pointer that has be pre-initialized at NULL and can be
 // reallocated and used by functions as a return string. Granted, its only god for the
 // moment immediately after it has been returned. So the calling function must copy or
 // use it immediately. But it makes returning strings a LOT easier.
 //
 // heapStr(&returnStr,yourStr);     // Allocates then copies your string to be returned.
-// freeStr(&returnStr);				// Resets it to NULL. (Optional, to pass back a NULL)
+// freeStr(&returnStr);             // Resets it to NULL. (Optional, to pass back a NULL)
 //****************************************************************************************
 
 
-extern char*	returnStr;
+extern char*    returnStr;
 
 
 #endif

@@ -25,6 +25,6 @@ Tools to make programming Arduinos easier.
 
 **strTools** - A grab bag of c string tools. upCase(), lwrCase(). Pass in a c string and they will make all the letters either uppercase or lower case. heapStr(), freeStr(). Pass in the address of a char* and a source c string. This will store a copy of the source to the char*. freeStr() will recycle the char*'s RAM. tempStr is a stack based class designed to hold local copies of passed in c strings. Automatically recycles its RAM when going out of scope.
 
-**textBuff** - Ring buffer for text. Handy for hardware that can pass in a lot of text at random times that you need to process. 
+**textBuff** - Ring buffer for text. Handy for hardware that can pass in a lot of text at random times that you need to process.
 
 **timeObj** - A timer that takes a Ms input as a float. Then it can be queried to tell when this timespan has expired. Takes care of roll over issues as well. Very handy for getting away from delay(). Set a timer, and let loop() run. When it expires, do your thing.

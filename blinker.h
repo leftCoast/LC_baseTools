@@ -9,21 +9,21 @@
 #define defPeriodMs 400
 
 class blinker : public squareWave {
-	
-public:
-				blinker(int inPin=defPin,float inOnMs=defOnMs, float inPeriodMs=defPeriodMs,bool inInverse=false);
-	virtual	~blinker(void);
-				
-	virtual	void	setOnOff(bool onOff);	        // Start or stop the blinking..
-			bool	blinking();					// We blinking or what?
-	virtual	void	pulseOn(void);
-	virtual	void	pulseOff(void);
-	
-	protected:
 
-		bool  	init;
-		int      pin;
-		bool  	inverse;
+public:
+                blinker(int inPin=defPin,float inOnMs=defOnMs, float inPeriodMs=defPeriodMs,bool inInverse=false);
+    virtual ~blinker(void);
+
+    virtual void    setOnOff(bool onOff);                  // Start or stop the blinking..
+            bool    blinking();                            // We blinking or what?
+    virtual void    pulseOn(void);
+    virtual void    pulseOff(void);
+
+    protected:
+
+        bool    init;
+        int      pin;
+        bool    inverse;
 };
 
 #endif

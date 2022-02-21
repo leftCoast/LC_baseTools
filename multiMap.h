@@ -7,11 +7,11 @@
 
 //****************************************************************************************
 // multiMap..
-// 
+//
 // Sometimes your data doesn't actually fit very well on a straight line. Its..
 // Non-linier. multiMap is a really fast and easy way to get "good enough" data fitting to
 // a non-linier data set.
-// 
+//
 // Theory :
 // Image you have a data set that is not a line, but kinda' a bow shape. Mapping
 // from endpoint to endpoint is fine near the endpoints, but in the middle? The error is
@@ -45,14 +45,14 @@ class mapPoint :   public linkListObj {
    public :
             mapPoint(double inX, double inY);
    virtual  ~mapPoint(void);
-   
+
             mapPoint*   getNext(void);
             void        createUpMappers(void);
    virtual  bool        isGreaterThan(linkListObj* compPoint); // Are we greater than the obj being passed in? Primary sorting function.
    virtual  bool        isLessThan(linkListObj* compPoint);    // Are we less than the obj being passed in? Primary sorting function.
             double      map(double inX);
             double      integrate(double x1,double x2);
-   private:       
+   private:
             double   mX;
             double   mY;
             mapper*  mUpMapper;
@@ -71,7 +71,7 @@ class mapPoint :   public linkListObj {
 class multiMap :  public linkList {
 
    public:
-   
+
             multiMap(void);
    virtual  ~multiMap(void);
 
@@ -80,11 +80,11 @@ class multiMap :  public linkList {
             double      map(double inVal);
             double      Map(double inVal);
             double      integrate(double x1,double x2);
-   
+
    private:
             mapPoint*   getFirst();
             bool        setUp(void);
-            
+
             bool  mReady;
 };
 
