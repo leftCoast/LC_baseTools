@@ -29,13 +29,13 @@ class serialStr :  public idler {
    virtual     void  idle(void);
                bool  hadOverrun(void);
 
-					Stream*	port;
-               int   	index;
-               char  	EOL;
-               int   	bytes;
-               char* 	buff;
-               void  	(*callback)(const char*);
-               bool  	overrun;
+                    Stream* port;
+               int      index;
+               char     EOL;
+               int      bytes;
+               char*    buff;
+               void     (*callback)(const char*);
+               bool     overrun;
 };
 
 #endif

@@ -16,7 +16,7 @@
 
 
 class proButton   : public mechButton {
-   
+
    public:
                   proButton(int inPin);
    virtual        ~proButton(void);
@@ -94,25 +94,22 @@ void proButton::takeAction(void) {
 //                   Sketch starts here..
 // ***********************************************************
 
-
-proButton button1(BUTTON_PIN);  // Set button1 to pin 2.
-
+proButton button1(BUTTON_PIN);                             // Set button1 to pin 2.
 
 // Your standard sketch setup()
 void setup() {
-   
-   Serial.begin(57600);				// Fire up our serial monitor thing.
-   pinMode(LED_PIN,OUTPUT);		// Set up the LED pin for output.
-   button1.begin();					// Fire up the button. (Calls hookup() for idling.)
-}
 
+  Serial.begin(57600);                                     // Fire up our serial monitor thing.
+  pinMode(LED_PIN, OUTPUT);                                // Set up the LED pin for output.
+  button1.begin();                                         // Fire up the button. (Calls hookup() for idling.)
+}
 
 // Your standard sketch loop()
 void loop() {
-   
-   bool	buttonState;
-   
-   idle();											// Let all the idlers have time to do their thing.
-   buttonState = button1.trueFalse();		// Have a look at what the current button state is.
-   digitalWrite(LED_PIN,!buttonState);		// Since the button grounds when pushed, invert logic with !
+
+  bool buttonState;
+
+  idle();                                                 // Let all the idlers have time to do their thing.
+  buttonState = button1.trueFalse();                      // Have a look at what the current button state is.
+  digitalWrite(LED_PIN, !buttonState);                    // Since the button grounds when pushed, invert logic with !
 }
