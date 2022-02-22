@@ -11,7 +11,7 @@
 class blinker : public squareWave {
 
 public:
-                blinker(int inPin=defPin,float inOnMs=defOnMs, float inPeriodMs=defPeriodMs,bool inInverse=false);
+            blinker(int inPin=defPin,float inOnMs=defOnMs, float inPeriodMs=defPeriodMs,bool inInverse=false);
     virtual ~blinker(void);
 
     virtual void    setOnOff(bool onOff);                  // Start or stop the blinking..

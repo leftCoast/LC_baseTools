@@ -6,7 +6,7 @@
 // uncomment for debug stuff.
 //#define PRINT_COLOR
 
-//                              Red,Grn,blu
+//                       Red,Grn,blu
 #define LC_BLACK         0,  0,  0
 #define LC_CHARCOAL      50, 50, 50
 #define LC_DARK_GREY    140,140,140
