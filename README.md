@@ -1,6 +1,8 @@
 # LC_baseTools
 Tools to make programming Arduinos easier.
 
+**DO NOT GRAB  THE FILES OUT OF THE REPOSITORY. NINE TIMES OUT OF TEN THEY WILL NOT COMPILE FOR YOU. INSTALL THIS FROM THE ADRUINO IDE LINRARY MANAGER. AND DON'T EVEN THINK OF TRYING THE .ZIP FILES. WHY DO THEY EVEN HAVE THOSE I JUST DON'T KNOW..***
+
 **blinker** - Blinks an LED without using delay(). On any output pin. Does NOT use interrupts or hardware PWM.
 
 **colorObj** - Used for everything dealing with colors. Storing, translating, passing from computer to hardware and back. Blending, linear and non-linear color mapping.
