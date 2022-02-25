@@ -1,7 +1,7 @@
 # LC_baseTools
 Tools to make programming Arduinos easier.
 
-![alt text](https://github.com/leftCoast/Arduino/blob/master/libraries/LC_icons/icons/standard/warn32.bmp) **DO NOT GRAB  THESE FILES OUT OF THE REPOSITORY. NINE TIMES OUT OF TEN THEY WILL NOT COMPILE FOR YOU. INSTALL THIS FROM THE ADRUINO IDE LIBRARY MANAGER. AND DON'T EVEN THINK OF TRYING THE .ZIP FILES. WHY DO THEY EVEN HAVE THOSE? I JUST DON'T KNOW..**
+![alt text](https://github.com/leftCoast/Arduino/blob/master/libraries/LC_icons/icons/standard/warn32.bmp) **DO NOT GRAB  THESE FILES OUT OF THE REPOSITORY. NINE TIMES OUT OF TEN THEY WILL NOT COMPILE FOR YOU. INSTALL THESE USING THE ADRUINO IDE LIBRARY MANAGER. AND DON'T EVEN THINK OF TRYING THE .ZIP FILES! WHY DO THEY EVEN HAVE THOSE? I JUST DON'T KNOW..**
 
 **blinker** - Blinks an LED without using delay(). On any output pin. Does NOT use interrupts or hardware PWM.
 
