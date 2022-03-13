@@ -27,16 +27,16 @@ textBuff::~textBuff(void) { resizeBuff(0,&buff); }
 bool textBuff::addChar(char inChar) {
 
 
-    if (overwrite && full()) {                             // If we're full and overwrite is true..
-        (void)readChar();                                  // Make room by dumping the oldest char.
-    }
-    if (!full()) {                                         // If not full..
-        buff[tail] = inChar;                               // Save off the incoming char.
-        inc(&tail);                                        // Increment the tail pointer.
-        isFull = tail==head;                               // Check and note if we are full.
-        return true;                                       // Return a success.
-    }
-    return false;                                          // Couldn't save the new char, return a failure.
+  if (overwrite && full()) {                             // If we're full and overwrite is true..
+    (void)readChar();                                  // Make room by dumping the oldest char.
+  }
+  if (!full()) {                                         // If not full..
+    buff[tail] = inChar;                               // Save off the incoming char.
+    inc(&tail);                                        // Increment the tail pointer.
+    isFull = tail==head;                               // Check and note if we are full.
+    return true;                                       // Return a success.
+  }
+  return false;                                          // Couldn't save the new char, return a failure.
 }
 
 
@@ -45,19 +45,19 @@ bool textBuff::addChar(char inChar) {
 // overwriting you will loose some of your oldest data.
 bool textBuff::addStr(char* inCStr,bool andNULL) {
 
-    int i;
-    bool    success;
+  int i;
+  bool    success;
 
-    success = false;                                       // Well, we ain't a success yet.
-    i = 0;                                                 // Start up our counter..
-    while(inCStr[i]!='\0') {                               // While we are not potinting at the NULL char..
-        success = addChar(inCStr[i]);                      // Blindly stuff the char into the buffer.
-        i++;                                               // Increment counter.
-    }
-    if (andNULL) {                                         // If they want the null char saved..
-        success =  addChar('\0');                          // We add one in. Its the little things we do for you.
-    }
-    return success;                                        // Return if they all went in.
+  success = false;                                       // Well, we ain't a success yet.
+  i = 0;                                                 // Start up our counter..
+  while(inCStr[i]!='\0') {                               // While we are not potinting at the NULL char..
+    success = addChar(inCStr[i]);                      // Blindly stuff the char into the buffer.
+    i++;                                               // Increment counter.
+  }
+  if (andNULL) {                                         // If they want the null char saved..
+    success =  addChar('\0');                          // We add one in. Its the little things we do for you.
+  }
+  return success;                                        // Return if they all went in.
 }
 
 

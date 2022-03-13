@@ -84,13 +84,13 @@ void clickRBtn(void) {
 // When the HAZARD button is clicked, this is called..
 void clickHBtn(void) {
 
-   if (!hButton.trueFalse()) {                            // If the button has been grounded..]
-      if (currentState == blinkHazard) {                  // If we are already doing this mode..
-         setBlinkers(blinkOff);                           // We just shut off everything.
-      } else {                                            // Else, doing something else..
-         setBlinkers(blinkHazard);                        // We switch to our mode.
-      }
-   }
+  if (!hButton.trueFalse()) {                            // If the button has been grounded..]
+    if (currentState == blinkHazard) {                  // If we are already doing this mode..
+      setBlinkers(blinkOff);                           // We just shut off everything.
+    } else {                                            // Else, doing something else..
+      setBlinkers(blinkHazard);                        // We switch to our mode.
+    }
+  }
 }
 
 

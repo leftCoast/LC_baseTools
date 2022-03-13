@@ -14,7 +14,7 @@
 class linkListObj {
 
   public:
-                linkListObj(void);
+              linkListObj(void);
     virtual ~linkListObj(void);
 
     virtual void                linkAfter(linkListObj* anObj);// Given a pointer to a node, link yourself after it.
@@ -54,7 +54,7 @@ class linkList {
             int                       findIndex(linkListObj* anObj);// returns -1 if NOT found.
             void                        looseList(void);   // Someone has taken control of our list, let it go.
 
- protected :
+  protected :
             linkListObj* theList;
 };
 

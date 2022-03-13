@@ -69,15 +69,15 @@ extern void freeStr(char** resultStr);
 
 class tempStr {
 
-    public:
-                tempStr(const char* inStr=NULL);
-    virtual ~tempStr(void);
+	public:
+							tempStr(const char* inStr=NULL);
+	virtual ~tempStr(void);
 
-                void    setStr(const char* inStr);
-                int numChars(void);
-                const char* getStr(void);
+							void    setStr(const char* inStr);
+							int numChars(void);
+							const char* getStr(void);
 
-                char*   theStr;
+							char*   theStr;
 };
 
 
