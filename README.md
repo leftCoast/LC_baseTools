@@ -13,7 +13,7 @@
 
 - **mapper** - *Linear mapper function. Unlike the Arduino version, this uses doubles as input and output. It also saves as much of the calculation as possible between mapping calls.*
 
-- **mechButton** - *Class that creates a debounced button. Has three possible user levels : Beginner - Simple polling, Intermediate - Use callbacks. and Pro - Use as a base class to create wild new custom actions.*[Example](examples/mechButton_Beginner)
+- **mechButton** - *Class that creates a debounced button. Has three possible user levels : Beginner - Simple polling, Intermediate - Use callbacks. and Pro - Use as a base class to create wild new custom actions.* [Example](examples/mechButton_Beginner)
 
 - **multiMap** - *Non-linear mapping function. Starts out blank and the user adds x,y points to it before use.*
 
