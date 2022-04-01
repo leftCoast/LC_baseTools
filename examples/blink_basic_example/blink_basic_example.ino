@@ -8,11 +8,11 @@ blinker blinkingLed(13, 200, 1000);
 // EXAMPLE::::: nameOfblinker(PIN, ON_TIME, TIME_FOR_BLINKS);
 
 void setup() {
+blinkingLed.setOnOff(true);    // If this is wet to "true", the blinker will run, if "false"it will stop.
 
 }
 
 void loop() {
   idle();                        // Call idle() to let it all run. Only once.
-
-  blinkingLed.setOnOff(true);    // If this is wet to "true", the blinker will run, if "false"it will stop.
 }
+  
