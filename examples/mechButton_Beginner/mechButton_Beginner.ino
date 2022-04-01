@@ -1,9 +1,9 @@
 #include <mechButton.h>
 
-#define BUTTON_PIN1 2                                      // Pin we'll hook the button to. The other side hooks to ground.
+#define BUTTON_PIN 2                                       // Pin we'll hook the button to. The other side hooks to ground.
 #define LED_PIN 13                                         // Usual pin number for built in LED.
 
-mechButton button1(2);                                     // Set button1 to pin 2.
+mechButton button1(BUTTON_PIN);                            // Set button1 to pin 2.
 
 // Your standard sketch setup()
 void setup() {
