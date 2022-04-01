@@ -21,10 +21,10 @@ void idle(void) {
 // wait. Just drops out if called in idle time.
 void sleep(float ms) {
 
-    timeObj sleepTimer(ms);
-    if (!idling) {
-        while(!sleepTimer.ding()) idle();
-    }
+  timeObj sleepTimer(ms);
+  if (!idling) {
+    while(!sleepTimer.ding()) idle();
+  }
 }
 
 

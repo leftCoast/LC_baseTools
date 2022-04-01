@@ -8,13 +8,13 @@ blinker aBLinker;
 
 void setup() {
 
-   // Fire it up.
-   aBLinker.setOnOff(true);
+	// Fire it up.
+	aBLinker.setOnOff(true);
 }
 
 
 void loop() {
 
-   // blinker is an idler. Calling idle() once in loop lets ALL idlers run.
-   idle();
+	// blinker is an idler. Calling idle() once in loop lets ALL idlers run.
+	idle();
 }

@@ -36,7 +36,7 @@ class proButton   : public mechButton {
 
 // Constructor, not much going on. Just passing the pin number in.
 proButton::proButton(int inPin)
-   :mechButton(inPin) {  }
+	:mechButton(inPin) {  }
 
 
 // Destructor, nothing allocated so nothing to do.
@@ -50,42 +50,42 @@ void proButton::begin(void) { hookup(); }
 // blank, print some blanks.
 void proButton::blank(int numBlanks) {
 
-   for (int i=0;i<numBlanks;i++) {
-      Serial.print(' ');
-   }
+	for (int i=0;i<numBlanks;i++) {
+		Serial.print(' ');
+	}
 }
 
 
 // line, give us some blank lines
 void proButton::line(int numLines) {
 
-   for (int i=0;i<numLines;i++) {
-      Serial.println();
-   }
+	for (int i=0;i<numLines;i++) {
+		Serial.println();
+	}
 }
 
 
 // takeAction, this is what's called when there is no callback set.
 void proButton::takeAction(void) {
 
-   if (setAs) {
-      blank(36);
-      Serial.println(F("Live long and prosper."));
-   } else {
-      line(4);
-      blank(10);Serial.println(F("                                     ---------------------------==="));
-      blank(10);Serial.println(F("            __                      ( |                          =="));
-      blank(10);Serial.println(F("         /------\\                    ---------------------------="));
-      blank(10);Serial.println(F("------------------------------           |  |"));
-      blank(10);Serial.println(F("\\____________________________/]          |  |"));
-      blank(10);Serial.println(F("         --------       \\     \\          |  |"));
-      blank(10);Serial.println(F("                         \\     \\         |  |"));
-      blank(10);Serial.println(F("                          \\ --------_____|  |__"));
-      blank(10);Serial.println(F("                         | |              --  /"));
-      blank(10);Serial.println(F("                        -||                  ||"));
-      blank(10);Serial.println(F("                         | |__________/------== "));
-      line(2);
-   }
+	if (setAs) {
+		blank(36);
+		Serial.println(F("Live long and prosper."));
+	} else {
+		line(4);
+		blank(10);Serial.println(F("                                     ---------------------------==="));
+		blank(10);Serial.println(F("            __                      ( |                          =="));
+		blank(10);Serial.println(F("         /------\\                    ---------------------------="));
+		blank(10);Serial.println(F("------------------------------           |  |"));
+		blank(10);Serial.println(F("\\____________________________/]          |  |"));
+		blank(10);Serial.println(F("         --------       \\     \\          |  |"));
+		blank(10);Serial.println(F("                         \\     \\         |  |"));
+		blank(10);Serial.println(F("                          \\ --------_____|  |__"));
+		blank(10);Serial.println(F("                         | |              --  /"));
+		blank(10);Serial.println(F("                        -||                  ||"));
+		blank(10);Serial.println(F("                         | |__________/------== "));
+		line(2);
+	}
 }
 
 
@@ -107,9 +107,9 @@ void setup() {
 // Your standard sketch loop()
 void loop() {
 
-  bool buttonState;
+	bool buttonState;
 
-  idle();                                                 // Let all the idlers have time to do their thing.
-  buttonState = button1.trueFalse();                      // Have a look at what the current button state is.
-  digitalWrite(LED_PIN, !buttonState);                    // Since the button grounds when pushed, invert logic with !
+	idle();                                                 // Let all the idlers have time to do their thing.
+	buttonState = button1.trueFalse();                      // Have a look at what the current button state is.
+	digitalWrite(LED_PIN, !buttonState);                    // Since the button grounds when pushed, invert logic with !
 }

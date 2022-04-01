@@ -40,6 +40,6 @@ class oneShot :   timeObj,
             mechButton*    mButton;
             int            mOutPin;
             bool           mOutHiLow;
- };
+};
 
 #endif
