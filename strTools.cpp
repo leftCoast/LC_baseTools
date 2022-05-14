@@ -106,7 +106,7 @@ const char* tempStr::getStr(void) { return theStr; }
 // returnStr :
 //
 // returnStr is just a string pointer that has be pre-initialized at NULL and can be
-// reallocated and used by functions as a return string. Granted, its only god for the
+// reallocated and used by functions as a return string. Granted, its only good for the
 // moment immediately after it has been returned. So the calling function must copy or
 // use it immediately. But it makes returning strings a LOT easier.
 //
