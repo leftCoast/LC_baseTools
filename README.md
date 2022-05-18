@@ -25,7 +25,7 @@
 
 - **squareWave** - *Base class for creating objects that are based on square waves. IE. blinking lights, flashing text, RC servo signals. Does NOT use interrupts or hardware PWM. Runs in background.*
 
-- **strTools** - *A grab bag of c string tools. upCase(), lwrCase(). Pass in a c string and they will make all the letters either uppercase or lower case. heapStr(), freeStr(). Pass in the address of a* **char** *and a source c string. This will store a copy of the source to the char*. freeStr() will recycle the*  char's  *RAM. tempStr is a stack based class designed to hold local copies of passed in c strings. Automatically recycles its RAM when going out of scope.*
+- **strTools** - *A grab bag of c string tools. upCase(), lwrCase(). Pass in a c string and they will make all the letters either uppercase or lower case. heapStr(), freeStr(). Pass in the address of a* **char** *and a source c string. This will store a copy of the source to the char*. freeStr() will recycle the*  char's  *RAM. tempStr is a stack based class designed to hold local copies of passed in c strings. Automatically recycles its RAM when going out of scope. returnStr is a handy resizable (Pre set to NULL) char* global that can be used as a return string from functions.*
 
 - **textBuff** - *Ring buffer for text. Handy for hardware that can pass in a lot of text at random times that you need to process.*
 
