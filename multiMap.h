@@ -28,7 +28,7 @@
 // what it should map to. Now you have a linier mapper. Need to add more points to fit it
 // better to the curve? Easy! Calcualte the points you need and add them the same way
 // using addPoint(X,Y); Doesn't matter what order you add points. The code will sort them
-// out for you. Once you have added enoug points to make a good enough fit. You can use
+// out for you. Once you have added enough points to make a good enough fit. You can use
 // the map() method to map your results from your inputeded data.
 //****************************************************************************************
 
