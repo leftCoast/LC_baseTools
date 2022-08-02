@@ -8,7 +8,7 @@
 // An example of a one-shot class.
 //
 // Basically what many people want to do is catch a button press then send out a
-// one shot timed pules on an output pin. This is what this class does..
+// one shot timed pulse on an output pin. This is what this class does..
 //
 // The input paramiters for the one shot class.
 //

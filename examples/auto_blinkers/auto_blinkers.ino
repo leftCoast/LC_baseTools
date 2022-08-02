@@ -1,6 +1,6 @@
 // Auto blinker switch example.
 //
-// The auto blinker question comes up regulary in the Arduino forum so
+// The auto blinker question comes up regularly in the Arduino forum so
 // I figured an example of that would be just the ticket. This uses two
 // binker objects for the blinking LEDs and three mechButton objects for
 // the three buttons. A left, right and Hazard button. The first press

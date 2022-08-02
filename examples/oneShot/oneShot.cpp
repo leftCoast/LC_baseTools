@@ -35,7 +35,7 @@ void oneShot::idle(void) {
       case preStart  :                                     // We are sitting, waiting for a button press.
          if (!mButton->trueFalse()) {                      // If we see the button get a press..
             start();                                       // We start our timer.
-            digitalWrite(mOutPin,mOutHiLow);               // Kick the digigtal port into the saved (triggered) state.
+            digitalWrite(mOutPin,mOutHiLow);               // Kick the digital port into the saved (triggered) state.
             mOurState = running;                           // And our state is now running.
          }
       break;
