@@ -19,7 +19,7 @@ void setup() {
 
 void loop() {
 
-  if (aTimer.ding()) {                                   // If the timer has expired..
+  if (aTimer.ding()) {                                  // If the timer has expired..
     if(LEDOn) {                                         // If the LED is on..
       digitalWrite(LEDPin, LOW);                        // Turn the LED off.
       LEDOn = false;                                    // Make a NOTE of it.

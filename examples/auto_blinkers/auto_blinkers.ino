@@ -1,6 +1,6 @@
 // Auto blinker switch example.
 //
-// The auto blinker question comes up regulary in the Arduino forum so
+// The auto blinker question comes up regularly in the Arduino forum so
 // I figured an example of that would be just the ticket. This uses two
 // binker objects for the blinking LEDs and three mechButton objects for
 // the three buttons. A left, right and Hazard button. The first press
@@ -16,7 +16,7 @@
 // scenes functions happen when you call idle() in your loop function.
 //
 // You can add more stuff to your loop() function if you want. But DO
-// NOT USE delay(). No fear though, this stuff comes with sleep() wich
+// NOT USE delay(). No fear though, this stuff comes with sleep() witch
 // acts on the main loop() just like delay(), but lets the background
 // stuff keep running.
 //
