@@ -4,7 +4,7 @@
 
 
 //****************************************************************************************
-// Insainly handy for doing things in the background. Set the timer and wait 'till it goes
+// Insanely handy for doing things in the background. Set the timer and wait 'till it goes
 // "ding". Great for blinking LEDs, updating readings, etc.
 //                     *** Takes care of roll over issues ***
 //
