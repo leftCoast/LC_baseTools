@@ -6,7 +6,7 @@
 // runningAvg:
 //
 // Running average is typically used as a data smoother. Read a data value, stuff it in
-// the queue and pull out the resulting average of the last n values. Sime to use, does
+// the queue and pull out the resulting average of the last n values. Simple to use, does
 // the job.
 //
 // So we have all this data in the queue. Sometimes we would like to know more than the
@@ -23,7 +23,7 @@ class runningAvg {
 
                 float addData(float inData);               // Drop in number, receive average.
 
-                float getAve(void);                        // ALl the other things no one will ever use.
+                float getAve(void);                        // All the other things no one will ever use.
                 float getMax(void);
                 float getMin(void);
                 float getDelta(void);

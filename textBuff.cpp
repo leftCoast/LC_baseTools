@@ -70,6 +70,21 @@ char textBuff::peekHead(void) {
 }
 
 
+// Pass back the nTh char on the list, unless we got nothin' then pass back a /0.
+// Don't change anything.
+char textBuff::peekIndex(int index) {
+
+	int absIndex;
+	
+	if (empty()) return '\0';                                // If empty, return a '\0'.
+	if (index>numChars()) return '\0';                       // If we don't have that one, return a '\0'.
+	absIndex = head + index;											// Take a shot at the absolute index 
+	if (absIndex>=numBytes) {											// If we are past the buffer size..
+		absIndex = absIndex - numBytes;								// Subtract the buffer size from the absolute.
+	}
+  	return buff[absIndex];                                    // Otherwise, return the char that's next to read.
+}
+
 
 // If not empty, read the next charactor, update the state
 // and return the read charactor. Otherwize return a null

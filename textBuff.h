@@ -25,6 +25,7 @@ class textBuff {
             bool  addChar(char inChar);                    // Add a char.
             bool  addStr(char* inCStr,bool andNULL=true);  // Add a c string. (With or without the nul terminator.)
             char  peekHead(void);                          // Look at the next char to come out.
+            char	peekIndex(int index);						  // Have a look at the char at index. '\0' for no char.
             char  readChar(void);                          // Read out the next char. (removes it)
             int   buffSize(void);                          // How many chars CAN we store?
             int   numChars(void);                          // How many chars ARE we storing?
@@ -33,14 +34,14 @@ class textBuff {
             void  clear(void);                             // Dump all the chars, reset to empty.
 
     private:
-                void  inc(int* index);
+            void  inc(int* index);
 
             char* buff;
             int   numBytes;
             int   head;
             int   tail;
             bool  isFull;
-            bool    overwrite;
+            bool  overwrite;
 };
 
 #endif

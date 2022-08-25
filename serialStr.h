@@ -25,16 +25,18 @@ class serialStr :  public idler {
                serialStr(Stream* inPort=&Serial,char endChar='\n',int numBytes=DEF_BUFF_BYTES);
    virtual     ~serialStr(void);
 
-               void  setCallback(void(*funct)(const char*)); // Use a callback for a complete string.
+               //void  setCallback(void(*funct)(const char*)); // Use a callback for a complete string.
+               void  setCallback(void(*funct)(char*)); // Use a callback for a complete string.
    virtual     void  idle(void);
                bool  hadOverrun(void);
 
-                    Stream* port;
+               Stream*	port;
                int      index;
                char     EOL;
                int      bytes;
                char*    buff;
-               void     (*callback)(const char*);
+               //void     (*callback)(const char*);
+               void     (*callback)(char*);
                bool     overrun;
 };
 
