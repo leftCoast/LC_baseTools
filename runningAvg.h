@@ -1,6 +1,12 @@
 #ifndef runningAvg_h
 #define runningAvg_h
 
+// To do..
+//
+// Spit out sorted.
+// Filter min max out of input.
+// Filter n from top & bottom of data.
+
 
 //****************************************************************************************
 // runningAvg:
