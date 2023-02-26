@@ -1,11 +1,6 @@
 #ifndef runningAvg_h
 #define runningAvg_h
 
-// To do..
-//
-// Spit out sorted.
-// Filter min max out of input.
-// Filter n from top & bottom of data.
 
 
 //****************************************************************************************
@@ -19,6 +14,13 @@
 // average. How about the min and max values in this set? The spread of the data? Or how
 // about the standard deviation? Well, all these other bits are actually available to you
 // as well, if really you want to see them.
+//
+// 2/25/2023 : First pass at adding optional input data limiting. Basically if you have
+// upper and lower limits for dropping outliers, you can enter them with the set limit
+// method functions. Clear them out with the clear limit methods.
+//
+// Turning limiting on, off or changing the values, only changes incoming data. You will
+// need to run the old data out to get accurate calculations.
 //****************************************************************************************
 
 class runningAvg {
@@ -36,7 +38,13 @@ class runningAvg {
                 float getStdDev(void);
                 int getNumValues(void);
                 float getDataItem(int index);
-
+                
+                void	setUpperLimit(float limit);
+                void	clearUpperLimit(void);
+                void	setLowerLimit(float limit);
+                void	clearLowerLimit(void);
+                void setLimits(float lowerLimit,float upperLimit);
+					 void clearLimits(void);
   protected:
 
                 int     maxData;                           // Total amount allowed.
@@ -44,6 +52,11 @@ class runningAvg {
                 int     index;                             // Write the next value, here.
                 float*  theValues;                         // The array of values.
                 float   mResult;                           // Just in case they ask, we'll keep a copy.
+                
+                bool		usingUpper;
+                float	upperLimit;
+                bool		usingLower;
+                float	lowerLimit;   
 };
 
 #endif
