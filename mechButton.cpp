@@ -19,9 +19,13 @@ mechButton::mechButton(byte inPinNum)
 mechButton::~mechButton(void) {  }
 
 
-// truFalse() is the method that returns the state of the button and tracks the amount of
+// truFalse() is the old version of getState(). 
+bool mechButton::trueFalse(void) { return getState(void); }
+
+
+// getState() is the method that returns the state of the button and tracks the amount of
 // conflicting states are seen.
-bool mechButton::trueFalse(void) {
+bool mechButton::getState(void) {
 
     if (!beenInitialized) {                                // If not ready to run..
         pinMode(pinNum,INPUT_PULLUP);                      // Set up our pin.
@@ -67,8 +71,8 @@ void mechButton::setCallback(void (*funct)(void)) {
 void mechButton::takeAction(void) { }
 
 
-// If hookup() has been called, we auto-call trueFalse(). This is expecting that a
+// If hookup() has been called, we auto-call getState(). This is expecting that a
 // callback has been set to deal with state change on the switch. Otherwise this will do
-// basically nothing. As the return value of trueFalse() is being ignored.
-void mechButton::idle(void) { trueFalse(); }
+// basically nothing. As the return value of getState() is being ignored.
+void mechButton::idle(void) { getState(); }
 

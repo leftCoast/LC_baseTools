@@ -26,9 +26,10 @@ class mechButton :  public idler {
             mechButton(byte inPinNum);
     virtual ~mechButton(void);
 
-            bool    trueFalse(void);                       // Read current state.
-            void    setCallback(void(*funct)(void));       // Or use a callback for changed state.
-    virtual void    takeAction(void);                      // Something for the Pro's to inherit.
+            bool    getState(void);								// Read current state.
+            bool    trueFalse(void);							// Read current state. (Old, change this.)
+            void    setCallback(void(*funct)(void));		// Or use a callback for changed state.
+    virtual void    takeAction(void);							// Something for the Pro's to inherit.
     virtual void    idle();
 
     protected:
