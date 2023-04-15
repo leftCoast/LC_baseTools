@@ -20,7 +20,7 @@ mechButton::~mechButton(void) {  }
 
 
 // truFalse() is the old version of getState(). 
-bool mechButton::trueFalse(void) { return getState(void); }
+bool mechButton::trueFalse(void) { return getState(); }
 
 
 // getState() is the method that returns the state of the button and tracks the amount of

@@ -14,19 +14,19 @@
 class linkListObj {
 
   public:
-              linkListObj(void);
-    virtual ~linkListObj(void);
+				linkListObj(void);
+    virtual	~linkListObj(void);
 
-    virtual void                linkAfter(linkListObj* anObj);// Given a pointer to a node, link yourself after it.
-    virtual void                linkToEnd(linkListObj* anObj);  // Given a pointer to a node, link yourself after the last in the chain.
-    virtual linkListObj*    getNext(void);                 // Pass back the next pointer.
-    virtual void                setNext(linkListObj* ptr); // Point somewhere else.
-    virtual void                deleteTail(void);          // Call delete on everyone hooked to us.
-    virtual bool                isGreaterThan(linkListObj* compObj);// Are we greater than the obj being passed in? Primary sorting function.
-    virtual bool                isLessThan(linkListObj* compObj);// Are we less than the obj being passed in? Primary sorting function.
+    virtual void				linkAfter(linkListObj* anObj);			// Given a pointer to a node, link yourself after it.
+    virtual void				linkToEnd(linkListObj* anObj);			// Given a pointer to a node, link yourself after the last in the chain.
+    virtual linkListObj*	getNext(void);									// Pass back the next pointer.
+    virtual void				setNext(linkListObj* ptr);					// Point somewhere else.
+    virtual void				deleteTail(void);          				// Call delete on everyone hooked to us.
+    virtual bool				isGreaterThan(linkListObj* compObj);	// Are we greater than the obj being passed in? Primary sorting function.
+    virtual bool				isLessThan(linkListObj* compObj);		// Are we less than the obj being passed in? Primary sorting function.
 
   protected :
-                linkListObj* next;
+				linkListObj*	next;
 };
 
 
@@ -37,25 +37,25 @@ class linkList {
                 linkList(void);
     virtual ~linkList(void);
 
-    virtual void            addToTop(linkListObj* newObj);
-    virtual void            addToEnd(linkListObj* newObj);
-    virtual void                  unlinkTop(void);         // Push off the first one.
-    virtual void            unlinkObj(linkListObj* oldObj);// Find it and push this one off.
-    virtual void                  dumpList(void);          // Call delete on everyone.
-    virtual bool                  isEmpty(void);
-    virtual linkListObj*    getFirst(void);
-    virtual linkListObj*    getLast(void);
-    virtual linkListObj*    findMax(linkListObj* anObj);
-    virtual linkListObj*    findMin(linkListObj* anObj);
-    virtual void                  sort(bool ascending);
+    virtual void				addToTop(linkListObj* newObj);
+    virtual void				addToEnd(linkListObj* newObj);
+    virtual void				unlinkTop(void);         // Push off the first one.
+    virtual void				unlinkObj(linkListObj* oldObj);// Find it and push this one off.
+    virtual void				dumpList(void);          // Call delete on everyone.
+    virtual bool				isEmpty(void);
+    virtual linkListObj*	getFirst(void);
+    virtual linkListObj*	getLast(void);
+    virtual linkListObj*	findMax(linkListObj* anObj);
+    virtual linkListObj*	findMin(linkListObj* anObj);
+    virtual void				sort(bool ascending);
 
-            int                       getCount(void);
-            linkListObj*          getByIndex(int index);
-            int                       findIndex(linkListObj* anObj);// returns -1 if NOT found.
-            void                        looseList(void);   // Someone has taken control of our list, let it go.
+            int				getCount(void);
+            linkListObj*	getByIndex(int index);
+            int				findIndex(linkListObj* anObj);// returns -1 if NOT found.
+            void				looseList(void);   // Someone has taken control of our list, let it go.
 
   protected :
-            linkListObj* theList;
+            linkListObj*	theList;
 };
 
 

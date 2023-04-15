@@ -4,7 +4,6 @@
 #include <idlers.h>
 
 
-
 //****************************************************************************************
 // serialStr:
 // serialStr is a quick and easy way to read complete c strings from the serial port. It

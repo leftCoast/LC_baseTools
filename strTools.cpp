@@ -88,7 +88,7 @@ tempStr::tempStr(const char* inStr) {
 	theStr = NULL;
 	if (inStr) {
 		setStr(inStr);
-}
+	}
 }
 
 
