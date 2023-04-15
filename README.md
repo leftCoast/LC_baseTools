@@ -15,6 +15,8 @@
 
 - **mechButton** - *Class that creates a debounced button. Has three possible user levels : Beginner - Simple polling, Intermediate - Use callbacks. and Pro - Use as a base class to create wild new custom actions.* [Example](examples/mechButton_Beginner)
 
+- **autoPOT** - *Class that creates a automatic analog pin reader. Uses a callback to alert the user when the value changes.*
+
 - **multiMap** - *Non-linear mapping function. Starts out blank and the user adds x,y points to it before use.*
 
 - **resizeBuff** - *Simplified memory management. Initialize your pointers to NULL then resizeBuff() can allocate and deallocate your dynamic buffer space for you. Passes back true for successful allocations, false for unsuccessful. Saves a lot of code typing. Now includes maxBuff. This is a stack based class that allocates the largest buffer it can for passing large chunks of data. Like copying one file to another. Also returns the number of data hauls that wil be necessary for the data to be transffered. Makes this kind of operation very simple.*
