@@ -362,10 +362,10 @@ colorMultiMap::colorMultiMap(void) {  }
 
 colorMultiMap::~colorMultiMap(void) {  }
 
+
 void colorMultiMap::addColor(double inX, colorObj* color) {
 
 	if (color) {
-	color->printRGB();
 		redMap.addPoint(inX,color->getRed());
 		greenMap.addPoint(inX,color->getGreen());
 		blueMap.addPoint(inX,color->getBlue());

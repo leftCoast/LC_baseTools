@@ -98,7 +98,7 @@ void tempStr::setStr(const char* inStr) { heapStr(&theStr,inStr); }
 
 int tempStr::numChars(void) { return strlen(theStr); }
 
-const char* tempStr::getStr(void) { return theStr; }
+const char* tempStr::getStr(void) { return (const char*)theStr; }
 
 
 
