@@ -1,6 +1,6 @@
 #include <textBuff.h>
 #include <resizeBuff.h>
-
+#include <strTools.h>
 
 
 textBuff::textBuff(int inNumBytes,bool inOverwrite) {
@@ -104,8 +104,41 @@ char textBuff::readChar(void) {
 }
 
 
+// Hand back a c string of.. Either the first full string found.
+// Or.. All of the text with a '\0' appended to it. If empty, it
+// returns Just a c string consisting of '\0'.
+char*	 textBuff::readStr(void) {
+
+	int	numBytes;
+	int	i;
+	int	j;
+	
+	numBytes = numChars();								// Lets save off the number of/. bytes stored.
+	if (empty()) {											// If there are no bytes..
+		resizeBuff(1,&returnStr);						// Resize the buff for empty string.
+		returnStr[0] = '\0';								// Copy in the \0.
+	} else {													// Else, there are bytes in there..
+		i = 0;												// Starting at zero.
+		while(buff[i]&&i<numBytes) i++;				// Run down the buff looking for a \0.
+		if (i<numBytes) {									// If i is less than numBytes, we hit a \0..
+			resizeBuff(i+1,&returnStr);				// Resize the buff to hold the bytes & \0.
+			for (j=0;j<i;j++) {							// For each char..
+				returnStr[j] = readChar();				// Copy it into the output string.
+			}													//
+		} else {												// Else, i = numBytes.. we hit the end.
+			resizeBuff(numBytes+1,&returnStr);		// Resize the buff to fit.
+			for (j=0;j<i;j++) {							// Read out all the buffer bytes.
+				returnStr[j] = readChar();				// Stuffing them into the return string.
+			}													//
+			returnStr[j] = '\0';							// This one needs an \0 appended.
+		}														//
+	}															//
+	return returnStr;										// Send it on it's way.
+}
+
+
 // Return the numnber of charactors THAT CAN BE stored in this buffer.
-int textBuff::buffSize(void) {return numBytes; }
+int textBuff::buffSize(void) { return numBytes; }
 
 
 // Return the numnber of charactors THAT ARE stored in the buffer.
