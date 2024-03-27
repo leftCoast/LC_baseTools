@@ -49,8 +49,8 @@ void lwrCase(char* inStr) {
 // Load in this string. Allocate, or re-allocate your char* to save it.
 bool heapStr(char** resultStr,const char* inStr) {
 
-	int numChars;
-	bool    success;
+	int 	numChars;
+	bool	success;
 
 	success = false;                                       // We need to prove our success!
 	if (inStr) {                                           // If we got a non-NULL string..
@@ -99,20 +99,3 @@ void tempStr::setStr(const char* inStr) { heapStr(&theStr,inStr); }
 int tempStr::numChars(void) { return strlen(theStr); }
 
 const char* tempStr::getStr(void) { return (const char*)theStr; }
-
-
-
-//****************************************************************************************
-// returnStr :
-//
-// returnStr is just a string pointer that has be pre-initialized at NULL and can be
-// reallocated and used by functions as a return string. Granted, its only good for the
-// moment immediately after it has been returned. So the calling function must copy or
-// use it immediately. But it makes returning strings a LOT easier.
-//
-// heapStr(&returnStr,yourStr);     // Allocates then copies your string to be returned.
-// freeStr(&returnStr);             // Resets it to NULL. (Optional, to pass back a NULL)
-//****************************************************************************************
-
-
-char*   returnStr = NULL;

@@ -53,49 +53,32 @@ extern void freeStr(char** resultStr);
 // string only until it goes out of scope, and then it automatically recycles the memory
 // for you.
 //
-// tempStr myStr(readThing(pinNum));                       // Copy the output of a string function.
+// tempStr myStr(readThing(pinNum));	// Copy the output of a string function.
 //
 // -or-
 //
-// tempStr myStr;                                          // Or an empty one. Ready to save a string.
+// tempStr myStr;								// Or an empty one. Ready to save a string.
 //
-// myStr.setStr(readThing(pinNum));                        // You can save a string later. Or reuse.
-// formatAndDisplay(myStr.getStr());                       // We don't worry about what the readThing() does.
-//                                                         // We now have a local copy.
+// myStr.setStr(readThing(pinNum));		// You can save a string later. Or reuse.
+// formatAndDisplay(myStr.getStr());	// We don't worry about what the readThing() does.
+//													// We now have a local copy.
 //
-// return;                                                 // When tempStr goes out of scope, It recycles.
+// return;                            	// When tempStr goes out of scope, It recycles.
 //****************************************************************************************
 
 
 class tempStr {
 
 	public:
-							tempStr(const char* inStr=NULL);
-	virtual ~tempStr(void);
+				tempStr(const char* inStr=NULL);
+	virtual	~tempStr(void);
 
-							void    setStr(const char* inStr);
-							int numChars(void);
-							const char* getStr(void);
+				void			setStr(const char* inStr);
+				int			numChars(void);
+				const char*	getStr(void);
 
-							char*   theStr;
+		char*	theStr;
 };
-
-
-
-//****************************************************************************************
-// returnStr :
-//
-// returnStr is just a string pointer that has be pre-initialized at NULL and can be
-// reallocated and used by functions as a return string. Granted, its only good for the
-// moment immediately after it has been returned. So the calling function must copy or
-// use it immediately. But it makes returning strings a LOT easier.
-//
-// heapStr(&returnStr,yourStr);     // Allocates then copies your string to be returned.
-// freeStr(&returnStr);             // Resets it to NULL. (Optional, to pass back a NULL)
-//****************************************************************************************
-
-
-extern char*    returnStr;
 
 
 #endif
