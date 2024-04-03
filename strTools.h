@@ -31,7 +31,7 @@ void lwrCase(char* inStr);
 // And that would allocate room for the text and put there. Sadly it would only do it
 // once. Now, wouldn't that be nice if you could do it repeatedly? Now you can!
 //
-// char* aStr = NULL;                                      // ALLWAYS initialize at NULL for this.
+// char* aStr = NULL;                                      // ALWAYS initialize at NULL for this.
 //
 // heapStr(&aStr,"Look data!");                            // Allocates and stuffs it in.
 // heapStr(&aStr,"Look longer data!");                     // Recycles, re-allocates and writes.
