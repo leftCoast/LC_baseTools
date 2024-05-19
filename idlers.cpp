@@ -66,7 +66,7 @@ void idler::idle(void) { }
 
 // *******************************
 // idlers, management for the list of idlers.
-// Is delared as a global and runs in th background.
+// Is declared as a global and runs in th background.
 // *******************************
 
 
