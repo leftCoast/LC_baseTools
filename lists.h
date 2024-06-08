@@ -68,14 +68,14 @@ class linkList {
 
 class stack : public linkList {
 
-  public:
-                stack(void);
-    virtual ~stack(void);
+	public:
+				stack(void);
+	virtual	~stack(void);
 
-    virtual void                  push(linkListObj* newObj);
-    virtual linkListObj*    pop(void);
-    virtual linkListObj*    peek(void);
-  };
+	virtual	void				push(linkListObj* newObj);
+	virtual	linkListObj*	pop(void);
+	virtual	linkListObj*	peek(void);
+};
 
 
 
@@ -88,14 +88,14 @@ class stack : public linkList {
 
 class queue : public linkList {
 
-  public:
-                queue(void);
-    virtual ~queue(void);
+	public:
+				queue(void);
+	virtual	~queue(void);
 
-    virtual void            push(linkListObj* newObj);
-    virtual linkListObj*   pop(void);
-    virtual linkListObj*    peek(void);
-  };
+	virtual	void				push(linkListObj* newObj);
+	virtual	linkListObj*	pop(void);
+	virtual	linkListObj*	peek(void);
+};
 
 
 
@@ -107,26 +107,26 @@ class queue : public linkList {
 
 class dblLinkListObj {
 
-public:
-                dblLinkListObj(void);
-    virtual ~dblLinkListObj(void);
+	public:
+				dblLinkListObj(void);
+	virtual	~dblLinkListObj(void);
 
-                void                    linkAfter(dblLinkListObj* anObj);// Given a pointer to a node, link yourself after it.
-                void                    linkBefore(dblLinkListObj* anObj);// Given a pointer to a node, link yourself before it.
-                dblLinkListObj* getFirst(void);
-                dblLinkListObj* getLast(void);
-                void                    linkToEnd(dblLinkListObj* anObj);// Given a pointer to a node, link yourself after the last in the chain.
-                void                    linkToStart(dblLinkListObj* anObj); // Given a pointer to a node, link yourself before the first in the chain.
-                dblLinkListObj* getTailObj(int index);     // Hand back the "nth" one of our tail. Starting at 0;
-                void                    unhook(void);      // Unhook myself.
-                void                    dumpTail(void);    // Delete entire tail.
-                void                    dumpHead(void);    // Delete entire head section..
-                void                    dumpList(void);    // Delete both head & tail.
-                int                   countTail(void);     // How many nodes long is our tail?
-                int                   countHead(void);     // How many nodes long is our head?
+			void					linkAfter(dblLinkListObj* anObj);	// Given a pointer to a node, link yourself after it.
+			void					linkBefore(dblLinkListObj* anObj);	// Given a pointer to a node, link yourself before it.
+			dblLinkListObj*	getFirst(void);
+			dblLinkListObj*	getLast(void);
+			void					linkToEnd(dblLinkListObj* anObj);	// Given a pointer to a node, link yourself after the last in the chain.
+			void					linkToStart(dblLinkListObj* anObj);	// Given a pointer to a node, link yourself before the first in the chain.
+			dblLinkListObj*	getTailObj(int index);     			// Hand back the "nth" one of our tail. Starting at 0;
+			void					unhook(void);      						// Unhook myself.
+			void					dumpTail(void);    						// Delete entire tail.
+			void					dumpHead(void);    						// Delete entire head section..
+			void					dumpList(void);    						// Delete both head & tail.
+			int					countTail(void);							// How many nodes long is our tail?
+			int					countHead(void);     					// How many nodes long is our head?
 
-                dblLinkListObj* dllPrev;
-                dblLinkListObj* dllNext;
+			dblLinkListObj*	dllPrev;
+			dblLinkListObj*	dllNext;
 };
 
 
