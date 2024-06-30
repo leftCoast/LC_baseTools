@@ -12,7 +12,7 @@ runningAvg::runningAvg(int inNumData) {
     numValues   = 0;
     index       = 0;
     mResult     = 0;
-    
+
     usingUpper	 = false;
     upperLimit  = 0;
     usingLower	 = false;
@@ -36,13 +36,13 @@ float runningAvg::addData(float inData) {
 		theValues[index++] = inData;		// Never been full so index must be ok.
 		numValues++;
 	} else {
-		if (index==maxData) {					// Meaning its pointing past the array.
-			index = 0;								// Cycle around.
+		if (index==maxData) {					  // Meaning its pointing past the array.
+			index = 0;								    // Cycle around.
 		}
-		theValues[index++] = inData;			// And stuff the value in.
+		theValues[index++] = inData;		// And stuff the value in.
 	}
 	sum = 0;
-	for (int i=0;i<numValues;i++) {			// We loop up to numValues but not including numValues.
+	for (int i=0;i<numValues;i++) {		// We loop up to numValues but not including numValues.
 		sum = sum + theValues[i];
 	}
 	mResult = sum/numValues;
@@ -118,7 +118,7 @@ float runningAvg::getDataItem(int index) {
 
 // Anything above this will be cut from the data.
 void runningAvg::setUpperLimit(float limit) {
-		
+
 	upperLimit = limit;
 	usingUpper = true;
 }
@@ -130,7 +130,7 @@ void runningAvg::clearUpperLimit(void) { usingUpper = false; }
 
 // Anything below this will be cut from the data.
 void runningAvg::setLowerLimit(float limit) {
-	
+
 	lowerLimit = limit;
 	usingLower = true;
 }

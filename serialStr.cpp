@@ -21,7 +21,8 @@ serialStr::~serialStr(void) { resizeBuff(0,&buff); }
 
 // Take in the callback function pointer. While we're at it, do the hookup() call for
 // doing idle function.
-//void serialStr::setCallback(void(*funct)(const char*)) {
+// void serialStr::setCallback(void(*funct)(const char*)) {
+
 void serialStr::setCallback(void(*funct)(char*)) {
 
    callback = funct;
