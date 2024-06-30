@@ -2,22 +2,14 @@
 
 //#include <debug.h>
 
+/*==============================================================================================
+       DON'T USE UNINITIALIZED POINTERS!! EVEN JUST SETTING TO NULL WILL BE FINE.
 
-//****************************************************************************************
-//****************************************************************************************
-//
-//       DON'T USE UNINITIALIZED POINTERS!! EVEN JUST SETTING TO NULL WILL BE FINE.
-//
-// Once your pointer is either set to NULL or allocated, then it can be used in here all
-// you want.
-//****************************************************************************************
-//****************************************************************************************
+ Once your pointer is either set to NULL or allocated, then it can be used in here all
+ you want.
 
-
-
-//****************************************************************************************
-// resizeBuff:
-//****************************************************************************************
+ resizeBuff:
+================================================================================================*/
 
 
 bool resizeBuff(int numBytes,uint8_t** buff) {
@@ -41,12 +33,12 @@ bool resizeBuff(int numBytes,float** buff) { return resizeBuff(numBytes,(uint8_t
 
 
 
-//****************************************************************************************
-// maxBuff:
-//
-// Class for slicing up huge data streams into bite sized buffers. Good for things like
-// copying one file to another.
-//****************************************************************************************
+/*====================================================================================
+ maxBuff:
+
+ Class for slicing up huge data streams into bite sized buffers. Good for things like
+ copying one file to another.
+=====================================================================================*/
 
 
 maxBuff::maxBuff(unsigned long numBytes,unsigned long  minBytes) {
@@ -63,6 +55,3 @@ maxBuff::maxBuff(unsigned long numBytes,unsigned long  minBytes) {
 
 
 maxBuff::~maxBuff(void) { resizeBuff(0,&theBuff); }
-
-
-

@@ -11,7 +11,7 @@ colorObj magenta(LC_MAGENTA);
 colorObj yellow(LC_YELLOW);
 
 
-// colormapper extremes..
+// color-mapper extremes.
 #define START_COLOR     0
 #define END_COLOR       100
 
@@ -51,10 +51,12 @@ void colorObj::setColor(byte inRed, byte inGreen, byte inBlue) {
 }
 
 
-// Handed a packed 16 bit color we want to create one of our 24 bit colors.
-// If it falls on one of our known colors, possibly it started out as one of ours?
-// The switch statement will quickly bring it back to our original.
-// Otherwise, we do the best we can with whatever bits we have to play with.
+/* Handed a packed 16 bit color we want to create one of our 24 bit colors.
+   If it falls on one of our known colors, possibly it started out as one of ours?
+   The switch statement will quickly bring it back to our original.
+   Otherwise, we do the best we can with whatever bits we have to play with.
+*/
+
 void colorObj::setColor(word color16) {
 
   switch(color16) {
@@ -195,7 +197,7 @@ void colorObj::setColor(colorObj* inColor) {
 }
 
 
-// Copied from Adafruit'
+// Copied from Adafruit
 word colorObj::getColor16(void) {
   return ((red & 0xF8) << 8) | ((green & 0xFC) << 3) | (blue >> 3);
 }
@@ -251,7 +253,7 @@ void colorObj::blend(colorObj* mixinColor,byte mixPercent) {
 
 	if (mixPercent>=100) {          // If >= 100 means totally mixin color.
 		setColor(mixinColor);
-	} else if (mixPercent>0) {      // So its NOT >= 100 but it is > 0.. Blend it.
+	} else if (mixPercent>0) {      // So its NOT >= 100 but it is > 0. Blend it.
 		mixMapper.setColors(this,mixinColor);
 		colorObj temp = mixMapper.map(mixPercent);
 		setColor(&temp);
@@ -394,4 +396,3 @@ colorObj colorMultiMap::map(double inVal) {
 	result.setColor(red,green,blue);
 	return result;
 }
-

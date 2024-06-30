@@ -2,14 +2,14 @@
 
 
 autoPOT::autoPOT(int inPin) {
-  
-  callback = NULL;  // Bacause it ain't
+
+  callback = NULL;  // Bacause it ain't.
   pinNum = inPin;   // Because they said.
   value  = -1;      // Because it can't.
 }
 
 
-// Nothing to do here.
+// Nothing to do here this is a virtual destructor.
 autoPOT::~autoPOT(void) {  }
 
 
@@ -25,7 +25,6 @@ void autoPOT::setCallback(void(*funct)(int)) {
 void autoPOT::idle(void) {
 
   int newVal;
-  
   if (callback) {
     newVal = analogRead(pinNum);
     if (newVal!=value) {
