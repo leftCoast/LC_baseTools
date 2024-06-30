@@ -3,7 +3,7 @@
 
 autoPOT::autoPOT(int inPin) {
 
-  callback = NULL;  // Because it ain't.
+  callback = NULL;  // Bacause it ain't.
   pinNum = inPin;   // Because they said.
   value  = -1;      // Because it can't.
 }
