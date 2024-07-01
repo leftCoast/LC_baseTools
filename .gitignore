@@ -32,3 +32,6 @@
 *.exe
 *.out
 *.app
+
+# Notations, and local files.
+notes.md
