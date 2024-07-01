@@ -14,11 +14,11 @@
 
 bool resizeBuff(int numBytes,uint8_t** buff) {
 
-  	if(*buff) {																// If we did NOT get passed in a NULL..
+  	if(*buff) {																// If we did NOT get passed in a NULL.
 		free(*buff);														// We free the memory.
 		*buff = NULL;														// Set the pointer to NULL.
   	}
-  	if (numBytes>0) {														// If we got a positive non zero value..
+  	if (numBytes>0) {														// If we got a positive non zero value.
 		*buff = (uint8_t*)malloc(numBytes);							// We attempt allocate that number of bytes.
 		return *buff != NULL;											// And we return true for non NULL result (non-NULL = Success)
   	}
@@ -45,7 +45,7 @@ maxBuff::maxBuff(unsigned long numBytes,unsigned long  minBytes) {
 		theBuff           = NULL;									// Pointers start at NULL.
 		numBuffBytes    = numBytes;								// In a perfect world, numBytes will work.
 		numPasses         = 1;										// In that same world, we'll only need one pass.
-		while(!resizeBuff(numBuffBytes,&theBuff)) {			// Have a go at allocating the buffer..
+		while(!resizeBuff(numBuffBytes,&theBuff)) {			// Have a go at allocating the buffer.
 			numPasses++;												// If we didn't get it, bump up number of passes.
 			numBuffBytes = (numBytes/numPasses) + 1;			// Cut down the buffer size.
 			if (numBuffBytes<minBytes) return;					// At some point, lets just give up.
