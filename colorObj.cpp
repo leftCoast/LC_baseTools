@@ -203,8 +203,8 @@ word colorObj::getColor16(void) {
 }
 
 
-// Average out the colors to a one byte greyscale value.
-byte colorObj::getGreyscale(void) {
+// Average out the colors to a one byte grayscale value.
+byte colorObj::getGrayscale(void) {
 
 	int sum;
 	float   ave;
