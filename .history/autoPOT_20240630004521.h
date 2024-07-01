@@ -3,8 +3,9 @@
 
 #include <idlers.h>
 
-/*====================================================================================
 
+/****************************************************************************************
+ autoPOT:
  autoPOT is a quick and easy way to get analog readings from the analog port. When the
  reading changes, your callback is called, giving you the new value.
 
@@ -22,7 +23,7 @@
  Make sure idle() is called in your main loop() function.
 
  That's about it.
-========================================================================================*/
+****************************************************************************************/
 
 
 class autoPOT : public idler {
