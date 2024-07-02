@@ -35,7 +35,7 @@ textBuff::~textBuff(void) {
 bool textBuff::addChar(char inChar) {
 
 
-	if (overwrite && full()) {		// If we're full and overwrite is true.
+	if (overwrite && full()) {			// If we're full and overwrite is true.
 		(void)readChar();				// Make room by dumping the oldest char.
 	}
 	if (!full()) {						// If not full..
@@ -57,13 +57,13 @@ bool textBuff::addStr(char* inCStr,bool andNULL) {
 	i;
 	bool		success;
 
-	success = false;								// Well, we ain't a success yet.
-	i = 0;											// Start up our counter.
+	success = false;							// Well, we ain't a success yet.
+	i = 0;										// Start up our counter.
 	while(inCStr[i]!='\0') {					// While we are not pointing at the NULL char.
 		success = addChar(inCStr[i]);			// Blindly stuff the char into the buffer.
-		i++;											// Increment counter.
+		i++;									// Increment counter.
 	}
-	if (andNULL) {									// If they want the null char saved.
+	if (andNULL) {								// If they want the null char saved.
 		success =  addChar('\0');				// We add one in. Its the little things we do for you.
 	}
 	return success;								// Return if they all went in.
@@ -75,7 +75,7 @@ bool textBuff::addStr(char* inCStr,bool andNULL) {
 char textBuff::peekHead(void) {
 
   if (empty()) return '\0';			// If empty, return a \0.
-  return buff[head];						// Otherwise, return the char that's next to read.
+  return buff[head];				// Otherwise, return the char that's next to read.
 }
 
 
@@ -85,13 +85,13 @@ char textBuff::peekIndex(int index) {
 
 	int absIndex;
 
-	if (empty()) return '\0';						// If empty, return a '\0'.
+	if (empty()) return '\0';					// If empty, return a '\0'.
 	if (index>numChars()) return '\0';			// If we don't have that one, return a '\0'.
-	absIndex = head + index;						// Take a shot at the absolute index, if it's too big.
-	if (absIndex>=numBytes) {						// If we are past the buffer size.
+	absIndex = head + index;					// Take a shot at the absolute index, if it's too big.
+	if (absIndex>=numBytes) {					// If we are past the buffer size.
 		absIndex = absIndex - numBytes;			// Subtract the buffer size from the absolute.
-	}														//
-  	return buff[absIndex];							// Otherwise, return the char that's next to read.
+	}											//
+  	return buff[absIndex];						// Otherwise, return the char that's next to read.
 }
 
 
@@ -102,14 +102,14 @@ char textBuff::readChar(void) {
 
   char  theChar;
 
-	if (!empty()) {					// If we have some chars.
-		theChar = buff[head];		// Save off the oldest char.
-		inc(&head);						// Do the indexing update.
-		isFull = false;				// In any case we are no longer full.
-		return theChar;				// Return the oldest char.
-	} else {								// Else, we were empty.
-		return '\0';					// Pass back a \0.
-	}
+  if (!empty()) {				// If we have some chars.
+    theChar = buff[head];		// Save off the oldest char.
+    inc(&head);					// Do the indexing update.
+    isFull = false;				// In any case we are no longer full.
+    return theChar;				// Return the oldest char.
+  } else {						// Else, we were empty.
+    return '\0';				// Pass back a \0.
+  }
 }
 
 // Hand back a c string of.. Either the first full string found.
@@ -120,20 +120,20 @@ char*	 textBuff::readStr(void) {
 
 	int	i;
 
-	resizeBuff(1,&returnStr);											// Resize the buff for empty string.
-	returnStr[0] = '\0';													// Copy in the \0.
+	resizeBuff(1,&returnStr);									// Resize the buff for empty string.
+	returnStr[0] = '\0';										// Copy in the \0.
 	if (!empty() && resizeBuff(strlen()+1,&returnStr)) {		// If there are bytes AND we can allocate enough.
-		i = -1;																// Starting at -1.
-		do {																	// Repeat.
-			i++;																// Bump up the index. (Now starting at zero)
-			returnStr[i] = readChar();									// Read a char into our returnStr.
-		} while(returnStr[i]!='\0'&&!empty());						// If we DIDN'T read a null and STILL have chars.
-		if (returnStr[i]!='\0') {										// If we didn't get a NULL char.
-			i++;																// Bump up the index.
-			returnStr[i] = '\0';											// Pop a '\0' after the last char.
-		}																		//
-	}																			//
-	return returnStr;														// Send it on it's way.
+		i = -1;													// Starting at -1.
+		do {													// Repeat.
+			i++;												// Bump up the index. (Now starting at zero)
+			returnStr[i] = readChar();							// Read a char into our returnStr.
+		} while(returnStr[i]!='\0'&&!empty());					// If we DIDN'T read a null and STILL have chars.
+		if (returnStr[i]!='\0') {								// If we didn't get a NULL char.
+			i++;												// Bump up the index.
+			returnStr[i] = '\0';								// Pop a '\0' after the last char.
+		}														//
+	}															//
+	return returnStr;											// Send it on it's way.
 }
 
 
@@ -144,14 +144,14 @@ int textBuff::buffSize(void) { return numBytes; }
 // Return the number of characters THAT ARE stored in the buffer.
 int textBuff::numChars(void) {
 
-  if (empty()) {								// If its empty.
-    return 0;									// Well, that would be zero.
+  if (empty()) {							// If its empty.
+    return 0;								// Well, that would be zero.
   } else if (full()) {						// If its full.
-    return numBytes;							// Return the number of bytes we store.
+    return numBytes;						// Return the number of bytes we store.
   } else if (head<tail) {					// Head less that tail.
     return tail - head;						// Data is between them, return the difference.
-  } else {										// And lastly.. Head is greater than tail.
-    return numBytes - (head - tail);	// Kinda' opposite. Data is between them on the other side.
+  } else {									// And lastly.. Head is greater than tail.
+    return numBytes - (head - tail);		// Kinda' opposite. Data is between them on the other side.
   }
 }
 
@@ -163,15 +163,15 @@ int textBuff::strlen(void) {
 	int max;
 	int strIdx;
 
-	if (empty()) return 0;								// Well if we got none we give none.
-	strIdx = head;											// Copied from readChar().
-	max = numChars();										// store the number of chars we have.
-	count = 0;												// And starting at zero chars to read.
+	if (empty()) return 0;							// Well if we got none we give none.
+	strIdx = head;									// Copied from readChar().
+	max = numChars();								// store the number of chars we have.
+	count = 0;										// And starting at zero chars to read.
 	while(buff[strIdx]!='\0'&&count<max) {			// If we're not pointing at null, and not at the limit of data.
-		count++;												// Bump up the char count.
-		inc(&strIdx);										// Increment the local index.
-	}															//
-	return count;											// And when complete, we return count.
+		count++;									// Bump up the char count.
+		inc(&strIdx);								// Increment the local index.
+	}												//
+	return count;									// And when complete, we return count.
 }
 
 
