@@ -102,10 +102,10 @@ extern bool resizeBuff(int numBytes,void** buff);
   src.seek(0);                                           // Point at first byte of the src file.
   remaingBytes = src.size();                             // Get the remaining bytes to copy.
   for (int i=0;i<cpyBuff.numPasses;i++) {                // For every pass through..
-      numBytes = min(cpyBuff.numBuffBytes,remaingBytes); // Use buffer size or remaining bytes.
-      src.read(cpyBuff.theBuff,numBytes);                // Fill the buffer.
-      dest.write((char*)(cpyBuff.theBuff),numBytes);     // Write out the buffer.
-      remaingBytes = remaingBytes - numBytes;            // Recalculate the remaining bytes.
+		numBytes = min(cpyBuff.numBuffBytes,remaingBytes); // Use buffer size or remaining bytes.
+		src.read(cpyBuff.theBuff,numBytes);                // Fill the buffer.
+		dest.write((char*)(cpyBuff.theBuff),numBytes);     // Write out the buffer.
+		remaingBytes = remaingBytes - numBytes;            // Recalculate the remaining bytes.
   }                                                      //
   src.seek(filePos);                                     // Put it back like we found it.
  }
@@ -117,13 +117,13 @@ extern bool resizeBuff(int numBytes,void** buff);
 
 class maxBuff {
 
-    public:
-                maxBuff(unsigned long numBytes,unsigned long  minBytes=BYTE_CUTOFF);
-    virtual ~maxBuff(void);
+	public:
+					maxBuff(unsigned long numBytes,unsigned long  minBytes=BYTE_CUTOFF);
+	virtual ~maxBuff(void);
 
-                void*               theBuff;
-                unsigned long   numBuffBytes;
-                int             numPasses;
-    };
+					void*               theBuff;
+					unsigned long   numBuffBytes;
+					int             numPasses;
+	};
 
 #endif
