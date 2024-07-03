@@ -6,17 +6,17 @@
 // Constructor, runningAvg wants to know how many data values to average over.
 runningAvg::runningAvg(int inNumData) {
 
-	theValues   = NULL;
-	resizeBuff(sizeof(float)*inNumData,(byte**)&theValues);
-	maxData     	= inNumData;
-	numValues   	= 0;
-	index       	= 0;
-	mResult     	= 0;
-
-	usingUpper	 	= false;
-	upperLimit  	= 0;
-	usingLower	 	= false;
-	lowerLimit  	= 0;
+    theValues   = NULL;
+    resizeBuff(sizeof(float)*inNumData,(byte**)&theValues);
+    maxData     = inNumData;
+    numValues   = 0;
+    index       = 0;
+    mResult     = 0;
+    
+    usingUpper	 = false;
+    upperLimit  = 0;
+    usingLower	 = false;
+    lowerLimit  = 0;
 }
 
 
@@ -28,10 +28,12 @@ runningAvg::~runningAvg(void) { resizeBuff(0,(byte**)&theValues); }
 float runningAvg::addData(float inData) {
 
 	float sum;
+	
 	if (usingLower && inData<lowerLimit) return mResult;
 	if (usingUpper && inData>upperLimit) return mResult;
-	if (numValues<maxData) {					// Early stages while filling.
-		theValues[index++] = inData;			// Never been full so index must be ok.
+	
+	if (numValues<maxData) {         	// Early stages while filling.
+		theValues[index++] = inData;		// Never been full so index must be ok.
 		numValues++;
 	} else {
 		if (index==maxData) {					// Meaning its pointing past the array.
@@ -55,28 +57,28 @@ float runningAvg::getAve(void) { return mResult; }
 // Run through the data values and return the largest one.
 float runningAvg::getMax(void) {
 
-	float max = theValues[0];
+  float max = theValues[0];
 
-	for (int i=1;i<numValues;i++) {
-		if (theValues[i]>max) {
-		max = theValues[i];
-		}
-		}
-	return max;
+  for (int i=1;i<numValues;i++) {
+    if (theValues[i]>max) {
+      max = theValues[i];
+      }
+    }
+  return max;
 }
 
 
 // Run through the data values and return the smallest one.
 float runningAvg::getMin(void) {
 
-	float min = theValues[0];
+  float min = theValues[0];
 
-	for (int i=1;i<numValues;i++) {
-		if (theValues[i]<min) {
-		min = theValues[i];
-		}
-	}
-	return min;
+  for (int i=1;i<numValues;i++) {
+    if (theValues[i]<min) {
+      min = theValues[i];
+    }
+  }
+  return min;
 }
 
 
@@ -88,14 +90,14 @@ float runningAvg::getDelta(void) { return getMax()-getMin(); }
 // Runs through the data, calculates and returns the standard deviation.
 float runningAvg::getStdDev(void) {
 
-	float sum;
+  float sum;
 
-	sum = 0;
-	for (int i=0;i<numValues;i++) {
-		sum = sum + pow(theValues[i]-mResult,2);
-	}
-	sum = sum/numValues;
-	return sqrt(sum);
+  sum = 0;
+  for (int i=0;i<numValues;i++) {
+    sum = sum + pow(theValues[i]-mResult,2);
+  }
+  sum = sum/numValues;
+  return sqrt(sum);
 }
 
 
@@ -107,16 +109,16 @@ int runningAvg::getNumValues(void) { return numValues; }
 // can't find the data item.
 float runningAvg::getDataItem(int index) {
 
-	if (index>=0 && index < numValues) {
-		return theValues[index];
-	}
-	return 0;
+  if (index>=0 && index < numValues) {
+    return theValues[index];
+  }
+  return 0;
 }
 
 
 // Anything above this will be cut from the data.
 void runningAvg::setUpperLimit(float limit) {
-
+		
 	upperLimit = limit;
 	usingUpper = true;
 }
@@ -128,7 +130,7 @@ void runningAvg::clearUpperLimit(void) { usingUpper = false; }
 
 // Anything below this will be cut from the data.
 void runningAvg::setLowerLimit(float limit) {
-
+	
 	lowerLimit = limit;
 	usingLower = true;
 }

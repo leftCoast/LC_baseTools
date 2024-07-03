@@ -1,7 +1,7 @@
 #include "blinker.h"
 
 // So everyone wants newbies to write blink without delay. This is good
-// because delay() is bad. Well, here's the simple way to do it.
+// because delay() is bad. Well, here's the simple way to do it..
 
 // Allocate a global blinker object.
 blinker aBLinker;

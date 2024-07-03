@@ -3,26 +3,27 @@
 
 #include <idlers.h>
 
-/*====================================================================================
 
- autoPOT is a quick and easy way to get analog readings from the analog port. When the
- reading changes, your callback is called, giving you the new value.
-
- Create an autoPOT instance using the analog input pin number of your choice.
- autoPOT myPOT(A0);
-
- In your setup() function, attach this to your callback function.
- myPOT.setCallback(gotChange);
-
- Write your callback function.
- void gotChange(int newValue) {
-    Do stuff with the newValue
- }
-
- Make sure idle() is called in your main loop() function.
-
- That's about it.
-========================================================================================*/
+//****************************************************************************************
+// autoPOT:
+// autoPOT is a quick and easy way to get analog readings from the analog port. When the
+// reading changes, your callback is called, giving you the new value.
+//
+// Create an autoPOT instance using the analog input pin number of your choice.
+// autoPOT myPOT(A0);
+//
+// In your setup() function, attach this to your callback function.
+// myPOT.setCallback(gotChange);
+//
+// Write your callback function.
+// void gotChange(int newValue) {
+//    Do stuff with the newValue
+// }
+//
+// Make sure idle() is called in your main loop() function.
+//
+// That's about it.
+//****************************************************************************************
 
 
 class autoPOT : public idler {
@@ -33,7 +34,7 @@ class autoPOT : public idler {
 
           void  setCallback(void(*funct)(int));
   virtual void  idle(void);
-
+          
   protected:
           void  (*callback)(int);
           int   pinNum;

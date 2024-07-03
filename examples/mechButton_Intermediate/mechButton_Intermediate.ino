@@ -1,10 +1,9 @@
-/*====================================================================================
- Adding a callback function example.
+// Adding a callback function example.
+//
+// In this example we'll setup and demo a callback. As well as read the button state in
+// loop(). You don't need the button state stuff in loop() to make the callback stuff
+// work. Its just there to show you two things going at once.
 
- In this example we'll setup and demo a callback. As well as read the button state in
- loop(). You don't need the button state stuff in loop() to make the callback stuff
- work. Its just there to show you two things going at once.
-====================================================================================*/
 #include <mechButton.h>
 
 

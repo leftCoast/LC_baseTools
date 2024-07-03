@@ -1,27 +1,28 @@
-/*====================================================================================
- The auto blinker question comes up regularly in the Arduino forum so
- I figured an example of that would be just the ticket. This uses two
- blinker objects for the blinking LEDs and three mechButton objects for
- the three buttons. A left, right and Hazard button. The first press
- of a button, say right, turns on that blinker. The second turns it
- back off. If another button is pressed, say left, then the code just
- switches from right to left. So each button is one click on, second
- click off.
+// Auto blinker switch example.
+//
+// The auto blinker question comes up regularly in the Arduino forum so
+// I figured an example of that would be just the ticket. This uses two
+// binker objects for the blinking LEDs and three mechButton objects for
+// the three buttons. A left, right and Hazard button. The first press
+// of a button, say right, turns on that blinker. The second turns it
+// back off. If another button is pressed, say left, then the code just
+// switches from right to left. So each button is one click on, second
+// click off.
+//
+// The buttons should be wired one side to the pin number choosen and
+// the other to ground. the mechButton object will do the debounceing
+// for you as well as call your callback routines when clicked. The
+// blinker objects take care of the blinking. All these behind the
+// scenes functions happen when you call idle() in your loop function.
+//
+// You can add more stuff to your loop() function if you want. But DO
+// NOT USE delay(). No fear though, this stuff comes with sleep() witch
+// acts on the main loop() just like delay(), but lets the background
+// stuff keep running.
+//
+// Have fun!
+// jim lee
 
- The buttons should be wired one side to the pin number choosen and
- the other to ground. the mechButton object will do the debouncing
- for you as well as call your callback routines when clicked. The
- blinker objects take care of the blinking. All these behind the
- scenes functions happen when you call idle() in your loop function.
-
- You can add more stuff to your loop() function if you want. But DO
- NOT USE delay(). No fear though, this stuff comes with sleep() witch
- acts on the main loop() just like delay(), but lets the background
- stuff keep running.
-
- Have fun!
- jim lee
-=====================================================================================*/
 
 
 #include <blinker.h>
@@ -49,18 +50,18 @@ void setup() {
 
   currentState = blinkOff;                                 // We start with the blinkers off. So note that.
   lButton.setCallback(clickLBtn);                          // Hook the button objects to their respective callbacks.
-  rButton.setCallback(clickRBtn);                          // Hooking.
-  hButton.setCallback(clickHBtn);                          // Hooking.
+  rButton.setCallback(clickRBtn);                          // Hooking..
+  hButton.setCallback(clickHBtn);                          // Hooking..
 }
 
 
 // When the LEFT button is clicked, this is called..
 void clickLBtn(void) {
 
-  if (!lButton.trueFalse()) {                              // If the button has been grounded.
-    if (currentState == blinkLeft) {                       // If we are already doing this mode.
+  if (!lButton.trueFalse()) {                              // If the button has been grounded..
+    if (currentState == blinkLeft) {                       // If we are already doing this mode..
       setBlinkers(blinkOff);                               // We just shut off everything.
-    } else {                                               // Else, doing something else.
+    } else {                                               // Else, doing something else..
       setBlinkers(blinkLeft);                              // We switch to our mode.
     }
   }
@@ -70,10 +71,10 @@ void clickLBtn(void) {
 // When the RIGHT button is clicked, this is called..
 void clickRBtn(void) {
 
-  if (!rButton.trueFalse()) {                              // If the button has been grounded.
-    if (currentState == blinkRight) {                      // If we are already doing this mode.
+  if (!rButton.trueFalse()) {                              // If the button has been grounded..
+    if (currentState == blinkRight) {                      // If we are already doing this mode..
       setBlinkers(blinkOff);                               // We just shut off everything.
-    } else {                                               // Else, doing something else.
+    } else {                                               // Else, doing something else..
       setBlinkers(blinkRight);                             // We switch to our mode.
     }
   }
@@ -83,11 +84,11 @@ void clickRBtn(void) {
 // When the HAZARD button is clicked, this is called..
 void clickHBtn(void) {
 
-  if (!hButton.trueFalse()) {                           // If the button has been grounded.
-    if (currentState == blinkHazard) {                  // If we are already doing this mode.
-      setBlinkers(blinkOff);                            // We just shut off everything.
-    } else {                                            // Else, doing something else.
-      setBlinkers(blinkHazard);                         // We switch to our mode.
+  if (!hButton.trueFalse()) {                            // If the button has been grounded..]
+    if (currentState == blinkHazard) {                  // If we are already doing this mode..
+      setBlinkers(blinkOff);                           // We just shut off everything.
+    } else {                                            // Else, doing something else..
+      setBlinkers(blinkHazard);                        // We switch to our mode.
     }
   }
 }
@@ -96,7 +97,7 @@ void clickHBtn(void) {
 // Set the blinkers to a new mode. Then note what mode they are in.
 void setBlinkers(blinkComs theBlinkCom) {
 
-  switch (theBlinkCom) {                                  // If the new mode is.
+  switch (theBlinkCom) {                                  // If the new mode is..
     case blinkOff     :                                   // blinkOff.
       leftBlinker.setOnOff(false);                        // Left blinker off.
       rightBlinker.setOnOff(false);                       // Right blinker off.
@@ -110,7 +111,7 @@ void setBlinkers(blinkComs theBlinkCom) {
       rightBlinker.setOnOff(true);                        // Right blinker on.
       break;
     case blinkHazard  :                                   // blinkRight
-      leftBlinker.setOnOff(false);                        // Left blinker off. (Both off to sync them up)
+      leftBlinker.setOnOff(false);                        // Left blinker off. (Both off to synk them up)
       rightBlinker.setOnOff(false);                       // Right blinker off.
       leftBlinker.setOnOff(true);                         // Left blinker on.
       rightBlinker.setOnOff(true);                        // Right blinker on.
