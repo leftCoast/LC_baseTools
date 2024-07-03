@@ -24,17 +24,18 @@ and providing callback functionality for value changes.
 */
 
 class autoPOT : public idler {
-public:
-	autoPOT(int inPin);
-	virtual ~autoPOT();
-	void setCallback(void(*funct)(int));
-	virtual void idle();
-	int quickAverage(int numSamples = 10);
 
-protected:
-	void(*callback)(int);
-	int pinNum;
-	int value;
+	public:
+				autoPOT(int inPin);
+		virtual ~autoPOT();
+				void setCallback(void(*funct)(int));
+				int quickAverage(int numSamples = 10);
+		virtual void idle();
+		
+	protected:
+				void(*callback)(int);
+				int pinNum;
+				int value;
 };
 
 #endif
