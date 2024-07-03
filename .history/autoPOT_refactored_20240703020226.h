@@ -22,7 +22,7 @@ public:
 
 	// Get the average reading from the potentiometer
 	// Default to 10 samples if not specified
-	int quickAverage(int numSamples = 10);
+	int getAverage(int numSamples = 10);
 
 protected:
 	// Pointer to the callback function

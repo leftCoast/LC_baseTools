@@ -16,15 +16,6 @@ void autoPOT::setCallback(void(*funct)(int)) {
 	hookup();				// Call hookup() (likely from parent class)
 }
 
-// Returns the average  shot of multiple potentiometer readings.
-int autoPOT::quickAverage(int numSamples) {
-	long sum = 0;
-	for (int i = 0; i < numSamples; i++) {
-		sum += analogRead(pinNum);			// Sum up the readings
-	}
-	return sum / numSamples;				// Return the average
-}
-
 // Idle function: Checks for potentiometer changes
 void autoPOT::idle() {
 	int newVal;
@@ -35,4 +26,13 @@ void autoPOT::idle() {
 			callback(value);						// Call the callback function with new value
 		}
 	}
+}
+
+// Returns the average of multiple potentiometer readings
+int autoPOT::getAverage(int numSamples) {
+	long sum = 0;
+	for (int i = 0; i < numSamples; i++) {
+		sum += analogRead(pinNum);			// Sum up the readings
+	}
+	return sum / numSamples;				// Return the average
 }
