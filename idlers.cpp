@@ -16,7 +16,6 @@ void idle(void) {
   idling = false;
 }
 
-
 // In your main loop, call this for an effective delay. Keeps the idler's idling while you
 // wait. Just drops out if called in idle time.
 void sleep(float ms) {
@@ -41,16 +40,17 @@ idler::idler(void) {
 idler::~idler(void) { theIdlers.unlinkObj(this); }
 
 
-// You can't call this in the contstructor. Love to, but can't. So call this the first
-// time you add data or turn your idler on.
-//
-// But, why not call this in constructor?
-// Because hookup() relies on the idler global. We have no control over the global calls
-// to constructors. So we need to wait 'till the global party is over, to be sure our
-// world is in place, before we can be called. Don't create the animals before the planet
-// has cooled down. Its just common sense.
-//
-// Now, if you make an object that will NEVER be defined as a global? Then maybe..
+/* You can't call this in the constructor. Love to, but can't. So call this the first
+ time you add data or turn your idler on.
+
+ But, why not call this in constructor?
+ Because hookup() relies on the idler global. We have no control over the global calls
+ to constructors. So we need to wait 'till the global party is over, to be sure our
+ world is in place, before we can be called. Don't create the animals before the planet
+ has cooled down. Its just common sense.
+
+ Now, if you make an object that will NEVER be defined as a global? Then maybe.
+*/
 void idler::hookup(void) {
   if (!hookedIn) {
     theIdlers.addToTop(this);
