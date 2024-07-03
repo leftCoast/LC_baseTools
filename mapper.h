@@ -3,20 +3,19 @@
 
 #include <Arduino.h>
 
-/*
-  @file mapper.h
-
-  @brief This file defines the `mapper` class, which provides linear mapping
-  and interpolation functionality for double-precision floating-point values.
-
-  The standard Arduino `map()` function only operates on integers, which
-  can lead to precision loss. This class addresses that by performing
-  calculations using doubles, maintaining accuracy for real-number applications.
-
-  Additionally, the `mapper` class offers:
-   - Integration capabilities for applications like trapezoidal motion profiles.
-   - Convenient access to linear equation parameters (slope, intercept, etc.).
- */
+//****************************************************************************************
+// The mapper supplied by the Arduino library is only for integers. Well, sometimes you
+// want to do your math in real numbers. So, hang the cost, we're doing this on in the
+// biggest real numbers the platform can hand out.
+// As it turns out, most of our time is spent talking out different com ports so no one
+// notices these calculations. Or at least not often. And its really nice to know you're
+// not just chopping off all the decimal places early on in the game.
+//
+// 6/15/2020 : Added integration. Wanted it for doing trapezoidal moves.
+// 6/19/2020 : Backed out the multiMap changes. So for now? We'll see.
+// 11/4/2021 : Looks to me like they are back in. It's run for a year. Maybe it's ok.
+// 1/14/2022 : Doing some check over and comment cleanup for the next LC_baseTools release.
+//****************************************************************************************
 
 class mapper {
 
@@ -38,6 +37,7 @@ class mapper {
                 double  integrate(double x1,double x2);
                 double  integrate(void);
 
+                //void   printMap(void);                   // For debugging.
     private:
                 double minX;
                 double maxX;

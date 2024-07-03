@@ -15,7 +15,7 @@
 	Then.. Yes, I also added standard deviation. What the heck? Everything else is in the pot. Might as
 	well go for it all.
 
-	Still, true to its roots, it only calculates the average when a data-point is entered. All the rest
+	Still, true to its roots, it only calculates the average when a datapoint is entered. All the rest
 	are only calculated if/when the user actually asks for them. But they are there, ready to leap into
 	action, if desired.
 
@@ -29,15 +29,15 @@
 */
 
 
-runningAvg  smoother(5);                	// Our smoother. You can change the number of data-points it will act on.
+runningAvg  smoother(5);                // Our smoother. You can change the number of datapoints it will act on.
 
 void setup(void) {
-	Serial.begin(9600);                   	// Fire up the serial stuff.
+	Serial.begin(9600);                   // Fire up the serial stuff.
 	pinMode(A0, INPUT);
 }
 
 void loop(void) {
-	int data = analogRead(A0);            	// Read the pin, or enter the new data to avg.
-	float ave = smoother.addData(data);   	// The Average that the smoother will return to us.
+	int data = analogRead(A0);            // Read the pin, or enter the new data to avg.
+	float ave = smoother.addData(data);   // The Average that the smoother will return to us.
 	Serial.println(ave);
 }

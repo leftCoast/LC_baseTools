@@ -1,12 +1,12 @@
 #include "oneShot.h"
 
 
-// Our constructor. All the bits we can adjust at creation time.
+// Our constructor. All thie bits we can adjust at creation time.
 oneShot::oneShot(int inPin,float shotTime,int outPin,bool outHiLow)
    : timeObj(shotTime,false),                     // Set up our pulse timer.
    idler() {                                      // Set up our idler class things.
 
-   mButton        = new mechButton(inPin);        // Setup our button de-bouncer.
+   mButton        = new mechButton(inPin);        // Setup our button debouncer.
    mOutPin        = outPin;                       // Save our output pin number.
    mOutHiLow      = outHiLow;                     // Save our desired triggered state.
    mOurState      = waitForRelease;               // Set our initial state.
@@ -33,7 +33,7 @@ void oneShot::idle(void) {
 
    switch(mOurState) {
       case preStart  :                                     // We are sitting, waiting for a button press.
-         if (!mButton->trueFalse()) {                      // If we see the button get a press.
+         if (!mButton->trueFalse()) {                      // If we see the button get a press..
             start();                                       // We start our timer.
             digitalWrite(mOutPin,mOutHiLow);               // Kick the digital port into the saved (triggered) state.
             mOurState = running;                           // And our state is now running.
