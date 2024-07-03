@@ -2,7 +2,7 @@
 #define autoPOT_h
 
 #include <idlers.h>
-
+/*
 /*
 This header file defines the autoPOT class, which is designed to manage a potentiometer in an Arduino project.
 
@@ -22,6 +22,8 @@ Protected members:
 This class simplifies potentiometer management by handling background monitoring
 and providing callback functionality for value changes.
 */
+*/
+
 
 class autoPOT : public idler {
 public:
