@@ -1,7 +1,7 @@
 #include <idlers.h>
 #include <timeObj.h>
 
-// The global idler object list, and function call for "loop();"
+// The global idler object list."
 idlers theIdlers;
 
 
@@ -9,7 +9,7 @@ idlers theIdlers;
 bool idling = false;
 
 
-// Our call that goes into loop() to run the idlers.
+// Our call that goes into loop(); to run the idlers.
 void idle(void) {
   idling = true;
   theIdlers.idle();
