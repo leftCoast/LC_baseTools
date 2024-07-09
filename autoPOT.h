@@ -28,17 +28,19 @@
 
 class autoPOT : public idler {
 
-  public:
-          autoPOT(int inPin);
-  virtual ~autoPOT(void);
+	public:
+				autoPOT(int inPin);
+	virtual	~autoPOT(void);
 
-          void  setCallback(void(*funct)(int));
-  virtual void  idle(void);
+				void  setCallback(void(*funct)(int));
+          	void	setWindow(int plusMinus);
+	virtual	void  idle(void);
           
   protected:
-          void  (*callback)(int);
-          int   pinNum;
-          int   value;
+				void	(*callback)(int);
+				int	pinNum;
+				int	value;
+				int	window;
 };
 
 #endif
