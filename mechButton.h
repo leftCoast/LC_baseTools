@@ -8,7 +8,7 @@
 // Mechanical button de-bouncer.
 // This can be used in one of three ways.
 //
-// Beginner : Just call truFalse() in your loop() function and it'll return true or false
+// Beginner : Just call getState() in your loop() function and it'll return true or false
 // to match what the button is currently set to. Easy Peasy!
 //
 // Intermediate : Set a callback function and let this run in the background. When the
