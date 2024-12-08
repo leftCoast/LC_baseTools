@@ -6,17 +6,19 @@
 // Constructor, runningAvg wants to know how many data values to average over.
 runningAvg::runningAvg(int inNumData) {
 
-    theValues   = NULL;
-    resizeBuff(sizeof(float)*inNumData,(byte**)&theValues);
-    maxData     = inNumData;
-    numValues   = 0;
-    index       = 0;
-    mResult     = 0;
-    
-    usingUpper	 = false;
-    upperLimit  = 0;
-    usingLower	 = false;
-    lowerLimit  = 0;
+	theValues   = NULL;
+	maxData		= 0;
+	if (resizeBuff(sizeof(float)*inNumData,(byte**)&theValues)) {
+		maxData     = inNumData;
+	}
+	numValues   = 0;
+	index       = 0;
+	mResult     = 0;
+	
+	usingUpper	= false;
+	upperLimit  = 0;
+	usingLower	= false;
+	lowerLimit  = 0;
 }
 
 

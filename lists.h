@@ -63,6 +63,7 @@ class linkList {
 //****************************************************************************************
 // stack
 // In the stack we have push, pop, peek & isEmpty.
+// When popping an item, it's unlinked and handed to you. YOU have to delete it.
 //****************************************************************************************
 
 
@@ -83,6 +84,7 @@ class stack : public linkList {
 // queue
 // Just like in the stack, in the queue we have push, peek, pop & isEmpty. But, when we
 // add an object we don't add it to the top of the list. We add it to the end.
+// When popping an item, it's unlinked and handed to you. YOU have to delete it.
 //****************************************************************************************
 
 
@@ -93,7 +95,7 @@ class queue : public linkList {
 	virtual	~queue(void);
 
 	virtual	void				push(linkListObj* newObj);
-	virtual	linkListObj*	pop(void);
+	virtual	linkListObj*	pop(void);						
 	virtual	linkListObj*	peek(void);
 };
 
