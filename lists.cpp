@@ -88,7 +88,7 @@ bool linkListObj::isLessThan(linkListObj* compObj) { return false; }
 linkList::linkList(void) { theList = NULL; }
 
 
-// Delette a linkList object.
+// Delete a linkList object.
 linkList::~linkList(void) { dumpList(); }
 
 
@@ -218,7 +218,7 @@ linkListObj* linkList::getByIndex(int index) {
 		}										//
 		return trace;						// Either we ran out of nodes or the index when to zero. Any way trace is the correct result.
 	}											//
-	return NULL;							// Negatives get returned a NILL. (Was a Bozo calling?)
+	return NULL;							// Negatives get returned a NULL. (Was a Bozo calling?)
 }
 
 

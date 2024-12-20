@@ -37,22 +37,22 @@ class linkList {
                 linkList(void);
     virtual ~linkList(void);
 
-    virtual void				addToTop(linkListObj* newObj);
-    virtual void				addToEnd(linkListObj* newObj);
-    virtual void				unlinkTop(void);         // Push off the first one.
-    virtual void				unlinkObj(linkListObj* oldObj);// Find it and push this one off.
-    virtual void				dumpList(void);          // Call delete on everyone.
-    virtual bool				isEmpty(void);
-    virtual linkListObj*	getFirst(void);
-    virtual linkListObj*	getLast(void);
-    virtual linkListObj*	findMax(linkListObj* anObj);
-    virtual linkListObj*	findMin(linkListObj* anObj);
-    virtual void				sort(bool ascending);
+    virtual void				addToTop(linkListObj* newObj);			// Give it a node and it'll add it to the top. (Fast)
+    virtual void				addToEnd(linkListObj* newObj);			// give it a node and it'll addd it to the end  (Slower)
+    virtual void				unlinkTop(void);         					// Push off the first one.
+    virtual void				unlinkObj(linkListObj* oldObj);			// Find it and push this one off.
+    virtual void				dumpList(void);          					// Call delete on everyone.
+    virtual bool				isEmpty(void);									// Well, is it?
+    virtual linkListObj*	getFirst(void);								// Hand back a link to the top node.
+    virtual linkListObj*	getLast(void);									// Hand back a link to the list node on the list.
+    virtual linkListObj*	findMax(linkListObj* anObj);				// These two will pass back links to the max & min of the list..
+    virtual linkListObj*	findMin(linkListObj* anObj);				// IF you filled out the isGreaterThan() & isLessThan() methods.
+    virtual void				sort(bool ascending);						// And, if you did fill them out, this'll sort the list.
 
-            int				getCount(void);
-            linkListObj*	getByIndex(int index);
-            int				findIndex(linkListObj* anObj);// returns -1 if NOT found.
-            void				looseList(void);   // Someone has taken control of our list, let it go.
+            int				getCount(void);								// Count the number of nodes, hand back that number.
+            linkListObj*	getByIndex(int index);						// Same as a c type array. Hand back a link to the node at index. 
+            int				findIndex(linkListObj* anObj);			// returns -1 if NOT found.
+            void				looseList(void);								// Someone has taken control of our list, let it go.
 
   protected :
             linkListObj*	theList;
@@ -64,6 +64,7 @@ class linkList {
 // stack
 // In the stack we have push, pop, peek & isEmpty.
 // When popping an item, it's unlinked and handed to you. YOU have to delete it.
+// Deleting the stack will auto delete everything for you.
 //****************************************************************************************
 
 
@@ -85,6 +86,7 @@ class stack : public linkList {
 // Just like in the stack, in the queue we have push, peek, pop & isEmpty. But, when we
 // add an object we don't add it to the top of the list. We add it to the end.
 // When popping an item, it's unlinked and handed to you. YOU have to delete it.
+// Deleting the queue will auto delete everything for you.
 //****************************************************************************************
 
 
@@ -115,10 +117,10 @@ class dblLinkListObj {
 
 			void					linkAfter(dblLinkListObj* anObj);	// Given a pointer to a node, link yourself after it.
 			void					linkBefore(dblLinkListObj* anObj);	// Given a pointer to a node, link yourself before it.
-			dblLinkListObj*	getFirst(void);
-			dblLinkListObj*	getLast(void);
-			void					linkToEnd(dblLinkListObj* anObj);	// Given a pointer to a node, link yourself after the last in the chain.
-			void					linkToStart(dblLinkListObj* anObj);	// Given a pointer to a node, link yourself before the first in the chain.
+			dblLinkListObj*	getFirst(void);							// Runs up the list 'till dllPrev == NULL. Returns link to that node.
+			dblLinkListObj*	getLast(void);								// Runs up the list 'till dllNext == NULL. Returns link to that node.
+			void					linkToEnd(dblLinkListObj* anObj);	// Given a pointer to any node, link yourself after the last in the chain.
+			void					linkToStart(dblLinkListObj* anObj);	// Given a pointer to any node, link yourself before the first in the chain.
 			dblLinkListObj*	getTailObj(int index);     			// Hand back the "nth" one of our tail. Starting at 0;
 			void					unhook(void);      						// Unhook myself.
 			void					dumpTail(void);    						// Delete entire tail.
