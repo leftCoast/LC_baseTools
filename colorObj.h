@@ -89,29 +89,32 @@ extern colorObj magenta;
 extern colorObj yellow;
 
 
+
 // ****** colorMapper ******
+
 
 class colorMapper {
 
-    public:
-                colorMapper(void);
-                colorMapper(colorObj* inStart, colorObj* inEnd);
-                colorMapper(word startC16,word endC16);
-    virtual ~colorMapper(void);
+	public:
+				colorMapper(void);
+				colorMapper(colorObj* inStart, colorObj* inEnd);
+				colorMapper(word startC16,word endC16);
+	virtual	~colorMapper(void);
 
-                void        setColors(colorObj* inStart, colorObj* inEnd);
-                colorObj Map(float percent);
-                colorObj map(float percent);
+				void		setColors(colorObj* inStart, colorObj* inEnd);
+				colorObj	Map(float percent);
+				colorObj	map(float percent);
 
 #ifdef PRINT_COLOR
-                void     printColors(void);
+				void		printColors(void);
 #endif
 
     private :
-                mapper* redMapper;
-                mapper* greenMapper;
-                mapper* blueMapper;
+				mapper*	redMapper;
+				mapper*	greenMapper;
+				mapper*	blueMapper;
 };
+
 
 
 // ****** colorMultiMap ******
@@ -119,18 +122,18 @@ class colorMapper {
 
 class colorMultiMap {
 
-    public:
-                colorMultiMap(void);
-    virtual ~colorMultiMap(void);
+	public:
+				colorMultiMap(void);
+	virtual	~colorMultiMap(void);
 
-                void    addColor(double inX, colorObj* color);  // At some numeric value we resolve to this color.
-                void    clearMap(void);
-                colorObj    map(double inVal);
+				void		addColor(double inX, colorObj* color);  // At some numeric value we resolve to this color.
+				void		clearMap(void);
+				colorObj	map(double inVal);
 
     protected:
-                multiMap  redMap;
-                multiMap  greenMap;
-                multiMap  blueMap;
+				multiMap  redMap;
+				multiMap  greenMap;
+				multiMap  blueMap;
 };
 
 
