@@ -8,7 +8,7 @@
 //****************************************************************************************
 // upCase(), lwrCase():
 //
-// Pass in a c string and make all the letters either uppercase orlowercase.
+// Pass in a c string and make all the letters either uppercase or lowercase.
 //****************************************************************************************
 
 
