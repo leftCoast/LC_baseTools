@@ -126,8 +126,8 @@ class colorMultiMap {
 				colorMultiMap(void);
 	virtual	~colorMultiMap(void);
 
-				void		addColor(double inX, colorObj* color);  // At some numeric value we resolve to this color.
-				void		clearMap(void);
+	virtual	void		addColor(double inX, colorObj* color);  // At some numeric value we resolve to this color.
+	virtual	void		clearMap(void);
 				colorObj	map(double inVal);
 
     protected:
