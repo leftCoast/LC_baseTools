@@ -31,19 +31,26 @@ float runningAvg::addData(float inData) {
 
 	float sum;
 	
-	if (usingLower && inData<lowerLimit) return mResult;
-	if (usingUpper && inData>upperLimit) return mResult;
+	if (usingLower && inData<lowerLimit) return mResult;		// Limit fail, bail.
+	if (usingUpper && inData>upperLimit) return mResult;		// Limit fail, bail.
 	
-	if (numValues<maxData) {         	// Early stages while filling.
-		theValues[index++] = inData;		// Never been full so index must be ok.
-		numValues++;
-	} else {
-		if (index==maxData) {					// Meaning its pointing past the array.
+	latestValue = inData;						// Limits passed, this is our latest value.
+	if (numValues<maxData) {         		// Early stages while still filling.
+		theValues[index++] = inData;			// Never been full so index must be ok.
+		oldestValue = theValues[0];			// In this case, oldest is the first of the array.
+		numValues++;								//
+	} else {											// Else the array is full.
+		if (index>=maxData) {					// Meaning its pointing past the array.
 			index = 0;								// Cycle around.
-		}
+		}												//
 		theValues[index++] = inData;			// And stuff the value in.
-	}
-	sum = 0;
+		if (index==maxData) {					// If it's NOW pointing past the array..
+			oldestValue = theValues[0];		// Then oldest is the first of the array.
+		} else {										// Else..
+			oldestValue = theValues[index];	// Oldest value is the next to be crunched.	
+		}												//
+	}													//
+	sum = 0;											// Clear sum.
 	for (int i=0;i<numValues;i++) {			// We loop up to numValues but not including numValues.
 		sum = sum + theValues[i];
 	}
@@ -85,8 +92,13 @@ float runningAvg::getMin(void) {
 
 
 // Runs through the data, actually two times, then gives the difference between the
-// largest and the smallest.
+// largest and the smallest. Basically an absolute value of delata.
 float runningAvg::getDelta(void) { return getMax()-getMin(); }
+
+
+// Only looks at the first and last data ponts. Gives back latest - oldest to give a 
+// signed trend overall.
+float runningAvg::getEndpointDelta(void) { return(latestValue - oldestValue); }
 
 
 // Runs through the data, calculates and returns the standard deviation.
