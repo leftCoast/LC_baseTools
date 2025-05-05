@@ -39,7 +39,7 @@ class linkList {
 
     virtual void				addToTop(linkListObj* newObj);			// Give it a node and it'll add it to the top. (Fast)
     virtual void				addToEnd(linkListObj* newObj);			// give it a node and it'll addd it to the end  (Slower)
-    virtual void				unlinkTop(void);         					// Push off the first one.
+    virtual void				unlinkTop(void);         					// Push off the first one. (Does NOT delete it.)
     virtual void				unlinkObj(linkListObj* oldObj);			// Find it and push this one off.
     virtual void				dumpList(void);          					// Call delete on everyone.
     virtual bool				isEmpty(void);									// Well, is it?
