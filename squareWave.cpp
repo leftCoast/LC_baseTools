@@ -42,7 +42,9 @@ bool squareWave::pulseHiLow(void) { return mSignal; }
 // Set a new period duration. This takes effect on the next pulse's startup.
 void squareWave::setPeriod(float ms) {
 
-	if (ms<0) ms = 0;				// Sanity, no negatives!
+	if (ms<MIN_PERIOD_MS) {		// Sanity we only go -that- small.
+		ms = MIN_PERIOD_MS;		// There's the limit.
+	}									//
 	if (ms!=mNextPeriod) {		// Only bother them if its different.
 		mNextPeriod = ms;			// Save it off.
 		mPeriodChange = true;	// Flag the change.

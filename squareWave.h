@@ -4,6 +4,7 @@
 #include    "timeObj.h"
 #include    "idlers.h"
 
+#define MIN_PERIOD_MS   0.01 // ms or 10 microseconds.
 
 
 //****************************************************************************************
