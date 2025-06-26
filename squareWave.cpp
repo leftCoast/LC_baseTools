@@ -106,7 +106,7 @@ void squareWave::ourPulseOn(void) {
 }
 
 
-// This is called when the pulse begins. The user inherits and filles this out for whatever
+// This is called when the pulse begins. The user inherits and fills this out for whatever
 // action they want.
 void squareWave::pulseOn(void) {  }
 
