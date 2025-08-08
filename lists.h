@@ -34,7 +34,7 @@ class linkListObj {
 class linkList {
 
   public:
-                linkList(void);
+         	linkList(void);
     virtual ~linkList(void);
 
     virtual void				addToTop(linkListObj* newObj);			// Give it a node and it'll add it to the top. (Fast)
