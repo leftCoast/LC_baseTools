@@ -39,8 +39,8 @@ class runningAvg {
 				float getMin(void);
 				float getDelta(void);				// Delta value over all data points.
 				float getEndpointDelta(void);		// Delta value reading only first and last.
-				float getStdDev(void);
-				int getNumValues(void);
+				float	getStdDev(void);
+				int 	getNumValues(void);
 				float getDataItem(int index);
 				
 				void	setUpperLimit(float limit);

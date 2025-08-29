@@ -58,16 +58,16 @@ public:
   virtual   void        setColor(byte inRed, byte inGreen, byte inBlue);
   virtual   void        setColor(word color16);
   virtual   void        setColor(colorObj* inColor);       // Why doesn't this one get confused? Who knows?
-                word        getColor16(void);
-                byte        getGreyscale(void);
-
-                byte        getRed(void);
-                byte        getGreen(void);
-                byte        getBlue(void);
-                RGBpack packColor(void);
-
-                colorObj    mixColors(colorObj* mixinColor,byte mixPercent);  // Create a new color by mixing. (Like the old blend)
-                void        blend(colorObj* mixinColor,byte mixPercent);      // Just blend with myself. Percent 0% -> 100% of new color.
+				word        getColor16(void);
+				byte        getGreyscale(void);
+				
+				byte        getRed(void);
+				byte        getGreen(void);
+				byte        getBlue(void);
+				RGBpack packColor(void);
+				
+				colorObj    mixColors(colorObj* mixinColor,byte mixPercent);  // Create a new color by mixing. (Like the old blend)
+				void        blend(colorObj* mixinColor,byte mixPercent);      // Just blend with myself. Percent 0% -> 100% of new color.
 
 #ifdef PRINT_COLOR
                 void        printRGB(void);
