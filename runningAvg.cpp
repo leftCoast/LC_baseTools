@@ -60,7 +60,7 @@ float runningAvg::addData(float inData) {
 
 
 // This returns the current average that is stored since the last data point was added.
-float runningAvg::getAve(void) { return mResult; }
+float runningAvg::getAvg(void) { return mResult; }
 
 
 // Run through the data values and return the largest one.
