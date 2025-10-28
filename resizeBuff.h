@@ -93,10 +93,10 @@ extern bool resizeBuff(int numBytes,void** buff);
 // left pointing to the end of the file. The src file index is not changed.
 // void fcat(File dest,File src) {
 //
-//  unsigned long   filePos;
-//  maxBuff cpyBuff(src.size());
-//  unsigned long   numBytes;
-//  unsigned long   remaingBytes;
+//  unsigned long	filePos;
+//  maxBuff			cpyBuff(src.size());
+//  unsigned long	numBytes;
+//  unsigned long	remaingBytes;
 //
 //  dest.seek(dest.size());                                // Point at end of the dest file.
 //  filePos = src.position();                              // Lets save the file pos for miss user.
@@ -119,12 +119,12 @@ extern bool resizeBuff(int numBytes,void** buff);
 class maxBuff {
 
     public:
-                maxBuff(unsigned long numBytes,unsigned long  minBytes=BYTE_CUTOFF);
+            maxBuff(unsigned long numBytes,unsigned long  minBytes=BYTE_CUTOFF);
     virtual ~maxBuff(void);
 
-                void*               theBuff;
-                unsigned long   numBuffBytes;
-                int             numPasses;
+				void*				theBuff;
+				unsigned long	numBuffBytes;
+				int				numPasses;
     };
 
 #endif
