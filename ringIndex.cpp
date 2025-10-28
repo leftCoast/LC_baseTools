@@ -10,83 +10,80 @@ ringIndex::ringIndex(int inNumItems) {
 
 ringIndex::~ringIndex(void) {  }
 
-	
+
+// Write to this index, if not INDEX_ERR.	
 int ringIndex::addItem(void) {
 	
 	int	outIndex;
 	
+	outIndex = INDEX_ERR;
 	if (!full()) {
-		outIndex = tail;
-		increment(tail);
-	} else {
-		outIndex = INDEX_ERR;
+		outIndex = head;
+		head = increment(head);
 	}
 	return outIndex;
 }
 
 
-int ringIndex::peekItem(int index) {
-
-	int	outIndex;
-	
-	if (empty())			return INDEX_ERR;
-	if (index>=numItems) return INDEX_ERR;
-	outIndex = head;
-	while(index) {
-		increment(outIndex);
-		index--;
-	}
-	return outIndex;	
-}
-
-
+// Read at this index, if not INDEX_ERR.
 int ringIndex::readItem(void) {
 
 	int	outIndex;
 	
+	outIndex = INDEX_ERR;
 	if (!empty()) {
-		outIndex = head;
-		increment(head);
-	} else {
-		outIndex = INDEX_ERR;
+		outIndex = tail;
+		tail = increment(tail);
 	}
 	return outIndex;
 }
 
 
+// Are we empty?
 bool ringIndex::empty(void) { return head == tail; }
 
 
+// Are we full?
 bool ringIndex::full(void) {
 
 	int	anIndex;
 	
 	anIndex = head;
-	increment(anIndex);
+	anIndex = increment(anIndex);
 	return anIndex == tail;
 }
 
 
+// How many items do we have?
 int ringIndex::itemCount(void) {
 	
 	if (empty()) return 0;
-	if (full()) return numItems;
-	if (tail>head) return tail - head;
- 	return numItems - (head - tail);
+	if (full()) return maxItems();
+	if (head>tail) return head - tail;
+ 	return numItems - tail + head;
 }
 
 
-int ringIndex::maxItems(void) { return numItems; }
+// How many items can we store?
+int ringIndex::maxItems(void) { return numItems-1; }
 
 
-void ringIndex::flushItems(void) { head = tail; }
+// Reset to zero zero.
+void ringIndex::flushItems(void) {
+
+	head = 0;
+	tail = 0;
+}
 
 
+// Increment a pointer. Head or tail.
 int ringIndex::increment(int inIndex) {
 
-			inIndex++;
-			if (inIndex>=numItems) inIndex=0;
-			return inIndex;
+	inIndex++;
+	if (inIndex>=numItems) {
+		inIndex=0;
+	}
+	return inIndex;
 }	
 				
 				
