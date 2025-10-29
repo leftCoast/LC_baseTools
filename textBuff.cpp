@@ -80,11 +80,11 @@ int textBuff::rStrlen(void) {
 	int	trace;
 	int	count;
 	
-	count = 0;												// Zero counter.
-	if (!empty()) {
+	count = 0;													// Zero counter.
+	if (!empty()) {											// If not empty.
 		trace = tail;											// Pointing at the first item.
 		while((trace!=head)&&(buff[trace]!='\0')) {	// Go 'till we're done.
-			increment(trace);									// Bump up trace.
+			trace = increment(trace);						// Bump up trace.
 			count++;												// Bump up count.
 		}															//
 	}
@@ -94,27 +94,26 @@ int textBuff::rStrlen(void) {
 
 // Hand back a c string of.. Either the first full string found.
 // Or.. All of the text with a '\0' appended to it. If empty, it
-// returns Just a c string consisting of '\0'.
+// returns Just a NULL'.
 char*	 textBuff::readStr(void) {
 
-	int	count;
+	int	numChars;
 	int	i;
-	char	aChar;
 	
-	count = rStrlen();								// Read how many chars we have, no NULLs.
-	if (count) {										// If we have at least one char..
-		if (resizeBuff(count+1,&returnStr)) {	// Make room!
-			while(!empty()&&i<count) {				// While we have chars and room..
-				aChar = buff[readChar()];			// Pop out a char and put it here.
-				if (aChar!='\0') {					// If it's NOT '\0'.
-					returnStr[i] = aChar;			// Stuff it in.
-					i++;									// Bump up our string index for next char.
-				}											//
-			}												//
-			returnStr[i] = '\0';						// Stuff in the end of string.
-			return returnStr;							// Pass out the string.
-		}													//
-	}														//
-	return NULL;										// No string? Pass back NULL.
+	numChars = rStrlen();								// Read how many chars we have, no NULLs.
+	if (numChars) {										// If we have at least one char..
+		if (resizeBuff(numChars+1,&returnStr)) {	// Make room!
+			for (i=0;i<numChars;i++) {					// If rStrlen() don't lie..
+				returnStr[i] = readChar();				// Stuff in the chars.
+			}													//
+			if (buff[tail]=='\0') {						// If the next one is NULL char..
+				returnStr[i] = readChar();				// pop it out and use it.
+			} else {											// Otherwise..
+				returnStr[i] = '\0';						// Stuff in our own NULL char.
+			}													//
+			return returnStr;								// Pass out the string.
+		}														//
+	}															//
+	return NULL;											// No string? Pass back NULL.
 }
 
