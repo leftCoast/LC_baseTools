@@ -64,7 +64,7 @@ class mapPoint :   public linkListObj {
 // multiMap : This is the one you should be using. You can create multiMaps. Add points to
 // them. Clear points from them. Map stuff using them and, actually.. Integrate curves
 // using them. Its basically a list of mappers and a mapper can actually do integration so
-// it was tossed in. Very handy for calculating things liike trapezoidal moves on the fly.
+// it was tossed in. Very handy for calculating things like trapezoidal moves on the fly.
 //****************************************************************************************
 
 
