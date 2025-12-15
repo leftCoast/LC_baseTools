@@ -52,18 +52,18 @@ bool heapStr(char** resultStr,const char* inStr) {
 	int 	numChars;
 	bool	success;
 
-	success = false;                                       // We need to prove our success!
-	if (inStr) {                                           // If we got a non-NULL string..
-		numChars = strlen(inStr);                          // Count the chars in inStr.
-		if (resizeBuff(numChars+1,resultStr)) {            // If we can allocated the memory..
-			strcpy(*resultStr,inStr);                      // Copy input into the resulting string.
-			success = true;                                // And that's a success!
-		}
-	} else {                                               // Else, they handed us a NULL string?
-		resizeBuff(0,resultStr);                           // I guess they want the result to be NULL as well.
-		success = true;                                    // In that case, I guess we were successful.
-	}
-	return success;                                        // And we return our success. Good or bad.
+	success = false;										// We need to prove our success!
+	if (inStr) {                                 // If we got a non-NULL string..
+		numChars = strlen(inStr);						// Count the chars in inStr.
+		if (resizeBuff(numChars+1,resultStr)) {	// If we can allocated the memory..
+			strcpy(*resultStr,inStr);					// Copy input into the resulting string.
+			success = true;								// And that's a success!
+		}														//
+	} else {													// Else, they handed us a NULL string?
+		resizeBuff(0,resultStr);						// I guess they want the result to be NULL as well.
+		success = true;									// In that case, I guess we were successful.
+	}															//
+	return success;										// And we return our success. Good or bad.
 }
 
 
