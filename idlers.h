@@ -22,7 +22,8 @@ class idlers : public linkList {
                 idlers(void);
     virtual    ~idlers(void);
 
-                void    idle(void);
+                void	idle(void);
+                void sleep(float ms);
 };
 
 extern  idlers  theIdlers;
