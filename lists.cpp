@@ -456,8 +456,8 @@ void dblLinkListObj::linkToStart(dblLinkListObj* anObj) { if (anObj) linkBefore(
 // Unlink us and, if in list, patch the hole.
 void dblLinkListObj::unhook(void) {
 
-	if (dllPrev) dllPrev->dllNext = dllNext;	// If our previous pointer is not NULL.. Point our previous nodes next pointer, to what our next pointer is point at.
-	if (dllNext) dllNext->dllPrev = dllPrev;	// If our next pointer is not NULL.. Point our next nodes previous pointer, to what our previous pointer is point at.
+	if (dllPrev) dllPrev->dllNext = dllNext;	// If our previous pointer is not NULL.. Point our previous node's next pointer, to what our next pointer is pointing at.
+	if (dllNext) dllNext->dllPrev = dllPrev;	// If our next pointer is not NULL.. Point our next node's previous pointer, to what our previous pointer is pointing at.
 	dllNext = NULL;									// Ok, list is patched. Now we pull out. Our next gets NULL
 	dllPrev = NULL;									// And our previous gets NULL.
 }
