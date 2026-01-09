@@ -115,22 +115,28 @@ class dblLinkListObj {
 				dblLinkListObj(void);
 	virtual	~dblLinkListObj(void);
 
-			void					linkAfter(dblLinkListObj* anObj);	// Given a pointer to a node, link yourself after it.
-			void					linkBefore(dblLinkListObj* anObj);	// Given a pointer to a node, link yourself before it.
-			dblLinkListObj*	getFirst(void);							// Runs up the list 'till dllPrev == NULL. Returns link to that node.
-			dblLinkListObj*	getLast(void);								// Runs up the list 'till dllNext == NULL. Returns link to that node.
-			void					linkToEnd(dblLinkListObj* anObj);	// Given a pointer to any node, link yourself after the last in the chain.
-			void					linkToStart(dblLinkListObj* anObj);	// Given a pointer to any node, link yourself before the first in the chain.
-			dblLinkListObj*	getTailObj(int index);     			// Hand back the "nth" one of our tail. Starting at 0.
-			void					unhook(void);      						// Unhook myself.
-			void					dumpTail(void);    						// Delete entire tail.
-			void					dumpHead(void);    						// Delete entire head section..
-			void					dumpList(void);    						// Delete both head & tail.
-			int					countTail(void);							// How many nodes long is our tail?
-			int					countHead(void);     					// How many nodes long is our head?
-
-			dblLinkListObj*	dllPrev;
-			dblLinkListObj*	dllNext;
+				void					linkAfter(dblLinkListObj* anObj);			// Given a pointer to a node, link yourself after it.
+				void					linkBefore(dblLinkListObj* anObj);			// Given a pointer to a node, link yourself before it.
+				dblLinkListObj*	getFirst(void);									// Runs up the list 'till dllPrev == NULL. Returns link to that node.
+				dblLinkListObj*	getLast(void);										// Runs up the list 'till dllNext == NULL. Returns link to that node.
+				void					linkToEnd(dblLinkListObj* anObj);			// Given a pointer to any node, link yourself after the last in the chain.
+				void					linkToStart(dblLinkListObj* anObj);			// Given a pointer to any node, link yourself before the first in the chain.
+				dblLinkListObj*	getTailObj(int index);     					// Hand back the "nth" one of our tail. Starting at 0.
+				void					unhook(void);      								// Unhook myself.
+				void					dumpTail(void);    								// Delete entire tail.
+				void					dumpHead(void);    								// Delete entire head section..
+				void					dumpList(void);    								// Delete both head & tail.
+				int					countTail(void);									// How many nodes long is our tail?
+				int					countHead(void);     							// How many nodes long is our head?
+				
+	// Tail sorting calls..
+	virtual	bool					isGreaterThan(dblLinkListObj* compObj);	// Are we greater than the obj being passed in?
+	virtual	bool					isLessThan(dblLinkListObj* compObj);		// Are we less than the obj being passed in?
+   virtual 	dblLinkListObj*	findMinMax(bool findMax);						// IF you filled out the isGreaterThan() & isLessThan() methods..
+	virtual 	void					sortTail(bool ascending);						// And, if you did fill them out, this'll sort our tail.
+		
+				dblLinkListObj*	dllPrev;
+				dblLinkListObj*	dllNext;
 };
 
 

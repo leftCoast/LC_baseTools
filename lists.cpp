@@ -1,5 +1,5 @@
 #include <lists.h>
-
+//#include <debug.h>
 
 
 //****************************************************************************************
@@ -526,4 +526,75 @@ int dblLinkListObj::countHead(void) {
 	}							//
 	return count;			// Pass back the result.
 }
+
+// *** If you plan on sorting, its a good idea to fill out both! ***
+//
+// Are we greater than the dblLinkListObj that has been passed in? You fill this out if
+// you plan to use the sorting method of dblLinkListObj.
+
+// Are we greater than the obj being passed in?
+bool dblLinkListObj::isGreaterThan(dblLinkListObj* compObj) { return false; }
+
+
+// Are we less than the obj being passed in?
+bool dblLinkListObj::isLessThan(dblLinkListObj* compObj) {  return false;  }
+
+
+// ** IF ** you filled out the isGreaterThan() & isLessThan() methods..										
+dblLinkListObj* dblLinkListObj::findMinMax(bool findMax) {
+
+	dblLinkListObj*	trace;
+	dblLinkListObj*	minMax;
+	
+	trace		= dllNext;
+	minMax	= trace;
+	while(trace) {
+		trace = trace->dllNext;
+		if (trace) {
+			if (findMax) {
+				if (trace->isGreaterThan(minMax)) {
+					minMax = trace;
+				} 
+			} else {
+				if (trace->isLessThan(minMax)) {
+					minMax = trace;
+				}
+			} 		
+		}
+	}
+	return minMax;
+}	
+
+								
+// And, if you did fill them out, this'll sort OUR TAIL. Meaning the original node is NOT
+// sorted. If you want to sort them all, you are going to need a header node attached to
+// the start the sort on.
+//
+// Yes, it is recursive. Don't like that? It's virtual. Override it and do a better one.
+void dblLinkListObj::sortTail(bool ascending) {
+
+
+	dblLinkListObj*	minMax;
+
+	if (countTail()>1) {						// If we have items to sort..
+		if (ascending) {						// Ascending?
+			minMax = findMinMax(false);	// Then we want the smallest.
+		} else {									// else?
+			minMax = findMinMax(true);		// We want the biggest.
+		}											//
+		if (minMax) {							// Sanity, it happens..
+			if (minMax!=dllNext) {			// If not already in order..
+				minMax->unhook();				// Pull it out of the list.
+				minMax->linkAfter(this);	// Link it after us.
+			}										//
+			minMax->sortTail(ascending);	//
+		} else {									// Something is going wrong..
+			return;								// Just bail.
+		}
+	}
+}
+
+
+
+
 
