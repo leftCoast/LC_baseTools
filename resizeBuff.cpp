@@ -22,15 +22,19 @@
 
 bool resizeBuff(int numBytes,uint8_t** buff) {
 
-  if(*buff) {                                              // If we did NOT get passed in a NULL..
-    free(*buff);                                           // We free the memory.
-    *buff = NULL;                                          // Set the pointer to NULL.
-  }
-  if (numBytes>0) {                                        // If we got a positive non zero value..
-    *buff = (uint8_t*)malloc(numBytes);                    // We attempt allocate that number of bytes.
-    return *buff != NULL;                                  // And we return true for non NULL result (non-NULL = Success)
-  }
-  return true;                                             // In this case we were not asked to allocate anything so it was a success.
+	if(*buff) {											// If we did NOT get passed in a NULL..
+		free(*buff);									// We free the memory.
+		*buff = NULL;									// Set the pointer to NULL.
+	}														//
+	if (numBytes>0) {									// If we got a positive non zero value..
+		*buff = (uint8_t*)malloc(numBytes);		// We attempt allocate that number of bytes.
+		if (*buff==NULL) {
+			Serial.print("resizeBuff fail : ");
+			Serial.println(numBytes);
+		}
+		return *buff != NULL;						// And we return true for non NULL result (non-NULL = Success)
+	}														//
+	return true;										// In this case we were not asked to allocate anything so it was a success.
 }
 
 bool resizeBuff(int numBytes,char** buff) { return resizeBuff(numBytes,(uint8_t**)buff); }
