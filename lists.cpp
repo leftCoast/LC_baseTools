@@ -121,9 +121,9 @@ void linkList::unlinkTop(void) {
 
 	linkListObj* temp;
 
-	if (theList) {							// if we have something there.
-		temp = theList;					// Save off the top, just in case.
-		theList = theList->getNext();	// unlink.
+	if (theList) {							// if we have something there. theList is NOT NULL.
+		temp = theList;					// Save off the top.
+		theList = theList->getNext();	// Move the list pointer to the next node on list.
 		temp->setNext(NULL);				// They may want to reuse this. So reset next to NULL.
 	}
 }
@@ -367,12 +367,13 @@ linkListObj* queue::peek(void) { return getFirst(); }
 // Remove and hand back the head of the queue. (YOU have to worry about deleting it)
 linkListObj* queue::pop(void) {
 
-	linkListObj*    topObj;
-	topObj = getFirst();
-	if (topObj) {
-		unlinkTop();
+	linkListObj*	topObj;
+	
+	topObj = getFirst();		// Get a pointer to the top..
+	if (topObj) {				// If the top object is not NULL..
+		unlinkTop();			// Free the top from the list, re-attach the rest of the list.
 	}
-	return topObj;
+	return topObj;				// Return our result. NULL for empty list.
 }
 
 
