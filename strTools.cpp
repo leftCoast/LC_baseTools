@@ -34,6 +34,52 @@ void lwrCase(char* inStr) {
 }
 
 
+//*****************************************************************************************
+// delChar(char* strPtr):
+//
+// Pass in a pointer into a c string. This will delete this char and then patch the hole
+// by moving the rest of the string up to fill it.
+//
+//
+// void delChar(char* aStr,int inIndex):
+//
+// Pass in a c string with an index into that string. This will delete this char at that
+// index and then patch the hole by moving the rest of the string up to fill it.
+//
+//****************************************************************************************
+
+// Pass in a pointer to a char on a string. This'll delete that char from the c string.
+void delChar(char* strPtr) {
+	
+	char* tracePtr;
+	
+	if (strPtr) {
+		if (strlen(strPtr)) {       // If we can find a '\0' after this point..
+		  tracePtr = strPtr+1;
+		  while(*tracePtr) {
+        *strPtr = *tracePtr;
+        strPtr = strPtr+1;
+			  tracePtr = tracePtr+1;
+		  }
+		  *strPtr = *tracePtr;
+	  }
+  } 
+}
+
+
+// Pass an index to a string . This'll delete that char from the c string.
+void delChar(char* aStr,int inIndex) {
+	
+	int	strIndex;
+	int	numChars;
+	
+	if (aStr) {
+		if (inIndex<=strlen(aStr)) {
+			delChar(&(aStr[inIndex]));
+		}
+	}
+}		
+
 
 //****************************************************************************************
 // heapStr:
