@@ -70,7 +70,6 @@ void delChar(char* strPtr) {
 // Pass an index to a string . This'll delete that char from the c string.
 void delChar(char* aStr,int inIndex) {
 	
-	int	strIndex;
 	int	numChars;
 	
 	if (aStr) {
