@@ -47,7 +47,8 @@ class squareWave : public idler {
 	virtual	void	setPercent(float perc);
 	virtual	void	setBlocking(bool onOff);
 	virtual	void	setOnOff(bool onOff);
-
+	virtual	void	manualSetHiLow(bool hiLow);	// Handy in some cases..
+	
 	virtual	void	pulseOn(void);
 	virtual	void	pulseOff(void);
 	virtual	void	idle(void);

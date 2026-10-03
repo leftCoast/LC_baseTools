@@ -96,6 +96,16 @@ void squareWave::setOnOff(bool onOff) {
 }
 
 
+// If it's not running you can flick the wave high or low manually here. Even if it is
+// running.. This'll probably mess it up good! Sometimes though you just want it run by 
+// something other than timers. This is how you achieve that.
+void squareWave::manualSetHiLow(bool hiLow) {
+
+	if (hiLow) ourPulseOn();
+	else ourPulseOff();
+}
+
+
 // We're going to track if the signal is on or off. Only broadcast changes.
 void squareWave::ourPulseOn(void) {
 
