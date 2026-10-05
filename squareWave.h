@@ -1,8 +1,8 @@
 #ifndef squareWave_h
 #define squareWave_h
 
-#include    "timeObj.h"
-#include    "idlers.h"
+#include    <timeObj.h>
+#include    <idlers.h>
 
 #define MIN_PERIOD_MS   0.01 // ms or 10 microseconds.
 
