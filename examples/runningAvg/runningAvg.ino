@@ -47,17 +47,17 @@ void setup(void) {
 // Standard loop stuff..
 void loop(void) {
 
-	char  aChar;                                        // A char to catch your typings in.
-	float aValue;                                       // The float version of the number you typed.
-	float ave;                                          // The Average that the smoother will return to us.
+	char  aChar;                                         // A char to catch your typings in.
+	float aValue;                                        // The float version of the number you typed.
+	float ave;                                           // The Average that the smoother will return to us.
 
-	if (Serial.available()) {                           // If there is a char in the waiting to be read..
-		aChar = Serial.read();                          // Grab and save the char.
-		if (aChar=='\n') {                              // If its a newline char.. (Make sure the serial monitor is set to newline.)
-			aValue = atof(inBuff);                      // Decode what we have read in so far as a float value. (Decimal number)
-			ave = smoother.addData(aValue);             // Pop this number into our smoother. (Running average object.) Out pops the average.
-			Serial.println();                           // From here down its just grabing info from the
-			Serial.print(F("Entered    : "));           // SMoother and displaying it on the serial monitor.
+	if (Serial.available()) {                            // If there is a char in the waiting to be read..
+		aChar = Serial.read();                           // Grab and save the char.
+		if (aChar=='\n') {                               // If its a newline char.. (Make sure the serial monitor is set to newline.)
+			aValue = atof(inBuff);                       // Decode what we have read in so far as a float value. (Decimal number)
+			ave = smoother.addData(aValue);              // Pop this number into our smoother. (Running average object.) Out pops the average.
+			Serial.println();                            // From here down its just grabing info from the
+			Serial.print(F("Entered    : "));            // SMoother and displaying it on the serial monitor.
 			Serial.println(inBuff);
 			Serial.print(F("Data       : "));
 			for(int i=0;i<smoother.getNumValues();i++) {
@@ -76,11 +76,11 @@ void loop(void) {
 			Serial.print(F("Deviation : "));
 			Serial.println(smoother.getStdDev());
 			Serial.println(F("--------------"));
-			inBuff[0] = '\0';                           // Clear the inBuff string.
-			charIndex = 0;                              // Reset the charIndex to start a new number string.
-		} else {                                        // Else, it wasn't a newline char..
-			inBuff[charIndex++] = aChar;                // So we save the char we got into the c string.
-			inBuff[charIndex] = '\0';                   // And pop an end of string after it.
+			inBuff[0] = '\0';                            // Clear the inBuff string.
+			charIndex = 0;                               // Reset the charIndex to start a new number string.
+		} else {                                         // Else, it wasn't a newline char..
+			inBuff[charIndex++] = aChar;                 // So we save the char we got into the c string.
+			inBuff[charIndex] = '\0';                    // And pop an end of string after it.
 		}
 	}
 }
