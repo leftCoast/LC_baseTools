@@ -29,7 +29,7 @@
 */
 
 
-runningAvg  smoother(5);                // Our smoother. You can change the number of datapoints it will act on.
+runningAvg  smoother(5);                                          // Our smoother. You can change the number of datapoints it will act on.
 
 void setup(void) {
 	Serial.begin(9600);                   // Fire up the serial stuff.

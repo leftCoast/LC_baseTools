@@ -4,9 +4,9 @@
 // because delay() is bad. Well, here's a simple way to do it..
 
 
-timeObj  aTimer;                                           // Allocate a global timer.
-int      LEDPin = 13;                                      // The LED we want to blink.
-bool     LEDOn = false;                                    // We'll save the state of the LED here.
+timeObj  aTimer;                                          // Allocate a global timer.
+int      LEDPin = 13;                                     // The LED we want to blink.
+bool     LEDOn = false;                                   // We'll save the state of the LED here.
 
 
 void setup() {

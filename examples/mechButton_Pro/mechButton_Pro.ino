@@ -1,15 +1,15 @@
 #include <mechButton.h>
 #include <idlers.h>
 
-#define BUTTON_PIN  2     // Pin we'll hook the button to. The other side hooks to ground.
-#define LED_PIN      13    // Usual pin number for built in LED.
+#define BUTTON_PIN 2   // Pin we'll hook the button to. The other side hooks to ground.
+#define LED_PIN 13     // Usual pin number for built in LED.
 
 
 
 
 // ***********************************************************
 //                proButton class definition
-//
+//$
 //    Inherit from mechButton and create an class that does
 //    your custom bidding.
 // ***********************************************************

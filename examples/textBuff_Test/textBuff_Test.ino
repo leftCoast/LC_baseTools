@@ -8,8 +8,8 @@ lilParser   ourParser(100);   // The parser that makes UI easy to whip up.
 enum cmds {    // Our list of commands.
    noCommand,  // Always start with soething like no command.
    addChar,    // And then whatever you need.
-   readChar,   //
-   addStr,     //
+   readChar,   //$
+   addStr,     //$
    getStrLen,
    readStr,
    count,
@@ -18,22 +18,22 @@ enum cmds {    // Our list of commands.
 
 
 void setup() {
-   
-   Serial.begin(9600);                       // Fire up serial port.
-   delay(3000);                              // For my Mac. Takes a bit..
-   showComs();                               // Display the serial commands.
-   ourParser.addCmd(addChar,"add");          // Link commands to input strings.
-   ourParser.addCmd(readChar,"read");        // link.
-   ourParser.addCmd(addStr,"adds");          // link.
-   ourParser.addCmd(getStrLen,"strlen");     // link.
-   ourParser.addCmd(readStr,"reads");        // 
-   ourParser.addCmd(count,"count");          // 
-   ourParser.addCmd(flush,"flush");          // 
+
+Serial.begin(9600);                       // Fire up serial port.
+delay(3000);                              // For my Mac. Takes a bit..
+showComs();                               // Display the serial commands.
+ourParser.addCmd(addChar,"add");          // Link commands to input strings.
+ourParser.addCmd(readChar,"read");        // link.
+ourParser.addCmd(addStr,"adds");          // link.
+ourParser.addCmd(getStrLen,"strlen");     // link.
+ourParser.addCmd(readStr,"reads");        //$
+ourParser.addCmd(count,"count");          //$
+ourParser.addCmd(flush,"flush");          //$
 }
 
 
 void loop() {
-   
+
    char  inChar;
    int   command;
 
@@ -57,7 +57,7 @@ void loop() {
 
 
 void showComs() {
-   
+
    Serial.println();
    Serial.println("add\t- Add a char to the buffer.");
    Serial.println("read\t- Read a char from the buffer.");
@@ -73,7 +73,7 @@ void showComs() {
 void doAddChar(void) {
 
    char* param;
-   
+
    if (ourParser.numParams()==1) {                    // If they typed in something past the command.
       param = ourParser.getNextParam();               // Grab that something.
       if (param) {                                    // If we got something..
@@ -82,9 +82,9 @@ void doAddChar(void) {
             Serial.print(param[0]);                   // And tell the user we did that.
             Serial.println(" added to text buff");    // Still telling..
             return;                                   // Success bolt!
-         }                                            //
-      }                                               //
-   }                                                  //
+         }                                            //$
+      }                                               //$
+   }                                                  //$
    Serial.println("Nothing to add?");                 // If we're here, we failed.
 }
 
@@ -97,7 +97,7 @@ void doReadChar(void) {
       aChar = ourTextBuff.readChar();        // Pull out a char.
       Serial.println(aChar);                 // Show it to the user.
       return;                                // SUccess! Bolt!
-   }                                         //
+   }                                         //$
    Serial.println("Buffer is empty.");       // Or else the buffer was empty.
 }
 
@@ -110,11 +110,11 @@ void doAddStr(void) {
          return;                                            // Success, leave the party while your having fun.
       } else {                                              // Else something went wrong.
          Serial.println("Coudn't add the string.");         // Tell Miss user.
-      }                                                     // 
-   } else {                                                 // 
+      }                                                     //$
+   } else {                                                 //$
       Serial.println("So.. No string to add?");             // Miss user didn't give us a string.
-      Serial.println("You just messin' about?");            //
-   }                                                        //
+      Serial.println("You just messin' about?");            //$
+   }                                                        //$
 }
 
 
@@ -130,7 +130,7 @@ void doReadStr(void) {
    char* aStr;
    int   numBytes;
 
-   aStr = NULL;                                    // Start pointers at NULL please. 
+   aStr = NULL;                                            // Start pointers at NULL please.
    numBytes = ourTextBuff.rStrlen();
    if (numBytes) {
       if (heapStr(&aStr,ourTextBuff.readStr())) {
