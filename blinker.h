@@ -4,9 +4,9 @@
 #include <squareWave.h>
 
 // Some defaults in case the user just doesn't care..
-#define defPin 13
-#define defOnMs 50
-#define defPeriodMs 400
+#define defPin			13
+#define defOnMs		50
+#define defPeriodMs	400
 
 class blinker : public squareWave {
 

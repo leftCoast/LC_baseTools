@@ -34,6 +34,49 @@ void lwrCase(char* inStr) {
 }
 
 
+//*****************************************************************************************
+// delChar(char* strPtr):
+//
+// Pass in a pointer into a c string. This will delete this char and then patch the hole
+// by moving the rest of the string up to fill it.
+//
+//
+// void delChar(char* aStr,int inIndex):
+//
+// Pass in a c string with an index into that string. This will delete this char at that
+// index and then patch the hole by moving the rest of the string up to fill it.
+//
+//****************************************************************************************
+
+// Pass in a pointer to a char on a string. This'll delete that char from the c string.
+void delChar(char* strPtr) {
+	
+	char* tracePtr;
+	
+	if (strPtr) {
+		if (strlen(strPtr)) {       // If we can find a '\0' after this point..
+		  tracePtr = strPtr+1;
+		  while(*tracePtr) {
+        *strPtr = *tracePtr;
+        strPtr = strPtr+1;
+			  tracePtr = tracePtr+1;
+		  }
+		  *strPtr = *tracePtr;
+	  }
+  } 
+}
+
+
+// Pass an index to a string . This'll delete that char from the c string.
+void delChar(char* aStr,int inIndex) {
+		
+	if (aStr) {
+		if (inIndex<=strlen(aStr)) {
+			delChar(&(aStr[inIndex]));
+		}
+	}
+}		
+
 
 //****************************************************************************************
 // heapStr:
@@ -52,18 +95,18 @@ bool heapStr(char** resultStr,const char* inStr) {
 	int 	numChars;
 	bool	success;
 
-	success = false;                                       // We need to prove our success!
-	if (inStr) {                                           // If we got a non-NULL string..
-		numChars = strlen(inStr);                          // Count the chars in inStr.
-		if (resizeBuff(numChars+1,resultStr)) {            // If we can allocated the memory..
-			strcpy(*resultStr,inStr);                      // Copy input into the resulting string.
-			success = true;                                // And that's a success!
-		}
-	} else {                                               // Else, they handed us a NULL string?
-		resizeBuff(0,resultStr);                           // I guess they want the result to be NULL as well.
-		success = true;                                    // In that case, I guess we were successful.
-	}
-	return success;                                        // And we return our success. Good or bad.
+	success = false;										// We need to prove our success!
+	if (inStr) {                                 // If we got a non-NULL string..
+		numChars = strlen(inStr);						// Count the chars in inStr.
+		if (resizeBuff(numChars+1,resultStr)) {	// If we can allocated the memory..
+			strcpy(*resultStr,inStr);					// Copy input into the resulting string.
+			success = true;								// And that's a success!
+		}														//
+	} else {													// Else, they handed us a NULL string?
+		resizeBuff(0,resultStr);						// I guess they want the result to be NULL as well.
+		success = true;									// In that case, I guess we were successful.
+	}															//
+	return success;										// And we return our success. Good or bad.
 }
 
 
@@ -96,6 +139,13 @@ tempStr::~tempStr(void) { freeStr(&theStr); }
 
 void tempStr::setStr(const char* inStr) { heapStr(&theStr,inStr); }
 
-int tempStr::numChars(void) { return strlen(theStr); }
+
+int tempStr::numChars(void) { 
+
+	if (theStr) {
+		return strlen(theStr);
+	}
+	return 0;
+}
 
 const char* tempStr::getStr(void) { return (const char*)theStr; }

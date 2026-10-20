@@ -30,16 +30,16 @@ void  blinker::pulseOff(void) {
 }
 
 
-// This is your on/off switch. Call with a boolean tru=on false=off.
+// This is your on/off switch. Call with a boolean true=on false=off.
 // The object is created in the "off" mode.
 void blinker::setOnOff(bool onOff) {
 
-	if (!init) {                                           // Not intialized?
-		pinMode(pin, OUTPUT);                              // Now you are!
-		init = true;                                       // Note it.
-	}
-	if(onOff!=running()) {                                 // Ignore if no change.
-		squareWave::setOnOff(onOff);
+	if (!init) {							// Not intialized?
+		pinMode(pin, OUTPUT);			// Now you are!
+		init = true;						// Note it.
+	}											//
+	if(onOff!=running()) {				// Ignore if no change.
+		squareWave::setOnOff(onOff);	// Pass on the command.
 	}
 }
 

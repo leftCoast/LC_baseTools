@@ -34,13 +34,13 @@ class runningAvg {
 
 				float addData(float inData);		// Drop in number, receive average.
 				
-				float getAve(void);					// All the other things no one will ever use.
+				float getAvg(void);					// All the other things no one will ever use.
 				float getMax(void);
 				float getMin(void);
 				float getDelta(void);				// Delta value over all data points.
 				float getEndpointDelta(void);		// Delta value reading only first and last.
-				float getStdDev(void);
-				int getNumValues(void);
+				float	getStdDev(void);
+				int 	getNumValues(void);
 				float getDataItem(int index);
 				
 				void	setUpperLimit(float limit);

@@ -21,6 +21,29 @@ void lwrCase(char* inStr);
 
 
 
+//*****************************************************************************************
+// delChar(char* strPtr):
+//
+// Pass in a pointer into a c string. This will delete this char and then patch the hole
+// by moving the rest of the string up to fill it.
+//
+//
+// void delChar(char* aStr,int inIndex):
+//
+// Pass in a c string with an index into that string. This will delete this char at that
+// index and then patch the hole by moving the rest of the string up to fill it.
+//
+//****************************************************************************************
+
+// Pass in a pointer to a char on a string. This'll delete that char from the c string.
+extern void delChar(char* strPtr);
+
+
+// Pass an index to a string. This'll delete that char from the c string.
+extern void delChar(char* aStr,int inIndex);
+
+
+
 //****************************************************************************************
 // heapStr():
 //

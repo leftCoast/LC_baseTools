@@ -1,5 +1,5 @@
 #include <lists.h>
-
+//#include <debug.h>
 
 
 //****************************************************************************************
@@ -121,9 +121,9 @@ void linkList::unlinkTop(void) {
 
 	linkListObj* temp;
 
-	if (theList) {							// if we have something there.
-		temp = theList;					// Save off the top, just in case.
-		theList = theList->getNext();	// unlink.
+	if (theList) {							// if we have something there. theList is NOT NULL.
+		temp = theList;					// Save off the top.
+		theList = theList->getNext();	// Move the list pointer to the next node on list.
 		temp->setNext(NULL);				// They may want to reuse this. So reset next to NULL.
 	}
 }
@@ -367,12 +367,13 @@ linkListObj* queue::peek(void) { return getFirst(); }
 // Remove and hand back the head of the queue. (YOU have to worry about deleting it)
 linkListObj* queue::pop(void) {
 
-	linkListObj*    topObj;
-	topObj = getFirst();
-	if (topObj) {
-		unlinkTop();
+	linkListObj*	topObj;
+	
+	topObj = getFirst();		// Get a pointer to the top..
+	if (topObj) {				// If the top object is not NULL..
+		unlinkTop();			// Free the top from the list, re-attach the rest of the list.
 	}
-	return topObj;
+	return topObj;				// Return our result. NULL for empty list.
 }
 
 
@@ -456,8 +457,8 @@ void dblLinkListObj::linkToStart(dblLinkListObj* anObj) { if (anObj) linkBefore(
 // Unlink us and, if in list, patch the hole.
 void dblLinkListObj::unhook(void) {
 
-	if (dllPrev) dllPrev->dllNext = dllNext;	// If our previous pointer is not NULL.. Point our previous nodes next pointer, to what our next pointer is point at.
-	if (dllNext) dllNext->dllPrev = dllPrev;	// If our next pointer is not NULL.. Point our next nodes previous pointer, to what our previous pointer is point at.
+	if (dllPrev) dllPrev->dllNext = dllNext;	// If our previous pointer is not NULL.. Point our previous node's next pointer, to what our next pointer is pointing at.
+	if (dllNext) dllNext->dllPrev = dllPrev;	// If our next pointer is not NULL.. Point our next node's previous pointer, to what our previous pointer is pointing at.
 	dllNext = NULL;									// Ok, list is patched. Now we pull out. Our next gets NULL
 	dllPrev = NULL;									// And our previous gets NULL.
 }
@@ -526,4 +527,75 @@ int dblLinkListObj::countHead(void) {
 	}							//
 	return count;			// Pass back the result.
 }
+
+// *** If you plan on sorting, its a good idea to fill out both! ***
+//
+// Are we greater than the dblLinkListObj that has been passed in? You fill this out if
+// you plan to use the sorting method of dblLinkListObj.
+
+// Are we greater than the obj being passed in?
+bool dblLinkListObj::isGreaterThan(dblLinkListObj* compObj) { return false; }
+
+
+// Are we less than the obj being passed in?
+bool dblLinkListObj::isLessThan(dblLinkListObj* compObj) {  return false;  }
+
+
+// ** IF ** you filled out the isGreaterThan() & isLessThan() methods..										
+dblLinkListObj* dblLinkListObj::findMinMax(bool findMax) {
+
+	dblLinkListObj*	trace;
+	dblLinkListObj*	minMax;
+	
+	trace		= dllNext;
+	minMax	= trace;
+	while(trace) {
+		trace = trace->dllNext;
+		if (trace) {
+			if (findMax) {
+				if (trace->isGreaterThan(minMax)) {
+					minMax = trace;
+				} 
+			} else {
+				if (trace->isLessThan(minMax)) {
+					minMax = trace;
+				}
+			} 		
+		}
+	}
+	return minMax;
+}	
+
+								
+// And, if you did fill them out, this'll sort OUR TAIL. Meaning the original node is NOT
+// sorted. If you want to sort them all, you are going to need a header node attached to
+// the start the sort on.
+//
+// Yes, it is recursive. Don't like that? It's virtual. Override it and do a better one.
+void dblLinkListObj::sortTail(bool ascending) {
+
+
+	dblLinkListObj*	minMax;
+
+	if (countTail()>1) {						// If we have items to sort..
+		if (ascending) {						// Ascending?
+			minMax = findMinMax(false);	// Then we want the smallest.
+		} else {									// else?
+			minMax = findMinMax(true);		// We want the biggest.
+		}											//
+		if (minMax) {							// Sanity, it happens..
+			if (minMax!=dllNext) {			// If not already in order..
+				minMax->unhook();				// Pull it out of the list.
+				minMax->linkAfter(this);	// Link it after us.
+			}										//
+			minMax->sortTail(ascending);	//
+		} else {									// Something is going wrong..
+			return;								// Just bail.
+		}
+	}
+}
+
+
+
+
 

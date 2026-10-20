@@ -19,13 +19,13 @@ void idle(void) {
 
 // In your main loop, call this for an effective delay. Keeps the idler's idling while you
 // wait. Just drops out if called in idle time.
-void sleep(float ms) {
+void sleep(float ms) {  theIdlers.sleep(ms); }
 
-  timeObj sleepTimer(ms);
-  if (!idling) {
-    while(!sleepTimer.ding()) idle();
-  }
-}
+//  timeObj sleepTimer(ms);
+//  if (!idling) {
+//    while(!sleepTimer.ding()) idle();
+//  }
+//}
 
 
 // *******************************
@@ -89,3 +89,10 @@ void idlers::idle(void) {
 }
 
 
+void idlers::sleep(float ms) {
+
+  timeObj sleepTimer(ms);
+  if (!idling) {
+    while(!sleepTimer.ding()) idle();
+  }
+}
