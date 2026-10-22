@@ -6,10 +6,10 @@ textBuff    ourTextBuff(200); // The text ring buffer we want to test.
 lilParser   ourParser(100);   // The parser that makes UI easy to whip up.
 
 enum cmds {    // Our list of commands.
-   noCommand,  // Always start with soething like no command.
+   noCommand,  // Always start with something like no command.
    addChar,    // And then whatever you need.
-   readChar,   //$
-   addStr,     //$
+   readChar,   // 
+   addStr,     // 
    getStrLen,
    readStr,
    count,
@@ -26,9 +26,9 @@ ourParser.addCmd(addChar,"add");          // Link commands to input strings.
 ourParser.addCmd(readChar,"read");        // link.
 ourParser.addCmd(addStr,"adds");          // link.
 ourParser.addCmd(getStrLen,"strlen");     // link.
-ourParser.addCmd(readStr,"reads");        //$
-ourParser.addCmd(count,"count");          //$
-ourParser.addCmd(flush,"flush");          //$
+ourParser.addCmd(readStr,"reads");        // 
+ourParser.addCmd(count,"count");          // 
+ourParser.addCmd(flush,"flush");          // 
 }
 
 
@@ -38,8 +38,8 @@ void loop() {
    int   command;
 
    if (Serial.available()) {                                   // If serial has some data..
-      inChar = Serial.read();                                  // Read out a charactor.
-      Serial.print(inChar);                                    // If using development machine, echo the charactor.
+      inChar = Serial.read();                                  // Read out a character.
+      Serial.print(inChar);                                    // If using development machine, echo the character.
       command = ourParser.addChar(inChar);                     // Try parsing what we have.
       switch (command) {                                       // Check the results.
          case noCommand    :                 break;            // Nothing to report, move along.
@@ -80,11 +80,11 @@ void doAddChar(void) {
          if (param[0]!='\0') {                                 // If the first char isn't NULL char.
             ourTextBuff.addChar(param[0]);                     // Then we add the first char to ourTextBuff.
             Serial.print(param[0]);                            // And tell the user we did that.
-            Serial.println(" added to text buff");             // Still telling..
+            Serial.println(" added to text buff");             // Still telling.
             return;                                            // Success bolt!
-         }                                                     //$
-      }                                                        //$
-   }                                                           //$
+         }                                                     // 
+      }                                                        // 
+   }                                                           // 
    Serial.println("Nothing to add?");                          // If we're here, we failed.
 }
 
@@ -96,8 +96,8 @@ void doReadChar(void) {
    if (!ourTextBuff.empty()) {                                 // If ourTextBuff isn't empty..
       aChar = ourTextBuff.readChar();                          // Pull out a char.
       Serial.println(aChar);                                   // Show it to the user.
-      return;                                                  // SUccess! Bolt!
-   }                                                           //$
+      return;                                                  // Success! Bolt!
+   }                                                           // 
    Serial.println("Buffer is empty.");                         // Or else the buffer was empty.
 }
 
@@ -110,11 +110,11 @@ void doAddStr(void) {
          return;                                               // Success, leave the party while your having fun.
       } else {                                                 // Else something went wrong.
          Serial.println("Coudn't add the string.");            // Tell Miss user.
-      }                                                        //$
-   } else {                                                    //$
+      }                                                        // 
+   } else {                                                    // 
       Serial.println("So.. No string to add?");                // Miss user didn't give us a string.
-      Serial.println("You just messin' about?");               //$
-   }                                                           //$
+      Serial.println("You just messin' about?");               // 
+   }                                                           // 
 }
 
 
@@ -150,7 +150,7 @@ void doReadStr(void) {
 
 void doCount(void) {
 
-   Serial.print("Itmes in queue : ");
+   Serial.print("Items in queue : ");
    Serial.println(ourTextBuff.itemCount());
 }
 

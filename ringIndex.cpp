@@ -68,7 +68,7 @@ int ringIndex::itemCount(void) {
 int ringIndex::maxItems(void) { return numItems-1; }
 
 
-// Reset to zero zero.
+// Reset to zeroes.
 void ringIndex::flushItems(void) {
 
 	head = 0;

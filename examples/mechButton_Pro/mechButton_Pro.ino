@@ -43,7 +43,7 @@ proButton::proButton(int inPin)
 proButton::~proButton(void) {  }
 
 
-// begin, Needed somewhere to place the hookup() call. begin is tradional.
+// begin, Needed somewhere to place the hookup() call. begin is traditional.
 void proButton::begin(void) { hookup(); }
 
 

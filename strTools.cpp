@@ -5,7 +5,7 @@
 //****************************************************************************************
 // upCase(), lwrCase():
 //
-// Pass in a c string and make all the letters either uppercase orlowercase.
+// Pass in a C string and make all the letters either uppercase or lowercase.
 //****************************************************************************************
 
 
@@ -48,7 +48,7 @@ void lwrCase(char* inStr) {
 //
 //****************************************************************************************
 
-// Pass in a pointer to a char on a string. This'll delete that char from the c string.
+// Pass in a pointer to a char on a string. This will delete that char from the c string.
 void delChar(char* strPtr) {
 	
 	char* tracePtr;
@@ -80,7 +80,6 @@ void delChar(char* aStr,int inIndex) {
 
 //****************************************************************************************
 // heapStr:
-//
 // For reallocating strings.
 // Good for passing string data from one function to another. Lets you have an easy way to
 // "land" the data. Typically this is used for setting the size of a global buffer to fit
@@ -95,18 +94,18 @@ bool heapStr(char** resultStr,const char* inStr) {
 	int 	numChars;
 	bool	success;
 
-	success = false;										// We need to prove our success!
+	success = false;                             // We need to prove our success!
 	if (inStr) {                                 // If we got a non-NULL string..
-		numChars = strlen(inStr);						// Count the chars in inStr.
-		if (resizeBuff(numChars+1,resultStr)) {	// If we can allocated the memory..
-			strcpy(*resultStr,inStr);					// Copy input into the resulting string.
-			success = true;								// And that's a success!
-		}														//
-	} else {													// Else, they handed us a NULL string?
-		resizeBuff(0,resultStr);						// I guess they want the result to be NULL as well.
-		success = true;									// In that case, I guess we were successful.
-	}															//
-	return success;										// And we return our success. Good or bad.
+		numChars = strlen(inStr);                // Count the chars in inStr.
+		if (resizeBuff(numChars+1,resultStr)) {  // If we can allocated the memory..
+			strcpy(*resultStr,inStr);            // Copy input into the resulting string.
+			success = true;                      // And that's a success!
+		}                                        //
+	} else {                                     // Else, they handed us a NULL string?
+		resizeBuff(0,resultStr);                 // I guess they want the result to be NULL as well.
+		success = true;                          // In that case, I guess we were successful.
+	}                                            //
+	return success;                              // And we return our success. Good or bad.
 }
 
 

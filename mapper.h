@@ -5,10 +5,10 @@
 
 //****************************************************************************************
 // The mapper supplied by the Arduino library is only for integers. Well, sometimes you
-// want to do your math in real numbers. So, hang the cost, we're doing this on in the
+// want to do your math in real numbers. So, hang the cost, we're doing this on these
 // biggest real numbers the platform can hand out.
-// As it turns out, most of our time is spent talking out different com ports so no one
-// notices these calculations. Or at least not often. And its really nice to know you're
+// As it turns out, most of our time is spent talking to different COM ports so no one
+// notices these calculations. Or at least not often. And it's really nice to know you're
 // not just chopping off all the decimal places early on in the game.
 //
 // 6/15/2020 : Added integration. Wanted it for doing trapezoidal moves.

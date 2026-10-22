@@ -31,10 +31,10 @@
 
 runningAvg  smoother(5);                                 // Our smoother. You can change the number of datapoints it will act on.
 char        inBuff[80];                                  // A char buffer (c string) to hold your typings.
-int         charIndex;                                   // An index to be used in storing charactors into our char buffer.
+int         charIndex;                                   // An index to be used in storing characters into our char buffer.
 
 
-// Standard setup stuff..
+// Standard setup stuff.
 void setup(void) {
 
 	Serial.begin(9600);                                  // Fire up the serial stuff.
@@ -53,10 +53,10 @@ void loop(void) {
 
 	if (Serial.available()) {                            // If there is a char in the waiting to be read..
 		aChar = Serial.read();                           // Grab and save the char.
-		if (aChar=='\n') {                               // If its a newline char.. (Make sure the serial monitor is set to newline.)
+		if (aChar=='\n') {                               // If it's a newline char.. (Make sure the serial monitor is set to newline.)
 			aValue = atof(inBuff);                       // Decode what we have read in so far as a float value. (Decimal number)
 			ave = smoother.addData(aValue);              // Pop this number into our smoother. (Running average object.) Out pops the average.
-			Serial.println();                            // From here down its just grabing info from the
+			Serial.println();                            // From here down it's just grabbing info from the
 			Serial.print(F("Entered    : "));            // SMoother and displaying it on the serial monitor.
 			Serial.println(inBuff);
 			Serial.print(F("Data       : "));

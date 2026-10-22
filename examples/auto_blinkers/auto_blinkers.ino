@@ -10,7 +10,7 @@
 // click off.
 //$
 // The buttons should be wired one side to the pin number choosen and
-// the other to ground. the mechButton object will do the debounceing
+// the other to ground. the mechButton object will do the debouncing
 // for you as well as call your callback routines when clicked. The
 // blinker objects take care of the blinking. All these behind the
 // scenes functions happen when you call idle() in your loop function.
@@ -58,10 +58,10 @@ void setup() {
 // When the LEFT button is clicked, this is called..
 void clickLBtn(void) {
 
-  if (!lButton.trueFalse()) {                              // If the button has been grounded..
-    if (currentState == blinkLeft) {                       // If we are already doing this mode..
+  if (!lButton.trueFalse()) {                              // If the button has been grounded.
+    if (currentState == blinkLeft) {                       // If we are already doing this mode.
       setBlinkers(blinkOff);                               // We just shut off everything.
-    } else {                                               // Else, doing something else..
+    } else {                                               // Else, doing something else.
       setBlinkers(blinkLeft);                              // We switch to our mode.
     }
   }
@@ -71,8 +71,8 @@ void clickLBtn(void) {
 // When the RIGHT button is clicked, this is called..
 void clickRBtn(void) {
 
-if (!rButton.trueFalse()) {                              // If the button has been grounded..
-if (currentState == blinkRight) {                        // If we are already doing this mode..
+if (!rButton.trueFalse()) {                              // If the button has been grounded.
+if (currentState == blinkRight) {                        // If we are already doing this mode.
 setBlinkers(blinkOff);                                   // We just shut off everything.
 } else {                                                 // Else, doing something else..
 setBlinkers(blinkRight);                                 // We switch to our mode.
@@ -85,10 +85,10 @@ setBlinkers(blinkRight);                                 // We switch to our mod
 // When the HAZARD button is clicked, this is called..
 void clickHBtn(void) {
 
-  if (!hButton.trueFalse()) {                            // If the button has been grounded..
-if (currentState == blinkHazard) {                       // If we are already doing this mode..
+  if (!hButton.trueFalse()) {                            // If the button has been grounded.
+if (currentState == blinkHazard) {                       // If we are already doing this mode.
 setBlinkers(blinkOff);                                   // We just shut off everything.
-} else {                                                 // Else, doing something else..
+} else {                                                 // Else, doing something else.
 setBlinkers(blinkHazard);                                // We switch to our mode.
 }
     }
