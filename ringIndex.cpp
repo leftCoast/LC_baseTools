@@ -39,6 +39,26 @@ int ringIndex::readItem(void) {
 }
 
 
+// Peek at this index. Does not remove the item.
+int ringIndex::peek(void) {
+
+	int	outIndex;
+	
+	outIndex = INDEX_ERR;
+	if (!empty()) {
+		outIndex = tail;
+	}
+	return outIndex;
+}
+
+
+// How many items do we have?
+int ringIndex::size(void) {
+
+	return itemCount();
+}
+
+
 // Are we empty?
 bool ringIndex::empty(void) { return head == tail; }
 
@@ -84,6 +104,4 @@ int ringIndex::increment(int inIndex) {
 		inIndex=0;
 	}
 	return inIndex;
-}	
-				
-				
+}
