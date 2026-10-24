@@ -1,6 +1,6 @@
 #include <colorObj.h>
 
-// Having the basics handy is very handy!
+// Having the basics is very handy!
 colorObj red(LC_RED);
 colorObj blue(LC_BLUE);
 colorObj white(LC_WHITE);
@@ -11,7 +11,7 @@ colorObj magenta(LC_MAGENTA);
 colorObj yellow(LC_YELLOW);
 
 
-// colormapper extremes..
+// colormapper extremes.
 #define START_COLOR     0
 #define END_COLOR       100
 
@@ -51,10 +51,10 @@ void colorObj::setColor(byte inRed, byte inGreen, byte inBlue) {
 }
 
 
-// Handed a packed 16 bit color we want to create one of our 24 bit colors.
-// If it falls on one of our known colors, possibly it started out as one of ours?
-// The switch statement will quickly bring it back to our original.
-// Otherwise, we do the best we can with whatever bits we have to play with.
+// Given a packed 16 bit color, we want to create one of our 24 bit colors.
+// If it falls on one of our known colors, it may have started out as one of ours?
+// The switch statement will quickly bring it back to our original color.
+// Otherwise, we do the best we can with whatever bits we have.
 void colorObj::setColor(word color16) {
 
   switch(color16) {
@@ -195,7 +195,7 @@ void colorObj::setColor(colorObj* inColor) {
 }
 
 
-// Copied from Adafruit'
+// Copied from Adafruit
 word colorObj::getColor16(void) {
   return ((red & 0xF8) << 8) | ((green & 0xFC) << 3) | (blue >> 3);
 }
@@ -234,7 +234,7 @@ RGBpack  colorObj::packColor(void) {
 }
 
 
-//Creates a new color by mixing yourself with some new color.
+// Creates a new color by mixing yourself with some new color.
 colorObj colorObj::mixColors(colorObj* mixinColor,byte mixPercent) {
 
 	if (mixPercent>=100) return *mixinColor;
@@ -246,12 +246,12 @@ colorObj colorObj::mixColors(colorObj* mixinColor,byte mixPercent) {
 }
 
 
-//Changes yourself by blending in some new color.
+// Changes yourself by blending in some new color.
 void colorObj::blend(colorObj* mixinColor,byte mixPercent) {
 
-	if (mixPercent>=100) {          // If >= 100 means totally mixin color.
+	if (mixPercent>=100) {          // If >= 100 means totally mixing color.
 		setColor(mixinColor);
-	} else if (mixPercent>0) {      // So its NOT >= 100 but it is > 0.. Blend it.
+	} else if (mixPercent>0) {      // So it's NOT >= 100 but it is > 0. Blend it.
 		mixMapper.setColors(this,mixinColor);
 		colorObj temp = mixMapper.map(mixPercent);
 		setColor(&temp);

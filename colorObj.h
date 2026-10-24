@@ -34,7 +34,7 @@
 #define LC_YELLOW       255,255,  0
 
 
-// If you want a LOT of colorObj(s) saved. Like a bitmap?
+// If you want a LOT of colorObj's saved. Like a bitmap?
 // The RGBpack is 3 bytes per pixel as opposed to 8 for
 // the color object itself. Same color information.
 struct RGBpack {
@@ -49,7 +49,7 @@ class colorObj {
 public:
                 colorObj(RGBpack* buff);
                 colorObj(byte inRed, byte inGreen, byte inBlue);
-                //colorObj(colorObj* inColor);             // Wanted this one, but the compiler mixes it up with color16.
+                //colorObj(colorObj* inColor);             // This was wanted, but the compiler mixes it up with color16.
                 colorObj(word color16);
                 colorObj(void);
   virtual   ~colorObj(void);

@@ -8,7 +8,7 @@
 
 // Create our one shot object. We wire the button
 // to pin #2 and a pulse of 250 Ms. Leaving the
-// rest of the paramiters as defaults.
+// rest of the parameters as defaults.
 oneShot ourOneShot(2,250);
 
 

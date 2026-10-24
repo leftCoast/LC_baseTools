@@ -29,15 +29,15 @@
 */
 
 
-runningAvg  smoother(5);                // Our smoother. You can change the number of datapoints it will act on.
+runningAvg  smoother(5);                                          // Our smoother. You can change the number of datapoints it will act on.
 
 void setup(void) {
-	Serial.begin(9600);                   // Fire up the serial stuff.
+	Serial.begin(9600);                                           // Fire up the serial stuff.
 	pinMode(A0, INPUT);
 }
 
 void loop(void) {
-	int data = analogRead(A0);            // Read the pin, or enter the new data to avg.
-	float ave = smoother.addData(data);   // The Average that the smoother will return to us.
+	int data = analogRead(A0);                                    // Read the pin, or enter the new data to avg.
+	float ave = smoother.addData(data);                           // The Average that the smoother will return to us.
 	Serial.println(ave);
 }

@@ -24,6 +24,8 @@ class ringIndex {
 	
 	virtual	int	addItem(void);				// Write to this index, if not INDEX_ERR.
 	virtual	int	readItem(void);			// Read at this index, if not INDEX_ERR.
+	virtual	int	peek(void);				// Peek at this index. Does not remove the item.
+	virtual	int	size(void);				// How many items do we have?
 	virtual	bool	empty(void);				// Are we empty?
 	virtual	bool	full(void);					// Are we full?
 	virtual	int	itemCount(void);			// How many items do we have?

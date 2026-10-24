@@ -1,7 +1,7 @@
 #include "oneShot.h"
 
 
-// Our constructor. All thie bits we can adjust at creation time.
+// Our constructor. All these bits we can adjust at creation time.
 oneShot::oneShot(int inPin,float shotTime,int outPin,bool outHiLow)
    : timeObj(shotTime,false),                     // Set up our pulse timer.
    idler() {                                      // Set up our idler class things.
@@ -18,7 +18,7 @@ oneShot::oneShot(int inPin,float shotTime,int outPin,bool outHiLow)
 oneShot::~oneShot(void) { if (mButton) delete(mButton); }
 
 
-// Those last little items we need to do before hitting the road..
+// Those last little items we need to do before hitting the road.
 void oneShot::begin(void) {
 
    pinMode(mOutPin,OUTPUT);                                // Setup our output pin.
@@ -28,7 +28,7 @@ void oneShot::begin(void) {
 
 
 
-// What we do al day..
+// What we do all day..
 void oneShot::idle(void) {
 
    switch(mOurState) {
