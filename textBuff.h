@@ -17,20 +17,20 @@
 
 class textBuff : public ringIndex {
 
-	public:
-		textBuff(int inNumBytes,bool inOverwrite=false);
-		~textBuff(void);
-	
-	virtual	bool  addChar(char inChar);									// Add a char.
-	virtual	char  readChar(void);											// Read out the next char. (removes it)
-				bool  addStr(const char* inCStr,bool andNULL=true);	// Add a c string. (With or without the nul terminator.)
-				int	rStrlen(void);												// strlen() for the next string to read. Not counting the '\0'.
-				char*	readStr(void);												// Read out a c string. (removes it)
+   public:
+      textBuff(int inNumBytes,bool inOverwrite=false);
+      ~textBuff(void);
+   
+   virtual   bool  addChar(char inChar);                           // Add a char.
+   virtual   char  readChar(void);                                 // Read out the next char. (removes it)
+            bool  addStr(const char* inCStr,bool andNULL=true);   // Add a c string. (With or without the nul terminator.)
+            int   rStrlen(void);                                    // strlen() for the next string to read. Not counting the '\0'.
+            char*   readStr(void);                                    // Read out a c string. (removes it)
 
-	private:
-		char*	buff;
-		char*	returnStr;
-		bool	overwrite;    
+   private:
+      char*   buff;
+      char*   returnStr;
+      bool   overwrite;    
 };
 
 #endif

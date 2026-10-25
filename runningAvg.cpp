@@ -6,19 +6,19 @@
 // Constructor, runningAvg wants to know how many data values to average over.
 runningAvg::runningAvg(int inNumData) {
 
-	theValues   = NULL;
-	maxData		= 0;
-	if (resizeBuff(sizeof(float)*inNumData,(byte**)&theValues)) {
-		maxData     = inNumData;
-	}
-	numValues   = 0;
-	index       = 0;
-	mResult     = 0;
-	
-	usingUpper	= false;
-	upperLimit  = 0;
-	usingLower	= false;
-	lowerLimit  = 0;
+   theValues   = NULL;
+   maxData      = 0;
+   if (resizeBuff(sizeof(float)*inNumData,(byte**)&theValues)) {
+      maxData     = inNumData;
+   }
+   numValues   = 0;
+   index       = 0;
+   mResult     = 0;
+   
+   usingUpper   = false;
+   upperLimit  = 0;
+   usingLower   = false;
+   lowerLimit  = 0;
 }
 
 
@@ -29,33 +29,33 @@ runningAvg::~runningAvg(void) { resizeBuff(0,(byte**)&theValues); }
 // The standard call. Drop in a value, pop out the average of the last n values.
 float runningAvg::addData(float inData) {
 
-	float sum;
-	
-	if (usingLower && inData<lowerLimit) return mResult; // Limit fail, bail.
-	if (usingUpper && inData>upperLimit) return mResult; // Limit fail, bail.
-	
-	latestValue = inData;                        // Limits passed, this is our latest value.
-	if (numValues<maxData) {                     // Early stages while still filling.
-		theValues[index++] = inData;             // Never been full so index must be ok.
-		oldestValue = theValues[0];              // In this case, oldest is the first of the array.
-		numValues++;                             //
-	} else {                                     // Else the array is full.
-		if (index>=maxData) {                    // Meaning its pointing past the array.
-			index = 0;                           // Cycle around.
-		}                                        //
-		theValues[index++] = inData;             // And stuff the value in.
-		if (index==maxData) {                    // If it's NOW pointing past the array..
-			oldestValue = theValues[0];          // Then oldest is the first of the array.
-		} else {                                 // Else..
-			oldestValue = theValues[index];      // Oldest value is the next to be crunched.	
-		}                                        //
-	}                                            //
-	sum = 0;                                     // Clear sum.
-	for (int i=0;i<numValues;i++) {              // We loop up to numValues but not including numValues.
-		sum = sum + theValues[i];
-	}
-	mResult = sum/numValues;
-	return mResult;
+   float sum;
+   
+   if (usingLower && inData<lowerLimit) return mResult; // Limit fail, bail.
+   if (usingUpper && inData>upperLimit) return mResult; // Limit fail, bail.
+   
+   latestValue = inData;                        // Limits passed, this is our latest value.
+   if (numValues<maxData) {                     // Early stages while still filling.
+      theValues[index++] = inData;             // Never been full so index must be ok.
+      oldestValue = theValues[0];              // In this case, oldest is the first of the array.
+      numValues++;                             //
+   } else {                                     // Else the array is full.
+      if (index>=maxData) {                    // Meaning its pointing past the array.
+         index = 0;                           // Cycle around.
+      }                                        //
+      theValues[index++] = inData;             // And stuff the value in.
+      if (index==maxData) {                    // If it's NOW pointing past the array..
+         oldestValue = theValues[0];          // Then oldest is the first of the array.
+      } else {                                 // Else..
+         oldestValue = theValues[index];      // Oldest value is the next to be crunched.   
+      }                                        //
+   }                                            //
+   sum = 0;                                     // Clear sum.
+   for (int i=0;i<numValues;i++) {              // We loop up to numValues but not including numValues.
+      sum = sum + theValues[i];
+   }
+   mResult = sum/numValues;
+   return mResult;
 }
 
 
@@ -132,9 +132,9 @@ float runningAvg::getDataItem(int index) {
 
 // Anything above this will be cut from the data.
 void runningAvg::setUpperLimit(float limit) {
-		
-	upperLimit = limit;
-	usingUpper = true;
+      
+   upperLimit = limit;
+   usingUpper = true;
 }
 
 
@@ -144,9 +144,9 @@ void runningAvg::clearUpperLimit(void) { usingUpper = false; }
 
 // Anything below this will be cut from the data.
 void runningAvg::setLowerLimit(float limit) {
-	
-	lowerLimit = limit;
-	usingLower = true;
+   
+   lowerLimit = limit;
+   usingLower = true;
 }
 
 
@@ -157,14 +157,14 @@ void runningAvg::clearLowerLimit(void) { usingLower = false; }
 // Set both upper and lower limits.
 void runningAvg::setLimits(float lowerLimit,float upperLimit) {
 
-	setLowerLimit(lowerLimit);
-	setUpperLimit(upperLimit);
+   setLowerLimit(lowerLimit);
+   setUpperLimit(upperLimit);
 }
 
 
 // Shut down all limiting.
 void runningAvg::clearLimits(void) {
 
-	clearUpperLimit();
-	clearLowerLimit();
+   clearUpperLimit();
+   clearLowerLimit();
 }

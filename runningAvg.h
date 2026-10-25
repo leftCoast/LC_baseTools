@@ -28,42 +28,42 @@
 
 class runningAvg {
 
-	public:
-				runningAvg(int inNumData);
-	virtual	~runningAvg(void);
+   public:
+            runningAvg(int inNumData);
+   virtual   ~runningAvg(void);
 
-				float addData(float inData);		// Drop in number, receive average.
-				
-				float getAvg(void);					// All the other things no one will ever use.
-				float getMax(void);
-				float getMin(void);
-				float getDelta(void);				// Delta value over all data points.
-				float getEndpointDelta(void);		// Delta value reading only first and last.
-				float	getStdDev(void);
-				int 	getNumValues(void);
-				float getDataItem(int index);
-				
-				void	setUpperLimit(float limit);
-				void	clearUpperLimit(void);
-				void	setLowerLimit(float limit);
-				void	clearLowerLimit(void);
-				void setLimits(float lowerLimit,float upperLimit);
-				void clearLimits(void);
-	
-	protected:
+            float addData(float inData);      // Drop in number, receive average.
+            
+            float getAvg(void);               // All the other things no one will ever use.
+            float getMax(void);
+            float getMin(void);
+            float getDelta(void);            // Delta value over all data points.
+            float getEndpointDelta(void);      // Delta value reading only first and last.
+            float   getStdDev(void);
+            int    getNumValues(void);
+            float getDataItem(int index);
+            
+            void   setUpperLimit(float limit);
+            void   clearUpperLimit(void);
+            void   setLowerLimit(float limit);
+            void   clearLowerLimit(void);
+            void setLimits(float lowerLimit,float upperLimit);
+            void clearLimits(void);
+   
+   protected:
 
-				int		maxData;                           // Total amount allowed.
-				int		numValues;                         // The amount we have.
-				int		index;                             // Write the next value, here.
-				float*	theValues;                         // The array of values.
-				float		oldestValue;								
-				float		latestValue;
-				float		mResult;                           // Just in case they ask, we'll keep a copy.
-				
-				bool		usingUpper;
-				float		upperLimit;
-				bool		usingLower;
-				float		lowerLimit;   
+            int      maxData;                           // Total amount allowed.
+            int      numValues;                         // The amount we have.
+            int      index;                             // Write the next value, here.
+            float*   theValues;                         // The array of values.
+            float      oldestValue;                        
+            float      latestValue;
+            float      mResult;                           // Just in case they ask, we'll keep a copy.
+            
+            bool      usingUpper;
+            float      upperLimit;
+            bool      usingLower;
+            float      lowerLimit;   
 };
 
 #endif

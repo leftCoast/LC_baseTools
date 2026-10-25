@@ -3,10 +3,10 @@
 
 autoPOT::autoPOT(int inPin) {
   
-	callback	= NULL;                          // Bacause it ain't
-	pinNum	= inPin;                             // Because they said.
-	value		= -1;                            // Because it can't.
-	window	= 0;                                 // Because not now.	
+   callback   = NULL;                          // Bacause it ain't
+   pinNum   = inPin;                             // Because they said.
+   value      = -1;                            // Because it can't.
+   window   = 0;                                 // Because not now.   
 }
 
 
@@ -34,7 +34,7 @@ void autoPOT::idle(void) {
   
   if (callback) { // If we have a callback ready?
     newVal = analogRead(pinNum); // Read the analog port.
-    if (newVal>value+window||newVal<value-window) {	// If it falls outside our window..
+    if (newVal>value+window||newVal<value-window) {   // If it falls outside our window..
       value = newVal;                            // Save off the new value.
       callback(value);                           // Call our callback with the value.
     }
