@@ -15,12 +15,12 @@ oneShot ourOneShot(2,250);
 // Standard Arduino setup()
 void setup(void) {
 
-   ourOneShot.begin();                                     // We need to call its begin() method to start it.
+   ourOneShot.begin();                           // We need to call its begin() method to start it.
 }
 
 
 // Standard Arduino loop()
 void loop(void) {
 
-   idle();                                                 // idle() allows time for all the background things to run.
+   idle();                                       // idle() allows time for all the background things to run.
 }

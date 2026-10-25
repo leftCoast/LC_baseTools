@@ -6,9 +6,9 @@
 #include <mapper.h>
 
 //****************************************************************************************
-// multiMap..
+// multiMap.
 //
-// Sometimes your data doesn't actually fit very well on a straight line. Its..
+// Sometimes your data doesn't actually fit very well on a straight line. Its.
 // Non-linier. multiMap is a really fast and easy way to get "good enough" data fitting to
 // a non-linier data set.
 //
@@ -62,7 +62,7 @@ class mapPoint :   public linkListObj {
 
 //****************************************************************************************
 // multiMap : This is the one you should be using. You can create multiMaps. Add points to
-// them. Clear points from them. Map stuff using them and, actually.. Integrate curves
+// them. Clear points from them. Map stuff using them and, actually. Integrate curves
 // using them. Its basically a list of mappers and a mapper can actually do integration so
 // it was tossed in. Very handy for calculating things like trapezoidal moves on the fly.
 //****************************************************************************************

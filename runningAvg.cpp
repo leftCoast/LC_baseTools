@@ -14,7 +14,7 @@ runningAvg::runningAvg(int inNumData) {
    numValues   = 0;
    index       = 0;
    mResult     = 0;
-   
+
    usingUpper   = false;
    upperLimit  = 0;
    usingLower   = false;
@@ -30,28 +30,28 @@ runningAvg::~runningAvg(void) { resizeBuff(0,(byte**)&theValues); }
 float runningAvg::addData(float inData) {
 
    float sum;
-   
+
    if (usingLower && inData<lowerLimit) return mResult; // Limit fail, bail.
-   if (usingUpper && inData>upperLimit) return mResult; // Limit fail, bail.
-   
-   latestValue = inData;                        // Limits passed, this is our latest value.
-   if (numValues<maxData) {                     // Early stages while still filling.
-      theValues[index++] = inData;             // Never been full so index must be ok.
-      oldestValue = theValues[0];              // In this case, oldest is the first of the array.
-      numValues++;                             //
-   } else {                                     // Else the array is full.
-      if (index>=maxData) {                    // Meaning its pointing past the array.
-         index = 0;                           // Cycle around.
-      }                                        //
-      theValues[index++] = inData;             // And stuff the value in.
-      if (index==maxData) {                    // If it's NOW pointing past the array..
-         oldestValue = theValues[0];          // Then oldest is the first of the array.
-      } else {                                 // Else..
-         oldestValue = theValues[index];      // Oldest value is the next to be crunched.   
-      }                                        //
-   }                                            //
-   sum = 0;                                     // Clear sum.
-   for (int i=0;i<numValues;i++) {              // We loop up to numValues but not including numValues.
+   if (usingdUpper && inData>upperLimit) return mResult; // Limit fail, bail.
+
+   latestValue = inData;                         // Limits passed, this is our latest value.
+   if (numValues<maxData) {                      // Early stages while still filling.
+      theValues[index++] = inData;               // Never been full so index must be ok.
+      oldestValue = theValues[0];                // In this case, oldest is the first of the array.
+      numValues++;                               //
+   } else {                                      // Else the array is full.
+      if (index>=maxData) {                      // Meaning its pointing past the array.
+         index = 0;                              // Cycle around.
+      }                                          //
+      theValues[index++] = inData;               // And stuff the value in.
+      if (index==maxData) {                      // If it's NOW pointing past the array.
+         oldestValue = theValues[0];             // Then oldest is the first of the array.
+      } else {                                   // Else.
+         oldestValue = theValues[index];         // Oldest value is the next to be crunched.
+      }                                          //
+   }                                             //
+   sum = 0;                                      // Clear sum.
+   for (int i=0;i<numValues;i++) {               // We loop up to numValues but not including numValues.
       sum = sum + theValues[i];
    }
    mResult = sum/numValues;
@@ -96,7 +96,7 @@ float runningAvg::getMin(void) {
 float runningAvg::getDelta(void) { return getMax()-getMin(); }
 
 
-// Only looks at the first and last data points. Gives back latest - oldest to give a 
+// Only looks at the first and last data points. Gives back latest - oldest to give a
 // signed trend overall.
 float runningAvg::getEndpointDelta(void) { return(latestValue - oldestValue); }
 
@@ -119,7 +119,7 @@ float runningAvg::getStdDev(void) {
 int runningAvg::getNumValues(void) { return numValues; }
 
 
-// Finds the nth data value from 0..numValues-1 and returns that value. Returns zero if it
+// Finds the nth data value from 0.numValues-1 and returns that value. Returns zero if it
 // can't find the data item.
 float runningAvg::getDataItem(int index) {
 
@@ -132,7 +132,7 @@ float runningAvg::getDataItem(int index) {
 
 // Anything above this will be cut from the data.
 void runningAvg::setUpperLimit(float limit) {
-      
+
    upperLimit = limit;
    usingUpper = true;
 }
@@ -144,7 +144,7 @@ void runningAvg::clearUpperLimit(void) { usingUpper = false; }
 
 // Anything below this will be cut from the data.
 void runningAvg::setLowerLimit(float limit) {
-   
+
    lowerLimit = limit;
    usingLower = true;
 }

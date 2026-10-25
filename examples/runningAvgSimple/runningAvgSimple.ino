@@ -10,9 +10,9 @@
    Then, of course, this opened up new horizons for things like; What was the max and min data points we
    saw in this set? So that was added.
 
-   Then it was.. Well, what about sound? Sound is all about the delta between max and min. Delta was added.
+   Then it was. Well, what about sound? Sound is all about the delta between max and min. Delta was added.
 
-   Then.. Yes, I also added standard deviation. What the heck? Everything else is in the pot. Might as
+   Then. Yes, I also added standard deviation. What the heck? Everything else is in the pot. Might as
    well go for it all.
 
    Still, true to its roots, it only calculates the average when a datapoint is entered. All the rest
@@ -29,15 +29,15 @@
 */
 
 
-runningAvg  smoother(5);                                          // Our smoother. You can change the number of datapoints it will act on.
+runningAvg  smoother(5);                         // Our smoother. You can change the number of datapoints it will act on.
 
 void setup(void) {
-   Serial.begin(9600);                                           // Fire up the serial stuff.
+   Serial.begin(9600);                           // Fire up the serial stuff.
    pinMode(A0, INPUT);
 }
 
 void loop(void) {
-   int data = analogRead(A0);                                    // Read the pin, or enter the new data to avg.
-   float ave = smoother.addData(data);                           // The Average that the smoother will return to us.
+   int data = analogRead(A0);                    // Read the pin, or enter the new data to avg.
+   float ave = smoother.addData(data);           // The Average that the smoother will return to us.
    Serial.println(ave);
 }

@@ -1,7 +1,7 @@
 #include <ringIndex.h>
 
 ringIndex::ringIndex(int inNumItems) {
-   
+
    numItems = inNumItems;
    head      = 0;
    tail      = 0;
@@ -11,11 +11,11 @@ ringIndex::ringIndex(int inNumItems) {
 ringIndex::~ringIndex(void) {  }
 
 
-// Write to this index, if not INDEX_ERR.   
+// Write to this index, if not INDEX_ERR.
 int ringIndex::addItem(void) {
-   
+
    int   outIndex;
-   
+
    outIndex = INDEX_ERR;
    if (!full()) {
       outIndex = head;
@@ -29,7 +29,7 @@ int ringIndex::addItem(void) {
 int ringIndex::readItem(void) {
 
    int   outIndex;
-   
+
    outIndex = INDEX_ERR;
    if (!empty()) {
       outIndex = tail;
@@ -43,7 +43,7 @@ int ringIndex::readItem(void) {
 int ringIndex::peek(void) {
 
    int   outIndex;
-   
+
    outIndex = INDEX_ERR;
    if (!empty()) {
       outIndex = tail;
@@ -67,7 +67,7 @@ bool ringIndex::empty(void) { return head == tail; }
 bool ringIndex::full(void) {
 
    int   anIndex;
-   
+
    anIndex = head;
    anIndex = increment(anIndex);
    return anIndex == tail;
@@ -76,7 +76,7 @@ bool ringIndex::full(void) {
 
 // How many items do we have?
 int ringIndex::itemCount(void) {
-   
+
    if (empty()) return 0;
    if (full()) return maxItems();
    if (head>tail) return head - tail;

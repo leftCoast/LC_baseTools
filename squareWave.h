@@ -31,46 +31,45 @@
 //****************************************************************************************
 
 
-class squareWave : public idler {
+   class     squareWave : public idler {
 
-   enum waveState { sittinIdle, ridingHi, ridingLow };
+   enum      waveState { sittinIdle, ridingHi, ridingLow };
 
    public:
-            squareWave(void);
-            squareWave(float periodMs,float pulseMs, bool blocking=false);
+             squareWave(void);
+             squareWave(float periodMs,float pulseMs, bool blocking=false);
    virtual   ~squareWave(void);
 
-            bool   running(void);
-            bool   pulseHiLow(void);
+             bool   running(void);
+             bool   pulseHiLow(void);
    virtual   void   setPeriod(float ms);
    virtual   void   setPulse(float ms);
    virtual   void   setPercent(float perc);
    virtual   void   setBlocking(bool onOff);
    virtual   void   setOnOff(bool onOff);
-   virtual   void   manualSetHiLow(bool hiLow);   // Handy in some cases..
-   
+   virtual   void   manualSetHiLow(bool hiLow);  // Handy in some cases.
+
    virtual   void   pulseOn(void);
    virtual   void   pulseOff(void);
    virtual   void   idle(void);
-
-            //void  printState(void);                  // For debugging.
+           //void  printState(void);             // For debugging.
    protected:
 
-            void   init(void);
+             void   init(void);
    virtual   void   block(void);
    virtual   void   startWave(void);
-            void   ourPulseOn(void);
-            void   ourPulseOff(void);
+             void   ourPulseOn(void);
+             void   ourPulseOff(void);
 
-            waveState   mState;
-            bool         mSignal;
-            timeObj      mPeriod;
-            bool         mPeriodChange;
-            float         mNextPeriod;
-            timeObj      mPulse;
-            bool         mPulseChange;
-            float         mNextPulse;
-            bool         mBlocking;
+             waveState    mState;
+             bool         mSignal;
+             timeObj      mPeriod;
+             bool         mPeriodChange;
+             float        mNextPeriod;
+             timeObj      mPulse;
+             bool         mPulseChange;
+             float        mNextPulse;
+             bool         mBlocking;
 };
 
 #endif

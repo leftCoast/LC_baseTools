@@ -19,7 +19,7 @@ mapPoint::mapPoint(double inX, double inY)
 
 mapPoint::~mapPoint(void) {
 
-   if (mUpMapper) {                              // Just in case we have a mapper..
+   if (mUpMapper) {                              // Just in case we have a mapper.
       delete(mUpMapper);                         // Recycle it!
       mUpMapper = NULL;                          // Flag it as gone.
    }
@@ -34,7 +34,7 @@ void mapPoint::createUpMappers(void) {
 
    mapPoint* upPoint;
 
-   if (mUpMapper) {                              // Just in case, if we have a mapper.. (We shouldn't)
+   if (mUpMapper) {                              // Just in case, if we have a mapper. (We shouldn't)
       delete(mUpMapper);                         // Recycle it first!
       mUpMapper = NULL;                          // Flag it as gone.
    }
@@ -74,10 +74,10 @@ double  mapPoint::map(double inX) {
 
    if (inX<=mX) return mY;                       // If its less than our x? Then we are the low limit. Return our y value.
    next = getNext();                             // Make the grab for the next bigger point.
-   if (next) {                                   // If there is a larger point..
-      if (inX>mUpMapper->getMaxX()) {            // If its larger than our mapper's limit..
+   if (next) {                                   // If there is a larger point.
+      if (inX>mUpMapper->getMaxX()) {            // If its larger than our mapper's limit.
          return next->map(inX);                  // Pass the x value to the next larger point. Return it's result.
-      } else {                                   // Else, its larger than us and less than the limit..
+      } else {                                   // Else, its larger than us and less than the limit.
          return mUpMapper->map(inX);             // We map it and return the result.
       }
    } else {                                      // Else. its larger than us, but no next guy to pass it to.
@@ -91,22 +91,22 @@ double  mapPoint::map(double inX) {
 double  mapPoint::integrate(double x1,double x2) {
 
    if (mUpMapper) {                              // Sanity, we have mappers? And, this also means we have an upper neighbor point.
-      if (x1<=mUpMapper->getMinX()) {            // If x1 is our end point or below..
+      if (x1<=mUpMapper->getMinX()) {            // If x1 is our end point or below.
          if (x2==mUpMapper->getMaxX()) {         // If x2 is at our end point.
             return mUpMapper->integrate();       // We return the complete integraton of our mapper.
          } else {                                // Else, not equal.
-            if (x2<mUpMapper->getMaxX()) {       // If x2 is less than our end point..
+            if (x2<mUpMapper->getMaxX()) {       // If x2 is less than our end point.
                return mUpMapper->integrate(x1,x2);// We return the partial integraton of our mapper.
-            } else {                             // Else, x2 goes beyond our mapper..
+            } else {                             // Else, x2 goes beyond our mapper.
                return mUpMapper->integrate() + getNext()->integrate(x1,x2);// We return our total integration + The integration of next guy upstram of us.
             }
          }
       } else if (x1>=mUpMapper->getMaxX()) {     // Else if x1 is beyond us altogether.
          return getNext()->integrate(x1,x2);     // We pass it on to the next guy and return when he returns.
       } else {                                   // Else x1 lies within our mapper.
-         if (x2<=mUpMapper->getMaxX()) {         // If x2 lies within our mapper..
+         if (x2<=mUpMapper->getMaxX()) {         // If x2 lies within our mapper.
             return mUpMapper->integrate(x1,x2);  // We retun our partial integrtion.
-         } else {                                // Else, x2 is beyond our mapper..
+         } else {                                // Else, x2 is beyond our mapper.
             return mUpMapper->integrate(x1,x2) + getNext()->integrate(x1,x2);// We return our partial integration + The integration of next guy upstram of us.
          }
       }
@@ -173,11 +173,11 @@ bool multiMap::setUp(void) {
 // Meat and potatoes, what we live for. Give us a value and we'll map it to the curve.
 double multiMap::map(double inX) {
 
-   if (!isEmpty()) {                             // If we have points..
+   if (!isEmpty()) {                             // If we have points.
       if (mReady) {                              // If we are ready (Sorted with mappers)
          return getFirst()->map(inX);            // Return the resulting mapped value;
-      } else {                                   // Else, we are not ready..
-         if (setUp()) {                          // If we can get ready..
+      } else {                                   // Else, we are not ready.
+         if (setUp()) {                          // If we can get ready.
             return getFirst()->map(inX);         // Return the mapped result.
          }
       }
@@ -189,11 +189,11 @@ double multiMap::map(double inX) {
 // Well, since you asked nice. We CAN actually do integration over your inputted curve.
 double  multiMap::integrate(double x1,double x2) {
 
-   if (!isEmpty()) {                             // If we have points..
+   if (!isEmpty()) {                             // If we have points.
       if (mReady) {                              // If we are ready (Sorted with mappers)
          return getFirst()->integrate(min(x1,x2),max(x1,x2));// Return the integration result;
-      } else {                                   // Else, we are not ready..
-         if (setUp()) {                          // If we can get ready..
+      } else {                                   // Else, we are not ready.
+         if (setUp()) {                          // If we can get ready.
             return getFirst()->integrate(min(x1,x2),max(x1,x2));// Return the integration result.
          }
       }

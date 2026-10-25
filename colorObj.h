@@ -49,7 +49,8 @@ class colorObj {
 public:
                 colorObj(RGBpack* buff);
                 colorObj(byte inRed, byte inGreen, byte inBlue);
-                //colorObj(colorObj* inColor);             // This was wanted, but the compiler mixes it up with color16.
+                //colorObj(colorObj* inColor);
+                // This was wanted, but the compiler mixes it up with color16.
                 colorObj(word color16);
                 colorObj(void);
   virtual   ~colorObj(void);
@@ -57,17 +58,20 @@ public:
   virtual   void        setColor(RGBpack* buff);
   virtual   void        setColor(byte inRed, byte inGreen, byte inBlue);
   virtual   void        setColor(word color16);
-  virtual   void        setColor(colorObj* inColor);       // Why doesn't this one get confused? Who knows?
+  virtual   void        setColor(colorObj* inColor);
+            // Why doesn't this one get confused? Who knows?
             word        getColor16(void);
             byte        getGreyscale(void);
-            
+
             byte        getRed(void);
             byte        getGreen(void);
             byte        getBlue(void);
             RGBpack packColor(void);
-            
-            colorObj    mixColors(colorObj* mixinColor,byte mixPercent);  // Create a new color by mixing. (Like the old blend)
-            void        blend(colorObj* mixinColor,byte mixPercent);      // Just blend with myself. Percent 0% -> 100% of new color.
+
+            colorObj    mixColors(colorObj* mixinColor,byte mixPercent);
+            // Create a new color by mixing. (Like the old blend)
+            // Just blend with myself. Percent 0% -> 100% of new color.
+            void        blend(colorObj* mixinColor,byte mixPercent);
 
 #ifdef PRINT_COLOR
                 void        printRGB(void);
@@ -126,7 +130,8 @@ class colorMultiMap {
             colorMultiMap(void);
    virtual   ~colorMultiMap(void);
 
-   virtual   void      addColor(double inX, colorObj* color);  // At some numeric value we resolve to this color.
+   virtual   void      addColor(double inX, colorObj* color);
+   // At some numeric value we resolve to this color.
    virtual   void      clearMap(void);
             colorObj   map(double inVal);
 

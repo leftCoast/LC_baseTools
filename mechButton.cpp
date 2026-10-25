@@ -19,7 +19,7 @@ mechButton::mechButton(byte inPinNum)
 mechButton::~mechButton(void) {  }
 
 
-// trueFalse() is the old version of getState(). 
+// trueFalse() is the old version of getState().
 bool mechButton::trueFalse(void) { return getState(); }
 
 
@@ -55,7 +55,7 @@ bool mechButton::getState(void) {
 }
 
 
-// Define a void function, for example : void myCallback(void){...}
+// Define a void function, for example : void myCallback(void){..}
 // Then, just call this method with your callback's name.
 // myButton.setCallback(myCallback);
 // Simple as that.

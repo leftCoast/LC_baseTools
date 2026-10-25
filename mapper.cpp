@@ -39,8 +39,8 @@ double mapper::getIntercept(void) { return intercept; }
 // Return the result.
 double mapper::map(double inNum) {
 
-  if (inNum < minX)                              // If inNum is less than our minimum..
-    inNum = minX;                                // We,err  I? anyway.. We set inNum to the minimum.
+  if (inNum < minX)                              // If inNum is less than our minimum.
+    inNum = minX;                                // We,err  I? anyway. We set inNum to the minimum.
   else if (inNum > maxX)                         // Else, if inNum is greater than maximum.
     inNum = maxX;                                // Set inNum to the maximum.
   return(slope*inNum+intercept);                 // return the calculation of the filtered input.

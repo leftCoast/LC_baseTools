@@ -21,21 +21,21 @@ class ringIndex {
    public:
             ringIndex(int inNumItems);
    virtual   ~ringIndex(void);
-   
-   virtual   int   addItem(void);            // Write to this index, if not INDEX_ERR.
-   virtual   int   readItem(void);         // Read at this index, if not INDEX_ERR.
-   virtual   int   peek(void);            // Peek at this index. Does not remove the item.
-   virtual   int   size(void);            // How many items do we have?
-   virtual   bool   empty(void);            // Are we empty?
-   virtual   bool   full(void);               // Are we full?
-   virtual   int   itemCount(void);         // How many items do we have?
-   virtual   int   maxItems(void);         // How many items can we store?
-   virtual   void   flushItems(void);         // Reset to zero items.
-            
+
+   virtual   int   addItem(void);                // Write to this index, if not INDEX_ERR.
+   virtual   int   readItem(void);               // Read at this index, if not INDEX_ERR.
+   virtual   int   peek(void);                   // Peek at this index. Does not remove the item.
+   virtual   int   size(void);                   // How many items do we have?
+   virtual   bool   empty(void);                 // Are we empty?
+   virtual   bool   full(void);                  // Are we full?
+   virtual   int   itemCount(void);              // How many items do we have?
+   virtual   int   maxItems(void);               // How many items can we store?
+   virtual   void   flushItems(void);            // Reset to zero items.
+
    protected:
-   
-   virtual   int   increment(int inIndex);   // Increment a pointer. Head or tail, temp?
-         
+
+   virtual   int   increment(int inIndex);       // Increment a pointer. Head or tail, temp?
+
             int    numItems;
             int   head;
             int   tail;
