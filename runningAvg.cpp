@@ -32,7 +32,7 @@ float runningAvg::addData(float inData) {
    float sum;
 
    if (usingLower && inData<lowerLimit) return mResult; // Limit fail, bail.
-   if (usingdUpper && inData>upperLimit) return mResult; // Limit fail, bail.
+   if (usingUpper && inData>upperLimit) return mResult; // Limit fail, bail.
 
    latestValue = inData;                         // Limits passed, this is our latest value.
    if (numValues<maxData) {                      // Early stages while still filling.
