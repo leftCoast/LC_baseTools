@@ -45,4 +45,4 @@ class mapper {
                 double intercept;
 };
 
-#endif
+#endif 

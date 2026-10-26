@@ -22,7 +22,7 @@ class idlers : public linkList {
                 idlers(void);
     virtual    ~idlers(void);
 
-                void	idle(void);
+                void   idle(void);
                 void sleep(float ms);
 };
 
@@ -31,4 +31,4 @@ extern  void    idle(void);
 extern  void    sleep(float ms);
 extern  bool    idling;
 
-#endif
+#endif 

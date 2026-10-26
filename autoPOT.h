@@ -4,7 +4,7 @@
 #include <idlers.h>
 
 
-//****************************************************************************************
+//**************************************************************************************
 // autoPOT:
 // autoPOT is a quick and easy way to get analog readings from the analog port. When the
 // reading changes, your callback is called, giving you the new value.
@@ -23,24 +23,24 @@
 // Make sure idle() is called in your main loop() function.
 //
 // That's about it.
-//****************************************************************************************
+//**************************************************************************************
 
 
 class autoPOT : public idler {
 
-	public:
-				autoPOT(int inPin);
-	virtual	~autoPOT(void);
+   public:
+            autoPOT(int inPin);
+   virtual   ~autoPOT(void);
 
-				void  setCallback(void(*funct)(int));
-          	void	setWindow(int plusMinus);
-	virtual	void  idle(void);
-          
+            void  setCallback(void(*funct)(int));
+             void   setWindow(int plusMinus);
+   virtual   void  idle(void);
+
   protected:
-				void	(*callback)(int);
-				int	pinNum;
-				int	value;
-				int	window;
+            void   (*callback)(int);
+            int   pinNum;
+            int   value;
+            int   window;
 };
 
-#endif
+#endif 

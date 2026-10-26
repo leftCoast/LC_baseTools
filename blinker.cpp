@@ -17,34 +17,34 @@ blinker::~blinker(void) { }
 // What to do when the pulse comes on.
 void  blinker::pulseOn(void) {
 
-	if (inverse) digitalWrite(pin,LOW);
-	else digitalWrite(pin,HIGH);
+   if (inverse) digitalWrite(pin,LOW);
+   else digitalWrite(pin,HIGH);
 }
 
 
 // What to do when the pulse is over.
 void  blinker::pulseOff(void) {
 
-	if (inverse) digitalWrite(pin,HIGH);
-	else digitalWrite(pin,LOW);
+   if (inverse) digitalWrite(pin,HIGH);
+   else digitalWrite(pin,LOW);
 }
 
 
-// This is your on/off switch. Call with a boolean true=on false=off. 
-// The object is created in the "off" mode. 
+// This is your on/off switch. Call with a boolean true=on false=off.
+// The object is created in the "off" mode.
 void blinker::setOnOff(bool onOff) {
 
-	if (!init) {                                 // Not initialized?
-		pinMode(pin, OUTPUT);                    // Now you are!
-		init = true;                             // Note it.
-	}
-	if(onOff!=running()) {                       // Ignore if no change.
-		squareWave::setOnOff(onOff);             // Pass on the command.
-	}
+   if (!init) {                                  // Not initialized?
+      pinMode(pin, OUTPUT);                      // Now you are!
+      init = true;                               // Note it.
+   }
+   if(onOff!=running()) {                        // Ignore if no change.
+      squareWave::setOnOff(onOff);               // Pass on the command.
+   }
 }
 
 
 bool blinker::blinking(void) { return running(); }
 
 
-
+ 

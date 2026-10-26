@@ -15,7 +15,7 @@
 // don't use delay(). That will stop everything.
 //****************************************************************************************
 
-#define DEF_BUFF_BYTES	64
+#define DEF_BUFF_BYTES   64
 
 
 class serialStr :  public idler {
@@ -29,7 +29,7 @@ class serialStr :  public idler {
    virtual     void  idle(void);
                bool  hadOverrun(void);
 
-               Stream*	port;
+               Stream*   port;
                int      index;
                char     EOL;
                int      bytes;
@@ -39,4 +39,4 @@ class serialStr :  public idler {
                bool     overrun;
 };
 
-#endif
+#endif 
