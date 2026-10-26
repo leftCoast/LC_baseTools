@@ -43,4 +43,4 @@ class autoPOT : public idler {
             int   window;
 };
 
-#endif
+#endif 

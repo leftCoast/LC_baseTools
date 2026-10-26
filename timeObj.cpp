@@ -155,4 +155,4 @@ float timeObj::getFraction(void) {
    }
    return  0;                                    // Never able to get here. Shut up compiler!
 }
-
+ 

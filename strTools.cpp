@@ -147,4 +147,4 @@ int tempStr::numChars(void) {
    return 0;
 }
 
-const char* tempStr::getStr(void) { return (const char*)theStr; }
+const char* tempStr::getStr(void) { return (const char*)theStr; } 

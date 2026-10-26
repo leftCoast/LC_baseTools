@@ -40,4 +40,4 @@ void loop(void) {
    int data = analogRead(A0);                    // Read the pin, or enter the new data to avg.
    float ave = smoother.addData(data);           // The Average that the smoother will return to us.
    Serial.println(ave);
-}
+} 

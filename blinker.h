@@ -26,4 +26,4 @@ public:
         bool    inverse;
 };
 
-#endif
+#endif 

@@ -159,4 +159,4 @@ void doFlush(void) {
 
    ourTextBuff.flushItems();
    Serial.println("text buff has been flushed.");
-}
+} 

@@ -58,4 +58,4 @@ void serialStr::idle(void) {
 
 // We can ask if there was an overrun. This will return true if there was. Does not clear
 // the overrun. Although it probably should.
-bool serialStr::hadOverrun(void) { return overrun; }
+bool serialStr::hadOverrun(void) { return overrun; } 

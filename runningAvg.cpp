@@ -167,4 +167,4 @@ void runningAvg::clearLimits(void) {
 
    clearUpperLimit();
    clearLowerLimit();
-}
+} 

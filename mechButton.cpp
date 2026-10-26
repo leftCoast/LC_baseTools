@@ -75,4 +75,4 @@ void mechButton::takeAction(void) { }
 // callback has been set to deal with state change on the switch. Otherwise this will do
 // basically nothing. As the return value of getState() is being ignored.
 void mechButton::idle(void) { getState(); }
-
+ 

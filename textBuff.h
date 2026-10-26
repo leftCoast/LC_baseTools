@@ -38,4 +38,4 @@ class textBuff : public ringIndex {
       bool   overwrite;
 };
 
-#endif
+#endif 

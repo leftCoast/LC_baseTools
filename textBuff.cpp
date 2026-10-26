@@ -116,4 +116,4 @@ char*    textBuff::readStr(void) {
    }                                             //
    return NULL;                                  // No string? Pass back NULL.
 }
-
+ 

@@ -69,4 +69,4 @@ maxBuff::maxBuff(unsigned long numBytes,unsigned long  minBytes) {
 maxBuff::~maxBuff(void) { resizeBuff(0,&theBuff); }
 
 
-
+ 

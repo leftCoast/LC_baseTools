@@ -104,4 +104,4 @@ int ringIndex::increment(int inIndex) {
       inIndex=0;
    }
    return inIndex;
-}
+} 

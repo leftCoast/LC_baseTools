@@ -39,4 +39,4 @@ void autoPOT::idle(void) {
       callback(value);                           // Call our callback with the value.
     }
   }
-}
+} 

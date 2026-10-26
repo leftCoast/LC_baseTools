@@ -394,4 +394,4 @@ colorObj colorMultiMap::map(double inVal) {
    result.setColor(red,green,blue);
    return result;
 }
-
+ 
