@@ -262,11 +262,11 @@ void colorObj::blend(colorObj* mixinColor,byte mixPercent) {
 // We the same as him? No way!
 bool colorObj::sameColor(colorObj* inColor) {
 
-	if (red!=inColor->getRed())		return false;
-	if (green!=inColor->getGreen())	return false;
-	if (blue!=inColor->getBlue())		return false;
-	return true;
-}								
+   if (red!=inColor->getRed())      return false;
+   if (green!=inColor->getGreen())  return false;
+   if (blue!=inColor->getBlue())    return false;
+   return true;
+}                       
 
 
 #ifdef PRINT_COLOR
