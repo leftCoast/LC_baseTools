@@ -33,29 +33,28 @@ class linkListObj {
 // This is the manager for a list.
 class linkList {
 
-  public:
-            linkList(void);
-    virtual ~linkList(void);
-
-    virtual void            addToTop(linkListObj* newObj);         // Give it a node and it'll add it to the top. (Fast)
-    virtual void            addToEnd(linkListObj* newObj);         // give it a node and it'll addd it to the end  (Slower)
-    virtual void            unlinkTop(void);                       // Push off the first one. (Does NOT delete it.)
-    virtual void            unlinkObj(linkListObj* oldObj);        // Find it and push this one off.
-    virtual void            dumpList(void);                        // Call delete on everyone.
-    virtual bool            isEmpty(void);                         // Well, is it?
-    virtual linkListObj*   getFirst(void);                         // Hand back a link to the top node.
-    virtual linkListObj*   getLast(void);                          // Hand back a link to the list node on the list.
-    virtual linkListObj*   findMax(linkListObj* anObj);            // These two will pass back links to the max & min of the list.
-    virtual linkListObj*   findMin(linkListObj* anObj);            // IF you filled out the isGreaterThan() & isLessThan() methods.
-    virtual void            sort(bool ascending);                  // And, if you did fill them out, this'll sort the list.
-
-            int            getCount(void);                         // Count the number of nodes, hand back that number.
-            linkListObj*   getByIndex(int index);                  // Same as a c type array. Hand back a link to the node at index.
-            int            findIndex(linkListObj* anObj);          // returns -1 if NOT found.
-            void            looseList(void);                       // Someone has taken control of our list, let it go.
-
-  protected :
-            linkListObj*   theList;
+	public:
+				linkList(void);
+	virtual	~linkList(void);
+	
+	virtual	void				addToTop(linkListObj* newObj);	// Give it a node and it'll add it to the top. (Fast)
+	virtual	void				addToEnd(linkListObj* newObj);	// give it a node and it'll addd it to the end  (Slower)
+	virtual	void				unlinkTop(void);						// Push off the first one. (Does NOT delete it.)
+	virtual	void				unlinkObj(linkListObj* oldObj);	// Find it and push this one off.
+	virtual	void				dumpList(void);						// Call delete on everyone.
+	virtual	bool				isEmpty(void);							// Well, is it?
+	virtual	linkListObj*	getFirst(void);						// Hand back a link to the top node.
+	virtual	linkListObj*	getLast(void);							// Hand back a link to the list node on the list.
+	virtual	linkListObj*	findMax(linkListObj* anObj);		// These two will pass back links to the max & min of the list.
+	virtual	linkListObj*	findMin(linkListObj* anObj);		// If you filled out the isGreaterThan() & isLessThan() methods.
+	virtual	void				sort(bool ascending);				// And, if you did fill them out, this'll sort the list.
+				int				getCount(void);						// Count the number of nodes, hand back that number.
+				linkListObj*   getByIndex(int index);				// Same as a c type array. Hand back a link to the node at index.
+				int				findIndex(linkListObj* anObj);	// returns -1 if NOT found.
+				void				looseList(void);						// Someone has taken control of our list, let it go.
+	
+	protected :
+				linkListObj*	theList;
 };
 
 
